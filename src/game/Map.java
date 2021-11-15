@@ -12,9 +12,9 @@ public class Map {
 	int stoneTime;
 	int plasticTime;
 	int eagleTime;
-	private ArrayList<Cell> area;
-	private ArrayList<Cell> plantableArea;
-	private ArrayList<Cell> moveableForEagleArea;
+	private static ArrayList<Cell> area;
+	private static ArrayList<Cell> plantableArea;
+	private static ArrayList<Cell> moveableForEagleArea;
 	private ArrayList<Fish> availableFish;
 	private ArrayList<Cell> randomFishCell;
 	private ArrayList<Bird> availableBird;
@@ -109,15 +109,15 @@ public class Map {
 		return eagleTime;
 	}
 
-	public ArrayList<Cell> getArea() {
+	public static ArrayList<Cell> getArea() {
 		return area;
 	}
 
-	public ArrayList<Cell> getPlantableArea() {
+	public static ArrayList<Cell> getPlantableArea() {
 		return plantableArea;
 	}
 
-	public ArrayList<Cell> getMoveableForEagleArea() {
+	public static ArrayList<Cell> getMoveableForEagleArea() {
 		return moveableForEagleArea;
 	}
 
@@ -157,9 +157,9 @@ public class Map {
 		return Tree;
 	}
 	
-	public checkTimeAndPositon() {
-		if (middleIslandArea.contains(Player.getCurrentPosition() && !isMorning) {
-			Player.resetPositon();
+	public void checkTimeAndPositon() {
+		if (middleIslandArea.contains(Player.getCurrentPosition()) && !isMorning) {
+			Player.resetPosition();
 		}
 	}
 	
