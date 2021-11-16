@@ -59,8 +59,6 @@ public class Player implements Moveable {
 		playerWeapon.add(new Weapon(MaterialType.WOOD, ApplicationType.AXE));
 	}
 
-
-
 	public void checkHP() {
 		if (HP == 0) {
 			// pop up
@@ -367,6 +365,7 @@ public class Player implements Moveable {
 		return anthena;
 	}
 	
+
 	public boolean isCanvas() {
 		return canvas;
 	}
@@ -395,12 +394,12 @@ public class Player implements Moveable {
 		if (maxHP > 0)
 			this.maxHP = maxHP;
 	}
-
+	
 
 	public static void setCanvas(boolean other) {
 		canvas = other;
 	}
-	
+
 	public static boolean isSteering() {
 		return steering;
 	}
@@ -429,5 +428,5 @@ public class Player implements Moveable {
 	public static void setEngine(boolean other) {
 		engine = other;
 	}
-	
+
 }
