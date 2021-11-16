@@ -225,17 +225,21 @@ public class Player implements Moveable {
 
 		// cell = position that player want to move to
 		if (direction == Direction.UP) {
-//			Cell cell = Map.getCellFromCoordinate(new Coordinate(x,y+1));
-//			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x, y+1);
+			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y + 1));
+			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+				setCurrentPosition(x, y + 1);
 		} else if (direction == Direction.DOWN) {
-//			Cell cell = Map.getCellFromCoordinate(new Coordinate(x,y-1));
-//			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x, y-1);
+			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y - 1));
+			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+				setCurrentPosition(x, y - 1);
 		} else if (direction == Direction.LEFT) {
-//			Cell cell = Map.getCellFromCoordinate(new Coordinate(x-1,y));
-//			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x-1, y);
+			Cell cell = Map.getCellFromCoordinate(new Coordinate(x - 1, y));
+			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+				setCurrentPosition(x - 1, y);
 		} else {
-//			Cell cell = Map.getCellFromCoordinate(new Coordinate(x+1,y));
-//			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x+1, y);
+			Cell cell = Map.getCellFromCoordinate(new Coordinate(x + 1, y));
+			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+				setCurrentPosition(x + 1, y);
 		}
 	}
 
@@ -246,23 +250,27 @@ public class Player implements Moveable {
 		// cell = position that player want to move to
 		if (raft) {
 			if (direction == Direction.UP) {
-//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x,y+1));
-//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-//					setCurrentPosition(x, y + 1);
+				Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y + 1));
+				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
+					setCurrentPosition(x, y + 1);
 			} else if (direction == Direction.DOWN) {
-//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x,y-1));
-//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-//					setCurrentPosition(x, y - 1);
+				Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y - 1));
+				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
+					setCurrentPosition(x, y - 1);
 			} else if (direction == Direction.LEFT) {
-//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x-1,y));
-//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-//					setCurrentPosition(x - 1, y);
+				Cell cell = Map.getCellFromCoordinate(new Coordinate(x - 1, y));
+				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
+					setCurrentPosition(x - 1, y);
 			} else {
-//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x+1,y));
-//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-//					setCurrentPosition(x + 1, y);
+				Cell cell = Map.getCellFromCoordinate(new Coordinate(x + 1, y));
+				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
+					setCurrentPosition(x + 1, y);
 			}
 		}
+	}
+
+	public void addWeapon(Weapon weapon) {
+		this.playerWeapon.add(weapon);
 	}
 
 	public static void setCurrentPosition(int x, int y) {
@@ -321,7 +329,7 @@ public class Player implements Moveable {
 		return copper;
 	}
 
-	public int getMetal() {
+	public static int getMetal() {
 		return metal;
 	}
 
@@ -329,7 +337,7 @@ public class Player implements Moveable {
 		return stone;
 	}
 
-	public int getScrape() {
+	public static int getScrape() {
 		return scrape;
 	}
 
@@ -361,12 +369,20 @@ public class Player implements Moveable {
 		return circuit;
 	}
 
-	public int getFish() {
+	public static int getFish() {
 		return fish;
 	}
 
-	public int getBird() {
+	public static void setFish(int fish) {
+		Player.fish = fish;
+	}
+
+	public static int getBird() {
 		return bird;
+	}
+
+	public static void setBird(int bird) {
+		Player.bird = bird;
 	}
 
 	public int getEagleHead() {
