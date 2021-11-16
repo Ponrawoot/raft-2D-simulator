@@ -227,17 +227,17 @@ public class Player implements Moveable {
 
 		// cell = position that player want to move to
 		if (direction == Direction.UP) {
-//			Cell cell = Map.getArea().get();
-//			if (cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x, y+1);
+//			Cell cell = Map.getCellFromCoordinate(new Coordinate(x,y+1));
+//			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x, y+1);
 		} else if (direction == Direction.DOWN) {
-//			Cell cell = Map.getArea().get();
-//			if (cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x, y-1);
+//			Cell cell = Map.getCellFromCoordinate(new Coordinate(x,y-1));
+//			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x, y-1);
 		} else if (direction == Direction.LEFT) {
-//			Cell cell = Map.getArea().get();
-//			if (cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x-1, y);
+//			Cell cell = Map.getCellFromCoordinate(new Coordinate(x-1,y));
+//			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x-1, y);
 		} else {
-//			Cell cell = Map.getArea().get();
-//			if (cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x+1, y);
+//			Cell cell = Map.getCellFromCoordinate(new Coordinate(x+1,y));
+//			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x+1, y);
 		}
 	}
 
@@ -248,20 +248,20 @@ public class Player implements Moveable {
 		// cell = position that player want to move to
 		if (raft) {
 			if (direction == Direction.UP) {
-//				Cell cell = Map.getArea().get();
-//				if (cell.getStatus() && cell.isSea() && !cell.isClosed())
+//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x,y+1));
+//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
 //					setCurrentPosition(x, y + 1);
 			} else if (direction == Direction.DOWN) {
-//				Cell cell = Map.getArea().get();
-//				if (cell.getStatus() && cell.isSea() && !cell.isClosed())
+//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x,y-1));
+//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
 //					setCurrentPosition(x, y - 1);
 			} else if (direction == Direction.LEFT) {
-//				Cell cell = Map.getArea().get();
-//				if (cell.getStatus() && cell.isSea() && !cell.isClosed())
+//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x-1,y));
+//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
 //					setCurrentPosition(x - 1, y);
 			} else {
-//				Cell cell = Map.getArea().get();
-//				if (cell.getStatus() && cell.isSea() && !cell.isClosed())
+//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x+1,y));
+//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
 //					setCurrentPosition(x + 1, y);
 			}
 		}
