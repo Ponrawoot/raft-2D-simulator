@@ -14,8 +14,8 @@ import object.base.MaterialType;
 
 public class Player implements Moveable {
 
-	private int maxHP, HP, wood, leaf, mangoSeed, pineconeSeed, fruit, plastic, feather, titanium, copper, metal, stone,
-			scrape, hinge, nail, rope, circuit, fish, bird, eagleHead;
+	private static int maxHP, HP, wood, leaf, mangoSeed, pineconeSeed, fruit, plastic, feather, titanium, copper, metal,
+			stone, scrape, hinge, nail, rope, circuit, fish, bird, eagleHead;
 	private static boolean raft, receiver, anthena, canvas, steering, petrol, engine;
 	private Weapon currentAxe;
 	private Weapon currentShovel;
@@ -277,8 +277,12 @@ public class Player implements Moveable {
 		return HP;
 	}
 
-	public int getWood() {
+	public static int getWood() {
 		return wood;
+	}
+
+	public static void setWood(int wood) {
+		Player.wood = wood;
 	}
 
 	public int getLeaf() {
@@ -305,8 +309,12 @@ public class Player implements Moveable {
 		return feather;
 	}
 
-	public int getTitanium() {
+	public static int getTitanium() {
 		return titanium;
+	}
+
+	public static void setTitanium(int titanium) {
+		Player.titanium = titanium;
 	}
 
 	public int getCopper() {
@@ -325,16 +333,28 @@ public class Player implements Moveable {
 		return scrape;
 	}
 
-	public int getHinge() {
+	public static int getHinge() {
 		return hinge;
 	}
 
-	public int getNail() {
+	public static void setHinge(int hinge) {
+		Player.hinge = hinge;
+	}
+
+	public static int getNail() {
 		return nail;
 	}
 
-	public int getRope() {
+	public static void setNail(int nail) {
+		Player.nail = nail;
+	}
+
+	public static int getRope() {
 		return rope;
+	}
+
+	public static void setRope(int rope) {
+		Player.rope = rope;
 	}
 
 	public int getCircuit() {
@@ -357,16 +377,23 @@ public class Player implements Moveable {
 		return raft;
 	}
 
-	public boolean isReceiver() {
+	public static boolean isReceiver() {
 		return receiver;
 	}
 
-	public boolean isAnthena() {
+	public static void setReceiver(boolean receiver) {
+		Player.receiver = receiver;
+	}
+
+	public static boolean isAnthena() {
 		return anthena;
 	}
-	
 
-	public boolean isCanvas() {
+	public static void setAnthena(boolean anthena) {
+		Player.anthena = anthena;
+	}
+
+	public static boolean isCanvas() {
 		return canvas;
 	}
 
@@ -394,7 +421,6 @@ public class Player implements Moveable {
 		if (maxHP > 0)
 			this.maxHP = maxHP;
 	}
-	
 
 	public static void setCanvas(boolean other) {
 		canvas = other;
@@ -404,26 +430,21 @@ public class Player implements Moveable {
 		return steering;
 	}
 
-
 	public static void setSteering(boolean other) {
 		steering = other;
 	}
-
 
 	public static boolean isPetrol() {
 		return petrol;
 	}
 
-
 	public static void setPetrol(boolean other) {
 		petrol = other;
 	}
 
-
 	public static boolean isEngine() {
 		return engine;
 	}
-
 
 	public static void setEngine(boolean other) {
 		engine = other;

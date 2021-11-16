@@ -2,16 +2,11 @@ package game;
 
 import java.util.ArrayList;
 
+import game.base.Coordinate;
+
 public class Map {
 	private boolean isMorning;
-	int timeInGame;
-	int birdTime;
-	int fishTime;
-	int metalTime;
-	int scrapeTime;
-	int stoneTime;
-	int plasticTime;
-	int eagleTime;
+	int timeInGame,birdTime,fishTime,metalTime,scrapeTime,stoneTime,plasticTime,eagleTime;
 	private static ArrayList<Cell> area;
 	private static ArrayList<Cell> plantableArea;
 	private static ArrayList<Cell> moveableForEagleArea;
@@ -158,9 +153,16 @@ public class Map {
 	}
 	
 	public void checkTimeAndPositon() {
-		if (middleIslandArea.contains(Player.getCurrentPosition()) && !isMorning) {
+		if (!middleIslandArea.contains(Player.getCurrentPosition()) && !isMorning) {
 			Player.resetPosition();
 		}
+	}
+	
+	public Cell getCellFromCoordinate(Coordinate other) {
+		for (Cell x: area) {
+			if (x.getCoCell()==other) return x;
+		}
+		return null;
 	}
 	
 
