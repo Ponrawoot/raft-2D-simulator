@@ -28,7 +28,7 @@ public class Map {
 	private ArrayList<Plastic> availablePlastic;
 	private ArrayList<Cell> middleIslandArea;
 	private ArrayList<Cell> repairableArea;
-	private ArrayList<Tree> Tree;
+	private static ArrayList<Tree> trees;
 
 	public Map() {
 		this.setMorning(true);
@@ -156,8 +156,12 @@ public class Map {
 		return repairableArea;
 	}
 
-	public ArrayList<Tree> getTree() {
-		return Tree;
+	public ArrayList<Tree> getTrees() {
+		return trees;
+	}
+
+	public static void removeTree(Tree tree) {
+		trees.remove(tree);
 	}
 
 	public void checkTimeAndPositon() {
@@ -178,16 +182,16 @@ public class Map {
 		return ((int) (Math.random() * (maximum - minimum))) + minimum;
 	}
 
-	public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsRepeat() {
-		Random rand = new Random();
-		List<String> givenList = Arrays.asList("one", "two", "three", "four");
-
-		int numberOfElements = 2;
-
-		for (int i = 0; i < numberOfElements; i++) {
-			int randomIndex = rand.nextInt(givenList.size());
-			String randomElement = givenList.get(randomIndex);
-		}
-	}
+//	public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsRepeat() {
+//		Random rand = new Random();
+//		List<String> givenList = Arrays.asList("one", "two", "three", "four");
+//
+//		int numberOfElements = 2;
+//
+//		for (int i = 0; i < numberOfElements; i++) {
+//			int randomIndex = rand.nextInt(givenList.size());
+//			String randomElement = givenList.get(randomIndex);
+//		}
+//	}
 
 }

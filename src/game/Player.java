@@ -202,11 +202,11 @@ public class Player implements Moveable {
 		if (Map.getPlantableArea().contains(position)) {
 			switch (object) {
 			case "Mango seed":
-//				new MangoTree(position, false);
+				new MangoTree(position);
 				mangoSeed--;
 				break;
 			case "Pinecone seed":
-//				new PineconeTree(position, false);
+				new PineconeTree(position);
 				pineconeSeed--;
 				break;
 			}
@@ -306,12 +306,20 @@ public class Player implements Moveable {
 		Player.leaf = leaf;
 	}
 
-	public int getMangoSeed() {
+	public static int getMangoSeed() {
 		return mangoSeed;
 	}
 
-	public int getPineconeSeed() {
+	public static void setMangoSeed(int mangoSeed) {
+		Player.mangoSeed = mangoSeed;
+	}
+
+	public static int getPineconeSeed() {
 		return pineconeSeed;
+	}
+
+	public static void setPineconeSeed(int pineconeSeed) {
+		Player.pineconeSeed = pineconeSeed;
 	}
 
 	public static int getFruit() {
