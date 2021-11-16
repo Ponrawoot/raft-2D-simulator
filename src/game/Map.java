@@ -165,7 +165,7 @@ public class Map {
 		}
 	}
 	
-	public Cell getCellFromCoordinate(Coordinate other) {
+	public static Cell getCellFromCoordinate(Coordinate other) {
 		for (Cell x: area) {
 			if (x.getCoCell()==other) return x;
 		}
