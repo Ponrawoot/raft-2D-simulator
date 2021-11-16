@@ -35,4 +35,8 @@ public class Weapon {
 			; // this.lifetime = ;
 	}
 
+	public void setLifetime(int lifetime) {
+		this.lifetime = lifetime;
+	}
+	
 }
