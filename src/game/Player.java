@@ -21,7 +21,7 @@ public class Player implements Moveable {
 	private static Weapon currentShovel;
 	private static Weapon currentSpear;
 	private static Cell currentPosition;
-	private ArrayList<Weapon> playerWeapon;
+	private static ArrayList<Weapon> playerWeapon;
 
 	public Player() {
 		// setMaxHP();
@@ -269,16 +269,21 @@ public class Player implements Moveable {
 		}
 	}
 
-	public void addWeapon(Weapon weapon) {
-		this.playerWeapon.add(weapon);
+	public static void addWeapon(Weapon weapon) {
+		Player.playerWeapon.add(weapon);
 	}
 
 	public static void setCurrentPosition(int x, int y) {
 		Player.currentPosition.setCoCell(new Coordinate(x, y));
 	}
 
-	public int getMaxHP() {
+	public static int getMaxHP() {
 		return maxHP;
+	}
+
+	public static void setMaxHP(int maxHP) {
+		if (maxHP > 0)
+			Player.maxHP = maxHP;
 	}
 
 	public int getHP() {
@@ -293,8 +298,12 @@ public class Player implements Moveable {
 		Player.wood = wood;
 	}
 
-	public int getLeaf() {
+	public static int getLeaf() {
 		return leaf;
+	}
+
+	public static void setLeaf(int leaf) {
+		Player.leaf = leaf;
 	}
 
 	public int getMangoSeed() {
@@ -305,16 +314,28 @@ public class Player implements Moveable {
 		return pineconeSeed;
 	}
 
-	public int getFruit() {
+	public static int getFruit() {
 		return fruit;
 	}
 
-	public int getPlastic() {
+	public static void setFruit(int fruit) {
+		Player.fruit = fruit;
+	}
+
+	public static int getPlastic() {
 		return plastic;
 	}
 
-	public int getFeather() {
+	public static void setPlastic(int plastic) {
+		Player.plastic = plastic;
+	}
+
+	public static int getFeather() {
 		return feather;
+	}
+
+	public static void setFeather(int feather) {
+		Player.feather = feather;
 	}
 
 	public static int getTitanium() {
@@ -325,26 +346,36 @@ public class Player implements Moveable {
 		Player.titanium = titanium;
 	}
 
-	public int getCopper() {
+	public static int getCopper() {
 		return copper;
+	}
+
+	public static void setCopper(int copper) {
+		Player.copper = copper;
 	}
 
 	public static int getMetal() {
 		return metal;
 	}
-	
+
 	public static void setMetal(int metal) {
 		Player.metal = metal;
 	}
 
-
-
-	public int getStone() {
+	public static int getStone() {
 		return stone;
+	}
+
+	public static void setStone(int stone) {
+		Player.stone = stone;
 	}
 
 	public static int getScrape() {
 		return scrape;
+	}
+
+	public static void setScrape(int scrape) {
+		Player.scrape = scrape;
 	}
 
 	public static int getHinge() {
@@ -443,11 +474,6 @@ public class Player implements Moveable {
 		return playerWeapon;
 	}
 
-	public void setMaxHP(int maxHP) {
-		if (maxHP > 0)
-			Player.maxHP = maxHP;
-	}
-
 	public static void setCanvas(boolean other) {
 		canvas = other;
 	}
@@ -475,11 +501,14 @@ public class Player implements Moveable {
 	public static void setEngine(boolean other) {
 		engine = other;
 	}
-	
+
 	public static void decreaseLifetime(ApplicationType type) {
-		if (type==ApplicationType.SHOVEL) Player.currentShovel.setLifetime(Player.currentShovel.getLifetime()-1);
-		if (type==ApplicationType.AXE) Player.currentAxe.setLifetime(Player.currentAxe.getLifetime()-1);
-		if (type==ApplicationType.SPEAR) Player.currentSpear.setLifetime(Player.currentSpear.getLifetime()-1);
+		if (type == ApplicationType.SHOVEL)
+			Player.currentShovel.setLifetime(Player.currentShovel.getLifetime() - 1);
+		if (type == ApplicationType.AXE)
+			Player.currentAxe.setLifetime(Player.currentAxe.getLifetime() - 1);
+		if (type == ApplicationType.SPEAR)
+			Player.currentSpear.setLifetime(Player.currentSpear.getLifetime() - 1);
 	}
 
 }
