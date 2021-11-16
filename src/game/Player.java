@@ -14,8 +14,8 @@ import object.base.MaterialType;
 
 public class Player implements Moveable {
 
-	private static int maxHP, HP, wood, leaf, mangoSeed, pineconeSeed, fruit, plastic, feather, titanium, copper, metal, stone,
-			scrape, hinge, nail, rope, circuit, fish, bird, eagleHead;
+	private static int maxHP, HP, wood, leaf, mangoSeed, pineconeSeed, fruit, plastic, feather, titanium, copper, metal,
+			stone, scrape, hinge, nail, rope, circuit, fish, bird, eagleHead;
 	private static boolean raft, receiver, anthena, canvas, steering, petrol, engine;
 	private static Weapon currentAxe;
 	private static Weapon currentShovel;
@@ -58,8 +58,6 @@ public class Player implements Moveable {
 		playerWeapon = new ArrayList<Weapon>();
 		playerWeapon.add(new Weapon(MaterialType.WOOD, ApplicationType.AXE));
 	}
-
-
 
 	public void checkHP() {
 		if (HP == 0) {
@@ -227,17 +225,21 @@ public class Player implements Moveable {
 
 		// cell = position that player want to move to
 		if (direction == Direction.UP) {
-//			Cell cell = Map.getCellFromCoordinate(new Coordinate(x,y+1));
-//			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x, y+1);
+			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y + 1));
+			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+				setCurrentPosition(x, y + 1);
 		} else if (direction == Direction.DOWN) {
-//			Cell cell = Map.getCellFromCoordinate(new Coordinate(x,y-1));
-//			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x, y-1);
+			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y - 1));
+			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+				setCurrentPosition(x, y - 1);
 		} else if (direction == Direction.LEFT) {
-//			Cell cell = Map.getCellFromCoordinate(new Coordinate(x-1,y));
-//			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x-1, y);
+			Cell cell = Map.getCellFromCoordinate(new Coordinate(x - 1, y));
+			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+				setCurrentPosition(x - 1, y);
 		} else {
-//			Cell cell = Map.getCellFromCoordinate(new Coordinate(x+1,y));
-//			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed()) setCurrentPosition(x+1, y);
+			Cell cell = Map.getCellFromCoordinate(new Coordinate(x + 1, y));
+			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+				setCurrentPosition(x + 1, y);
 		}
 	}
 
@@ -248,23 +250,27 @@ public class Player implements Moveable {
 		// cell = position that player want to move to
 		if (raft) {
 			if (direction == Direction.UP) {
-//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x,y+1));
-//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-//					setCurrentPosition(x, y + 1);
+				Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y + 1));
+				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
+					setCurrentPosition(x, y + 1);
 			} else if (direction == Direction.DOWN) {
-//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x,y-1));
-//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-//					setCurrentPosition(x, y - 1);
+				Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y - 1));
+				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
+					setCurrentPosition(x, y - 1);
 			} else if (direction == Direction.LEFT) {
-//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x-1,y));
-//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-//					setCurrentPosition(x - 1, y);
+				Cell cell = Map.getCellFromCoordinate(new Coordinate(x - 1, y));
+				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
+					setCurrentPosition(x - 1, y);
 			} else {
-//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x+1,y));
-//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-//					setCurrentPosition(x + 1, y);
+				Cell cell = Map.getCellFromCoordinate(new Coordinate(x + 1, y));
+				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
+					setCurrentPosition(x + 1, y);
 			}
 		}
+	}
+
+	public void addWeapon(Weapon weapon) {
+		this.playerWeapon.add(weapon);
 	}
 
 	public static void setCurrentPosition(int x, int y) {
@@ -286,8 +292,6 @@ public class Player implements Moveable {
 	public static void setWood(int wood) {
 		Player.wood = wood;
 	}
-
-
 
 	public int getLeaf() {
 		return leaf;
@@ -320,7 +324,7 @@ public class Player implements Moveable {
 	public static void setTitanium(int titanium) {
 		Player.titanium = titanium;
 	}
-	
+
 	public int getCopper() {
 		return copper;
 	}
@@ -339,7 +343,7 @@ public class Player implements Moveable {
 		return stone;
 	}
 
-	public int getScrape() {
+	public static int getScrape() {
 		return scrape;
 	}
 
@@ -371,12 +375,20 @@ public class Player implements Moveable {
 		return circuit;
 	}
 
-	public int getFish() {
+	public static int getFish() {
 		return fish;
 	}
 
-	public int getBird() {
+	public static void setFish(int fish) {
+		Player.fish = fish;
+	}
+
+	public static int getBird() {
 		return bird;
+	}
+
+	public static void setBird(int bird) {
+		Player.bird = bird;
 	}
 
 	public int getEagleHead() {
@@ -398,11 +410,11 @@ public class Player implements Moveable {
 	public static boolean isAnthena() {
 		return anthena;
 	}
-	
+
 	public static void setAnthena(boolean anthena) {
 		Player.anthena = anthena;
 	}
-	
+
 	public static boolean isCanvas() {
 		return canvas;
 	}
@@ -436,39 +448,34 @@ public class Player implements Moveable {
 			this.maxHP = maxHP;
 	}
 
-
 	public static void setCanvas(boolean other) {
 		canvas = other;
 	}
-	
+
 	public static boolean isSteering() {
 		return steering;
 	}
-
 
 	public static void setSteering(boolean other) {
 		steering = other;
 	}
 
-
 	public static boolean isPetrol() {
 		return petrol;
 	}
-
 
 	public static void setPetrol(boolean other) {
 		petrol = other;
 	}
 
-
 	public static boolean isEngine() {
 		return engine;
 	}
 
-
 	public static void setEngine(boolean other) {
 		engine = other;
 	}
+<<<<<<< HEAD
 	
 	public static void decreaseLifetime(ApplicationType type) {
 		if (type==ApplicationType.SHOVEL) Player.currentShovel.setLifetime(Player.currentShovel.getLifetime()-1);
@@ -477,4 +484,7 @@ public class Player implements Moveable {
 	}
 
 	
+=======
+
+>>>>>>> 92b8d7c52ce25dd09cfa8ae688c742349c8658ff
 }

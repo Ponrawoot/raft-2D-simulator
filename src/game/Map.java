@@ -24,28 +24,28 @@ public class Map {
 	
 	public Map() {
 		this.setMorning(true);
-//		timeInGame = ;
-//		birdTime = ;
-//		fishTime = ;
-//		metalTime = ;
-//		scrapeTime = ;
-//		stoneTime = ;
-//		plasticTime =;
-//		eagleTime = ;
-//		area = ;
-//		plantableArea = ;
-//		moveableForEagleArea = ;
-//		availableFish = ;
-//		randomFishCell = ;
-//		availableBird = ;
-//		randomBirdCell = ;
-//		availableMetal = ;
-//		availableScrape = ;
-//		availableStone = ;
-//		availablePlastic = ;
-//		middleIslandArea = ;
-//		repairableArea = ;
-//		Tree = ;
+		timeInGame = ;
+		birdTime = ;
+		fishTime = ;
+		metalTime = ;
+		scrapeTime = ;
+		stoneTime = ;
+		plasticTime =;
+		eagleTime = ;
+		area = ;
+		plantableArea = ;
+		moveableForEagleArea = ;
+		availableFish = ;
+		randomFishCell = ;
+		availableBird = ;
+		randomBirdCell = ;
+		availableMetal = ;
+		availableScrape = ;
+		availableStone = ;
+		availablePlastic = ;
+		middleIslandArea = ;
+		repairableArea = ;
+		Tree = ;
 	}
 
 	public boolean isMorning() {
