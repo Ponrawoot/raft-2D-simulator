@@ -17,16 +17,35 @@ public class Metal implements Removeable {
 		this.position = position;
 		//this.time =; 
 	}
+	
 	@Override
 	public void beRemoved() {
+		if (Player.getCurrentShovel()==null) return;
 		if (Player.getCurrentPosition().getCoCell().isNextTo(this.position.getCoCell())&&metal&&(Player.getCurrentShovel().getMaterial()==MaterialType.METAL)) {
 			Player.setMetal(Player.getMetal()+1);
 			//time =;
-			Player.decrease
+			metal = false;
+			Player.decreaseLifetime(ApplicationType.SHOVEL);
+			Player.decreaseHP();
+			position.setStatus(true);
 		}
 		// TODO Auto-generated method stub
-		
-		
+	}
+	
+	public void refresh() {
+		if (!metal) { //CheckTime
+			metal = true;
+			position.setStatus(false);  
+		}
+	}
+	public boolean isMetal() {
+		return metal;
+	}
+	public Cell getPosition() {
+		return position;
+	}
+	public int getTime() {
+		return time;
 	}
 
 }
