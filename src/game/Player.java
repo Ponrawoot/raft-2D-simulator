@@ -59,7 +59,7 @@ public class Player implements Moveable {
 		playerWeapon.add(new Weapon(MaterialType.WOOD, ApplicationType.AXE));
 	}
 
-	public void checkHP() {
+	public static void checkHP() {
 		if (HP == 0) {
 			// pop up
 			HP++;
@@ -445,7 +445,7 @@ public class Player implements Moveable {
 
 	public void setMaxHP(int maxHP) {
 		if (maxHP > 0)
-			this.maxHP = maxHP;
+			Player.maxHP = maxHP;
 	}
 
 	public static void setCanvas(boolean other) {
@@ -475,7 +475,6 @@ public class Player implements Moveable {
 	public static void setEngine(boolean other) {
 		engine = other;
 	}
-<<<<<<< HEAD
 	
 	public static void decreaseLifetime(ApplicationType type) {
 		if (type==ApplicationType.SHOVEL) Player.currentShovel.setLifetime(Player.currentShovel.getLifetime()-1);
@@ -483,8 +482,4 @@ public class Player implements Moveable {
 		if (type==ApplicationType.SPEAR) Player.currentSpear.setLifetime(Player.currentSpear.getLifetime()-1);
 	}
 
-	
-=======
-
->>>>>>> 92b8d7c52ce25dd09cfa8ae688c742349c8658ff
 }
