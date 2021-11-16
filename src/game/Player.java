@@ -16,7 +16,7 @@ public class Player implements Moveable {
 
 	private int maxHP, HP, wood, leaf, mangoSeed, pineconeSeed, fruit, plastic, feather, titanium, copper, metal, stone,
 			scrape, hinge, nail, rope, circuit, fish, bird, eagleHead;
-	private boolean raft, receiver, anthena;
+	private static boolean raft, receiver, anthena, canvas, steering, petrol, engine;
 	private Weapon currentAxe;
 	private Weapon currentShovel;
 	private Weapon currentSpear;
@@ -47,6 +47,10 @@ public class Player implements Moveable {
 		raft = false;
 		receiver = false;
 		anthena = false;
+		canvas = false;
+		steering = false;
+		petrol = false;
+		engine = false;
 		currentAxe = null;
 		currentShovel = null;
 		currentSpear = null;
@@ -54,6 +58,8 @@ public class Player implements Moveable {
 		playerWeapon = new ArrayList<Weapon>();
 		playerWeapon.add(new Weapon(MaterialType.WOOD, ApplicationType.AXE));
 	}
+
+
 
 	public void checkHP() {
 		if (HP == 0) {
@@ -360,6 +366,10 @@ public class Player implements Moveable {
 	public boolean isAnthena() {
 		return anthena;
 	}
+	
+	public boolean isCanvas() {
+		return canvas;
+	}
 
 	public Weapon getCurrentAxe() {
 		return currentAxe;
@@ -386,4 +396,38 @@ public class Player implements Moveable {
 			this.maxHP = maxHP;
 	}
 
+
+	public static void setCanvas(boolean other) {
+		canvas = other;
+	}
+	
+	public static boolean isSteering() {
+		return steering;
+	}
+
+
+	public static void setSteering(boolean other) {
+		steering = other;
+	}
+
+
+	public static boolean isPetrol() {
+		return petrol;
+	}
+
+
+	public static void setPetrol(boolean other) {
+		petrol = other;
+	}
+
+
+	public static boolean isEngine() {
+		return engine;
+	}
+
+
+	public static void setEngine(boolean other) {
+		engine = other;
+	}
+	
 }
