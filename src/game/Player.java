@@ -17,9 +17,9 @@ public class Player implements Moveable {
 	private static int maxHP, HP, wood, leaf, mangoSeed, pineconeSeed, fruit, plastic, feather, titanium, copper, metal, stone,
 			scrape, hinge, nail, rope, circuit, fish, bird, eagleHead;
 	private static boolean raft, receiver, anthena, canvas, steering, petrol, engine;
-	private Weapon currentAxe;
-	private Weapon currentShovel;
-	private Weapon currentSpear;
+	private static Weapon currentAxe;
+	private static Weapon currentShovel;
+	private static Weapon currentSpear;
 	private static Cell currentPosition;
 	private ArrayList<Weapon> playerWeapon;
 
@@ -74,7 +74,7 @@ public class Player implements Moveable {
 //		currentPosition.getCoCell().setY();
 	}
 
-	public void decreaseHP() {
+	public static void decreaseHP() {
 		if (HP > 0)
 			HP--;
 		checkHP();
@@ -325,9 +325,15 @@ public class Player implements Moveable {
 		return copper;
 	}
 
-	public int getMetal() {
+	public static int getMetal() {
 		return metal;
 	}
+	
+	public static void setMetal(int metal) {
+		Player.metal = metal;
+	}
+
+
 
 	public int getStone() {
 		return stone;
@@ -401,15 +407,19 @@ public class Player implements Moveable {
 		return canvas;
 	}
 
-	public Weapon getCurrentAxe() {
+	public static Weapon getCurrentAxe() {
 		return currentAxe;
 	}
 
-	public Weapon getCurrentShovel() {
+	public static Weapon getCurrentShovel() {
 		return currentShovel;
 	}
 
-	public Weapon getCurrentSpear() {
+	public static void setCurrentShovel(Weapon currentShovel) {
+		Player.currentShovel = currentShovel;
+	}
+
+	public static Weapon getCurrentSpear() {
 		return currentSpear;
 	}
 
@@ -459,5 +469,12 @@ public class Player implements Moveable {
 	public static void setEngine(boolean other) {
 		engine = other;
 	}
+	
+	public static void decreaseLifetime(ApplicationType type) {
+		if (type==ApplicationType.SHOVEL) Player.currentShovel.setLifetime(Player.currentShovel.getLifetime()-1);
+		if (type==ApplicationType.AXE) Player.currentAxe.setLifetime(Player.currentAxe.getLifetime()-1);
+		if (type==ApplicationType.SPEAR) Player.currentSpear.setLifetime(Player.currentSpear.getLifetime()-1);
+	}
+
 	
 }
