@@ -14,7 +14,7 @@ import object.base.MaterialType;
 
 public class Player implements Moveable {
 
-	private int maxHP, HP, wood, leaf, mangoSeed, pineconeSeed, fruit, plastic, feather, titanium, copper, metal, stone,
+	private static int maxHP, HP, wood, leaf, mangoSeed, pineconeSeed, fruit, plastic, feather, titanium, copper, metal, stone,
 			scrape, hinge, nail, rope, circuit, fish, bird, eagleHead;
 	private static boolean raft, receiver, anthena, canvas, steering, petrol, engine;
 	private Weapon currentAxe;
@@ -279,9 +279,15 @@ public class Player implements Moveable {
 		return HP;
 	}
 
-	public int getWood() {
+	public static int getWood() {
 		return wood;
 	}
+
+	public static void setWood(int wood) {
+		Player.wood = wood;
+	}
+
+
 
 	public int getLeaf() {
 		return leaf;
@@ -307,10 +313,14 @@ public class Player implements Moveable {
 		return feather;
 	}
 
-	public int getTitanium() {
+	public static int getTitanium() {
 		return titanium;
 	}
 
+	public static void setTitanium(int titanium) {
+		Player.titanium = titanium;
+	}
+	
 	public int getCopper() {
 		return copper;
 	}
@@ -327,16 +337,28 @@ public class Player implements Moveable {
 		return scrape;
 	}
 
-	public int getHinge() {
+	public static int getHinge() {
 		return hinge;
 	}
 
-	public int getNail() {
+	public static void setHinge(int hinge) {
+		Player.hinge = hinge;
+	}
+
+	public static int getNail() {
 		return nail;
 	}
 
-	public int getRope() {
+	public static void setNail(int nail) {
+		Player.nail = nail;
+	}
+
+	public static int getRope() {
 		return rope;
+	}
+
+	public static void setRope(int rope) {
+		Player.rope = rope;
 	}
 
 	public int getCircuit() {
@@ -359,15 +381,23 @@ public class Player implements Moveable {
 		return raft;
 	}
 
-	public boolean isReceiver() {
+	public static boolean isReceiver() {
 		return receiver;
 	}
 
-	public boolean isAnthena() {
+	public static void setReceiver(boolean receiver) {
+		Player.receiver = receiver;
+	}
+
+	public static boolean isAnthena() {
 		return anthena;
 	}
 	
-	public boolean isCanvas() {
+	public static void setAnthena(boolean anthena) {
+		Player.anthena = anthena;
+	}
+	
+	public static boolean isCanvas() {
 		return canvas;
 	}
 
