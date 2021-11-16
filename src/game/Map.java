@@ -10,10 +10,11 @@ import object.Metal;
 import object.Plastic;
 import object.Scrape;
 import object.Stone;
+import object.Tree;
 
 public class Map {
 	private boolean isMorning;
-	int timeInGame,birdTime,fishTime,metalTime,scrapeTime,stoneTime,plasticTime,eagleTime;
+	int timeInGame, birdTime, fishTime, metalTime, scrapeTime, stoneTime, plasticTime, eagleTime;
 	private static ArrayList<Cell> area;
 	private static ArrayList<Cell> plantableArea;
 	private static ArrayList<Cell> moveableForEagleArea;
@@ -28,7 +29,7 @@ public class Map {
 	private ArrayList<Cell> middleIslandArea;
 	private ArrayList<Cell> repairableArea;
 	private ArrayList<Tree> Tree;
-	
+
 	public Map() {
 		this.setMorning(true);
 //		timeInGame = ;
@@ -158,35 +159,35 @@ public class Map {
 	public ArrayList<Tree> getTree() {
 		return Tree;
 	}
-	
+
 	public void checkTimeAndPositon() {
 		if (!middleIslandArea.contains(Player.getCurrentPosition()) && !isMorning) {
 			Player.resetPosition();
 		}
 	}
-	
+
 	public static Cell getCellFromCoordinate(Coordinate other) {
-		for (Cell x: area) {
-			if (x.getCoCell()==other) return x;
+		for (Cell x : area) {
+			if (x.getCoCell() == other)
+				return x;
 		}
 		return null;
 	}
-	
+
 	public static int getRandomInteger(int maximum, int minimum) {
-		return ((int) (Math.random()*(maximum - minimum))) + minimum; 
-		}
-	
-	public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsRepeat() {
-	    Random rand = new Random();
-	    List<String> givenList = Arrays.asList("one", "two", "three", "four");
-
-	    int numberOfElements = 2;
-
-	    for (int i = 0; i < numberOfElements; i++) {
-	        int randomIndex = rand.nextInt(givenList.size());
-	        String randomElement = givenList.get(randomIndex);
-	    }
+		return ((int) (Math.random() * (maximum - minimum))) + minimum;
 	}
-	
+
+	public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsRepeat() {
+		Random rand = new Random();
+		List<String> givenList = Arrays.asList("one", "two", "three", "four");
+
+		int numberOfElements = 2;
+
+		for (int i = 0; i < numberOfElements; i++) {
+			int randomIndex = rand.nextInt(givenList.size());
+			String randomElement = givenList.get(randomIndex);
+		}
+	}
 
 }
