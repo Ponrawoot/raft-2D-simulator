@@ -1,8 +1,15 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import game.base.Coordinate;
+import object.Bird;
+import object.Fish;
+import object.Metal;
+import object.Plastic;
+import object.Scrape;
+import object.Stone;
 
 public class Map {
 	private boolean isMorning;
@@ -15,7 +22,7 @@ public class Map {
 	private ArrayList<Bird> availableBird;
 	private ArrayList<Cell> randomBirdCell;
 	private ArrayList<Metal> availableMetal;
-	private ArrayList<Scrape> availableScrape;
+	private static ArrayList<Scrape> availableScrape;
 	private ArrayList<Stone> availableStone;
 	private ArrayList<Plastic> availablePlastic;
 	private ArrayList<Cell> middleIslandArea;
@@ -24,28 +31,28 @@ public class Map {
 	
 	public Map() {
 		this.setMorning(true);
-		timeInGame = ;
-		birdTime = ;
-		fishTime = ;
-		metalTime = ;
-		scrapeTime = ;
-		stoneTime = ;
-		plasticTime =;
-		eagleTime = ;
-		area = ;
-		plantableArea = ;
-		moveableForEagleArea = ;
-		availableFish = ;
-		randomFishCell = ;
-		availableBird = ;
-		randomBirdCell = ;
-		availableMetal = ;
-		availableScrape = ;
-		availableStone = ;
-		availablePlastic = ;
-		middleIslandArea = ;
-		repairableArea = ;
-		Tree = ;
+//		timeInGame = ;
+//		birdTime = ;
+//		fishTime = ;
+//		metalTime = ;
+//		scrapeTime = ;
+//		stoneTime = ;
+//		plasticTime =;
+//		eagleTime = ;
+//		area = ;
+//		plantableArea = ;
+//		moveableForEagleArea = ;
+//		availableFish = ;
+//		randomFishCell = ;
+//		availableBird = ;
+//		randomBirdCell = ;
+//		availableMetal = ;
+//		availableScrape = ;
+//		availableStone = ;
+//		availablePlastic = ;
+//		middleIslandArea = ;
+//		repairableArea = ;
+//		Tree = ;
 	}
 
 	public boolean isMorning() {
@@ -128,7 +135,7 @@ public class Map {
 		return availableMetal;
 	}
 
-	public ArrayList<Scrape> getAvailableScrape() {
+	public static ArrayList<Scrape> getAvailableScrape() {
 		return availableScrape;
 	}
 
@@ -163,6 +170,22 @@ public class Map {
 			if (x.getCoCell()==other) return x;
 		}
 		return null;
+	}
+	
+	public static int getRandomInteger(int maximum, int minimum) {
+		return ((int) (Math.random()*(maximum - minimum))) + minimum; 
+		}
+	
+	public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsRepeat() {
+	    Random rand = new Random();
+	    List<String> givenList = Arrays.asList("one", "two", "three", "four");
+
+	    int numberOfElements = 2;
+
+	    for (int i = 0; i < numberOfElements; i++) {
+	        int randomIndex = rand.nextInt(givenList.size());
+	        String randomElement = givenList.get(randomIndex);
+	    }
 	}
 	
 
