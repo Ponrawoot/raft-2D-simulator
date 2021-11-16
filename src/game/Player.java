@@ -454,16 +454,27 @@ public class Player implements Moveable {
 		return currentAxe;
 	}
 
+	public static void setCurrentAxe(Weapon currentAxe) {
+		addWeapon(Player.currentAxe);
+		Player.currentAxe = currentAxe;
+	}
+
 	public static Weapon getCurrentShovel() {
 		return currentShovel;
 	}
 
 	public static void setCurrentShovel(Weapon currentShovel) {
+		addWeapon(Player.currentShovel);
 		Player.currentShovel = currentShovel;
 	}
 
 	public static Weapon getCurrentSpear() {
 		return currentSpear;
+	}
+
+	public static void setCurrentSpear(Weapon currentSpear) {
+		addWeapon(Player.currentSpear);
+		Player.currentSpear = currentSpear;
 	}
 
 	public static Cell getCurrentPosition() {
