@@ -24,7 +24,7 @@ public class PineconeTree extends Tree implements Removeable {
 	@Override
 	public void beRemoved() {
 		// TODO Auto-generated method stub
-		if (!cutted && Player.getCurrentPosition().getCoCell().isNextTo(position.getCoCell())) {
+		if (!cutted && Player.getCurrentPosition().isNextTo(position)) {
 			if (Player.getCurrentAxe().getMaterial() == MaterialType.METAL) {
 				Player.decreaseLifetime(ApplicationType.AXE);
 				Player.setWood(Player.getWood() + wood);

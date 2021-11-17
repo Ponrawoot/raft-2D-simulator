@@ -16,7 +16,7 @@ public class PalmTree extends Tree {
 	}
 
 	public void collect() {
-		if (!cutted && Player.getCurrentPosition().getCoCell().isNextTo(position.getCoCell())) {
+		if (!cutted && Player.getCurrentPosition().isNextTo(position)) {
 			if (Player.getCurrentAxe() != null) {
 				Player.decreaseLifetime(ApplicationType.AXE);
 				Player.setWood(Player.getWood() + wood);
