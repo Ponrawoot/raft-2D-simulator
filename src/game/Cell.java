@@ -46,7 +46,9 @@ public class Cell {
 	private void setClosed(boolean closed) {
 		this.closed = closed;
 	}
-
 	
+	public boolean isNextTo(Cell cell) {
+		return getCoCell().isNextTo(cell.getCoCell());
+	}
 	
 }
