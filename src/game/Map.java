@@ -7,6 +7,7 @@ import game.base.Coordinate;
 import object.Animal;
 import object.Bird;
 import object.Fish;
+import object.Material;
 import object.Metal;
 import object.Plastic;
 import object.Scrape;
@@ -23,12 +24,12 @@ public class Map {
 	private static ArrayList<Cell> randomFishCell;
 	private static ArrayList<Animal> availableBird;
 	private static ArrayList<Cell> randomBirdCell;
-	private static ArrayList<Metal> availableMetal;
-	private static ArrayList<Scrape> availableScrape;
-	private static ArrayList<Plastic> availablePlastic;
+	private static ArrayList<Material> availableMetal;
+	private static ArrayList<Material> availableScrape;
+	private static ArrayList<Material> availablePlastic;
+	private static ArrayList<Material> availableStone;
 	private static ArrayList<Cell> middleIslandArea;
 	private static ArrayList<Cell> repairableArea;
-	private static ArrayList<Stone> availableStone;
 	private static ArrayList<Tree> trees;
 
 	public Map() {
@@ -133,19 +134,19 @@ public class Map {
 		return randomBirdCell;
 	}
 
-	public ArrayList<Metal> getAvailableMetal() {
+	public ArrayList<Material> getAvailableMetal() {
 		return availableMetal;
 	}
 
-	public static ArrayList<Scrape> getAvailableScrape() {
+	public static ArrayList<Material> getAvailableScrape() {
 		return availableScrape;
 	}
 
-	public static ArrayList<Stone> getAvailableStone() {
+	public static ArrayList<Material> getAvailableStone() {
 		return availableStone;
 	}
 
-	public static ArrayList<Plastic> getAvailablePlastic() {
+	public static ArrayList<Material> getAvailablePlastic() {
 		return availablePlastic;
 	}
 
@@ -191,6 +192,16 @@ public class Map {
 		}
 		return true;
 	}
+	
+	public static boolean readyForRandomMaterial(ArrayList<Material> material) {
+		for (int i = 0; i < material.size(); i++) {
+			if (material.get(i).isPresent()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 
 	public static void refreshFish(int random) {
 		if (!readyForRandomAnimal(availableFish))
@@ -240,6 +251,7 @@ public class Map {
 	}
 
 	public void randomAvailableScrapeArea(int random) {
+		if (!readyForRandomMaterial(availableScrape)) return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
 		for (Cell x : area) {
@@ -250,13 +262,18 @@ public class Map {
 
 		for (int i = 0; i < random; i++) {
 			int randomIndex = rand.nextInt(givenList.size());
-			Cell randomElement = givenList.get(randomIndex);
-			Scrape e = new Scrape(randomElement);
-			availableScrape.add(e);
+			Cell randomCell = givenList.get(randomIndex);
+			if (i < availableScrape.size()) {
+				((Scrape) availableScrape.get(i)).refresh(randomCell);
+			} else {
+				Scrape e = new Scrape(randomCell);
+				availableScrape.add(e);
+			}
 		}
 	}
 
 	public void randomAvailablePlasticArea(int random) {
+		if (!readyForRandomMaterial(availablePlastic)) return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
 		for (Cell x : area) {
@@ -267,13 +284,18 @@ public class Map {
 
 		for (int i = 0; i < random; i++) {
 			int randomIndex = rand.nextInt(givenList.size());
-			Cell randomElement = givenList.get(randomIndex);
-//	        Plastic e = new Plastic(randomElement);
-//	        availablePlastic.add(e);	
+			Cell randomCell = givenList.get(randomIndex);
+	        if (i < availablePlastic.size()) {
+				((Plastic) availablePlastic.get(i)).refresh(randomCell);
+			} else {
+				Plastic e = new Plastic(randomCell);
+				availablePlastic.add(e);
+			}	
 		}
 	}
 
 	public void randomAvailableStoneArea(int random) {
+		if (!readyForRandomMaterial(availableStone)) return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
 		for (Cell x : middleIslandArea) {
@@ -284,9 +306,13 @@ public class Map {
 
 		for (int i = 0; i < random; i++) {
 			int randomIndex = rand.nextInt(givenList.size());
-			Cell randomElement = givenList.get(randomIndex);
-			Stone e = new Stone(randomElement);
-			availableStone.add(e);
+			Cell randomCell = givenList.get(randomIndex);
+			if (i < availableStone.size()) {
+				((Stone) availableStone.get(i)).refresh(randomCell);
+			} else {
+				Stone e = new Stone(randomCell);
+				availableStone.add(e);
+			}	
 		}
 
 	}
