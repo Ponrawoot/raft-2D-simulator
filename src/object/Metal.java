@@ -6,26 +6,21 @@ import game.base.Removeable;
 import object.base.ApplicationType;
 import object.base.MaterialType;
 
-public class Metal implements Removeable {
-	private boolean metal;
-	private Cell position;
-	private int time;
+public class Metal extends Material implements Removeable {
 
 	public Metal(Cell position) {
-		this.metal = false;
-		this.position = position;
-		// this.time =;
+		super(position);
+		
 	}
 
 	@Override
 	public void beRemoved() {
 		if (Player.getCurrentShovel() == null)
 			return;
-		if (Player.getCurrentPosition().isNextTo(position) && metal
+		if (Player.getCurrentPosition().isNextTo(position) && present
 				&& (Player.getCurrentShovel().getMaterial() == MaterialType.METAL)) {
-			Player.setMetal(Player.getMetal() + 1);
-			// time =;
-			metal = false;
+			Player.setMetal(Player.getMetal()+1);
+			present = false;
 			Player.decreaseLifetime(ApplicationType.SHOVEL);
 			Player.decreaseHP();
 			position.setStatus(true);
@@ -34,22 +29,10 @@ public class Metal implements Removeable {
 	}
 
 	public void refresh() {
-		if (!metal) { // CheckTime
-			metal = true;
+		if (!present) { 
+			present = true;
 			position.setStatus(false);
 		}
 	}
-
-	public boolean isMetal() {
-		return metal;
-	}
-
-	public Cell getPosition() {
-		return position;
-	}
-
-	public int getTime() {
-		return time;
-	}
-
+	
 }
