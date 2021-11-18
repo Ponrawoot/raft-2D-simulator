@@ -152,7 +152,7 @@ public class Map {
 	}
 
 	public ArrayList<Stone> getAvailableStone() {
-		return availableStone1;
+		return availableStone;
 	}
 
 	public ArrayList<Plastic> getAvailablePlastic() {
@@ -189,7 +189,6 @@ public class Map {
 	}
 	
 	public static int getRandomInteger(int maximum, int minimum) {
-<<<<<<< HEAD
 		return ((int) (Math.random()*(maximum - minimum))) + minimum; 
 		}
 	
@@ -281,22 +280,4 @@ public class Map {
 	        
 	    }
 	
-
-=======
-		return ((int) (Math.random() * (maximum - minimum))) + minimum;
-	}
-
-//	public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsRepeat() {
-//		Random rand = new Random();
-//		List<String> givenList = Arrays.asList("one", "two", "three", "four");
-//
-//		int numberOfElements = 2;
-//
-//		for (int i = 0; i < numberOfElements; i++) {
-//			int randomIndex = rand.nextInt(givenList.size());
-//			String randomElement = givenList.get(randomIndex);
-//		}
-//	}
->>>>>>> 5cc7ae2d279deedc18decd8e1ddae91d1b301e05
-
 }
