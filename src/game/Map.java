@@ -24,21 +24,13 @@ public class Map {
 	private static ArrayList<Cell> randomBirdCell;
 	private static ArrayList<Metal> availableMetal;
 	private static ArrayList<Scrape> availableScrape;
-<<<<<<< HEAD
-	private static ArrayList<Stone> availableStone;
-	private static ArrayList<Plastic> availablePlastic;
-	private static ArrayList<Cell> middleIslandArea;
-	private static ArrayList<Cell> repairableArea;
-	private static ArrayList<Tree> Tree;
-	
-=======
 	private ArrayList<Stone> availableStone;
 	private ArrayList<Plastic> availablePlastic;
 	private ArrayList<Cell> middleIslandArea;
 	private ArrayList<Cell> repairableArea;
 	private static ArrayList<Tree> trees;
 
->>>>>>> 9f5bf6f9560c75d66c9a4d583420d340bb68f0a2
+
 	public Map() {
 		this.setMorning(true);
 //		timeInGame = ;
@@ -77,16 +69,16 @@ public class Map {
 		return availableFish;
 	}
 
-	public void setAvailableFish(ArrayList<Fish> availableFish) {
-		this.availableFish = availableFish;
+	public static void setAvailableFish(ArrayList<Fish> availableFish) {
+		Map.availableFish = availableFish;
 	}
 
 	public ArrayList<Bird> getAvailableBird() {
 		return availableBird;
 	}
 
-	public void setAvailableBird(ArrayList<Bird> availableBird) {
-		this.availableBird = availableBird;
+	public static void setAvailableBird(ArrayList<Bird> availableBird) {
+		Map.availableBird = availableBird;
 	}
 
 	public int getTimeInGame() {
@@ -187,28 +179,6 @@ public class Map {
 	}
 	
 	public static int getRandomInteger(int maximum, int minimum) {
-<<<<<<< HEAD
-		return ((int) (Math.random()*(maximum - minimum))) + minimum; 
-		}
-	
-	public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsRepeat(int random) {
-	    Random rand = new Random();
-	    ArrayList<Cell> givenList = new ArrayList<Cell>();
-	    for (Cell x: area) {
-	    	if (x.getStatus()&&!x.isClosed())  {
-	    		givenList.add(x);
-	    	}
-	    }
-
-	    int numberOfElements = 2;
-
-	    for (int i = 0; i < numberOfElements; i++) {
-	        int randomIndex = rand.nextInt(givenList.size());
-	        String randomElement = givenList.get(randomIndex);
-	    }
-	}
-	
-=======
 		return ((int) (Math.random() * (maximum - minimum))) + minimum;
 	}
 
@@ -223,6 +193,5 @@ public class Map {
 //			String randomElement = givenList.get(randomIndex);
 //		}
 //	}
->>>>>>> 9f5bf6f9560c75d66c9a4d583420d340bb68f0a2
 
 }
