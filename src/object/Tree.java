@@ -6,11 +6,11 @@ public abstract class Tree {
 	protected int wood;
 	protected int leaf;
 	protected Cell position;
-	protected boolean cutted;
+	protected boolean readyToCut;
 
 	public Tree(Cell position) {
 		setPosition(position);
-		setCutted(false);
+		setReadyToCut(false);
 	}
 
 	public abstract void grow();
@@ -27,8 +27,8 @@ public abstract class Tree {
 		this.leaf = leaf;
 	}
 
-	protected void setCutted(boolean cutted) {
-		this.cutted = cutted;
+	protected void setReadyToCut(boolean readyToCut) {
+		this.readyToCut = readyToCut;
 	}
 
 }

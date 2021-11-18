@@ -1,12 +1,13 @@
 package object;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import game.Cell;
 import game.Player;
 import object.base.ApplicationType;
 
 public class PalmTree extends Tree {
-
-//	private int timeCut;
 
 	public PalmTree(Cell position) {
 		super(position);
@@ -16,31 +17,40 @@ public class PalmTree extends Tree {
 	}
 
 	public void collect() {
-		if (!cutted && Player.getCurrentPosition().isNextTo(position)) {
+		if (readyToCut && Player.getCurrentPosition().isNextTo(position)) {
 			if (Player.getCurrentAxe() != null) {
 				Player.decreaseLifetime(ApplicationType.AXE);
 				Player.setWood(Player.getWood() + wood);
 				Player.setLeaf(Player.getLeaf() + leaf);
-				super.setWood(0);
-				super.setLeaf(0);
-				super.setCutted(true);
+				setWood(0);
+				setLeaf(0);
+				setReadyToCut(false);
 				Player.decreaseHP();
-//				timeCut = ;
 			}
 		}
 	}
 
-//	public void setTimeCut(int timeCut) {
-//		this.timeCut = timeCut;
-//	}
-
 	@Override
 	public void grow() {
 		// TODO Auto-generated method stub
-		if (cutted) { // && check time)
+		if (!readyToCut) {
 //			super.setWood();
 //			super.setLeaf();
-			super.setCutted(false);
+
+			Timer timer = new Timer();
+			timer.scheduleAtFixedRate(new TimerTask() {
+				int i = 15; // (second) can change
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					i--;
+					if (i < 0) {
+						timer.cancel();
+						setReadyToCut(true);
+					}
+				}
+			}, 0, 1000);
 		}
 	}
 }
