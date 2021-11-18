@@ -2,6 +2,8 @@ package game;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import game.base.Coordinate;
 import object.Animal;
@@ -16,7 +18,7 @@ import object.Tree;
 
 public class Map {
 	private boolean isMorning;
-	int timeInGame, birdTime, fishTime, metalTime, scrapeTime, stoneTime, plasticTime, eagleTime;
+//	int timeInGame, birdTime, fishTime, metalTime, scrapeTime, stoneTime, plasticTime, eagleTime;
 	private static ArrayList<Cell> area;
 	private static ArrayList<Cell> plantableArea;
 	private static ArrayList<Cell> moveableForEagleArea;
@@ -64,6 +66,20 @@ public class Map {
 
 	public void setMorning(boolean isMorning) {
 		this.isMorning = isMorning;
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(new TimerTask() {
+			int i = 15; // (second) can change
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				i--;
+				if (i < 0) {
+					timer.cancel();
+					setMorning(!isMorning); 
+				}
+			}
+		}, 0, 1000);
 	}
 
 	public ArrayList<Animal> getAvailableFish() {
@@ -82,37 +98,37 @@ public class Map {
 		Map.availableBird = availableBird;
 	}
 
-	public int getTimeInGame() {
-		return timeInGame;
-	}
-
-	public int getBirdTime() {
-		return birdTime;
-	}
-
-	public int getFishTime() {
-		return fishTime;
-	}
-
-	public int getMetalTime() {
-		return metalTime;
-	}
-
-	public int getScrapeTime() {
-		return scrapeTime;
-	}
-
-	public int getStoneTime() {
-		return stoneTime;
-	}
-
-	public int getPlasticTime() {
-		return plasticTime;
-	}
-
-	public int getEagleTime() {
-		return eagleTime;
-	}
+//	public int getTimeInGame() {
+//		return timeInGame;
+//	}
+//
+//	public int getBirdTime() {
+//		return birdTime;
+//	}
+//
+//	public int getFishTime() {
+//		return fishTime;
+//	}
+//
+//	public int getMetalTime() {
+//		return metalTime;
+//	}
+//
+//	public int getScrapeTime() {
+//		return scrapeTime;
+//	}
+//
+//	public int getStoneTime() {
+//		return stoneTime;
+//	}
+//
+//	public int getPlasticTime() {
+//		return plasticTime;
+//	}
+//
+//	public int getEagleTime() {
+//		return eagleTime;
+//	}
 
 	public static ArrayList<Cell> getArea() {
 		return area;
@@ -250,7 +266,7 @@ public class Map {
 
 	}
 
-	public void randomAvailableScrapeArea(int random) {
+	public static void refreshScrape(int random) {
 		if (!readyForRandomMaterial(availableScrape)) return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
@@ -272,7 +288,7 @@ public class Map {
 		}
 	}
 
-	public void randomAvailablePlasticArea(int random) {
+	public static void refreshPlastic(int random) {
 		if (!readyForRandomMaterial(availablePlastic)) return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
@@ -294,7 +310,7 @@ public class Map {
 		}
 	}
 
-	public void randomAvailableStoneArea(int random) {
+	public static void refreshStone(int random) {
 		if (!readyForRandomMaterial(availableStone)) return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
