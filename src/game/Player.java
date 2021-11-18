@@ -526,12 +526,20 @@ public class Player implements Moveable {
 	}
 
 	public static void decreaseLifetime(ApplicationType type) {
-		if (type == ApplicationType.SHOVEL)
+		if (type == ApplicationType.SHOVEL) 
 			Player.currentShovel.setLifetime(Player.currentShovel.getLifetime() - 1);
 		if (type == ApplicationType.AXE)
 			Player.currentAxe.setLifetime(Player.currentAxe.getLifetime() - 1);
 		if (type == ApplicationType.SPEAR)
 			Player.currentSpear.setLifetime(Player.currentSpear.getLifetime() - 1);
+		checkLifetime();
+	}
+	
+	public static void checkLifetime() {
+		if (Player.currentShovel.getLifetime()==0) Player.setCurrentShovel(null);
+		if (Player.currentAxe.getLifetime()==0) Player.setCurrentAxe(null);
+		if (Player.currentSpear.getLifetime()==0) Player.setCurrentSpear(null);
+		
 	}
 
 }
