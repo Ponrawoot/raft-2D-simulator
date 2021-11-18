@@ -37,17 +37,17 @@ public class Scrape implements Removeable {
 
 	}
 
-	public void refresh() {
-		for (Scrape x : Map.getAvailableScrape()) {
-			if (x.isScrape())
-				return;
-		}
-		int c = Map.getRandomInteger(10, 1);
-		ArrayList<Scrape> replace = new ArrayList<Scrape>(c);
-
-		// CheckTime
-
-	}
+//	public void refresh() {
+//		for (Scrape x : Map.getAvailableScrape()) {
+//			if (x.isScrape())
+//				return;
+//		}
+//		int c = Map.getRandomInteger(10, 1);
+//		ArrayList<Scrape> replace = new ArrayList<Scrape>(c);
+//
+//		// CheckTime
+//
+//	}
 
 	public boolean isScrape() {
 		return scrape;

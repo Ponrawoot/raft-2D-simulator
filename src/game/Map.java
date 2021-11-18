@@ -141,23 +141,23 @@ public class Map {
 		return availableScrape;
 	}
 
-	public ArrayList<Stone> getAvailableStone() {
+	public static ArrayList<Stone> getAvailableStone() {
 		return availableStone;
 	}
 
-	public ArrayList<Plastic> getAvailablePlastic() {
+	public static ArrayList<Plastic> getAvailablePlastic() {
 		return availablePlastic;
 	}
 
-	public ArrayList<Cell> getMiddleIslandArea() {
+	public static ArrayList<Cell> getMiddleIslandArea() {
 		return middleIslandArea;
 	}
 
-	public ArrayList<Cell> getRepairableArea() {
+	public static ArrayList<Cell> getRepairableArea() {
 		return repairableArea;
 	}
 
-	public ArrayList<Tree> getTrees() {
+	public static ArrayList<Tree> getTrees() {
 		return trees;
 	}
 
@@ -285,8 +285,8 @@ public class Map {
 		for (int i = 0; i < random; i++) {
 			int randomIndex = rand.nextInt(givenList.size());
 			Cell randomElement = givenList.get(randomIndex);
-			Scrape e = new Scrape(randomElement);
-			availableScrape.add(e);
+			Stone e = new Stone(randomElement);
+			availableStone.add(e);
 		}
 
 	}
