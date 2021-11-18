@@ -194,7 +194,7 @@ public class Player implements Moveable {
 	public void feed(Eagle eagle) {
 		if (fish > 0 && Map.getMoveableForEagleArea().contains(currentPosition)) {
 //			fish -= ;
-//			eagle.setMove(false);
+			eagle.setMove(false);
 		}
 	}
 
@@ -430,8 +430,12 @@ public class Player implements Moveable {
 		Player.bird = bird;
 	}
 
-	public int getEagleHead() {
+	public static int getEagleHead() {
 		return eagleHead;
+	}
+
+	public static void setEagleHead(int eagleHead) {
+		Player.eagleHead = eagleHead;
 	}
 
 	public boolean isRaft() {
