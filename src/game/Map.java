@@ -27,7 +27,7 @@ public class Map {
 	private static ArrayList<Plastic> availablePlastic;
 	private static ArrayList<Cell> middleIslandArea;
 	private static ArrayList<Cell> repairableArea;
-	private static ArrayList<Stone> availableStone;
+	private static ArrayList<Stone> availableStone; 
 	private static ArrayList<Tree> trees;
 
 	public Map() {
@@ -140,23 +140,23 @@ public class Map {
 		return availableScrape;
 	}
 
-	public ArrayList<Stone> getAvailableStone() {
+	public static ArrayList<Stone> getAvailableStone() {
 		return availableStone;
 	}
 
-	public ArrayList<Plastic> getAvailablePlastic() {
+	public static ArrayList<Plastic> getAvailablePlastic() {
 		return availablePlastic;
 	}
 
-	public ArrayList<Cell> getMiddleIslandArea() {
+	public static ArrayList<Cell> getMiddleIslandArea() {
 		return middleIslandArea;
 	}
 
-	public ArrayList<Cell> getRepairableArea() {
+	public static ArrayList<Cell> getRepairableArea() {
 		return repairableArea;
 	}
 
-	public ArrayList<Tree> getTrees() {
+	public static ArrayList<Tree> getTrees() {
 		return trees;
 	}
 
