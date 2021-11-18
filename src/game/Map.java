@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import game.base.Coordinate;
+import object.Animal;
 import object.Bird;
 import object.Fish;
 import object.Metal;
@@ -14,13 +15,13 @@ import object.Tree;
 
 public class Map {
 	private boolean isMorning;
-	int timeInGame,birdTime,fishTime,metalTime,scrapeTime,stoneTime,plasticTime,eagleTime;
+	int timeInGame, birdTime, fishTime, metalTime, scrapeTime, stoneTime, plasticTime, eagleTime;
 	private static ArrayList<Cell> area;
 	private static ArrayList<Cell> plantableArea;
 	private static ArrayList<Cell> moveableForEagleArea;
-	private static ArrayList<Fish> availableFish;
+	private static ArrayList<Animal> availableFish;
 	private static ArrayList<Cell> randomFishCell;
-	private static ArrayList<Bird> availableBird;
+	private static ArrayList<Animal> availableBird;
 	private static ArrayList<Cell> randomBirdCell;
 	private static ArrayList<Metal> availableMetal;
 	private static ArrayList<Scrape> availableScrape;
@@ -64,19 +65,19 @@ public class Map {
 		this.isMorning = isMorning;
 	}
 
-	public ArrayList<Fish> getAvailableFish() {
+	public ArrayList<Animal> getAvailableFish() {
 		return availableFish;
 	}
 
-	public static void setAvailableFish(ArrayList<Fish> availableFish) {
+	public static void setAvailableFish(ArrayList<Animal> availableFish) {
 		Map.availableFish = availableFish;
 	}
 
-	public ArrayList<Bird> getAvailableBird() {
+	public ArrayList<Animal> getAvailableBird() {
 		return availableBird;
 	}
 
-	public static void setAvailableBird(ArrayList<Bird> availableBird) {
+	public static void setAvailableBird(ArrayList<Animal> availableBird) {
 		Map.availableBird = availableBird;
 	}
 
@@ -163,110 +164,131 @@ public class Map {
 	public static void removeTree(Tree tree) {
 		trees.remove(tree);
 	}
-	
+
 	public void checkTimeAndPositon() {
 		if (!middleIslandArea.contains(Player.getCurrentPosition()) && !isMorning) {
 			Player.resetPosition();
 		}
 	}
-	
+
 	public static Cell getCellFromCoordinate(Coordinate other) {
-		for (Cell x: area) {
-			if (x.getCoCell()==other) return x;
+		for (Cell x : area) {
+			if (x.getCoCell() == other)
+				return x;
 		}
 		return null;
 	}
-	
+
 	public static int getRandomInteger(int maximum, int minimum) {
-		return ((int) (Math.random()*(maximum - minimum))) + minimum; 
+		return ((int) (Math.random() * (maximum - minimum))) + minimum;
+	}
+
+	public static boolean readyForRandomAnimal(ArrayList<Animal> animals) {
+		for (int i = 0; i < animals.size(); i++) {
+			if (animals.get(i).isAlive()) {
+				return false;
+			}
 		}
-	
-	public void randomAvailableFishArea(int random) {
-	    Random rand = new Random();
-	    ArrayList<Cell> givenList = new ArrayList<Cell>();
-	    for (Cell x: area) {
-	    	if (x.getStatus()&&!x.isClosed()&&x.isSea())  {
-	    		givenList.add(x);
-	    	}
-	    }
+		return true;
+	}
 
-	    for (int i = 0; i < random; i++) {
-	        int randomIndex = rand.nextInt(givenList.size());
-	        Cell randomElement = givenList.get(randomIndex);
-	        Fish e = new Fish(randomElement);
-	        availableFish.add(e);	
-	        }
-	        
-	    }
-	
-	public void randomAvailableBirdArea(int random) {
-	    Random rand = new Random();
-	    ArrayList<Cell> givenList = new ArrayList<Cell>();
-	    for (Cell x: area) {
-	    	if (x.getStatus()&&!x.isClosed())  {
-	    		givenList.add(x);
-	    	}
-	    }
+	public static void refreshFish(int random) {
+		if (!readyForRandomAnimal(availableFish))
+			return;
+		Random rand = new Random();
+		ArrayList<Cell> givenList = new ArrayList<Cell>();
+		for (Cell x : area) {
+			if (x.getStatus() && !x.isClosed() && x.isSea()) {
+				givenList.add(x);
+			}
+		}
 
-	    for (int i = 0; i < random; i++) {
-	        int randomIndex = rand.nextInt(givenList.size());
-	        Cell randomElement = givenList.get(randomIndex);
-	        Bird e = new Bird(randomElement);
-	        availableBird.add(e);	
-	        }
-	        
-	    }
-	
+		for (int i = 0; i < random; i++) {
+			int randomIndex = rand.nextInt(givenList.size());
+			Cell randomCell = givenList.get(randomIndex);
+			if (i < availableFish.size()) {
+				((Fish) availableFish.get(i)).refresh(randomCell);
+			} else {
+				Fish e = new Fish(randomCell);
+				availableFish.add(e);
+			}
+		}
+	}
+
+	public static void refreshBird(int random) {
+		if (!readyForRandomAnimal(availableBird))
+			return;
+		Random rand = new Random();
+		ArrayList<Cell> givenList = new ArrayList<Cell>();
+		for (Cell x : area) {
+			if (x.getStatus() && !x.isClosed()) {
+				givenList.add(x);
+			}
+		}
+
+		for (int i = 0; i < random; i++) {
+			int randomIndex = rand.nextInt(givenList.size());
+			Cell randomCell = givenList.get(randomIndex);
+			if (i < availableBird.size()) {
+				((Bird) availableBird.get(i)).refresh(randomCell);
+			} else {
+				Bird e = new Bird(randomCell);
+				availableBird.add(e);
+			}
+		}
+
+	}
+
 	public void randomAvailableScrapeArea(int random) {
-	    Random rand = new Random();
-	    ArrayList<Cell> givenList = new ArrayList<Cell>();
-	    for (Cell x: area) {
-	    	if (x.getStatus()&&!x.isClosed())  {
-	    		givenList.add(x);
-	    	}
-	    }
+		Random rand = new Random();
+		ArrayList<Cell> givenList = new ArrayList<Cell>();
+		for (Cell x : area) {
+			if (x.getStatus() && !x.isClosed()) {
+				givenList.add(x);
+			}
+		}
 
-	    for (int i = 0; i < random; i++) {
-	        int randomIndex = rand.nextInt(givenList.size());
-	        Cell randomElement = givenList.get(randomIndex);
-	        Scrape e = new Scrape(randomElement);
-	        availableScrape.add(e);	
-	        }   
-	    }
-	
+		for (int i = 0; i < random; i++) {
+			int randomIndex = rand.nextInt(givenList.size());
+			Cell randomElement = givenList.get(randomIndex);
+			Scrape e = new Scrape(randomElement);
+			availableScrape.add(e);
+		}
+	}
+
 	public void randomAvailablePlasticArea(int random) {
-	    Random rand = new Random();
-	    ArrayList<Cell> givenList = new ArrayList<Cell>();
-	    for (Cell x: area) {
-	    	if (x.getStatus()&&!x.isClosed())  {
-	    		givenList.add(x);
-	    	}
-	    }
+		Random rand = new Random();
+		ArrayList<Cell> givenList = new ArrayList<Cell>();
+		for (Cell x : area) {
+			if (x.getStatus() && !x.isClosed()) {
+				givenList.add(x);
+			}
+		}
 
-	    for (int i = 0; i < random; i++) {
-	        int randomIndex = rand.nextInt(givenList.size());
-	        Cell randomElement = givenList.get(randomIndex);
-	        Plastic e = new Plastic(randomElement);
-	        availablePlastic.add(e);	
-	        }   
-	    }
-	
+		for (int i = 0; i < random; i++) {
+			int randomIndex = rand.nextInt(givenList.size());
+			Cell randomElement = givenList.get(randomIndex);
+//	        Plastic e = new Plastic(randomElement);
+//	        availablePlastic.add(e);	
+		}
+	}
+
 	public void randomAvailableStoneArea(int random) {
-	    Random rand = new Random();
-	    ArrayList<Cell> givenList = new ArrayList<Cell>();
-	    for (Cell x: middleIslandArea) {
-	    	if (x.getStatus()&&!x.isClosed())  {
-	    		givenList.add(x);
-	    	}
-	    }
+		Random rand = new Random();
+		ArrayList<Cell> givenList = new ArrayList<Cell>();
+		for (Cell x : middleIslandArea) {
+			if (x.getStatus() && !x.isClosed()) {
+				givenList.add(x);
+			}
+		}
 
-	    for (int i = 0; i < random; i++) {
-	        int randomIndex = rand.nextInt(givenList.size());
-	        Cell randomElement = givenList.get(randomIndex);
-	        Scrape e = new Scrape(randomElement);
-	        availableScrape.add(e);	
-	        }
-	        
-	    }
-	
+		for (int i = 0; i < random; i++) {
+			int randomIndex = rand.nextInt(givenList.size());
+			Cell randomElement = givenList.get(randomIndex);
+			Scrape e = new Scrape(randomElement);
+			availableScrape.add(e);
+		}
+
+	}
+
 }
