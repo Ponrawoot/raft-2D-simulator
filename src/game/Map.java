@@ -14,22 +14,22 @@ import object.Tree;
 
 public class Map {
 	private boolean isMorning;
-	int timeInGame, birdTime, fishTime, metalTime, scrapeTime, stoneTime, plasticTime, eagleTime;
+	int timeInGame,birdTime,fishTime,metalTime,scrapeTime,stoneTime,plasticTime,eagleTime;
 	private static ArrayList<Cell> area;
 	private static ArrayList<Cell> plantableArea;
 	private static ArrayList<Cell> moveableForEagleArea;
-	private ArrayList<Fish> availableFish;
-	private ArrayList<Cell> randomFishCell;
-	private ArrayList<Bird> availableBird;
-	private ArrayList<Cell> randomBirdCell;
-	private ArrayList<Metal> availableMetal;
+	private static ArrayList<Fish> availableFish;
+	private static ArrayList<Cell> randomFishCell;
+	private static ArrayList<Bird> availableBird;
+	private static ArrayList<Cell> randomBirdCell;
+	private static ArrayList<Metal> availableMetal;
 	private static ArrayList<Scrape> availableScrape;
-	private ArrayList<Stone> availableStone;
-	private ArrayList<Plastic> availablePlastic;
-	private ArrayList<Cell> middleIslandArea;
-	private ArrayList<Cell> repairableArea;
-	private ArrayList<Tree> Tree;
-
+	private static ArrayList<Stone> availableStone;
+	private static ArrayList<Plastic> availablePlastic;
+	private static ArrayList<Cell> middleIslandArea;
+	private static ArrayList<Cell> repairableArea;
+	private static ArrayList<Tree> Tree;
+	
 	public Map() {
 		this.setMorning(true);
 //		timeInGame = ;
@@ -159,35 +159,40 @@ public class Map {
 	public ArrayList<Tree> getTree() {
 		return Tree;
 	}
-
+	
 	public void checkTimeAndPositon() {
 		if (!middleIslandArea.contains(Player.getCurrentPosition()) && !isMorning) {
 			Player.resetPosition();
 		}
 	}
-
+	
 	public static Cell getCellFromCoordinate(Coordinate other) {
-		for (Cell x : area) {
-			if (x.getCoCell() == other)
-				return x;
+		for (Cell x: area) {
+			if (x.getCoCell()==other) return x;
 		}
 		return null;
 	}
-
+	
 	public static int getRandomInteger(int maximum, int minimum) {
-		return ((int) (Math.random() * (maximum - minimum))) + minimum;
-	}
-
-	public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsRepeat() {
-		Random rand = new Random();
-		List<String> givenList = Arrays.asList("one", "two", "three", "four");
-
-		int numberOfElements = 2;
-
-		for (int i = 0; i < numberOfElements; i++) {
-			int randomIndex = rand.nextInt(givenList.size());
-			String randomElement = givenList.get(randomIndex);
+		return ((int) (Math.random()*(maximum - minimum))) + minimum; 
 		}
+	
+	public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsRepeat(int random) {
+	    Random rand = new Random();
+	    ArrayList<Cell> givenList = new ArrayList<Cell>();
+	    for (Cell x: area) {
+	    	if (x.getStatus()&&!x.isClosed())  {
+	    		givenList.add(x);
+	    	}
+	    }
+
+	    int numberOfElements = 2;
+
+	    for (int i = 0; i < numberOfElements; i++) {
+	        int randomIndex = rand.nextInt(givenList.size());
+	        String randomElement = givenList.get(randomIndex);
+	    }
 	}
+	
 
 }
