@@ -24,23 +24,12 @@ public class Map {
 	private static ArrayList<Cell> randomBirdCell;
 	private static ArrayList<Metal> availableMetal;
 	private static ArrayList<Scrape> availableScrape;
-<<<<<<< HEAD
 	private static ArrayList<Plastic> availablePlastic;
 	private static ArrayList<Cell> middleIslandArea;
 	private static ArrayList<Cell> repairableArea;
-	private static ArrayList<Tree> Tree;
 	private static ArrayList<Stone> availableStone;
 	private static ArrayList<Tree> trees;
 
-=======
-	private ArrayList<Stone> availableStone;
-	private ArrayList<Plastic> availablePlastic;
-	private ArrayList<Cell> middleIslandArea;
-	private ArrayList<Cell> repairableArea;
-	private static ArrayList<Tree> trees;
-
-
->>>>>>> 5cc7ae2d279deedc18decd8e1ddae91d1b301e05
 	public Map() {
 		this.setMorning(true);
 //		timeInGame = ;
