@@ -24,6 +24,7 @@ public class Map {
 	private static ArrayList<Cell> randomBirdCell;
 	private static ArrayList<Metal> availableMetal;
 	private static ArrayList<Scrape> availableScrape;
+<<<<<<< HEAD
 	private static ArrayList<Plastic> availablePlastic;
 	private static ArrayList<Cell> middleIslandArea;
 	private static ArrayList<Cell> repairableArea;
@@ -31,6 +32,15 @@ public class Map {
 	private static ArrayList<Stone> availableStone;
 	private static ArrayList<Tree> trees;
 
+=======
+	private ArrayList<Stone> availableStone;
+	private ArrayList<Plastic> availablePlastic;
+	private ArrayList<Cell> middleIslandArea;
+	private ArrayList<Cell> repairableArea;
+	private static ArrayList<Tree> trees;
+
+
+>>>>>>> 5cc7ae2d279deedc18decd8e1ddae91d1b301e05
 	public Map() {
 		this.setMorning(true);
 //		timeInGame = ;
@@ -69,16 +79,16 @@ public class Map {
 		return availableFish;
 	}
 
-	public void setAvailableFish(ArrayList<Fish> availableFish) {
-		this.availableFish = availableFish;
+	public static void setAvailableFish(ArrayList<Fish> availableFish) {
+		Map.availableFish = availableFish;
 	}
 
 	public ArrayList<Bird> getAvailableBird() {
 		return availableBird;
 	}
 
-	public void setAvailableBird(ArrayList<Bird> availableBird) {
-		this.availableBird = availableBird;
+	public static void setAvailableBird(ArrayList<Bird> availableBird) {
+		Map.availableBird = availableBird;
 	}
 
 	public int getTimeInGame() {
@@ -179,6 +189,7 @@ public class Map {
 	}
 	
 	public static int getRandomInteger(int maximum, int minimum) {
+<<<<<<< HEAD
 		return ((int) (Math.random()*(maximum - minimum))) + minimum; 
 		}
 	
@@ -271,5 +282,21 @@ public class Map {
 	    }
 	
 
+=======
+		return ((int) (Math.random() * (maximum - minimum))) + minimum;
+	}
+
+//	public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsRepeat() {
+//		Random rand = new Random();
+//		List<String> givenList = Arrays.asList("one", "two", "three", "four");
+//
+//		int numberOfElements = 2;
+//
+//		for (int i = 0; i < numberOfElements; i++) {
+//			int randomIndex = rand.nextInt(givenList.size());
+//			String randomElement = givenList.get(randomIndex);
+//		}
+//	}
+>>>>>>> 5cc7ae2d279deedc18decd8e1ddae91d1b301e05
 
 }

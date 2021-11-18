@@ -7,7 +7,7 @@ public class Cell {
 	private boolean isSea;
 	private boolean closed;
 	private boolean status;
-	
+
 	public Cell(Coordinate coCell, boolean isSea, boolean closed, boolean status) {
 		this.setCoCell(coCell);
 		this.setSea(isSea);
@@ -38,7 +38,7 @@ public class Cell {
 	public boolean isClosed() {
 		return closed;
 	}
-	
+
 	private void setSea(boolean isSea) {
 		this.isSea = isSea;
 	}
@@ -46,9 +46,13 @@ public class Cell {
 	private void setClosed(boolean closed) {
 		this.closed = closed;
 	}
-	
+
 	public boolean isNextTo(Cell cell) {
 		return getCoCell().isNextTo(cell.getCoCell());
 	}
-	
+
+	public boolean isSamePosition(Cell cell) {
+		return (getCoCell().getX() == cell.getCoCell().getX() && getCoCell().getY() == cell.getCoCell().getY());
+	}
+
 }
