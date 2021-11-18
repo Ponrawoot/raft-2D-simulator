@@ -24,12 +24,21 @@ public class Map {
 	private static ArrayList<Cell> randomBirdCell;
 	private static ArrayList<Metal> availableMetal;
 	private static ArrayList<Scrape> availableScrape;
+<<<<<<< HEAD
 	private static ArrayList<Stone> availableStone;
 	private static ArrayList<Plastic> availablePlastic;
 	private static ArrayList<Cell> middleIslandArea;
 	private static ArrayList<Cell> repairableArea;
 	private static ArrayList<Tree> Tree;
 	
+=======
+	private ArrayList<Stone> availableStone;
+	private ArrayList<Plastic> availablePlastic;
+	private ArrayList<Cell> middleIslandArea;
+	private ArrayList<Cell> repairableArea;
+	private static ArrayList<Tree> trees;
+
+>>>>>>> 9f5bf6f9560c75d66c9a4d583420d340bb68f0a2
 	public Map() {
 		this.setMorning(true);
 //		timeInGame = ;
@@ -156,8 +165,12 @@ public class Map {
 		return repairableArea;
 	}
 
-	public ArrayList<Tree> getTree() {
-		return Tree;
+	public ArrayList<Tree> getTrees() {
+		return trees;
+	}
+
+	public static void removeTree(Tree tree) {
+		trees.remove(tree);
 	}
 	
 	public void checkTimeAndPositon() {
@@ -174,6 +187,7 @@ public class Map {
 	}
 	
 	public static int getRandomInteger(int maximum, int minimum) {
+<<<<<<< HEAD
 		return ((int) (Math.random()*(maximum - minimum))) + minimum; 
 		}
 	
@@ -194,5 +208,21 @@ public class Map {
 	    }
 	}
 	
+=======
+		return ((int) (Math.random() * (maximum - minimum))) + minimum;
+	}
+
+//	public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsRepeat() {
+//		Random rand = new Random();
+//		List<String> givenList = Arrays.asList("one", "two", "three", "four");
+//
+//		int numberOfElements = 2;
+//
+//		for (int i = 0; i < numberOfElements; i++) {
+//			int randomIndex = rand.nextInt(givenList.size());
+//			String randomElement = givenList.get(randomIndex);
+//		}
+//	}
+>>>>>>> 9f5bf6f9560c75d66c9a4d583420d340bb68f0a2
 
 }

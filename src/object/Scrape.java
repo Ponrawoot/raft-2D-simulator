@@ -8,11 +8,11 @@ import game.Player;
 import game.base.Removeable;
 import object.base.ApplicationType;
 
-public class Scrape implements Removeable{
+public class Scrape implements Removeable {
 	private boolean scrape;
 	private Cell position;
 	private int time;
-	
+
 	public Scrape(Cell position) {
 		scrape = true;
 		this.position = position;
@@ -20,30 +20,33 @@ public class Scrape implements Removeable{
 
 	@Override
 	public void beRemoved() {
-		if (Player.getCurrentShovel()==null) return;
-		if (Player.getCurrentPosition().getCoCell().isNextTo(this.position.getCoCell())&&scrape) {
-			Player.setScrape(Player.getScrape()+1);
+		if (Player.getCurrentShovel() == null)
+			return;
+		if (Player.getCurrentPosition().isNextTo(position) && scrape) {
+			Player.setScrape(Player.getScrape() + 1);
 			position.setStatus(true);
 			Player.decreaseLifetime(ApplicationType.SHOVEL);
 			Player.decreaseHP();
 		}
 		for (Scrape x : Map.getAvailableScrape()) {
-			if (x.isScrape()) return; 
+			if (x.isScrape())
+				return;
 		}
-		//time = ;
+		// time = ;
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	public void refresh() {
 		for (Scrape x : Map.getAvailableScrape()) {
-			if (x.isScrape()) return; 
+			if (x.isScrape())
+				return;
 		}
 		int c = Map.getRandomInteger(10, 1);
 		ArrayList<Scrape> replace = new ArrayList<Scrape>(c);
-		
-		//CheckTime
-		
+
+		// CheckTime
+
 	}
 
 	public boolean isScrape() {
@@ -53,5 +56,5 @@ public class Scrape implements Removeable{
 	public Cell getPosition() {
 		return position;
 	}
-	
+
 }
