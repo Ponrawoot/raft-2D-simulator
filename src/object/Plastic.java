@@ -5,38 +5,32 @@ import game.Map;
 import game.Player;
 import game.base.Removeable;
 
-public class Plastic implements Removeable {
-	private boolean plastic;
-	private Cell position;
-	
-	public Plastic(Cell positon) {
-		this.plastic = true;
-		this.position = positon;
+public class Plastic extends Material implements Removeable {
+
+	public Plastic(Cell position) {
+		super(position);
 	}
-	@Override
+	
 	public void beRemoved() {
 		// TODO Auto-generated method stub
-		if (Player.getCurrentPosition().isNextTo(position)) {
+		if (Player.getCurrentPosition().isNextTo(position)&&present) {
 			Player.setPlastic(Player.getPlastic()+1);
+			present = false;
 			position.setStatus(true);
 			Player.decreaseHP();
 		}
-		for (Plastic x : Map.getAvailablePlastic()) {
-			if (x.isPlastic())
+		for (Material x : Map.getAvailablePlastic()) {
+			if (x.isPresent())
 				return;
+		}		
+	}
+	
+	public void refresh(Cell position) {
+		if (!present) {
+			this.setPresent(true);
+			this.setPosition(position);
+			this.position.setStatus(false);
 		}
-		// time = ;
-		
 	}
-	
-//	public void refresh() {
-	
-	public boolean isPlastic() {
-		return plastic;
-	}
-	public Cell getPosition() {
-		return position;
-	}
-	
 
 }
