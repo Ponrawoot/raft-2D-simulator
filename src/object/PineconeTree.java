@@ -36,6 +36,7 @@ public class PineconeTree extends Tree implements Removeable {
 				setPineconeSeed(0);
 				setReadyToCut(false);
 				Map.removeTree(this);
+				this.position.setStatus(true);
 				Player.decreaseHP();
 			}
 		}
@@ -48,6 +49,7 @@ public class PineconeTree extends Tree implements Removeable {
 //			super.setWood();
 //			super.setLeaf();
 //			setPineconeSeed();
+			this.position.setStatus(false);
 			Player.setPineconeSeed(Player.getPineconeSeed() - 1);
 
 			Timer timer = new Timer();

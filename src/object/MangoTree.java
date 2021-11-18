@@ -41,6 +41,7 @@ public class MangoTree extends Tree implements Removeable {
 				setMangoSeed(0);
 				setReadyToCut(false);
 				Map.removeTree(this);
+				this.position.setStatus(true);
 				Player.decreaseHP();
 			}
 		}
@@ -54,6 +55,7 @@ public class MangoTree extends Tree implements Removeable {
 //			super.setLeaf();
 //			setFruit();
 //			setMangoSeed();
+			this.position.setStatus(false);
 			Player.setMangoSeed(Player.getMangoSeed() - 1);
 
 			Timer timer = new Timer();

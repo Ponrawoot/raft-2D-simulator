@@ -10,6 +10,7 @@ public abstract class Tree {
 
 	public Tree(Cell position) {
 		setPosition(position);
+		this.position.setStatus(false);
 		setReadyToCut(false);
 	}
 
