@@ -82,7 +82,7 @@ public class Map {
 		}, 0, 1000);
 	}
 
-	public ArrayList<Animal> getAvailableFish() {
+	public static ArrayList<Animal> getAvailableFish() {
 		return availableFish;
 	}
 
@@ -90,7 +90,7 @@ public class Map {
 		Map.availableFish = availableFish;
 	}
 
-	public ArrayList<Animal> getAvailableBird() {
+	public static ArrayList<Animal> getAvailableBird() {
 		return availableBird;
 	}
 
@@ -142,15 +142,15 @@ public class Map {
 		return moveableForEagleArea;
 	}
 
-	public ArrayList<Cell> getRandomFishCell() {
+	public static ArrayList<Cell> getRandomFishCell() {
 		return randomFishCell;
 	}
 
-	public ArrayList<Cell> getRandomBirdCell() {
+	public static ArrayList<Cell> getRandomBirdCell() {
 		return randomBirdCell;
 	}
 
-	public ArrayList<Material> getAvailableMetal() {
+	public static ArrayList<Material> getAvailableMetal() {
 		return availableMetal;
 	}
 
