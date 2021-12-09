@@ -14,6 +14,7 @@ public class PauseButton extends Button{
 	public PauseButton() {
 		status = "pause";
 		//setText(status); 
+		setImage(pauseUrl);
 		setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
@@ -32,7 +33,7 @@ public class PauseButton extends Button{
 	}
 	
 	public void setImage(String url) {
-		ImageView imageView = new ImageView(new Image(url));
+		ImageView imageView = new ImageView();// new Image(url)
 		imageView.setFitHeight(60);
 		imageView.setFitWidth(60);
 		setGraphic(imageView);
