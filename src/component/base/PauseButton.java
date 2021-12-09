@@ -2,14 +2,9 @@ package component.base;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
 
 public class PauseButton extends Button{
 	private String pauseUrl;
@@ -38,8 +33,9 @@ public class PauseButton extends Button{
 	
 	public void setImage(String url) {
 		ImageView imageView = new ImageView(new Image(url));
+		imageView.setFitHeight(60);
+		imageView.setFitWidth(60);
 		setGraphic(imageView);
-		setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 	}
 
 }
