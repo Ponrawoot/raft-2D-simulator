@@ -4,9 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
-public class MissionButton extends Button {
-	public MissionButton() {
-		setText("MissionButton");
+public class MarketButton extends Button{
+	public MarketButton() {
+		setText("MarketButton");
 		setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			
@@ -16,3 +16,4 @@ public class MissionButton extends Button {
 		});
 	}
 }
+
