@@ -12,8 +12,8 @@ public class PalmTree extends Tree {
 	public PalmTree(Cell position) {
 		super(position);
 		// TODO Auto-generated constructor stub
-//		super.setWood();
-//		super.setLeaf();
+		super.setWood(3);
+		super.setLeaf(3);
 	}
 
 	public void collect() {
@@ -34,8 +34,8 @@ public class PalmTree extends Tree {
 	public void grow() {
 		// TODO Auto-generated method stub
 		if (!readyToCut) {
-//			super.setWood();
-//			super.setLeaf();
+			super.setWood(3);
+			super.setLeaf(3);
 
 			Timer timer = new Timer();
 			timer.scheduleAtFixedRate(new TimerTask() {

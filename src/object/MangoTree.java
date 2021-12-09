@@ -18,10 +18,10 @@ public class MangoTree extends Tree implements Removeable {
 	public MangoTree(Cell position) {
 		super(position);
 		// TODO Auto-generated constructor stub
-//		super.setWood();
-//		super.setLeaf();
-//		setFruit();
-//		setMangoSeed();
+		super.setWood(1);
+		super.setLeaf(2);
+		setFruit(1);
+		setMangoSeed(1);
 	}
 
 	@Override
@@ -51,10 +51,10 @@ public class MangoTree extends Tree implements Removeable {
 	public void grow() {
 		// TODO Auto-generated method stub
 		if (Player.getMangoSeed() > 0) {
-//			super.setWood();
-//			super.setLeaf();
-//			setFruit();
-//			setMangoSeed();
+			super.setWood(1);
+			super.setLeaf(2);
+			setFruit(1);
+			setMangoSeed(1);
 			this.position.setStatus(false);
 			Player.setMangoSeed(Player.getMangoSeed() - 1);
 

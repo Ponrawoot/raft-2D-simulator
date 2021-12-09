@@ -23,7 +23,7 @@ public class Bird extends Animal implements Removeable {
 				|| Player.getCurrentSpear().getMaterial() == MaterialType.METAL)
 				&& Player.getCurrentPosition().isNextTo(position) && alive) {
 			Player.setBird(Player.getBird() + 1);
-			Player.setFeather(Player.getFeather() + 1);
+			Player.setFeather(Player.getFeather() + 2);
 			position.setStatus(true);
 			setAlive(false);
 			Player.decreaseHP();

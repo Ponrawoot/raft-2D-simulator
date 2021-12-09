@@ -58,9 +58,9 @@ public class Eagle extends Animal {
 		if ((Player.getCurrentPosition().isNextTo(position) || Player.getCurrentPosition().isSamePosition(position))
 				&& Player.getCurrentSpear().getMaterial() == MaterialType.METAL && alive) {
 			setAlive(false);
-			Player.setBird(Player.getBird() + 1);
+			Player.setBird(Player.getBird() + 2);
 			Player.setEagleHead(Player.getEagleHead() + 1);
-			Player.setFeather(Player.getFeather() + 1);
+			Player.setFeather(Player.getFeather() + 3);
 			Player.decreaseLifetime(ApplicationType.SPEAR);
 			Player.decreaseHP();
 

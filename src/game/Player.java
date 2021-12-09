@@ -24,7 +24,7 @@ public class Player implements Moveable {
 	private static ArrayList<Weapon> playerWeapon;
 
 	public Player(String name) {
-		// setMaxHP();
+		setMaxHP(10);
 		this.name = name;
 		HP = maxHP;
 		wood = 0;
@@ -95,82 +95,82 @@ public class Player implements Moveable {
 		switch (object) {
 		case "Raft":
 			raft = true;
-//			wood -= ;
-//			rope -= ;
+			wood -= 20;
+			rope -= 10;
 			break;
 		case "Rope":
-//			leaf -= ;
+			leaf -= 5;
 			rope++;
 			break;
 		case "Wooden Axe":
-//			wood -= ;
-//			rope -= ;
+			wood -= 10;
+			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.WOOD, ApplicationType.AXE));
 			break;
 		case "Stone Axe":
-//			wood -= ;
-//			stone -=;
-//			rope -= ;
+			wood -= 5;
+			stone -= 5;
+			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.STONE, ApplicationType.AXE));
 			break;
 		case "Metal Axe":
-//			wood -= ;
-//			metal -= ;
-//			rope -= ;
+			wood -= 5;
+			metal -= 5;
+			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.METAL, ApplicationType.AXE));
 			break;
 		case "Stone Shovel":
-//			wood -=;
-//			stone -= ;
-//			rope -= ;
+			wood -= 5;
+			stone -= 7;
+			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.STONE, ApplicationType.SHOVEL));
 			break;
 		case "Metal Shovel":
-//			wood -=;
-//			metal -= ;
-//			rope  -= ;
+			wood -= 5;
+			metal -= 4;
+			rope  -= 3;
 			playerWeapon.add(new Weapon(MaterialType.METAL, ApplicationType.SHOVEL));
 			break;
 		case "Wooden Spear":
-//			wood -= ;
+			wood -= 10;
 			playerWeapon.add(new Weapon(MaterialType.WOOD, ApplicationType.SPEAR));
 			break;
 		case "Stone Spear":
-//			wood -= ;
-//			stone -= ;
-//			rope -= ;
+			wood -= 5;
+			stone -= 6;
+			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.STONE, ApplicationType.SPEAR));
 			break;
 		case "Metal Spear":
-//			wood -= ;
-//			metal -= ;
-//			rope -= ;
+			wood -= 5;
+			metal -= 5;
+			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.METAL, ApplicationType.SPEAR));
 			break;
 		case "Hinge":
-//			metal -=;
+			metal -= 2;
 			hinge++;
 			break;
 		case "Nail":
-//			scrape -=;
+			scrape -= 3;
 			nail++;
 			break;
 		case "Circuit":
-//			copper -= ;
-//			plastic -= ;
+			copper -= 2;
+			plastic -= 4;
 			circuit++;
 			break;
 		case "Receiver":
-//			circuit -= ;
-//			wood -= ;
-//			plastic -= ;
-//			hinge -= ;
+			circuit -= 10;
+			wood -= 10;
+			plastic -= 15;
+			hinge -= 7;
 			receiver = true;
 			break;
 		case "Anthena":
-//			circuit -= ;
-//			scrape -= ;
-//			nail -= ;
+			circuit -= 8;
+			scrape -= 15;
+			nail -= 15;
 			anthena = true;
 			break;
 		}
@@ -189,12 +189,12 @@ public class Player implements Moveable {
 			bird--;
 			break;
 		}
-		decreaseHP();
+		increaseHP();
 	}
 
 	public void feed(Eagle eagle) {
 		if (fish > 0 && Map.getMoveableForEagleArea().contains(currentPosition)) {
-//			fish -= ;
+			fish -= 3;
 			eagle.setMove(false);
 		}
 	}
@@ -439,11 +439,11 @@ public class Player implements Moveable {
 		Player.eagleHead = eagleHead;
 	}
 
-	public boolean isRaft() {
+	public boolean hasRaft() {
 		return raft;
 	}
 
-	public static boolean isReceiver() {
+	public static boolean hasReceiver() {
 		return receiver;
 	}
 
@@ -451,7 +451,7 @@ public class Player implements Moveable {
 		Player.receiver = receiver;
 	}
 
-	public static boolean isAnthena() {
+	public static boolean hasAnthena() {
 		return anthena;
 	}
 
@@ -459,7 +459,7 @@ public class Player implements Moveable {
 		Player.anthena = anthena;
 	}
 
-	public static boolean isCanvas() {
+	public static boolean hasCanvas() {
 		return canvas;
 	}
 
@@ -502,7 +502,7 @@ public class Player implements Moveable {
 		canvas = other;
 	}
 
-	public static boolean isSteering() {
+	public static boolean hasSteering() {
 		return steering;
 	}
 
@@ -510,7 +510,7 @@ public class Player implements Moveable {
 		steering = other;
 	}
 
-	public static boolean isPetrol() {
+	public static boolean hasPetrol() {
 		return petrol;
 	}
 
@@ -518,7 +518,7 @@ public class Player implements Moveable {
 		petrol = other;
 	}
 
-	public static boolean isEngine() {
+	public static boolean hasEngine() {
 		return engine;
 	}
 

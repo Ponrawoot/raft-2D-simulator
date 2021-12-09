@@ -28,11 +28,11 @@ public class Weapon {
 
 	private void setLifetime(MaterialType material) {
 		if (material == MaterialType.WOOD)
-			; // this.lifetime = ;
+			this.lifetime = 5;
 		else if (material == MaterialType.STONE)
-			; // this.lifetime = ;
+			this.lifetime = 10;
 		else
-			; // this.lifetime = ;
+			this.lifetime = 20;
 	}
 
 	public void setLifetime(int lifetime) {

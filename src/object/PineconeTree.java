@@ -17,9 +17,9 @@ public class PineconeTree extends Tree implements Removeable {
 	public PineconeTree(Cell position) {
 		super(position);
 		// TODO Auto-generated constructor stub
-//		super.setWood();
-//		super.setLeaf();
-//		setPineconeSeed();
+		super.setWood(2);
+		super.setLeaf(2);
+		setPineconeSeed(1);
 	}
 
 	@Override
@@ -46,9 +46,9 @@ public class PineconeTree extends Tree implements Removeable {
 	public void grow() {
 		// TODO Auto-generated method stub
 		if (Player.getPineconeSeed() > 0 && !readyToCut) {
-//			super.setWood();
-//			super.setLeaf();
-//			setPineconeSeed();
+			super.setWood(2);
+			super.setLeaf(2);
+			setPineconeSeed(1);
 			this.position.setStatus(false);
 			Player.setPineconeSeed(Player.getPineconeSeed() - 1);
 
