@@ -11,6 +11,7 @@ public class RootPane extends VBox {
 	private static BottomBar bottomBar;
 	
 	public RootPane() {
+		super();
 		topBar = new TopBar();
 		gameDisplay = new GameDisplay();
 		bottomBar = new BottomBar();
