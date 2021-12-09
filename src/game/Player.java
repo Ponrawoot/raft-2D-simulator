@@ -287,7 +287,7 @@ public class Player implements Moveable {
 			Player.maxHP = maxHP;
 	}
 
-	public int getHP() {
+	public static int getHP() {
 		return HP;
 	}
 
@@ -524,6 +524,14 @@ public class Player implements Moveable {
 
 	public static void setEngine(boolean other) {
 		engine = other;
+	}
+
+	public static String getName() {
+		return name;
+	}
+
+	public static void setName(String name) {
+		Player.name = name;
 	}
 
 	public static void decreaseLifetime(ApplicationType type) {
