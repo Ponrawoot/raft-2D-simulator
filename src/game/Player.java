@@ -13,7 +13,7 @@ import object.base.ApplicationType;
 import object.base.MaterialType;
 
 public class Player implements Moveable {
-
+	private static String name;
 	private static int maxHP, HP, wood, leaf, mangoSeed, pineconeSeed, fruit, plastic, feather, titanium, copper, metal,
 			stone, scrape, hinge, nail, rope, circuit, fish, bird, eagleHead;
 	private static boolean raft, receiver, anthena, canvas, steering, petrol, engine;
@@ -23,8 +23,9 @@ public class Player implements Moveable {
 	private static Cell currentPosition;
 	private static ArrayList<Weapon> playerWeapon;
 
-	public Player() {
+	public Player(String name) {
 		// setMaxHP();
+		this.name = name;
 		HP = maxHP;
 		wood = 0;
 		leaf = 0;
