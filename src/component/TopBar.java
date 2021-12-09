@@ -26,7 +26,7 @@ public class TopBar extends FlowPane {
 		setPadding(new Insets(5));
 		setHgap(5);
 		setVgap(5);
-		playerName = new Text(Player.getName());
+		playerName = new Text("Name: " + Player.getName());
 		hp = new ProgressBar(1);
 		time = new Label();
 		Thread thread = new Thread(() -> {
