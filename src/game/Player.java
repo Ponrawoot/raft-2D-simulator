@@ -1,6 +1,8 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import game.base.Coordinate;
 import game.base.Direction;
@@ -196,6 +198,21 @@ public class Player implements Moveable {
 		if (fish > 3 && Map.getMoveableForEagleArea().contains(currentPosition)) {
 			fish -= 3;
 			eagle.setMove(false);
+			
+			Timer timer = new Timer();
+			timer.scheduleAtFixedRate(new TimerTask() {
+				int i = 15; // (second) can change
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					i--;
+					if (i < 0) {
+						timer.cancel();
+						eagle.setMove(true);
+					}
+				}
+			}, 0, 1000);
 		}
 	}
 
@@ -545,11 +562,11 @@ public class Player implements Moveable {
 	}
 
 	public void checkLifetime() {
-		if (currentShovel.getLifetime() == 0)
+		if (currentShovel != null && currentShovel.getLifetime() == 0)
 			setCurrentShovel(null);
-		if (currentAxe.getLifetime() == 0)
+		if (currentAxe != null && currentAxe.getLifetime() == 0)
 			setCurrentAxe(null);
-		if (currentSpear.getLifetime() == 0)
+		if (currentSpear != null && currentSpear.getLifetime() == 0)
 			setCurrentSpear(null);
 
 	}
