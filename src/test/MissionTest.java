@@ -20,7 +20,7 @@ public class MissionTest {
 	
 	@Test
 	public void testMission1() {
-		Player.setWood(20);
+		player.setWood(20);
 		assertEquals(player.getWood(), 20);
 		assertEquals(player.getStone(), 0);
 		assertEquals(player.getRope(), 0);
@@ -34,6 +34,21 @@ public class MissionTest {
 		player.setWood(100);
 		mission.getReward(0);
 		assertEquals(player.getWood(), 70);
+		assertEquals(player.getStone(), 20);
+		assertEquals(player.getRope(), 10);
+		
+	}
+	
+	@Test
+	public void testMission2() {
+		assertEquals(player.getMetal(), 0);
+		assertEquals(player.getScrape(), 0);
+		assertEquals(player.getRope(), 0);
+		player.setScrape(50); player.setRope(50);
+		mission.getReward(1);
+		assertEquals(player.getMetal(),1);
+		assertEquals(player.getScrape(), 30);
+		assertEquals(player.getRope(), 40);
 		
 	}
 
