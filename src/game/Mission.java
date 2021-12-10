@@ -12,7 +12,10 @@ public class Mission {
 	private ArrayList<ArrayList<Integer>> allMission;
 
 	public Mission() {
-		allMission = new ArrayList<ArrayList<Integer>>(9);
+		allMission = new ArrayList<ArrayList<Integer>>();
+		for (int i=0;i<9;i++) {
+            allMission.add(new ArrayList<Integer>());
+            }
 		allMission.get(0).addAll(Arrays.asList(20)); // wood -> stone, rope
 		allMission.get(1).addAll(Arrays.asList(20, 10)); // scrape, rope -> metal
 		allMission.get(2).addAll(Arrays.asList(10)); // fish -> stone spear
