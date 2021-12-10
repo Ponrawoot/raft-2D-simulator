@@ -16,22 +16,22 @@ public class PalmTree extends Tree {
 		super.setLeaf(3);
 	}
 
-	public void collect() {
-		if (readyToCut && Player.getCurrentPosition().isNextTo(position)) {
-			if (Player.getCurrentAxe() != null) {
-				Player.decreaseLifetime(ApplicationType.AXE);
-				Player.setWood(Player.getWood() + wood);
-				Player.setLeaf(Player.getLeaf() + leaf);
+	public void collect(Player player) {
+		if (readyToCut && player.getCurrentPosition().isNextTo(position)) {
+			if (player.getCurrentAxe() != null) {
+				player.decreaseLifetime(ApplicationType.AXE);
+				player.setWood(player.getWood() + wood);
+				player.setLeaf(player.getLeaf() + leaf);
 				setWood(0);
 				setLeaf(0);
 				setReadyToCut(false);
-				Player.decreaseHP();
+				player.decreaseHP();
 			}
 		}
 	}
 
 	@Override
-	public void grow() {
+	public void grow(Player player) {
 		// TODO Auto-generated method stub
 		if (!readyToCut) {
 			super.setWood(3);

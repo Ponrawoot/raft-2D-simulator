@@ -24,15 +24,15 @@ public class MissionTest {
 		assertEquals(player.getWood(), 20);
 		assertEquals(player.getStone(), 0);
 		assertEquals(player.getRope(), 0);
-		mission.getReward(0);
+		mission.getReward(0, player);
 		assertEquals(player.getWood(), 0);
 		assertEquals(player.getStone(), 10);
 		assertEquals(player.getRope(), 5);
 		player.setWood(20);
-		mission.getReward(0);
+		mission.getReward(0, player);
 		assertTrue(player.getWood()==20);
 		player.setWood(100);
-		mission.getReward(0);
+		mission.getReward(0, player);
 		assertEquals(player.getWood(), 70);
 		assertEquals(player.getStone(), 20);
 		assertEquals(player.getRope(), 10);

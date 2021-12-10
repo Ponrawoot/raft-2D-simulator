@@ -23,34 +23,34 @@ public class PineconeTree extends Tree implements Removeable {
 	}
 
 	@Override
-	public void beRemoved() {
+	public void beRemoved(Player player) {
 		// TODO Auto-generated method stub
-		if (readyToCut && Player.getCurrentPosition().isNextTo(position)) {
-			if (Player.getCurrentAxe().getMaterial() == MaterialType.METAL) {
-				Player.decreaseLifetime(ApplicationType.AXE);
-				Player.setWood(Player.getWood() + wood);
-				Player.setLeaf(Player.getLeaf() + leaf);
-				Player.setPineconeSeed(Player.getPineconeSeed() + pineconeSeed);
+		if (readyToCut && player.getCurrentPosition().isNextTo(position)) {
+			if (player.getCurrentAxe().getMaterial() == MaterialType.METAL) {
+				player.decreaseLifetime(ApplicationType.AXE);
+				player.setWood(player.getWood() + wood);
+				player.setLeaf(player.getLeaf() + leaf);
+				player.setPineconeSeed(player.getPineconeSeed() + pineconeSeed);
 				setWood(0);
 				setLeaf(0);
 				setPineconeSeed(0);
 				setReadyToCut(false);
 				Map.removeTree(this);
 				this.position.setStatus(true);
-				Player.decreaseHP();
+				player.decreaseHP();
 			}
 		}
 	}
 
 	@Override
-	public void grow() {
+	public void grow(Player player) {
 		// TODO Auto-generated method stub
-		if (Player.getPineconeSeed() > 0 && !readyToCut) {
+		if (player.getPineconeSeed() > 0 && !readyToCut) {
 			super.setWood(2);
 			super.setLeaf(2);
 			setPineconeSeed(1);
 			this.position.setStatus(false);
-			Player.setPineconeSeed(Player.getPineconeSeed() - 1);
+			player.setPineconeSeed(player.getPineconeSeed() - 1);
 
 			Timer timer = new Timer();
 			timer.scheduleAtFixedRate(new TimerTask() {

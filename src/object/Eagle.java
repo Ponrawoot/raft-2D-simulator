@@ -19,14 +19,14 @@ public class Eagle extends Animal {
 		super(position); // same position every time
 		// TODO Auto-generated constructor stub
 		setMove(true);
-//		defaultPosition = new Cell(new Coordinate( , ), false, true, true);
+		defaultPosition = new Cell(new Coordinate(3, 2), false, true, true); // position can change
 	}
 
-	public void moveToPlayer() {
-		if (!Map.getMoveableForEagleArea().contains(Player.getCurrentPosition()))
+	public void moveToPlayer(Player player) {
+		if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
 			return;
-		int xPlayer = Player.getCurrentPosition().getCoCell().getX();
-		int yPlayer = Player.getCurrentPosition().getCoCell().getY();
+		int xPlayer = player.getCurrentPosition().getCoCell().getX();
+		int yPlayer = player.getCurrentPosition().getCoCell().getY();
 		if (yPlayer > position.getCoCell().getY()) {
 			while (position.getCoCell().getY() < yPlayer) {
 				position.getCoCell().setY(position.getCoCell().getY() + 1);
@@ -45,24 +45,24 @@ public class Eagle extends Animal {
 				position.getCoCell().setX(position.getCoCell().getX() - 1);
 			}
 		}
-		hitPlayer();
+		hitPlayer(player);
 	}
 
-	public void hitPlayer() {
-		while (position.isSamePosition(Player.getCurrentPosition()) && move && alive) {
-			Player.decreaseHP();
+	public void hitPlayer(Player player) {
+		while (position.isSamePosition(player.getCurrentPosition()) && move && alive) {
+			player.decreaseHP();
 		}
 	}
 
-	public void kill() {
-		if ((Player.getCurrentPosition().isNextTo(position) || Player.getCurrentPosition().isSamePosition(position))
-				&& Player.getCurrentSpear().getMaterial() == MaterialType.METAL && alive) {
+	public void kill(Player player) {
+		if ((player.getCurrentPosition().isNextTo(position) || player.getCurrentPosition().isSamePosition(position))
+				&& player.getCurrentSpear().getMaterial() == MaterialType.METAL && alive) {
 			setAlive(false);
-			Player.setBird(Player.getBird() + 2);
-			Player.setEagleHead(Player.getEagleHead() + 1);
-			Player.setFeather(Player.getFeather() + 3);
-			Player.decreaseLifetime(ApplicationType.SPEAR);
-			Player.decreaseHP();
+			player.setBird(player.getBird() + 2);
+			player.setEagleHead(player.getEagleHead() + 1);
+			player.setFeather(player.getFeather() + 3);
+			player.decreaseLifetime(ApplicationType.SPEAR);
+			player.decreaseHP();
 
 			Timer timer = new Timer();
 			timer.scheduleAtFixedRate(new TimerTask() {

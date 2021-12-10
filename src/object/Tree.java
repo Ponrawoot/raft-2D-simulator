@@ -1,6 +1,7 @@
 package object;
 
 import game.Cell;
+import game.Player;
 
 public abstract class Tree {
 	protected int wood;
@@ -14,7 +15,7 @@ public abstract class Tree {
 		setReadyToCut(false);
 	}
 
-	public abstract void grow();
+	public abstract void grow(Player player);
 
 	protected void setWood(int wood) {
 		this.wood = wood;

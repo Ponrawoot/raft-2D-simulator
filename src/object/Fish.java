@@ -16,14 +16,14 @@ public class Fish extends Animal implements Removeable {
 	}
 
 	@Override
-	public void beRemoved() {
+	public void beRemoved(Player player) {
 		// TODO Auto-generated method stub
-		if (Player.getCurrentSpear() != null && Player.getCurrentPosition().isNextTo(position) && alive) {
-			Player.setFish(Player.getFish() + 1);
+		if (player.getCurrentSpear() != null && player.getCurrentPosition().isNextTo(position) && alive) {
+			player.setFish(player.getFish() + 1);
 			position.setStatus(true);
 			setAlive(false);
-			Player.decreaseHP();
-			Player.decreaseLifetime(ApplicationType.SPEAR);
+			player.decreaseHP();
+			player.decreaseLifetime(ApplicationType.SPEAR);
 
 			Timer timer = new Timer();
 			timer.scheduleAtFixedRate(new TimerTask() {

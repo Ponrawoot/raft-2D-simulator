@@ -25,16 +25,16 @@ public class MangoTree extends Tree implements Removeable {
 	}
 
 	@Override
-	public void beRemoved() {
+	public void beRemoved(Player player) {
 		// TODO Auto-generated method stub
-		if (readyToCut && Player.getCurrentPosition().isNextTo(position)) {
-			if (Player.getCurrentAxe().getMaterial() == MaterialType.STONE
-					|| Player.getCurrentAxe().getMaterial() == MaterialType.METAL) {
-				Player.decreaseLifetime(ApplicationType.AXE);
-				Player.setWood(Player.getWood() + wood);
-				Player.setLeaf(Player.getLeaf() + leaf);
-				Player.setFruit(Player.getFruit() + fruit);
-				Player.setMangoSeed(Player.getMangoSeed() + mangoSeed);
+		if (readyToCut && player.getCurrentPosition().isNextTo(position)) {
+			if (player.getCurrentAxe().getMaterial() == MaterialType.STONE
+					|| player.getCurrentAxe().getMaterial() == MaterialType.METAL) {
+				player.decreaseLifetime(ApplicationType.AXE);
+				player.setWood(player.getWood() + wood);
+				player.setLeaf(player.getLeaf() + leaf);
+				player.setFruit(player.getFruit() + fruit);
+				player.setMangoSeed(player.getMangoSeed() + mangoSeed);
 				setWood(0);
 				setLeaf(0);
 				setFruit(0);
@@ -42,21 +42,21 @@ public class MangoTree extends Tree implements Removeable {
 				setReadyToCut(false);
 				Map.removeTree(this);
 				this.position.setStatus(true);
-				Player.decreaseHP();
+				player.decreaseHP();
 			}
 		}
 	}
 
 	@Override
-	public void grow() {
+	public void grow(Player player) {
 		// TODO Auto-generated method stub
-		if (Player.getMangoSeed() > 0) {
+		if (player.getMangoSeed() > 0) {
 			super.setWood(1);
 			super.setLeaf(2);
 			setFruit(1);
 			setMangoSeed(1);
 			this.position.setStatus(false);
-			Player.setMangoSeed(Player.getMangoSeed() - 1);
+			player.setMangoSeed(player.getMangoSeed() - 1);
 
 			Timer timer = new Timer();
 			timer.scheduleAtFixedRate(new TimerTask() {
