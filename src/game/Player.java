@@ -128,7 +128,7 @@ public class Player implements Moveable {
 		case "Metal Shovel":
 			wood -= 5;
 			metal -= 4;
-			rope  -= 3;
+			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.METAL, ApplicationType.SHOVEL));
 			break;
 		case "Wooden Spear":
@@ -193,14 +193,14 @@ public class Player implements Moveable {
 	}
 
 	public void feed(Eagle eagle) {
-		if (fish > 0 && Map.getMoveableForEagleArea().contains(currentPosition)) {
+		if (fish > 3 && Map.getMoveableForEagleArea().contains(currentPosition)) {
 			fish -= 3;
 			eagle.setMove(false);
 		}
 	}
 
 	public boolean plant(String object, Cell position) {
-		if (Map.getPlantableArea().contains(position)) {
+		if (Map.getPlantableArea().contains(position)&&position.getStatus()) {
 			switch (object) {
 			case "Mango seed":
 				new MangoTree(position);
@@ -535,7 +535,7 @@ public class Player implements Moveable {
 	}
 
 	public static void decreaseLifetime(ApplicationType type) {
-		if (type == ApplicationType.SHOVEL) 
+		if (type == ApplicationType.SHOVEL)
 			Player.currentShovel.setLifetime(Player.currentShovel.getLifetime() - 1);
 		if (type == ApplicationType.AXE)
 			Player.currentAxe.setLifetime(Player.currentAxe.getLifetime() - 1);
@@ -543,12 +543,15 @@ public class Player implements Moveable {
 			Player.currentSpear.setLifetime(Player.currentSpear.getLifetime() - 1);
 		checkLifetime();
 	}
-	
+
 	public static void checkLifetime() {
-		if (Player.currentShovel.getLifetime()==0) Player.setCurrentShovel(null);
-		if (Player.currentAxe.getLifetime()==0) Player.setCurrentAxe(null);
-		if (Player.currentSpear.getLifetime()==0) Player.setCurrentSpear(null);
-		
+		if (Player.currentShovel.getLifetime() == 0)
+			Player.setCurrentShovel(null);
+		if (Player.currentAxe.getLifetime() == 0)
+			Player.setCurrentAxe(null);
+		if (Player.currentSpear.getLifetime() == 0)
+			Player.setCurrentSpear(null);
+
 	}
 
 }
