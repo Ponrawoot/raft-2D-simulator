@@ -33,7 +33,7 @@ public class PauseButton extends Button{
 	}
 	
 	public void setImage(String url) {
-		ImageView imageView = new ImageView();// new Image(url)
+		ImageView imageView = new ImageView(new Image("pausebutton.png"));// new Image(url)
 		imageView.setFitHeight(60);
 		imageView.setFitWidth(60);
 		setGraphic(imageView);

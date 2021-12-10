@@ -19,7 +19,7 @@ public class SettingButton extends Button{
 			}
 		});
 		
-		ImageView imageView = new ImageView();
+		ImageView imageView = new ImageView(new Image("settingbutton.jpg"));
 		imageView.setFitHeight(60);
 		imageView.setFitWidth(60);
 		setGraphic(imageView);
