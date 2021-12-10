@@ -40,13 +40,6 @@ public class PalmTreeTest {
 	@Test
 	public void testCollect() {
 		palmTree.grow(player);
-		
-		try {
-			Thread.sleep(15000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 		palmTree.collect(player);
 		assertTrue(palmTree.isReadyToCut());
@@ -78,6 +71,7 @@ public class PalmTreeTest {
 
 	@Test
 	public void testGrow() {
+		assertFalse(palmTree.isReadyToCut());
 		palmTree.grow(player);
 		assertTrue(palmTree.isReadyToCut());
 		assertEquals(3, palmTree.getLeaf());
