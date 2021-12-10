@@ -13,15 +13,15 @@ import object.base.ApplicationType;
 import object.base.MaterialType;
 
 public class Player implements Moveable {
-	private static String name;
-	private static int maxHP, HP, wood, leaf, mangoSeed, pineconeSeed, fruit, plastic, feather, titanium, copper, metal,
-			stone, scrape, hinge, nail, rope, circuit, fish, bird, eagleHead;
-	private static boolean raft, receiver, anthena, canvas, steering, petrol, engine;
-	private static Weapon currentAxe;
-	private static Weapon currentShovel;
-	private static Weapon currentSpear;
-	private static Cell currentPosition;
-	private static ArrayList<Weapon> playerWeapon;
+	private String name;
+	private int maxHP, HP, wood, leaf, mangoSeed, pineconeSeed, fruit, plastic, feather, titanium, copper, metal, stone,
+			scrape, hinge, nail, rope, circuit, fish, bird, eagleHead;
+	private boolean raft, receiver, anthena, canvas, steering, petrol, engine;
+	private Weapon currentAxe;
+	private Weapon currentShovel;
+	private Weapon currentSpear;
+	private Cell currentPosition;
+	private ArrayList<Weapon> playerWeapon;
 
 	public Player(String name) {
 		setMaxHP(10);
@@ -60,7 +60,7 @@ public class Player implements Moveable {
 		playerWeapon.add(new Weapon(MaterialType.WOOD, ApplicationType.AXE));
 	}
 
-	public static void checkHP() {
+	public void checkHP() {
 		if (HP == 0) {
 			// pop up
 			HP++;
@@ -68,12 +68,12 @@ public class Player implements Moveable {
 		}
 	}
 
-	public static void resetPosition() {
-//		currentPosition.getCoCell().setX();
-//		currentPosition.getCoCell().setY();
+	public void resetPosition() {
+		currentPosition.getCoCell().setX(9);
+		currentPosition.getCoCell().setY(12);
 	}
 
-	public static void decreaseHP() {
+	public void decreaseHP() {
 		if (HP > 0)
 			HP--;
 		checkHP();
@@ -200,7 +200,7 @@ public class Player implements Moveable {
 	}
 
 	public boolean plant(String object, Cell position) {
-		if (Map.getPlantableArea().contains(position)&&position.getStatus()) {
+		if (Map.getPlantableArea().contains(position) && position.getStatus()) {
 			switch (object) {
 			case "Mango seed":
 				new MangoTree(position);
@@ -270,227 +270,227 @@ public class Player implements Moveable {
 		}
 	}
 
-	public static void addWeapon(Weapon weapon) {
-		Player.playerWeapon.add(weapon);
+	public void addWeapon(Weapon weapon) {
+		playerWeapon.add(weapon);
 	}
 
-	public static void setCurrentPosition(int x, int y) {
-		Player.currentPosition.setCoCell(new Coordinate(x, y));
+	public void setCurrentPosition(int x, int y) {
+		currentPosition.setCoCell(new Coordinate(x, y));
 	}
 
-	public static int getMaxHP() {
+	public int getMaxHP() {
 		return maxHP;
 	}
 
-	public static void setMaxHP(int maxHP) {
+	public void setMaxHP(int maxHP) {
 		if (maxHP > 0)
-			Player.maxHP = maxHP;
+			this.maxHP = maxHP;
 	}
 
-	public static int getHP() {
+	public int getHP() {
 		return HP;
 	}
 
-	public static int getWood() {
+	public int getWood() {
 		return wood;
 	}
 
-	public static void setWood(int wood) {
-		Player.wood = wood;
+	public void setWood(int wood) {
+		this.wood = wood;
 	}
 
-	public static int getLeaf() {
+	public int getLeaf() {
 		return leaf;
 	}
 
-	public static void setLeaf(int leaf) {
-		Player.leaf = leaf;
+	public void setLeaf(int leaf) {
+		this.leaf = leaf;
 	}
 
-	public static int getMangoSeed() {
+	public int getMangoSeed() {
 		return mangoSeed;
 	}
 
-	public static void setMangoSeed(int mangoSeed) {
-		Player.mangoSeed = mangoSeed;
+	public void setMangoSeed(int mangoSeed) {
+		this.mangoSeed = mangoSeed;
 	}
 
-	public static int getPineconeSeed() {
+	public int getPineconeSeed() {
 		return pineconeSeed;
 	}
 
-	public static void setPineconeSeed(int pineconeSeed) {
-		Player.pineconeSeed = pineconeSeed;
+	public void setPineconeSeed(int pineconeSeed) {
+		this.pineconeSeed = pineconeSeed;
 	}
 
-	public static int getFruit() {
+	public int getFruit() {
 		return fruit;
 	}
 
-	public static void setFruit(int fruit) {
-		Player.fruit = fruit;
+	public void setFruit(int fruit) {
+		this.fruit = fruit;
 	}
 
-	public static int getPlastic() {
+	public int getPlastic() {
 		return plastic;
 	}
 
-	public static void setPlastic(int plastic) {
-		Player.plastic = plastic;
+	public void setPlastic(int plastic) {
+		this.plastic = plastic;
 	}
 
-	public static int getFeather() {
+	public int getFeather() {
 		return feather;
 	}
 
-	public static void setFeather(int feather) {
-		Player.feather = feather;
+	public void setFeather(int feather) {
+		this.feather = feather;
 	}
 
-	public static int getTitanium() {
+	public int getTitanium() {
 		return titanium;
 	}
 
-	public static void setTitanium(int titanium) {
-		Player.titanium = titanium;
+	public void setTitanium(int titanium) {
+		this.titanium = titanium;
 	}
 
-	public static int getCopper() {
+	public int getCopper() {
 		return copper;
 	}
 
-	public static void setCopper(int copper) {
-		Player.copper = copper;
+	public void setCopper(int copper) {
+		this.copper = copper;
 	}
 
-	public static int getMetal() {
+	public int getMetal() {
 		return metal;
 	}
 
-	public static void setMetal(int metal) {
-		Player.metal = metal;
+	public void setMetal(int metal) {
+		this.metal = metal;
 	}
 
-	public static int getStone() {
+	public int getStone() {
 		return stone;
 	}
 
-	public static void setStone(int stone) {
-		Player.stone = stone;
+	public void setStone(int stone) {
+		this.stone = stone;
 	}
 
-	public static int getScrape() {
+	public int getScrape() {
 		return scrape;
 	}
 
-	public static void setScrape(int scrape) {
-		Player.scrape = scrape;
+	public void setScrape(int scrape) {
+		this.scrape = scrape;
 	}
 
-	public static int getHinge() {
+	public int getHinge() {
 		return hinge;
 	}
 
-	public static void setHinge(int hinge) {
-		Player.hinge = hinge;
+	public void setHinge(int hinge) {
+		this.hinge = hinge;
 	}
 
-	public static int getNail() {
+	public int getNail() {
 		return nail;
 	}
 
-	public static void setNail(int nail) {
-		Player.nail = nail;
+	public void setNail(int nail) {
+		this.nail = nail;
 	}
 
-	public static int getRope() {
+	public int getRope() {
 		return rope;
 	}
 
-	public static void setRope(int rope) {
-		Player.rope = rope;
+	public void setRope(int rope) {
+		this.rope = rope;
 	}
 
 	public int getCircuit() {
 		return circuit;
 	}
 
-	public static int getFish() {
+	public int getFish() {
 		return fish;
 	}
 
-	public static void setFish(int fish) {
-		Player.fish = fish;
+	public void setFish(int fish) {
+		this.fish = fish;
 	}
 
-	public static int getBird() {
+	public int getBird() {
 		return bird;
 	}
 
-	public static void setBird(int bird) {
-		Player.bird = bird;
+	public void setBird(int bird) {
+		this.bird = bird;
 	}
 
-	public static int getEagleHead() {
+	public int getEagleHead() {
 		return eagleHead;
 	}
 
-	public static void setEagleHead(int eagleHead) {
-		Player.eagleHead = eagleHead;
+	public void setEagleHead(int eagleHead) {
+		this.eagleHead = eagleHead;
 	}
 
 	public boolean hasRaft() {
 		return raft;
 	}
 
-	public static boolean hasReceiver() {
+	public boolean hasReceiver() {
 		return receiver;
 	}
 
-	public static void setReceiver(boolean receiver) {
-		Player.receiver = receiver;
+	public void setReceiver(boolean receiver) {
+		this.receiver = receiver;
 	}
 
-	public static boolean hasAnthena() {
+	public boolean hasAnthena() {
 		return anthena;
 	}
 
-	public static void setAnthena(boolean anthena) {
-		Player.anthena = anthena;
+	public void setAnthena(boolean anthena) {
+		this.anthena = anthena;
 	}
 
-	public static boolean hasCanvas() {
+	public boolean hasCanvas() {
 		return canvas;
 	}
 
-	public static Weapon getCurrentAxe() {
+	public Weapon getCurrentAxe() {
 		return currentAxe;
 	}
 
-	public static void setCurrentAxe(Weapon currentAxe) {
-		addWeapon(Player.currentAxe);
-		Player.currentAxe = currentAxe;
+	public void setCurrentAxe(Weapon currentAxe) {
+		addWeapon(this.currentAxe);
+		this.currentAxe = currentAxe;
 	}
 
-	public static Weapon getCurrentShovel() {
+	public Weapon getCurrentShovel() {
 		return currentShovel;
 	}
 
-	public static void setCurrentShovel(Weapon currentShovel) {
-		addWeapon(Player.currentShovel);
-		Player.currentShovel = currentShovel;
+	public void setCurrentShovel(Weapon currentShovel) {
+		addWeapon(this.currentShovel);
+		this.currentShovel = currentShovel;
 	}
 
-	public static Weapon getCurrentSpear() {
+	public Weapon getCurrentSpear() {
 		return currentSpear;
 	}
 
-	public static void setCurrentSpear(Weapon currentSpear) {
-		addWeapon(Player.currentSpear);
-		Player.currentSpear = currentSpear;
+	public void setCurrentSpear(Weapon currentSpear) {
+		addWeapon(this.currentSpear);
+		this.currentSpear = currentSpear;
 	}
 
-	public static Cell getCurrentPosition() {
+	public Cell getCurrentPosition() {
 		return currentPosition;
 	}
 
@@ -498,59 +498,59 @@ public class Player implements Moveable {
 		return playerWeapon;
 	}
 
-	public static void setCanvas(boolean other) {
+	public void setCanvas(boolean other) {
 		canvas = other;
 	}
 
-	public static boolean hasSteering() {
+	public boolean hasSteering() {
 		return steering;
 	}
 
-	public static void setSteering(boolean other) {
+	public void setSteering(boolean other) {
 		steering = other;
 	}
 
-	public static boolean hasPetrol() {
+	public boolean hasPetrol() {
 		return petrol;
 	}
 
-	public static void setPetrol(boolean other) {
+	public void setPetrol(boolean other) {
 		petrol = other;
 	}
 
-	public static boolean hasEngine() {
+	public boolean hasEngine() {
 		return engine;
 	}
 
-	public static void setEngine(boolean other) {
+	public void setEngine(boolean other) {
 		engine = other;
 	}
 
-	public static String getName() {
+	public String getName() {
 		return name;
 	}
 
-	public static void setName(String name) {
-		Player.name = name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public static void decreaseLifetime(ApplicationType type) {
+	public void decreaseLifetime(ApplicationType type) {
 		if (type == ApplicationType.SHOVEL)
-			Player.currentShovel.setLifetime(Player.currentShovel.getLifetime() - 1);
+			currentShovel.setLifetime(currentShovel.getLifetime() - 1);
 		if (type == ApplicationType.AXE)
-			Player.currentAxe.setLifetime(Player.currentAxe.getLifetime() - 1);
+			currentAxe.setLifetime(currentAxe.getLifetime() - 1);
 		if (type == ApplicationType.SPEAR)
-			Player.currentSpear.setLifetime(Player.currentSpear.getLifetime() - 1);
+			currentSpear.setLifetime(currentSpear.getLifetime() - 1);
 		checkLifetime();
 	}
 
-	public static void checkLifetime() {
-		if (Player.currentShovel.getLifetime() == 0)
-			Player.setCurrentShovel(null);
-		if (Player.currentAxe.getLifetime() == 0)
-			Player.setCurrentAxe(null);
-		if (Player.currentSpear.getLifetime() == 0)
-			Player.setCurrentSpear(null);
+	public void checkLifetime() {
+		if (currentShovel.getLifetime() == 0)
+			setCurrentShovel(null);
+		if (currentAxe.getLifetime() == 0)
+			setCurrentAxe(null);
+		if (currentSpear.getLifetime() == 0)
+			setCurrentSpear(null);
 
 	}
 
