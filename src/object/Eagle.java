@@ -1,8 +1,5 @@
 package object;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -72,20 +69,14 @@ public class Eagle extends Animal {
 			player.decreaseLifetime(ApplicationType.SPEAR);
 			player.decreaseHP();
 
-			Timer timer = new Timer();
-			timer.scheduleAtFixedRate(new TimerTask() {
-				int i = 15; // (second) can change
+			try {
+				Thread.sleep(15000); // (millisecond) can change
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					i--;
-					if (i < 0) {
-						timer.cancel();
-						refresh();
-					}
-				}
-			}, 0, 1000);
+			refresh();
 		}
 	}
 
