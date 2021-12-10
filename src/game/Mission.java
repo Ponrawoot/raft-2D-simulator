@@ -13,9 +13,9 @@ public class Mission {
 
 	public Mission() {
 		allMission = new ArrayList<ArrayList<Integer>>();
-		for (int i=0;i<9;i++) {
-            allMission.add(new ArrayList<Integer>());
-            }
+		for (int i = 0; i < 9; i++) {
+			allMission.add(new ArrayList<Integer>());
+		}
 		allMission.get(0).addAll(Arrays.asList(20)); // wood -> stone, rope
 		allMission.get(1).addAll(Arrays.asList(20, 10)); // scrape, rope -> metal
 		allMission.get(2).addAll(Arrays.asList(10)); // fish -> stone spear
@@ -36,6 +36,7 @@ public class Mission {
 				player.setStone(player.getStone() + 10);
 				player.setRope(player.getRope() + 5);
 				this.addRequirement(0, 10);
+				break;
 			} else
 				return false;
 		case 1:
@@ -44,6 +45,7 @@ public class Mission {
 				player.setRope(player.getRope() - selectedMission.get(1));
 				player.setMetal(player.getMetal() + 1);
 				this.addRequirement(1, 10);
+				break;
 			} else
 				return false;
 		case 2:
@@ -51,6 +53,7 @@ public class Mission {
 				player.setFish(player.getFish() - selectedMission.get(0));
 				player.addWeapon(new Weapon(MaterialType.STONE, ApplicationType.SPEAR));
 				this.addRequirement(2, 12);
+				break;
 			} else
 				return false;
 		case 3:
@@ -58,6 +61,7 @@ public class Mission {
 				player.setBird(player.getBird() - selectedMission.get(0));
 				player.addWeapon(new Weapon(MaterialType.METAL, ApplicationType.SPEAR));
 				this.addRequirement(3, 16);
+				break;
 			} else
 				return false;
 		case 4:
@@ -66,6 +70,7 @@ public class Mission {
 				player.addWeapon(new Weapon(MaterialType.STONE, ApplicationType.AXE));
 				player.setMaxHP(player.getMaxHP() + 1);
 				this.addRequirement(4, 2);
+				break;
 			} else
 				return false;
 		case 5:
@@ -76,7 +81,7 @@ public class Mission {
 				player.setLeaf(player.getLeaf() - selectedMission.get(2));
 				player.setMetal(player.getMetal() - selectedMission.get(3));
 				player.addWeapon(new Weapon(MaterialType.METAL, ApplicationType.AXE));
-
+				break;
 			} else
 				return false;
 		case 6:
@@ -86,6 +91,7 @@ public class Mission {
 				player.addWeapon(new Weapon(MaterialType.STONE, ApplicationType.SHOVEL));
 				player.setMaxHP(player.getMaxHP() + 1);
 				this.addRequirement(6, 2);
+				break;
 			} else
 				return false;
 		case 7:
@@ -93,6 +99,7 @@ public class Mission {
 				player.setMetal(player.getMetal() - selectedMission.get(0));
 				player.setTitanium(player.getTitanium() + 1);
 				this.addRequirement(7, 25);
+				break;
 			} else
 				return false;
 		default:
@@ -101,10 +108,10 @@ public class Mission {
 				player.setStone(player.getStone() - selectedMission.get(1));
 				player.setCopper(player.getCopper() + 2);
 				this.addRequirement(8, 5);
+				break;
 			} else
 				return false;
 		}
-		
 		return true;
 	}
 
@@ -114,5 +121,12 @@ public class Mission {
 			allMission.get(missionNumber).set(i, x + amount);
 		}
 	}
+	
+	public ArrayList<Integer> getMissionRequirement(int i) {
+		return allMission.get(i);
+	}
 
+	public ArrayList<ArrayList<Integer>> getAllMission() {
+		return allMission;
+	}
 }
