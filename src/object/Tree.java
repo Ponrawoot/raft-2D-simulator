@@ -33,4 +33,20 @@ public abstract class Tree {
 		this.readyToCut = readyToCut;
 	}
 
+	public int getWood() {
+		return wood;
+	}
+
+	public int getLeaf() {
+		return leaf;
+	}
+
+	public Cell getPosition() {
+		return position;
+	}
+
+	public boolean isReadyToCut() {
+		return readyToCut;
+	}
+
 }
