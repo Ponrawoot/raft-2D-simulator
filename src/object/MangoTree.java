@@ -1,8 +1,5 @@
 package object;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -58,20 +55,14 @@ public class MangoTree extends Tree implements Removeable {
 			this.position.setStatus(false);
 			player.setMangoSeed(player.getMangoSeed() - 1);
 
-			Timer timer = new Timer();
-			timer.scheduleAtFixedRate(new TimerTask() {
-				int i = 15; // (second) can change
-
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					i--;
-					if (i < 0) {
-						timer.cancel();
-						setReadyToCut(true);
-					}
-				}
-			}, 0, 1000);
+			try {
+				Thread.sleep(15000); // (millisecond) can change
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			setReadyToCut(true);
 		}
 	}
 
@@ -81,6 +72,14 @@ public class MangoTree extends Tree implements Removeable {
 
 	public void setMangoSeed(int mangoSeed) {
 		this.mangoSeed = mangoSeed;
+	}
+
+	public int getFruit() {
+		return fruit;
+	}
+
+	public int getMangoSeed() {
+		return mangoSeed;
 	}
 
 }
