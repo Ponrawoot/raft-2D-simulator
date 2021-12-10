@@ -182,9 +182,9 @@ public class Map {
 		trees.remove(tree);
 	}
 
-	public void checkTimeAndPositon() {
-		if (!middleIslandArea.contains(Player.getCurrentPosition()) && !isMorning) {
-			Player.resetPosition();
+	public void checkTimeAndPositon(Player player) {
+		if (!middleIslandArea.contains(player.getCurrentPosition()) && !isMorning) {
+			player.resetPosition();
 		}
 	}
 

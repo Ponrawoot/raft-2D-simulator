@@ -17,17 +17,17 @@ public class Bird extends Animal implements Removeable {
 	}
 
 	@Override
-	public void beRemoved() {
+	public void beRemoved(Player player) {
 		// TODO Auto-generated method stub
-		if ((Player.getCurrentSpear().getMaterial() == MaterialType.STONE
-				|| Player.getCurrentSpear().getMaterial() == MaterialType.METAL)
-				&& Player.getCurrentPosition().isNextTo(position) && alive) {
-			Player.setBird(Player.getBird() + 1);
-			Player.setFeather(Player.getFeather() + 2);
+		if ((player.getCurrentSpear().getMaterial() == MaterialType.STONE
+				|| player.getCurrentSpear().getMaterial() == MaterialType.METAL)
+				&& player.getCurrentPosition().isNextTo(position) && alive) {
+			player.setBird(player.getBird() + 1);
+			player.setFeather(player.getFeather() + 2);
 			position.setStatus(true);
 			setAlive(false);
-			Player.decreaseHP();
-			Player.decreaseLifetime(ApplicationType.SPEAR);
+			player.decreaseHP();
+			player.decreaseLifetime(ApplicationType.SPEAR);
 
 			Timer timer = new Timer();
 			timer.scheduleAtFixedRate(new TimerTask() {

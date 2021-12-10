@@ -13,14 +13,14 @@ public class Plastic extends Material implements Removeable {
 	public Plastic(Cell position) {
 		super(position);
 	}
-	
-	public void beRemoved() {
+
+	public void beRemoved(Player player) {
 		// TODO Auto-generated method stub
-		if (Player.getCurrentPosition().isNextTo(position)&&present) {
-			Player.setPlastic(Player.getPlastic()+1);
+		if (player.getCurrentPosition().isNextTo(position) && present) {
+			player.setPlastic(player.getPlastic() + 1);
 			present = false;
 			position.setStatus(true);
-			Player.decreaseHP();
+			player.decreaseHP();
 		}
 		for (Material x : Map.getAvailablePlastic()) {
 			if (x.isPresent())
@@ -36,12 +36,12 @@ public class Plastic extends Material implements Removeable {
 				i--;
 				if (i < 0) {
 					timer.cancel();
-					Map.refreshPlastic(Map.getRandomInteger(1, 10)); 
+					Map.refreshPlastic(Map.getRandomInteger(1, 10));
 				}
 			}
 		}, 0, 1000);
 	}
-	
+
 	public void refresh(Cell position) {
 		if (!present) {
 			this.setPresent(true);

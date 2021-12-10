@@ -27,79 +27,79 @@ public class Mission {
 		allMission.get(8).addAll(Arrays.asList(10, 10)); // plastic, stone -> copper
 	}
 
-	public boolean getReward(int i) {
+	public boolean getReward(int i, Player player) {
 		ArrayList<Integer> selectedMission = allMission.get(i);
 		switch (i) {
 		case 0:
-			if (Player.getWood() >= selectedMission.get(0)) {
-				Player.setWood(Player.getWood() - selectedMission.get(0));
-				Player.setStone(Player.getStone() + 10);
-				Player.setRope(Player.getRope() + 5);
+			if (player.getWood() >= selectedMission.get(0)) {
+				player.setWood(player.getWood() - selectedMission.get(0));
+				player.setStone(player.getStone() + 10);
+				player.setRope(player.getRope() + 5);
 				this.addRequirement(0, 10);
 			} else
 				return false;
 		case 1:
-			if (Player.getScrape() >= selectedMission.get(0) && Player.getRope() >= selectedMission.get(1)) {
-				Player.setScrape(Player.getScrape() - selectedMission.get(0));
-				Player.setRope(Player.getRope() - selectedMission.get(1));
-				Player.setMetal(Player.getMetal() + 1);
+			if (player.getScrape() >= selectedMission.get(0) && player.getRope() >= selectedMission.get(1)) {
+				player.setScrape(player.getScrape() - selectedMission.get(0));
+				player.setRope(player.getRope() - selectedMission.get(1));
+				player.setMetal(player.getMetal() + 1);
 				this.addRequirement(1, 10);
 			} else
 				return false;
 		case 2:
-			if (Player.getFish() >= selectedMission.get(0)) {
-				Player.setFish(Player.getFish() - selectedMission.get(0));
-				Player.addWeapon(new Weapon(MaterialType.STONE, ApplicationType.SPEAR));
+			if (player.getFish() >= selectedMission.get(0)) {
+				player.setFish(player.getFish() - selectedMission.get(0));
+				player.addWeapon(new Weapon(MaterialType.STONE, ApplicationType.SPEAR));
 				this.addRequirement(2, 12);
 			} else
 				return false;
 		case 3:
-			if (Player.getBird() >= selectedMission.get(0)) {
-				Player.setBird(Player.getBird() - selectedMission.get(0));
-				Player.addWeapon(new Weapon(MaterialType.METAL, ApplicationType.SPEAR));
+			if (player.getBird() >= selectedMission.get(0)) {
+				player.setBird(player.getBird() - selectedMission.get(0));
+				player.addWeapon(new Weapon(MaterialType.METAL, ApplicationType.SPEAR));
 				this.addRequirement(3, 16);
 			} else
 				return false;
 		case 4:
-			if (Player.getFruit() >= selectedMission.get(0)) {
-				Player.setFruit(Player.getFruit() - selectedMission.get(0));
-				Player.addWeapon(new Weapon(MaterialType.STONE, ApplicationType.AXE));
-				Player.setMaxHP(Player.getMaxHP() + 1);
+			if (player.getFruit() >= selectedMission.get(0)) {
+				player.setFruit(player.getFruit() - selectedMission.get(0));
+				player.addWeapon(new Weapon(MaterialType.STONE, ApplicationType.AXE));
+				player.setMaxHP(player.getMaxHP() + 1);
 				this.addRequirement(4, 2);
 			} else
 				return false;
 		case 5:
-			if (Player.getFruit() >= selectedMission.get(0) && Player.getWood() >= selectedMission.get(1)
-					&& Player.getLeaf() >= selectedMission.get(2) && Player.getMetal() >= selectedMission.get(3)) {
-				Player.setFruit(Player.getFruit() - selectedMission.get(0));
-				Player.setWood(Player.getWood() - selectedMission.get(1));
-				Player.setLeaf(Player.getLeaf() - selectedMission.get(2));
-				Player.setMetal(Player.getMetal() - selectedMission.get(3));
-				Player.addWeapon(new Weapon(MaterialType.METAL, ApplicationType.AXE));
+			if (player.getFruit() >= selectedMission.get(0) && player.getWood() >= selectedMission.get(1)
+					&& player.getLeaf() >= selectedMission.get(2) && player.getMetal() >= selectedMission.get(3)) {
+				player.setFruit(player.getFruit() - selectedMission.get(0));
+				player.setWood(player.getWood() - selectedMission.get(1));
+				player.setLeaf(player.getLeaf() - selectedMission.get(2));
+				player.setMetal(player.getMetal() - selectedMission.get(3));
+				player.addWeapon(new Weapon(MaterialType.METAL, ApplicationType.AXE));
 
 			} else
 				return false;
 		case 6:
-			if (Player.getFeather() >= selectedMission.get(0) && Player.getBird() >= selectedMission.get(1)) {
-				Player.setFeather(Player.getFeather() - selectedMission.get(0));
-				Player.setBird(Player.getBird() - selectedMission.get(1));
-				Player.addWeapon(new Weapon(MaterialType.STONE, ApplicationType.SHOVEL));
-				Player.setMaxHP(Player.getMaxHP() + 1);
+			if (player.getFeather() >= selectedMission.get(0) && player.getBird() >= selectedMission.get(1)) {
+				player.setFeather(player.getFeather() - selectedMission.get(0));
+				player.setBird(player.getBird() - selectedMission.get(1));
+				player.addWeapon(new Weapon(MaterialType.STONE, ApplicationType.SHOVEL));
+				player.setMaxHP(player.getMaxHP() + 1);
 				this.addRequirement(6, 2);
 			} else
 				return false;
 		case 7:
-			if (Player.getMetal() >= selectedMission.get(0)) {
-				Player.setMetal(Player.getMetal() - selectedMission.get(0));
-				Player.setTitanium(Player.getTitanium() + 1);
+			if (player.getMetal() >= selectedMission.get(0)) {
+				player.setMetal(player.getMetal() - selectedMission.get(0));
+				player.setTitanium(player.getTitanium() + 1);
 				this.addRequirement(7, 25);
 			} else
 				return false;
 		default:
-			if (Player.getPlastic() >= selectedMission.get(0) && Player.getStone() >= selectedMission.get(1)) {
-				Player.setPlastic(Player.getPlastic() - selectedMission.get(0));
-				Player.setStone(Player.getStone() - selectedMission.get(1));
-				Player.setCopper(Player.getCopper() + 2);
+			if (player.getPlastic() >= selectedMission.get(0) && player.getStone() >= selectedMission.get(1)) {
+				player.setPlastic(player.getPlastic() - selectedMission.get(0));
+				player.setStone(player.getStone() - selectedMission.get(1));
+				player.setCopper(player.getCopper() + 2);
 				this.addRequirement(8, 5);
 			} else
 				return false;

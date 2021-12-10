@@ -5,35 +5,38 @@ public class Market {
 	public Market() {
 	}
 
-	public void trade(String object) {
-		switch(object) {
-		case "Canvas" :	
-			if (!Player.hasCanvas()&&Player.getMetal()>10 &&Player.getScrape()>20 &&Player.getPlastic()>20 ) {
-				Player.setCanvas(true);
-				Player.setMetal(Player.getMetal()-10);
-				Player.setScrape(Player.getScrape()-20);
-				Player.setPlastic(Player.getPlastic()-20);
+	public void trade(String object, Player player) {
+		switch (object) {
+		case "Canvas":
+			if (!player.hasCanvas() && player.getMetal() > 10 && player.getScrape() > 20 && player.getPlastic() > 20) {
+				player.setCanvas(true);
+				player.setMetal(player.getMetal() - 10);
+				player.setScrape(player.getScrape() - 20);
+				player.setPlastic(player.getPlastic() - 20);
 				break;
 			}
-		case "Steering" :	
-			if (!Player.hasSteering()&&Player.getMetal()>15 &&Player.getScrape()>30 &&Player.getPlastic()>30 ) { 
-				Player.setSteering(true);
-				Player.setMetal(Player.getMetal()-15);
-				Player.setScrape(Player.getScrape()-30);
-				Player.setPlastic(Player.getPlastic()-30);
+		case "Steering":
+			if (!player.hasSteering() && player.getMetal() > 15 && player.getScrape() > 30
+					&& player.getPlastic() > 30) {
+				player.setSteering(true);
+				player.setMetal(player.getMetal() - 15);
+				player.setScrape(player.getScrape() - 30);
+				player.setPlastic(player.getPlastic() - 30);
 				break;
 			}
-		case "Petrol" :	if (!Player.hasPetrol()&&Player.getBird()>40 &&Player.getFish()>20 ) {
-			Player.setPetrol(true);
-			Player.setBird(Player.getBird()-40);
-			Player.setFish(Player.getFish()-20);
-			break;
-		}
-		case "Engine" :	if (!Player.hasEngine()&&Player.getEagleHead()>5) {
-			Player.setEngine(true);
-			Player.setEagleHead(Player.getEagleHead()-5);
-			break;
-		}
+		case "Petrol":
+			if (!player.hasPetrol() && player.getBird() > 40 && player.getFish() > 20) {
+				player.setPetrol(true);
+				player.setBird(player.getBird() - 40);
+				player.setFish(player.getFish() - 20);
+				break;
+			}
+		case "Engine":
+			if (!player.hasEngine() && player.getEagleHead() > 5) {
+				player.setEngine(true);
+				player.setEagleHead(player.getEagleHead() - 5);
+				break;
+			}
 		}
 	}
 

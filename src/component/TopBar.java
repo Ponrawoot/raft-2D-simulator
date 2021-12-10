@@ -22,11 +22,11 @@ public class TopBar extends FlowPane {
 	private SettingButton settingButton;
 	private PauseButton pauseButton;
 
-	public TopBar() {
+	public TopBar(Player player) {
 		setPadding(new Insets(5));
 		setHgap(5);
 		setVgap(5);
-		playerName = new Text("Name: " + Player.getName());
+		playerName = new Text("Name: " + player.getName());
 		hp = new ProgressBar(1);
 		time = new Label();
 		Thread thread = new Thread(() -> {
@@ -59,12 +59,12 @@ public class TopBar extends FlowPane {
 		getChildren().addAll(playerName, hp, time, settingButton, pauseButton);
 	}
 
-	public void setHp() {
-		hp.setProgress(Player.getHP() / Player.getMaxHP());
+	public void setHp(Player player) {
+		hp.setProgress(player.getHP() / player.getMaxHP());
 	}
 
-	public void setPlayerName() {
-		playerName.setText(Player.getName());
+	public void setPlayerName(Player player) {
+		playerName.setText(player.getName());
 	}
 
 }

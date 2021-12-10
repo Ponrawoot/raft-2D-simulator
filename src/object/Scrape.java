@@ -1,6 +1,5 @@
 package object;
 
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -17,15 +16,15 @@ public class Scrape extends Material implements Removeable {
 	}
 
 	@Override
-	public void beRemoved() {
-		if (Player.getCurrentShovel() == null)
+	public void beRemoved(Player player) {
+		if (player.getCurrentShovel() == null)
 			return;
-		if (Player.getCurrentPosition().isNextTo(position) && present) {
-			Player.setScrape(Player.getScrape()+1);
+		if (player.getCurrentPosition().isNextTo(position) && present) {
+			player.setScrape(player.getScrape() + 1);
 			present = false;
 			position.setStatus(true);
-			Player.decreaseLifetime(ApplicationType.SHOVEL);
-			Player.decreaseHP();
+			player.decreaseLifetime(ApplicationType.SHOVEL);
+			player.decreaseHP();
 		}
 		Timer timer = new Timer();
 		timer.scheduleAtFixedRate(new TimerTask() {
@@ -37,7 +36,7 @@ public class Scrape extends Material implements Removeable {
 				i--;
 				if (i < 0) {
 					timer.cancel();
-					Map.refreshScrape(Map.getRandomInteger(1, 10)); 
+					Map.refreshScrape(Map.getRandomInteger(1, 10));
 				}
 			}
 		}, 0, 1000);

@@ -29,75 +29,75 @@ public class Shipwreck {
 		anthena = false;
 	}
 
-	public void repair(String object) {
+	public void repair(String object, Player player) {
 		int n;
 		boolean c;
 		switch (object) {
 		case "Wood":
-			n = Player.getWood();
+			n = player.getWood();
 			if (n >= 50)
 				wood = true;
-			Player.setWood(n - 50);
+			player.setWood(n - 50);
 			break;
 		case "Hinge":
-			n = Player.getHinge();
+			n = player.getHinge();
 			if (n >= 10)
 				hinge = true;
-			Player.setHinge(n - 10);
+			player.setHinge(n - 10);
 			break;
 		case "Nail":
-			n = Player.getNail();
+			n = player.getNail();
 			if (n >= 15)
 				nail = true;
-			Player.setNail(n - 15);
+			player.setNail(n - 15);
 			break;
 		case "Rope":
-			n = Player.getRope();
+			n = player.getRope();
 			if (n >= 20)
 				rope = true;
-			Player.setRope(n - 20);
+			player.setRope(n - 20);
 			break;
 		case "Canvas":
-			c = Player.hasCanvas();
+			c = player.hasCanvas();
 			if (c)
 				canvas = true;
-			Player.setCanvas(false);
+			player.setCanvas(false);
 			break;
 		case "Steering":
-			c = Player.hasSteering();
+			c = player.hasSteering();
 			if (c)
 				steering = true;
-			Player.setSteering(false);
+			player.setSteering(false);
 			break;
 		case "Engine":
-			c = Player.hasEngine();
+			c = player.hasEngine();
 			if (c)
 				engine = true;
-			Player.setEngine(false);
+			player.setEngine(false);
 			break;
 		case "Petrol":
-			c = Player.hasPetrol();
+			c = player.hasPetrol();
 			if (c)
 				petrol = true;
-			Player.setPetrol(false);
+			player.setPetrol(false);
 			break;
 		case "Titanium":
-			n = Player.getTitanium();
+			n = player.getTitanium();
 			if (n >= 1)
 				titanium = true;
-			Player.setTitanium(n - 1);
+			player.setTitanium(n - 1);
 			break;
 		case "Receiver":
-			c = Player.hasReceiver();
+			c = player.hasReceiver();
 			if (c)
 				receiver = true;
-			Player.setReceiver(false);
+			player.setReceiver(false);
 			break;
 		case "Anthena":
-			c = Player.hasAnthena();
+			c = player.hasAnthena();
 			if (c)
 				anthena = true;
-			Player.setAnthena(false);
+			player.setAnthena(false);
 			break;
 		}
 		checkWinCondition();
