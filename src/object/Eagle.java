@@ -13,13 +13,13 @@ import object.base.MaterialType;
 public class Eagle extends Animal {
 
 	private boolean move;
-	private Cell defaultPosition;
+	private static final Cell defaultPosition = new Cell(new Coordinate(4, 1), false, false, true);
 
 	public Eagle(Cell position) {
-		super(position); // same position every time
+		super(defaultPosition); // same position every time
 		// TODO Auto-generated constructor stub
+		super.getPosition().setStatus(true);
 		setMove(true);
-		defaultPosition = new Cell(new Coordinate(3, 2), false, true, true); // position can change
 	}
 
 	public void moveToPlayer(Player player) {
@@ -28,21 +28,29 @@ public class Eagle extends Animal {
 		int xPlayer = player.getCurrentPosition().getCoCell().getX();
 		int yPlayer = player.getCurrentPosition().getCoCell().getY();
 		if (yPlayer > position.getCoCell().getY()) {
-			while (position.getCoCell().getY() < yPlayer) {
+			while (position.getCoCell().getY() < yPlayer && move) {
 				position.getCoCell().setY(position.getCoCell().getY() + 1);
+				if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
+					setPosition(defaultPosition);
 			}
 		} else {
-			while (position.getCoCell().getY() > yPlayer) {
+			while (position.getCoCell().getY() > yPlayer && move) {
 				position.getCoCell().setY(position.getCoCell().getY() - 1);
+				if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
+					setPosition(defaultPosition);
 			}
 		}
 		if (xPlayer > position.getCoCell().getX()) {
-			while (position.getCoCell().getX() < xPlayer) {
+			while (position.getCoCell().getX() < xPlayer && move) {
 				position.getCoCell().setX(position.getCoCell().getX() + 1);
+				if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
+					setPosition(defaultPosition);
 			}
 		} else {
-			while (position.getCoCell().getX() > xPlayer) {
+			while (position.getCoCell().getX() > xPlayer && move) {
 				position.getCoCell().setX(position.getCoCell().getX() - 1);
+				if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
+					setPosition(defaultPosition);
 			}
 		}
 		hitPlayer(player);
@@ -54,7 +62,7 @@ public class Eagle extends Animal {
 		}
 	}
 
-	public void kill(Player player) {
+	public void killed(Player player) {
 		if ((player.getCurrentPosition().isNextTo(position) || player.getCurrentPosition().isSamePosition(position))
 				&& player.getCurrentSpear().getMaterial() == MaterialType.METAL && alive) {
 			setAlive(false);
