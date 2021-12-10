@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import game.Cell;
 
 public class Database {
-	private static ArrayList<Cell> area;
-	private static ArrayList<Cell> plantableArea;
-	private static ArrayList<Cell> moveableForEagleArea;
-	private static ArrayList<Cell> randomFishCell;
-	private static ArrayList<Cell> randomBirdCell;
-	private static ArrayList<Cell> middleIslandArea;
-	private static ArrayList<Cell> repairableArea;
+	private  ArrayList<Cell> area;
+	private  ArrayList<Cell> plantableArea;
+	private  ArrayList<Cell> moveableForEagleArea;
+	private  ArrayList<Cell> randomFishCell;
+	private  ArrayList<Cell> randomBirdCell;
+	private  ArrayList<Cell> middleIslandArea;
+	private  ArrayList<Cell> repairableArea;
 
 	public Database() {
 		Cell x0y0 = new Cell(new Coordinate(0, 0), false, true, false);
@@ -414,6 +414,33 @@ public class Database {
 		Cell x17y19 = new Cell(new Coordinate(17, 19), true, false, true);
 		Cell x18y19 = new Cell(new Coordinate(18, 19), true, false, true);
 		Cell x19y19 = new Cell(new Coordinate(19, 19), true, false, true);
+		
+		area = new ArrayList<Cell>();
+		
+		area.add(x0y0);area.add(x1y0);area.add(x2y0);area.add(x3y0);area.add(x4y0);area.add(x5y0);area.add(x6y0);area.add(x7y0);area.add(x8y0);area.add(x9y0);area.add(x10y0);area.add(x11y0);area.add(x12y0);area.add(x13y0);area.add(x14y0);area.add(x15y0);area.add(x16y0);area.add(x17y0);area.add(x18y0);area.add(x19y0);
+		area.add(x0y1);area.add(x1y1);area.add(x2y1);area.add(x3y1);area.add(x4y1);area.add(x5y1);area.add(x6y1);area.add(x7y1);area.add(x8y1);area.add(x9y1);area.add(x10y1);area.add(x11y1);area.add(x12y1);area.add(x13y1);area.add(x14y1);area.add(x15y1);area.add(x16y1);area.add(x17y1);area.add(x18y1);area.add(x19y1);
+		area.add(x0y2);area.add(x1y2);area.add(x2y2);area.add(x3y2);area.add(x4y2);area.add(x5y2);area.add(x6y2);area.add(x7y2);area.add(x8y2);area.add(x9y2);area.add(x10y2);area.add(x11y2);area.add(x12y2);area.add(x13y2);area.add(x14y2);area.add(x15y2);area.add(x16y2);area.add(x17y2);area.add(x18y2);area.add(x19y2);
+		area.add(x0y3);area.add(x1y3);area.add(x2y3);area.add(x3y3);area.add(x4y3);area.add(x5y3);area.add(x6y3);area.add(x7y3);area.add(x8y3);area.add(x9y3);area.add(x10y3);area.add(x11y3);area.add(x12y3);area.add(x13y3);area.add(x14y3);area.add(x15y3);area.add(x16y3);area.add(x17y3);area.add(x18y3);area.add(x19y3);
+		area.add(x0y4);area.add(x1y4);area.add(x2y4);area.add(x3y4);area.add(x4y4);area.add(x5y4);area.add(x6y4);area.add(x7y4);area.add(x8y4);area.add(x9y4);area.add(x10y4);area.add(x11y4);area.add(x12y4);area.add(x13y4);area.add(x14y4);area.add(x15y4);area.add(x16y4);area.add(x17y4);area.add(x18y4);area.add(x19y4);
+		area.add(x0y5);area.add(x1y5);area.add(x2y5);area.add(x3y5);area.add(x4y5);area.add(x5y5);area.add(x6y5);area.add(x7y5);area.add(x8y5);area.add(x9y5);area.add(x10y5);area.add(x11y5);area.add(x12y5);area.add(x13y5);area.add(x14y5);area.add(x15y5);area.add(x16y5);area.add(x17y5);area.add(x18y5);area.add(x19y5);
+		area.add(x0y6);area.add(x1y6);area.add(x2y6);area.add(x3y6);area.add(x4y6);area.add(x5y6);area.add(x6y6);area.add(x7y6);area.add(x8y6);area.add(x9y6);area.add(x10y6);area.add(x11y6);area.add(x12y6);area.add(x13y6);area.add(x14y6);area.add(x15y6);area.add(x16y6);area.add(x17y6);area.add(x18y6);area.add(x19y6);
+		area.add(x0y7);area.add(x1y7);area.add(x2y7);area.add(x3y7);area.add(x4y7);area.add(x5y7);area.add(x6y7);area.add(x7y7);area.add(x8y7);area.add(x9y7);area.add(x10y7);area.add(x11y7);area.add(x12y7);area.add(x13y7);area.add(x14y7);area.add(x15y7);area.add(x16y7);area.add(x17y7);area.add(x18y7);area.add(x19y7);
+		area.add(x0y8);area.add(x1y8);area.add(x2y8);area.add(x3y8);area.add(x4y8);area.add(x5y8);area.add(x6y8);area.add(x7y8);area.add(x8y8);area.add(x9y8);area.add(x10y8);area.add(x11y8);area.add(x12y8);area.add(x13y8);area.add(x14y8);area.add(x15y8);area.add(x16y8);area.add(x17y8);area.add(x18y8);area.add(x19y8);
+		area.add(x0y9);area.add(x1y9);area.add(x2y9);area.add(x3y9);area.add(x4y9);area.add(x5y9);area.add(x6y9);area.add(x7y9);area.add(x8y9);area.add(x9y9);area.add(x10y9);area.add(x11y9);area.add(x12y9);area.add(x13y9);area.add(x14y9);area.add(x15y9);area.add(x16y9);area.add(x17y9);area.add(x18y9);area.add(x19y9);
+		area.add(x0y10);area.add(x1y10);area.add(x2y10);area.add(x3y10);area.add(x4y10);area.add(x5y10);area.add(x6y10);area.add(x7y10);area.add(x8y10);area.add(x9y10);area.add(x10y10);area.add(x11y10);area.add(x12y10);area.add(x13y10);area.add(x14y10);area.add(x15y10);area.add(x16y10);area.add(x17y10);area.add(x18y10);area.add(x19y10);
+		area.add(x0y11);area.add(x1y11);area.add(x2y11);area.add(x3y11);area.add(x4y11);area.add(x5y11);area.add(x6y11);area.add(x7y11);area.add(x8y11);area.add(x9y11);area.add(x10y11);area.add(x11y11);area.add(x12y11);area.add(x13y11);area.add(x14y11);area.add(x15y11);area.add(x16y11);area.add(x17y11);area.add(x18y11);area.add(x19y11);
+		area.add(x0y12);area.add(x1y12);area.add(x2y12);area.add(x3y12);area.add(x4y12);area.add(x5y12);area.add(x6y12);area.add(x7y12);area.add(x8y12);area.add(x9y12);area.add(x10y12);area.add(x11y12);area.add(x12y12);area.add(x13y12);area.add(x14y12);area.add(x15y12);area.add(x16y12);area.add(x17y12);area.add(x18y12);area.add(x19y12);
+		area.add(x0y13);area.add(x1y13);area.add(x2y13);area.add(x3y13);area.add(x4y13);area.add(x5y13);area.add(x6y13);area.add(x7y13);area.add(x8y13);area.add(x9y13);area.add(x10y13);area.add(x11y13);area.add(x12y13);area.add(x13y13);area.add(x14y13);area.add(x15y13);area.add(x16y13);area.add(x17y13);area.add(x18y13);area.add(x19y13);
+		area.add(x0y14);area.add(x1y14);area.add(x2y14);area.add(x3y14);area.add(x4y14);area.add(x5y14);area.add(x6y14);area.add(x7y14);area.add(x8y14);area.add(x9y14);area.add(x10y14);area.add(x11y14);area.add(x12y14);area.add(x13y14);area.add(x14y14);area.add(x15y14);area.add(x16y14);area.add(x17y14);area.add(x18y14);area.add(x19y14);
+		area.add(x0y15);area.add(x1y15);area.add(x2y15);area.add(x3y15);area.add(x4y15);area.add(x5y15);area.add(x6y15);area.add(x7y15);area.add(x8y15);area.add(x9y15);area.add(x10y15);area.add(x11y15);area.add(x12y15);area.add(x13y15);area.add(x14y15);area.add(x15y15);area.add(x16y15);area.add(x17y15);area.add(x18y15);area.add(x19y15);
+		area.add(x0y16);area.add(x1y16);area.add(x2y16);area.add(x3y16);area.add(x4y16);area.add(x5y16);area.add(x6y16);area.add(x7y16);area.add(x8y16);area.add(x9y16);area.add(x10y16);area.add(x11y16);area.add(x12y16);area.add(x13y16);area.add(x14y16);area.add(x15y16);area.add(x16y16);area.add(x17y16);area.add(x18y16);area.add(x19y16);
+		area.add(x0y17);area.add(x1y17);area.add(x2y17);area.add(x3y17);area.add(x4y17);area.add(x5y17);area.add(x6y17);area.add(x7y17);area.add(x8y17);area.add(x9y17);area.add(x10y17);area.add(x11y17);area.add(x12y17);area.add(x13y17);area.add(x14y17);area.add(x15y17);area.add(x16y17);area.add(x17y17);area.add(x18y17);area.add(x19y17);
+		area.add(x0y18);area.add(x1y18);area.add(x2y18);area.add(x3y18);area.add(x4y18);area.add(x5y18);area.add(x6y18);area.add(x7y18);area.add(x8y18);area.add(x9y18);area.add(x10y18);area.add(x11y18);area.add(x12y18);area.add(x13y18);area.add(x14y18);area.add(x15y18);area.add(x16y18);area.add(x17y18);area.add(x18y18);area.add(x19y18);
+		area.add(x0y19);area.add(x1y19);area.add(x2y19);area.add(x3y19);area.add(x4y19);area.add(x5y19);area.add(x6y19);area.add(x7y19);area.add(x8y19);area.add(x9y19);area.add(x10y19);area.add(x11y19);area.add(x12y19);area.add(x13y19);area.add(x14y19);area.add(x15y19);area.add(x16y19);area.add(x17y19);area.add(x18y19);area.add(x19y19);
+			
+	}
 
+	public ArrayList<Cell> getArea() {
+		return area;
 	}
 }
