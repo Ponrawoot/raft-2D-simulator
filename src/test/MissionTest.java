@@ -45,7 +45,7 @@ public class MissionTest {
 		assertEquals(player.getScrape(), 0);
 		assertEquals(player.getRope(), 0);
 		player.setScrape(50); player.setRope(50);
-		mission.getReward(1);
+		mission.getReward(1, player);
 		assertEquals(player.getMetal(),1);
 		assertEquals(player.getScrape(), 30);
 		assertEquals(player.getRope(), 40);
