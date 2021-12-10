@@ -545,11 +545,11 @@ public class Player implements Moveable {
 	}
 
 	public void checkLifetime() {
-		if (currentShovel.getLifetime() == 0)
+		if (currentShovel != null && currentShovel.getLifetime() == 0)
 			setCurrentShovel(null);
-		if (currentAxe.getLifetime() == 0)
+		if (currentAxe != null && currentAxe.getLifetime() == 0)
 			setCurrentAxe(null);
-		if (currentSpear.getLifetime() == 0)
+		if (currentSpear != null && currentSpear.getLifetime() == 0)
 			setCurrentSpear(null);
 
 	}
