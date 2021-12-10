@@ -6,6 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import game.base.Coordinate;
+import game.base.Database;
 import object.Animal;
 import object.Bird;
 import object.Fish;
@@ -36,6 +37,8 @@ public class Map {
 
 	public Map() {
 		this.setMorning(true);
+		Database database = new Database();
+		area = database.getArea();
 //		timeInGame = ;
 //		birdTime = ;
 //		fishTime = ;
@@ -44,7 +47,6 @@ public class Map {
 //		stoneTime = ;
 //		plasticTime =;
 //		eagleTime = ;
-//		area = ;
 //		plantableArea = ;
 //		moveableForEagleArea = ;
 //		availableFish = ;
