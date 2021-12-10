@@ -2,10 +2,10 @@ package game.base;
 
 public class Coordinate {
 	private int x, y;
-
+	
 	public Coordinate() {
-//		setX();
-//		setY();
+		setX(9);
+		setY(12);
 	}
 
 	public Coordinate(int x, int y) {
@@ -18,6 +18,8 @@ public class Coordinate {
 	}
 
 	public void setX(int x) {
+		if (x < 0)
+			x = 0;
 		this.x = x;
 	}
 
@@ -26,6 +28,8 @@ public class Coordinate {
 	}
 
 	public void setY(int y) {
+		if (y < 0)
+			y = 0;
 		this.y = y;
 	}
 

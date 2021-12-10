@@ -32,6 +32,7 @@ public class Cell {
 	}
 
 	public void setStatus(boolean status) {
+		if (closed) status = false;
 		this.status = status;
 	}
 
