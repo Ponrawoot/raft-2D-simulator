@@ -1,8 +1,5 @@
 package object;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import game.Cell;
 import game.Player;
 import game.base.Removeable;
@@ -13,7 +10,6 @@ public class Metal extends Material implements Removeable {
 
 	public Metal(Cell position) {
 		super(position);
-
 	}
 
 	@Override
@@ -28,21 +24,14 @@ public class Metal extends Material implements Removeable {
 			player.decreaseHP();
 			position.setStatus(true);
 		}
-		Timer timer = new Timer();
-		timer.scheduleAtFixedRate(new TimerTask() {
-			int i = 15; // (second) can change
 
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				i--;
-				if (i < 0) {
-					timer.cancel();
-					refresh();
-				}
-			}
-		}, 0, 1000);
-		// TODO Auto-generated method stub
+		try {
+			Thread.sleep(15000); // (millisecond) can change
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		refresh();
 	}
 
 	public void refresh() {
