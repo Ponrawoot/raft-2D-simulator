@@ -20,8 +20,18 @@ public class GameDisplayCell extends Pane {
 		map = new Map();
 		Coordinate coCell = new Coordinate(x,y);
 		Cell cell = Map.getCellFromCoordinate(coCell);
-		this.setPrefHeight(15);
-		this.setPrefWidth(15);
-		this.setBackground(new Background(new BackgroundFill(Color.MOCCASIN, CornerRadii.EMPTY, Insets.EMPTY)));
+		this.setPrefHeight(30);
+		this.setPrefWidth(30);
+		if (cell==null) {
+			this.setBackground(new Background(new BackgroundFill(Color.MOCCASIN, CornerRadii.EMPTY, Insets.EMPTY)));
+		} else if (cell.isSea()&&!cell.isClosed()&&cell.getStatus()) {
+			this.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
+		} else if (!cell.isSea()&&cell.isClosed()&&!cell.getStatus()) {
+			this.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+		} else if (!cell.isSea()&&!cell.isClosed()&&!cell.getStatus()) {
+			this.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+		} else if (!cell.isSea()&&!cell.isClosed()&&cell.getStatus()) {
+			this.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+		}
 	}
 }
