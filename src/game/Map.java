@@ -192,7 +192,7 @@ public class Map {
 
 	public static Cell getCellFromCoordinate(Coordinate other) {
 		for (Cell x : area) {
-			if (x.getCoCell() == other)
+			if (x.getCoCell().isSameAs(other)) //x.getCoCell().getX()==other.getX()&&x.getCoCell().getY()==other.getY()
 				return x;
 		}
 		return null;
