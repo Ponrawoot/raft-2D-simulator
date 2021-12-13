@@ -26,5 +26,8 @@ public class GameDisplay extends GridPane {
 		this.setAlignment(Pos.CENTER);
 		
 	}
+	public ArrayList<GameDisplayCell> getCellList() {
+		return cellList;
+	}
 }
 	

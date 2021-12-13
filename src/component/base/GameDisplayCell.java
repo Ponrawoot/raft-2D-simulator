@@ -22,12 +22,13 @@ public class GameDisplayCell extends Pane {
 	private static final String Tree = null;
 	private int x,y;
 	private Map map;
+	Cell cell;
 	public GameDisplayCell(int x,int y) {
 		this.x = x;
 		this.y = y;
 		map = new Map();
 		Coordinate coCell = new Coordinate(x,y);
-		Cell cell = Map.getCellFromCoordinate(coCell);
+		cell = Map.getCellFromCoordinate(coCell);
 		this.setPrefHeight(40);
 		this.setPrefWidth(40);
 		if (cell==null) {
@@ -133,6 +134,22 @@ public class GameDisplayCell extends Pane {
 		}
 		
 		if (cell.getCoCell().isSamePosition(new Coordinate(9,12))) {
+			ImageView ImageView = new ImageView(new Image("Front.png"));
+			ImageView.setFitHeight(40);
+			ImageView.setFitWidth(40);
+			this.getChildren().add(ImageView);
+		}
+	}
+	public Cell getCell() {
+		return cell;
+	}
+	
+	public void SetImageViewBlank() {
+		this.getChildren().clear();
+	}
+	public void SetImageView(String string) {
+		// TODO Auto-generated method stub
+		if (string.equals("Player")) {
 			ImageView ImageView = new ImageView(new Image("Front.png"));
 			ImageView.setFitHeight(40);
 			ImageView.setFitWidth(40);
