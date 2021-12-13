@@ -14,7 +14,7 @@ public class Main extends Application {
 		player = new Player("player");
 		rootPane = new RootPane(player);
 		
-		Scene scene = new Scene(rootPane, 512,480);
+		Scene scene = new Scene(rootPane, 1280,720);
 		
 		primaryStage.setTitle("Survival Simulator");
 		primaryStage.setScene(scene);
