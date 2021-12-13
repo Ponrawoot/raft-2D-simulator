@@ -12,7 +12,7 @@ public class Eagle extends Animal {
 	private boolean move;
 	private static final Cell defaultPosition = new Cell(new Coordinate(4, 1), false, false, true);
 
-	public Eagle(Cell position) {
+	public Eagle() {
 		super(defaultPosition); // same position every time
 		// TODO Auto-generated constructor stub
 		super.getPosition().setStatus(true);
