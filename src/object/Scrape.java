@@ -1,8 +1,5 @@
 package object;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -26,20 +23,14 @@ public class Scrape extends Material implements Removeable {
 			player.decreaseLifetime(ApplicationType.SHOVEL);
 			player.decreaseHP();
 		}
-		Timer timer = new Timer();
-		timer.scheduleAtFixedRate(new TimerTask() {
-			int i = 15; // (second) can change
 
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				i--;
-				if (i < 0) {
-					timer.cancel();
-					Map.refreshScrape(Map.getRandomInteger(1, 10));
-				}
-			}
-		}, 0, 1000);
+		try {
+			Thread.sleep(15000); // (millisecond) can change
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Map.refreshScrape(Map.getRandomInteger(1, 10));
 	}
 
 	public void refresh(Cell position) {
