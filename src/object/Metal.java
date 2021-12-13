@@ -24,18 +24,17 @@ public class Metal extends Material implements Removeable {
 			player.decreaseHP();
 			position.setStatus(true);
 		}
-
-		try {
-			Thread.sleep(15000); // (millisecond) can change
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		refresh();
+//		refresh();
 	}
 
 	public void refresh() {
 		if (!present) {
+			try {
+				Thread.sleep(15000); // (millisecond) can change
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			present = true;
 			position.setStatus(false);
 		}
