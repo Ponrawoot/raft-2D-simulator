@@ -3,6 +3,18 @@ package game.base;
 import java.util.ArrayList;
 
 import game.Cell;
+import object.Animal;
+import object.Bird;
+import object.Fish;
+import object.MangoTree;
+import object.Material;
+import object.Metal;
+import object.PalmTree;
+import object.PineconeTree;
+import object.Plastic;
+import object.Scrape;
+import object.Stone;
+import object.Tree;
 
 public class Database {
 	private  ArrayList<Cell> area;
@@ -12,6 +24,13 @@ public class Database {
 	private  ArrayList<Cell> randomBirdCell;
 	private  ArrayList<Cell> middleIslandArea;
 	private  ArrayList<Cell> repairableArea;
+	private  ArrayList<Tree> trees;
+	private ArrayList<Animal> availableFish;
+	private ArrayList<Animal> availableBird;
+	private ArrayList<Material> availableMetal;
+	private ArrayList<Material> availableScrape;
+	private ArrayList<Material> availablePlastic;
+	private ArrayList<Material> availableStone;
 
 	public Database() {
 		Cell x0y0 = new Cell(new Coordinate(0, 0), false, true, false);
@@ -455,8 +474,187 @@ public class Database {
 		
 		middleIslandArea = new ArrayList<Cell>();
 		
-	}
+		middleIslandArea.add(x6y4);middleIslandArea.add(x7y4);middleIslandArea.add(x8y4);middleIslandArea.add(x9y4);
+		middleIslandArea.add(x6y5);middleIslandArea.add(x7y5);middleIslandArea.add(x8y5);middleIslandArea.add(x9y5);middleIslandArea.add(x10y5);middleIslandArea.add(x11y5);middleIslandArea.add(x12y5);middleIslandArea.add(x13y5);
+		middleIslandArea.add(x6y6);middleIslandArea.add(x7y6);middleIslandArea.add(x8y6);middleIslandArea.add(x9y6);middleIslandArea.add(x10y6);middleIslandArea.add(x11y6);middleIslandArea.add(x12y6);middleIslandArea.add(x13y6);middleIslandArea.add(x14y6);middleIslandArea.add(x15y6);middleIslandArea.add(x16y6);middleIslandArea.add(x17y6);
+		middleIslandArea.add(x6y7);middleIslandArea.add(x7y7);middleIslandArea.add(x8y7);middleIslandArea.add(x9y7);middleIslandArea.add(x10y7);middleIslandArea.add(x11y7);middleIslandArea.add(x12y7);middleIslandArea.add(x13y7);middleIslandArea.add(x14y7);middleIslandArea.add(x16y7);middleIslandArea.add(x17y7);
+		middleIslandArea.add(x6y8);middleIslandArea.add(x7y8);middleIslandArea.add(x8y8);middleIslandArea.add(x9y8);middleIslandArea.add(x10y8);middleIslandArea.add(x11y8);middleIslandArea.add(x12y8);middleIslandArea.add(x13y8);middleIslandArea.add(x14y8);
+		middleIslandArea.add(x7y9);middleIslandArea.add(x8y9);middleIslandArea.add(x9y9);middleIslandArea.add(x10y9);middleIslandArea.add(x11y9);middleIslandArea.add(x12y9);middleIslandArea.add(x13y9);middleIslandArea.add(x14y9);
+		middleIslandArea.add(x7y10);middleIslandArea.add(x8y10);middleIslandArea.add(x9y10);middleIslandArea.add(x10y10);middleIslandArea.add(x11y10);middleIslandArea.add(x12y10);middleIslandArea.add(x13y10);middleIslandArea.add(x14y10);
+		middleIslandArea.add(x7y11);middleIslandArea.add(x8y11);middleIslandArea.add(x9y11);middleIslandArea.add(x10y11);middleIslandArea.add(x11y11);middleIslandArea.add(x12y11);middleIslandArea.add(x13y11);
+		middleIslandArea.add(x6y12);middleIslandArea.add(x7y12);middleIslandArea.add(x8y12);middleIslandArea.add(x9y12);middleIslandArea.add(x10y12);middleIslandArea.add(x11y12);
+		middleIslandArea.add(x3y13);middleIslandArea.add(x4y13);middleIslandArea.add(x5y13);middleIslandArea.add(x6y13);middleIslandArea.add(x7y13);middleIslandArea.add(x8y13);middleIslandArea.add(x9y13);middleIslandArea.add(x10y13);middleIslandArea.add(x11y13);middleIslandArea.add(x12y13);
+		middleIslandArea.add(x3y14);middleIslandArea.add(x4y14);middleIslandArea.add(x5y14);middleIslandArea.add(x6y14);middleIslandArea.add(x7y14);middleIslandArea.add(x8y14);middleIslandArea.add(x9y14);middleIslandArea.add(x10y14);middleIslandArea.add(x11y14);middleIslandArea.add(x12y14);
+		middleIslandArea.add(x3y15);middleIslandArea.add(x4y15);middleIslandArea.add(x5y15);middleIslandArea.add(x6y15);middleIslandArea.add(x7y15);middleIslandArea.add(x8y15);middleIslandArea.add(x9y15);middleIslandArea.add(x10y15);middleIslandArea.add(x11y15);middleIslandArea.add(x12y15);middleIslandArea.add(x13y15);
+		middleIslandArea.add(x3y16);middleIslandArea.add(x4y16);middleIslandArea.add(x5y16);middleIslandArea.add(x6y16);middleIslandArea.add(x7y16);middleIslandArea.add(x8y16);middleIslandArea.add(x9y16);middleIslandArea.add(x10y16);middleIslandArea.add(x11y16);middleIslandArea.add(x12y16);middleIslandArea.add(x13y16);
+		middleIslandArea.add(x3y17);middleIslandArea.add(x4y17);middleIslandArea.add(x5y17);middleIslandArea.add(x6y17);middleIslandArea.add(x7y17);middleIslandArea.add(x8y17);middleIslandArea.add(x11y17);middleIslandArea.add(x12y17);middleIslandArea.add(x13y17);
+		middleIslandArea.add(x3y18);middleIslandArea.add(x4y18);middleIslandArea.add(x5y18);middleIslandArea.add(x6y18);middleIslandArea.add(x11y18);middleIslandArea.add(x12y18);middleIslandArea.add(x13y18);
+		
+		repairableArea = new ArrayList<Cell>();
+		
+		repairableArea.add(x16y12);repairableArea.add(x18y12);repairableArea.add(x19y12);
+		repairableArea.add(x16y13);
+		repairableArea.add(x16y14);
+		repairableArea.add(x16y15);
+		repairableArea.add(x17y16);repairableArea.add(x18y16);
+		repairableArea.add(x19y17);
+		
+		randomFishCell = new ArrayList<Cell>();
+		
+		randomFishCell.add(x0y8);randomFishCell.add(x1y8);randomFishCell.add(x2y8);randomFishCell.add(x3y8);
+		randomFishCell.add(x0y9);randomFishCell.add(x1y9);randomFishCell.add(x2y9);randomFishCell.add(x3y9);
+		randomFishCell.add(x0y10);randomFishCell.add(x1y10);randomFishCell.add(x2y10);randomFishCell.add(x3y10);
+		randomFishCell.add(x0y11);randomFishCell.add(x1y11);randomFishCell.add(x2y11);randomFishCell.add(x3y11);
+		randomFishCell.add(x0y12);randomFishCell.add(x1y12);
+		randomFishCell.add(x0y13);randomFishCell.add(x1y13);
+		randomFishCell.add(x0y14);randomFishCell.add(x1y14);
+		randomFishCell.add(x0y15);randomFishCell.add(x1y15);
+		randomFishCell.add(x0y16);randomFishCell.add(x1y16);
+		randomFishCell.add(x0y17);randomFishCell.add(x1y17);
+		
+		randomBirdCell = new ArrayList<Cell>();
+		for (Cell x : area) {
+			if (!moveableForEagleArea.contains(x)) {
+				randomBirdCell.add(x);
+			}
+		}
+		
+		trees = new ArrayList<Tree>();
+		
+		PalmTree palmTree1 = new PalmTree(x7y5);
+		PalmTree palmTree2 = new PalmTree(x16y7);
+		PalmTree palmTree3 = new PalmTree(x8y9);
+		PalmTree palmTree4 = new PalmTree(x12y11);
+		PalmTree palmTree5 = new PalmTree(x6y12);
+		PalmTree palmTree6 = new PalmTree(x10y14);
+		PalmTree palmTree7 = new PalmTree(x6y15);
+		PalmTree palmTree8 = new PalmTree(x3y17);
+		PineconeTree pineconeTree1 = new PineconeTree(x12y7);
+		PineconeTree pineconeTree2 = new PineconeTree(x19y0);
+		PineconeTree pineconeTree3 = new PineconeTree(x16y1);
+		MangoTree mangoTree1 = new MangoTree(x11y6);
+		MangoTree mangoTree2 = new MangoTree(x11y8);
+		MangoTree mangoTree3 = new MangoTree(x17y2);
+		MangoTree mangoTree4 = new MangoTree(x15y0);
+		trees.add(palmTree1);trees.add(palmTree2);trees.add(palmTree3);trees.add(palmTree4);trees.add(palmTree5);trees.add(palmTree6);trees.add(palmTree7);trees.add(palmTree8);
+		trees.add(pineconeTree1);trees.add(pineconeTree2);trees.add(pineconeTree3);
+		trees.add(mangoTree1);trees.add(mangoTree2);trees.add(mangoTree3);trees.add(mangoTree4);
+		
+		availableFish = new ArrayList<Animal>();
+		
+		Fish fish1 = new Fish(x2y9);
+		Fish fish2 = new Fish(x3y11);
+		Fish fish3 = new Fish(x0y12);
+		Fish fish4 = new Fish(x1y18);
+		availableFish.add(fish1);availableFish.add(fish2);availableFish.add(fish3);availableFish.add(fish4);
+		
+		availableBird = new ArrayList<Animal>();
+		
+		Bird bird1 = new Bird(x5y18);
+		Bird bird2 = new Bird(x6y7);
+		Bird bird3 = new Bird(x14y8);
+		availableBird.add(bird1);availableBird.add(bird2);availableBird.add(bird3);
+		
+		availableMetal = new ArrayList<Material>();
+		
+		Metal metal1 = new Metal(x3y0);
+		Metal metal2 = new Metal(x1y1);
+		Metal metal3 = new Metal(x0y3);
+		availableMetal.add(metal1);availableMetal.add(metal2);availableMetal.add(metal3);
+		
+		availableScrape = new ArrayList<Material>();
+		
+		Scrape scrape1 = new Scrape(x9y4);
+		Scrape scrape2 = new Scrape(x17y9);
+		Scrape scrape3 = new Scrape(x4y15);
+		Scrape scrape4 = new Scrape(x13y19);
+		availableScrape.add(scrape1);availableScrape.add(scrape2);availableScrape.add(scrape3);availableScrape.add(scrape4);
+		
+		availablePlastic = new ArrayList<Material>();
+		
+		Plastic plastic1 = new Plastic(x10y2);
+		Plastic plastic2 = new Plastic(x18y3);
+		Plastic plastic3 = new Plastic(x9y6);
+		Plastic plastic4 = new Plastic(x8y15);
+		availablePlastic.add(plastic1);availablePlastic.add(plastic2);availablePlastic.add(plastic3);availablePlastic.add(plastic4);
+		
+		availableStone = new ArrayList<Material>();
+		
+		Stone stone1 = new Stone(x7y1);
+		Stone stone2 = new Stone(x14y3);
+		Stone stone3 = new Stone(x17y6);
+		Stone stone4 = new Stone(x7y10);
+		Stone stone5 = new Stone(x3y14);
+		Stone stone6 = new Stone(x12y16);
+		
+		availableStone.add(stone1);availableStone.add(stone2);availableStone.add(stone3);availableStone.add(stone4);availableStone.add(stone5);availableStone.add(stone6);
+		}
 	
+
+	public ArrayList<Tree> getTrees() {
+		return trees;
+	}
+
+
+	public ArrayList<Animal> getAvailableBird() {
+		return availableBird;
+	}
+
+
+	public ArrayList<Material> getAvailableScrape() {
+		return availableScrape;
+	}
+
+
+	public ArrayList<Material> getAvailablePlastic() {
+		return availablePlastic;
+	}
+
+
+	public ArrayList<Material> getAvailableStone() {
+		return availableStone;
+	}
+
+
+	public ArrayList<Material> getAvailableMetal() {
+		return availableMetal;
+	}
+
+
+	public ArrayList<Animal> getAvailableFish() {
+		return availableFish;
+	}
+
+
+	public ArrayList<Cell> getPlantableArea() {
+		return plantableArea;
+	}
+
+
+	public ArrayList<Cell> getMoveableForEagleArea() {
+		return moveableForEagleArea;
+	}
+
+
+	public ArrayList<Cell> getRandomFishCell() {
+		return randomFishCell;
+	}
+
+
+	public ArrayList<Cell> getRandomBirdCell() {
+		return randomBirdCell;
+	}
+
+
+	public ArrayList<Cell> getMiddleIslandArea() {
+		return middleIslandArea;
+	}
+
+
+	public ArrayList<Cell> getRepairableArea() {
+		return repairableArea;
+	}
+
 
 	public ArrayList<Cell> getArea() {
 		return area;
