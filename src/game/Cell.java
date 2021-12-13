@@ -56,6 +56,4 @@ public class Cell {
 	public boolean isSamePosition(Cell cell) {
 		return (getCoCell().getX() == cell.getCoCell().getX() && getCoCell().getY() == cell.getCoCell().getY());
 	}
-	
-
 }
