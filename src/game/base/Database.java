@@ -30,7 +30,7 @@ public class Database {
 		Cell x13y0 = new Cell(new Coordinate(13, 0), true, false, true);
 		Cell x14y0 = new Cell(new Coordinate(14, 0), false, false, true);
 		Cell x15y0 = new Cell(new Coordinate(15, 0), false, false, true);
-		Cell x16y0 = new Cell(new Coordinate(16, 0), false, true, false);
+		Cell x16y0 = new Cell(new Coordinate(16, 0), false, false, true);
 		Cell x17y0 = new Cell(new Coordinate(17, 0), false, false, true);
 		Cell x18y0 = new Cell(new Coordinate(18, 0), false, false, true);
 		Cell x19y0 = new Cell(new Coordinate(19, 0), false, false, true);
@@ -437,8 +437,26 @@ public class Database {
 		area.add(x0y17);area.add(x1y17);area.add(x2y17);area.add(x3y17);area.add(x4y17);area.add(x5y17);area.add(x6y17);area.add(x7y17);area.add(x8y17);area.add(x9y17);area.add(x10y17);area.add(x11y17);area.add(x12y17);area.add(x13y17);area.add(x14y17);area.add(x15y17);area.add(x16y17);area.add(x17y17);area.add(x18y17);area.add(x19y17);
 		area.add(x0y18);area.add(x1y18);area.add(x2y18);area.add(x3y18);area.add(x4y18);area.add(x5y18);area.add(x6y18);area.add(x7y18);area.add(x8y18);area.add(x9y18);area.add(x10y18);area.add(x11y18);area.add(x12y18);area.add(x13y18);area.add(x14y18);area.add(x15y18);area.add(x16y18);area.add(x17y18);area.add(x18y18);area.add(x19y18);
 		area.add(x0y19);area.add(x1y19);area.add(x2y19);area.add(x3y19);area.add(x4y19);area.add(x5y19);area.add(x6y19);area.add(x7y19);area.add(x8y19);area.add(x9y19);area.add(x10y19);area.add(x11y19);area.add(x12y19);area.add(x13y19);area.add(x14y19);area.add(x15y19);area.add(x16y19);area.add(x17y19);area.add(x18y19);area.add(x19y19);
-			
+		
+		plantableArea = new ArrayList<Cell>();
+		
+		plantableArea.add(x15y0);plantableArea.add(x16y0);plantableArea.add(x17y0);plantableArea.add(x18y0);plantableArea.add(x19y0);
+		plantableArea.add(x15y0);plantableArea.add(x16y1);plantableArea.add(x17y1);plantableArea.add(x18y1);plantableArea.add(x19y1);
+		plantableArea.add(x15y2);plantableArea.add(x16y2);plantableArea.add(x17y2);plantableArea.add(x18y2);plantableArea.add(x19y2);
+		plantableArea.add(x11y6);plantableArea.add(x12y6);plantableArea.add(x11y7);plantableArea.add(x12y7);plantableArea.add(x13y6);plantableArea.add(x13y7);
+		
+		moveableForEagleArea = new ArrayList<Cell>();
+		
+		moveableForEagleArea.add(x0y1);moveableForEagleArea.add(x1y1);moveableForEagleArea.add(x2y1);moveableForEagleArea.add(x3y1);moveableForEagleArea.add(x4y1);
+		moveableForEagleArea.add(x0y2);moveableForEagleArea.add(x1y2);moveableForEagleArea.add(x2y2);moveableForEagleArea.add(x3y2);moveableForEagleArea.add(x4y2);
+		moveableForEagleArea.add(x0y3);moveableForEagleArea.add(x1y3);moveableForEagleArea.add(x2y3);moveableForEagleArea.add(x3y3);moveableForEagleArea.add(x4y3);
+		moveableForEagleArea.add(x0y4);moveableForEagleArea.add(x1y4);moveableForEagleArea.add(x2y4);moveableForEagleArea.add(x3y4);moveableForEagleArea.add(x4y4);
+		moveableForEagleArea.add(x0y5);moveableForEagleArea.add(x1y5);moveableForEagleArea.add(x2y5);moveableForEagleArea.add(x3y5);moveableForEagleArea.add(x4y5);
+		
+		middleIslandArea = new ArrayList<Cell>();
+		
 	}
+	
 
 	public ArrayList<Cell> getArea() {
 		return area;
