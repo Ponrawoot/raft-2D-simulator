@@ -5,6 +5,7 @@ import component.base.InventoryButton;
 import component.base.MarketButton;
 import component.base.MissionButton;
 import component.base.ShipwreckButton;
+import game.Player;
 import javafx.scene.layout.FlowPane;
 
 public class BottomBar extends FlowPane {
@@ -14,10 +15,10 @@ public class BottomBar extends FlowPane {
 	private static ShipwreckButton shipwreckButton;
 	private static GuideButton guideButton;
 	
-	public BottomBar() {
+	public BottomBar(Player player) {
 		inventoryButton = new InventoryButton();
 		missionButton = new MissionButton();
-		marketButton = new MarketButton();
+		marketButton = new MarketButton(player);
 		shipwreckButton = new ShipwreckButton();
 		guideButton = new GuideButton();
 		this.getChildren().addAll(inventoryButton,missionButton,marketButton,shipwreckButton,guideButton);
