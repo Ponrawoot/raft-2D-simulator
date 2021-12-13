@@ -125,5 +125,18 @@ public class GameDisplayCell extends Pane {
 				}
 			}
 		}
+		if (Map.getEagle().getPosition().isSamePosition(cell)) {
+			ImageView ImageView = new ImageView(new Image("Eagle.png"));
+			ImageView.setFitHeight(40);
+			ImageView.setFitWidth(40);
+			this.getChildren().add(ImageView);
+		}
+		
+		if (cell.getCoCell().isSamePosition(new Coordinate(9,12))) {
+			ImageView ImageView = new ImageView(new Image("Front.png"));
+			ImageView.setFitHeight(40);
+			ImageView.setFitWidth(40);
+			this.getChildren().add(ImageView);
+		}
 	}
 }
