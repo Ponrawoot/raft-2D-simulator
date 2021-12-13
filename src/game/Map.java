@@ -12,8 +12,11 @@ import object.Animal;
 import object.Bird;
 import object.Eagle;
 import object.Fish;
+import object.MangoTree;
 import object.Material;
 import object.Metal;
+import object.PalmTree;
+import object.PineconeTree;
 import object.Plastic;
 import object.Scrape;
 import object.Stone;
@@ -205,6 +208,62 @@ public class Map {
 		return null;
 	}
 	
+	public static Object getObjectFromCoordinate(Coordinate coordinate) {
+		Cell cell = getCellFromCoordinate(coordinate);
+		if (cell.getStatus()) return null;
+		for (Animal x: Map.getAvailableFish()) {
+			if (x.getPosition().isSamePosition(cell)) {
+				Fish fish = (Fish) x;
+				return fish;
+			}
+		}
+		for (Animal x: Map.getAvailableBird()) {
+			if (x.getPosition().isSamePosition(cell)) {
+				Bird bird = (Bird) x;
+				return bird;
+			}
+		}
+		for (Material x: Map.getAvailableMetal()) {
+			if (x.getPosition().isSamePosition(cell)) {
+				Metal metal = (Metal) x;
+				return metal;
+			}
+		}
+		for (Material x: Map.getAvailablePlastic()) {
+			if (x.getPosition().isSamePosition(cell)) {
+				Plastic plastic = (Plastic) x;
+				return plastic;
+			}
+		}
+		for (Material x: Map.getAvailableScrape()) {
+			if (x.getPosition().isSamePosition(cell)) {
+				Scrape scrape = (Scrape) x;
+				return scrape;
+			}
+		}
+		for (Material x: Map.getAvailableStone()) {
+			if (x.getPosition().isSamePosition(cell)) {
+				Stone stone = (Stone) x;
+				return stone;
+			}
+		}
+		for (Tree x: Map.getTrees()) {
+			if (x.getPosition().isSamePosition(cell));
+				 if (x instanceof PalmTree) {
+					 return (PalmTree) x;
+				 } else if (x instanceof PineconeTree) {
+					 return (PineconeTree) x;
+				 } else if (x instanceof MangoTree) {
+					 return (MangoTree) x;
+				 }
+		}
+		if (Map.getEagle().getPosition().isSamePosition(cell)) {
+			return Map.eagle;
+		}
+		return null;
+		
+	}
+
 	public static Cell getCellFromDirection(Direction direction,Coordinate coordinate) {
 		
 		Coordinate c = coordinate;
