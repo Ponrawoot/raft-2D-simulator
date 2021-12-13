@@ -39,6 +39,18 @@ public class Map {
 		this.setMorning(true);
 		Database database = new Database();
 		area = database.getArea();
+		plantableArea = database.getPlantableArea();
+		moveableForEagleArea = database.getMoveableForEagleArea();
+		repairableArea = database.getRepairableArea();
+		randomFishCell = database.getRandomFishCell();
+		randomBirdCell = database.getRandomBirdCell();
+		availableFish = database.getAvailableFish();
+		availableBird = database.getAvailableBird();
+		availableMetal = database.getAvailableMetal();
+		availableScrape = database.getAvailableScrape();
+		availablePlastic = database.getAvailablePlastic();
+		availableStone = database.getAvailableStone();
+		trees = database.getTrees();
 //		timeInGame = ;
 //		birdTime = ;
 //		fishTime = ;
