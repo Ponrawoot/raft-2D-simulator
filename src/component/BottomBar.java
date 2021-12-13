@@ -6,6 +6,7 @@ import component.base.MarketButton;
 import component.base.MissionButton;
 import component.base.ShipwreckButton;
 import game.Player;
+import javafx.geometry.Insets;
 import javafx.scene.layout.FlowPane;
 
 public class BottomBar extends FlowPane {
@@ -16,7 +17,10 @@ public class BottomBar extends FlowPane {
 	private static GuideButton guideButton;
 	
 	public BottomBar(Player player) {
-		inventoryButton = new InventoryButton();
+		setPadding(new Insets(5));
+		setHgap(5);
+		setVgap(5);
+		inventoryButton = new InventoryButton(player);
 		missionButton = new MissionButton(player);
 		marketButton = new MarketButton(player);
 		shipwreckButton = new ShipwreckButton(player);

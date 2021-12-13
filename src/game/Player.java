@@ -210,7 +210,7 @@ public class Player implements Moveable {
 		if (fish > 3 && Map.getMoveableForEagleArea().contains(currentPosition)) {
 			fish -= 3;
 			eagle.setMove(false);
-			
+
 			Timer timer = new Timer();
 			timer.scheduleAtFixedRate(new TimerTask() {
 				int i = 15; // (second) can change
@@ -246,80 +246,81 @@ public class Player implements Moveable {
 		}
 		return false;
 	}
-	
+
 	public void control(Direction direction) {
-		if (this.direction!=direction)  {
+		if (this.direction != direction) {
 			setDirection(direction);
 		} else {
 			Cell cell = Map.getCellFromDirection(direction, this.currentPosition.getCoCell());
 			takeActionOnObject(cell);
 		}
 	}
-		
-	
+
 	public void takeActionOnObject(Cell cell) {
 		// TODO Auto-generated method stub
-		if (!cell.getStatus()) return;
-		for (Animal x: Map.getAvailableFish()) {
+		if (!cell.getStatus())
+			return;
+		for (Animal x : Map.getAvailableFish()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Fish fish = (Fish) x;
 				fish.beRemoved(this);
 				return;
 			}
 		}
-		for (Animal x: Map.getAvailableBird()) {
+		for (Animal x : Map.getAvailableBird()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Bird bird = (Bird) x;
 				bird.beRemoved(this);
 				return;
 			}
 		}
-		for (Material x: Map.getAvailableMetal()) {
+		for (Material x : Map.getAvailableMetal()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Metal metal = (Metal) x;
 				metal.beRemoved(this);
 				return;
 			}
 		}
-		for (Material x: Map.getAvailablePlastic()) {
+		for (Material x : Map.getAvailablePlastic()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Plastic plastic = (Plastic) x;
 				plastic.beRemoved(this);
 				return;
 			}
 		}
-		for (Material x: Map.getAvailableScrape()) {
+		for (Material x : Map.getAvailableScrape()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Scrape scrpe = (Scrape) x;
 				scrpe.beRemoved(this);
 				return;
 			}
 		}
-		for (Material x: Map.getAvailableStone()) {
+		for (Material x : Map.getAvailableStone()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Stone stone = (Stone) x;
 				stone.beRemoved(this);
 				return;
 			}
 		}
-		for (Tree x: Map.getTrees()) {
-			if (x.getPosition().isSamePosition(cell));
-				 if (x instanceof PalmTree) {
-					 ((PalmTree) x).collect(this);
-					 return;
-				 } else if (x instanceof PineconeTree) {
-					 ((PineconeTree) x).beRemoved(this);
-					 return;
-				 } else if (x instanceof MangoTree) {
-					 ((MangoTree) x).beRemoved(this);
-					 return;
-				 }
+		for (Tree x : Map.getTrees()) {
+			if (x.getPosition().isSamePosition(cell))
+				;
+			if (x instanceof PalmTree) {
+				((PalmTree) x).collect(this);
+				return;
+			} else if (x instanceof PineconeTree) {
+				((PineconeTree) x).beRemoved(this);
+				return;
+			} else if (x instanceof MangoTree) {
+				((MangoTree) x).beRemoved(this);
+				return;
+			}
 		}
 		if (Map.getEagle().getPosition().isSamePosition(cell)) {
 			Map.getEagle().killed(this);
 			return;
 		}
-		
+
 	}
 
 	public Direction getDirection() {

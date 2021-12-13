@@ -10,7 +10,7 @@ public class Market{
 	public boolean trade(Player player) {
 		switch (tradeObject) {
 		case "Canvas":
-			if (!player.hasCanvas() && player.getMetal() > 10 && player.getScrape() > 20 && player.getPlastic() > 20) {
+			if (!player.hasCanvas() && player.getMetal() >= 10 && player.getScrape() >= 20 && player.getPlastic() >= 20) {
 				player.setCanvas(true);
 				player.setMetal(player.getMetal() - 10);
 				player.setScrape(player.getScrape() - 20);
