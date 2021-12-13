@@ -17,7 +17,7 @@ public class BottomBar extends FlowPane {
 	
 	public BottomBar(Player player) {
 		inventoryButton = new InventoryButton();
-		missionButton = new MissionButton();
+		missionButton = new MissionButton(player);
 		marketButton = new MarketButton(player);
 		shipwreckButton = new ShipwreckButton();
 		guideButton = new GuideButton();
