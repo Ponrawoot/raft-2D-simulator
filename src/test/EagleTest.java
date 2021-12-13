@@ -7,9 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import game.Cell;
 import game.Player;
-import game.base.Coordinate;
 import object.Eagle;
 import object.Weapon;
 import object.base.ApplicationType;
@@ -19,7 +17,6 @@ public class EagleTest {
 
 	private Player player1, player2;
 	private Eagle eagle;
-	private Cell cell;
 
 	@BeforeEach
 	public void setUp() throws Exception {
@@ -33,8 +30,7 @@ public class EagleTest {
 		player2.setCurrentSpear(weapon2);
 		player2.setCurrentPosition(0, 0);
 
-		cell = new Cell(new Coordinate(0, 0), false, false, true);
-		eagle = new Eagle(cell);
+		eagle = new Eagle();
 	}
 
 	@Test
