@@ -16,6 +16,7 @@ public class MissionPane extends BorderPane{
 
 	public MissionPane(int missionNumber, Player player) {
 		super();
+		setPrefHeight(110);
 		mission = new Mission();
 		setLabel(missionNumber);
 		Button getRewardButton = new Button("Get");
