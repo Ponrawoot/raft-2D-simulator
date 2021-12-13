@@ -11,9 +11,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import game.Map;
-import game.Mission;
 import game.Player;
 import game.base.Coordinate;
+import object.Stone;
 
 public class StoneTest {
 	
@@ -27,11 +27,13 @@ public class StoneTest {
 		player2 = new Player("Survival cat");
 		map = new Map();
 		
-		
 	}
 
 	@Test
 	public void testConstructor() {
-		
+		Stone stone = (Stone) Map.getObjectFromCoordinate(new Coordinate(7,1));
+		assertEquals(stone.getPosition(), Map.getCellFromCoordinate(new Coordinate(7,1)));
+		stone.beRemoved(player1);
+		assertEquals(0,player1.getStone());
 	}
 }
