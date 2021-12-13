@@ -7,8 +7,10 @@ import java.util.TimerTask;
 
 import game.base.Coordinate;
 import game.base.Database;
+import game.base.Direction;
 import object.Animal;
 import object.Bird;
+import object.Eagle;
 import object.Fish;
 import object.Material;
 import object.Metal;
@@ -34,6 +36,11 @@ public class Map {
 	private static ArrayList<Cell> middleIslandArea;
 	private static ArrayList<Cell> repairableArea;
 	private static ArrayList<Tree> trees;
+	private static Eagle eagle;
+
+	public static Eagle getEagle() {
+		return eagle;
+	}
 
 	public Map() {
 		this.setMorning(true);
@@ -51,6 +58,7 @@ public class Map {
 		availablePlastic = database.getAvailablePlastic();
 		availableStone = database.getAvailableStone();
 		trees = database.getTrees();
+		eagle = new Eagle();
 //		timeInGame = ;
 //		birdTime = ;
 //		fishTime = ;
@@ -59,19 +67,6 @@ public class Map {
 //		stoneTime = ;
 //		plasticTime =;
 //		eagleTime = ;
-//		plantableArea = ;
-//		moveableForEagleArea = ;
-//		availableFish = ;
-//		randomFishCell = ;
-//		availableBird = ;
-//		randomBirdCell = ;
-//		availableMetal = ;
-//		availableScrape = ;
-//		availableStone = ;
-//		availablePlastic = ;
-//		middleIslandArea = ;
-//		repairableArea = ;
-//		Tree = ;
 	}
 
 	public boolean isMorning() {
@@ -204,10 +199,24 @@ public class Map {
 
 	public static Cell getCellFromCoordinate(Coordinate other) {
 		for (Cell x : area) {
-			if (x.getCoCell().isSameAs(other)) //x.getCoCell().getX()==other.getX()&&x.getCoCell().getY()==other.getY()
+			if (x.getCoCell().isSamePosition(other)) //x.getCoCell().getX()==other.getX()&&x.getCoCell().getY()==other.getY()
 				return x;
 		}
 		return null;
+	}
+	
+	public static Cell getCellFromDirection(Direction direction,Coordinate coordinate) {
+		
+		Coordinate c = coordinate;
+		if (direction==Direction.UP) c.setX(c.getX()+1);
+		if (direction==Direction.DOWN) c.setX(c.getX()-1);
+		if (direction==Direction.RIGHT) c.setY(c.getY()+1);
+		if (direction==Direction.LEFT) c.setY(c.getY()-1);
+		
+		return getCellFromCoordinate(c);
+		
+		
+		
 	}
 
 	public static int getRandomInteger(int maximum, int minimum) {
@@ -346,5 +355,9 @@ public class Map {
 		}
 
 	}
+
+
+	
+	
 
 }

@@ -7,9 +7,19 @@ import java.util.TimerTask;
 import game.base.Coordinate;
 import game.base.Direction;
 import game.base.Moveable;
+import object.Animal;
+import object.Bird;
 import object.Eagle;
+import object.Fish;
 import object.MangoTree;
+import object.Material;
+import object.Metal;
+import object.PalmTree;
 import object.PineconeTree;
+import object.Plastic;
+import object.Scrape;
+import object.Stone;
+import object.Tree;
 import object.Weapon;
 import object.base.ApplicationType;
 import object.base.MaterialType;
@@ -24,6 +34,7 @@ public class Player implements Moveable {
 	private Weapon currentSpear;
 	private Cell currentPosition;
 	private ArrayList<Weapon> playerWeapon;
+	private Direction direction;
 
 	public Player(String name) {
 		setMaxHP(10);
@@ -60,6 +71,7 @@ public class Player implements Moveable {
 		currentPosition = new Cell(new Coordinate(), false, false, true);
 		playerWeapon = new ArrayList<Weapon>();
 		playerWeapon.add(new Weapon(MaterialType.WOOD, ApplicationType.AXE));
+		direction = Direction.DOWN;
 	}
 
 	public void checkHP() {
@@ -233,6 +245,89 @@ public class Player implements Moveable {
 			return true;
 		}
 		return false;
+	}
+	
+	public void control(Direction direction) {
+		if (this.direction!=direction)  {
+			setDirection(direction);
+		} else {
+			Cell cell = Map.getCellFromDirection(direction, this.currentPosition.getCoCell());
+			takeActionOnObject(cell);
+		}
+	}
+		
+	
+	public void takeActionOnObject(Cell cell) {
+		// TODO Auto-generated method stub
+		if (!cell.getStatus()) return;
+		for (Animal x: Map.getAvailableFish()) {
+			if (x.getPosition().isSamePosition(cell)) {
+				Fish fish = (Fish) x;
+				fish.beRemoved(this);
+				return;
+			}
+		}
+		for (Animal x: Map.getAvailableBird()) {
+			if (x.getPosition().isSamePosition(cell)) {
+				Bird bird = (Bird) x;
+				bird.beRemoved(this);
+				return;
+			}
+		}
+		for (Material x: Map.getAvailableMetal()) {
+			if (x.getPosition().isSamePosition(cell)) {
+				Metal metal = (Metal) x;
+				metal.beRemoved(this);
+				return;
+			}
+		}
+		for (Material x: Map.getAvailablePlastic()) {
+			if (x.getPosition().isSamePosition(cell)) {
+				Plastic plastic = (Plastic) x;
+				plastic.beRemoved(this);
+				return;
+			}
+		}
+		for (Material x: Map.getAvailableScrape()) {
+			if (x.getPosition().isSamePosition(cell)) {
+				Scrape scrpe = (Scrape) x;
+				scrpe.beRemoved(this);
+				return;
+			}
+		}
+		for (Material x: Map.getAvailableStone()) {
+			if (x.getPosition().isSamePosition(cell)) {
+				Stone stone = (Stone) x;
+				stone.beRemoved(this);
+				return;
+			}
+		}
+		for (Tree x: Map.getTrees()) {
+			if (x.getPosition().isSamePosition(cell));
+				 if (x instanceof PalmTree) {
+					 ((PalmTree) x).collect(this);
+					 return;
+				 } else if (x instanceof PineconeTree) {
+					 ((PineconeTree) x).beRemoved(this);
+					 return;
+				 } else if (x instanceof MangoTree) {
+					 ((MangoTree) x).beRemoved(this);
+					 return;
+				 }
+		}
+		if (Map.getEagle().getPosition().isSamePosition(cell)) {
+			Map.getEagle().killed(this);
+			return;
+		}
+		
+	}
+
+	public Direction getDirection() {
+		return direction;
+	}
+
+	public void setDirection(Direction direction) {
+		this.direction = direction;
 	}
 
 	@Override

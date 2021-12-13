@@ -33,7 +33,7 @@ public class Coordinate {
 		this.y = y;
 	}
 	
-	public boolean isSameAs(Coordinate other) {
+	public boolean isSamePosition(Coordinate other) {
 		return this.getX()==other.getX()&&this.getY()==other.getY();
 	}
 
