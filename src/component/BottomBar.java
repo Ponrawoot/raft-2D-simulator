@@ -19,7 +19,7 @@ public class BottomBar extends FlowPane {
 		inventoryButton = new InventoryButton();
 		missionButton = new MissionButton(player);
 		marketButton = new MarketButton(player);
-		shipwreckButton = new ShipwreckButton();
+		shipwreckButton = new ShipwreckButton(player);
 		guideButton = new GuideButton();
 		this.getChildren().addAll(inventoryButton,missionButton,marketButton,shipwreckButton,guideButton);
 	}

@@ -115,7 +115,7 @@ public class Shipwreck {
 			}
 			return false;
 		}
-		return checkWinCondition();
+		return true;
 	}
 
 	public boolean checkWinCondition() {
