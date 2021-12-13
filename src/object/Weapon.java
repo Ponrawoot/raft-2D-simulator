@@ -38,5 +38,10 @@ public class Weapon {
 	public void setLifetime(int lifetime) {
 		this.lifetime = lifetime;
 	}
+
+	@Override
+	public String toString() {
+		return material + " " + application;
+	}
 	
 }
