@@ -1,12 +1,14 @@
 package game;
 
-public class Market {
+public class Market{
+	private String tradeObject;
 
-	public Market() {
+	public Market(String tradeObject) {
+		this.tradeObject = tradeObject;
 	}
 
-	public void trade(String object, Player player) {
-		switch (object) {
+	public boolean trade(Player player) {
+		switch (tradeObject) {
 		case "Canvas":
 			if (!player.hasCanvas() && player.getMetal() > 10 && player.getScrape() > 20 && player.getPlastic() > 20) {
 				player.setCanvas(true);
@@ -15,6 +17,7 @@ public class Market {
 				player.setPlastic(player.getPlastic() - 20);
 				break;
 			}
+			return false;
 		case "Steering":
 			if (!player.hasSteering() && player.getMetal() > 15 && player.getScrape() > 30
 					&& player.getPlastic() > 30) {
@@ -24,6 +27,7 @@ public class Market {
 				player.setPlastic(player.getPlastic() - 30);
 				break;
 			}
+			return false;
 		case "Petrol":
 			if (!player.hasPetrol() && player.getBird() > 40 && player.getFish() > 20) {
 				player.setPetrol(true);
@@ -31,13 +35,16 @@ public class Market {
 				player.setFish(player.getFish() - 20);
 				break;
 			}
+			return false;
 		case "Engine":
 			if (!player.hasEngine() && player.getEagleHead() > 5) {
 				player.setEngine(true);
 				player.setEagleHead(player.getEagleHead() - 5);
 				break;
 			}
+			return false;
 		}
+		return true;
 	}
 
 }
