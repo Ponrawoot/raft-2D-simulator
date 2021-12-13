@@ -35,44 +35,47 @@ public class MetalTest {
 	
 	@Test
 	public void testBeRemoved() {
-//		metal.beRemoved(player);
-//		assertTrue(metal.isPresent());
-//		assertEquals(0, player.getMetal());
-//		assertEquals(10, player.getHP());
-//		assertFalse(cell.getStatus());
-//		
-//		player.setCurrentShovel(new Weapon(MaterialType.WOOD, ApplicationType.SHOVEL));
-//		metal.beRemoved(player);
-//		assertTrue(metal.isPresent());
-//		assertEquals(0, player.getMetal());
-//		assertEquals(10, player.getHP());
-//		assertFalse(cell.getStatus());
-//		
-//		player.setCurrentShovel(new Weapon(MaterialType.STONE, ApplicationType.SHOVEL));
-//		metal.beRemoved(player);
-//		assertTrue(metal.isPresent());
-//		assertEquals(0, player.getMetal());
-//		assertEquals(10, player.getHP());
-//		assertFalse(cell.getStatus());
-//		
-//		player.setCurrentShovel(new Weapon(MaterialType.METAL, ApplicationType.SHOVEL));
-//		metal.beRemoved(player);
-//		assertTrue(metal.isPresent());
-//		assertEquals(0, player.getMetal());
-//		assertEquals(10, player.getHP());
-//		assertFalse(cell.getStatus());
-//		
-//		player.setCurrentPosition(2, 1);
-//		metal.beRemoved(player);
-//		assertFalse(metal.isPresent());
-//		assertEquals(1, player.getMetal());
-//		assertEquals(9, player.getHP());
-//		assertTrue(cell.getStatus());
-//		assertEquals(19, player.getCurrentShovel().getLifetime());
+		metal.beRemoved(player);
+		assertTrue(metal.isPresent());
+		assertEquals(0, player.getMetal());
+		assertEquals(10, player.getHP());
+		assertFalse(cell.getStatus());
+		
+		player.setCurrentShovel(new Weapon(MaterialType.WOOD, ApplicationType.SHOVEL));
+		metal.beRemoved(player);
+		assertTrue(metal.isPresent());
+		assertEquals(0, player.getMetal());
+		assertEquals(10, player.getHP());
+		assertFalse(cell.getStatus());
+		
+		player.setCurrentShovel(new Weapon(MaterialType.STONE, ApplicationType.SHOVEL));
+		metal.beRemoved(player);
+		assertTrue(metal.isPresent());
+		assertEquals(0, player.getMetal());
+		assertEquals(10, player.getHP());
+		assertFalse(cell.getStatus());
+		
+		player.setCurrentShovel(new Weapon(MaterialType.METAL, ApplicationType.SHOVEL));
+		metal.beRemoved(player);
+		assertTrue(metal.isPresent());
+		assertEquals(0, player.getMetal());
+		assertEquals(10, player.getHP());
+		assertFalse(cell.getStatus());
+		
+		player.setCurrentPosition(2, 1);
+		metal.beRemoved(player);
+		assertFalse(metal.isPresent());
+		assertEquals(1, player.getMetal());
+		assertEquals(9, player.getHP());
+		assertTrue(cell.getStatus());
+		assertEquals(19, player.getCurrentShovel().getLifetime());
 	}
 	
 	@Test
 	public void testRefresh() {
+		player.setCurrentShovel(new Weapon(MaterialType.METAL, ApplicationType.SHOVEL));
+		player.setCurrentPosition(2, 1);
+		metal.beRemoved(player);
 		metal.refresh();
 		assertTrue(metal.isPresent());
 		assertFalse(metal.getPosition().getStatus());

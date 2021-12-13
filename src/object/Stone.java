@@ -1,8 +1,5 @@
 package object;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -24,20 +21,13 @@ public class Stone extends Material implements Removeable {
 			player.decreaseHP();
 		}
 
-		Timer timer = new Timer();
-		timer.scheduleAtFixedRate(new TimerTask() {
-			int i = 15; // (second) can change
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				i--;
-				if (i < 0) {
-					timer.cancel();
-					Map.refreshStone(Map.getRandomInteger(1, 10));
-				}
-			}
-		}, 0, 1000);
+		try {
+			Thread.sleep(15000); // (millisecond) can change
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Map.refreshStone(Map.getRandomInteger(1, 10));
 	}
 
 	public void refresh(Cell position) {
