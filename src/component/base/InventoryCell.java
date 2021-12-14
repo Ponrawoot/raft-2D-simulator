@@ -37,11 +37,12 @@ public class InventoryCell extends Pane {
 		this.setTooltip();
 		this.setBorder(new Border(
 				new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-//		setImage();
+		setImage();
 	}
 	
 	private void setImage() {
-		Image image = new Image(name + ".png");
+		String image_path = ClassLoader.getSystemResource("inventory/" + name + ".png").toString();
+		Image image = new Image(image_path);
 		BackgroundFill bgFill = new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY);
 		BackgroundFill[] bgFillA = { bgFill };
 		BackgroundSize bgSize = new BackgroundSize(40, 40, false, false, false, false);
