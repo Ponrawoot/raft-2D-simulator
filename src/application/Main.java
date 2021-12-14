@@ -97,7 +97,7 @@ public class Main extends Application {
 			}
 			if (redraw2) {
 				RootPane.redraw2(cell);
-				//threadmain.refreshPalmTree(cell);
+				threadmain.refreshPalmTree(cell);
 				}
 				
 			if (player.isReset()) {

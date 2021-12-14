@@ -12,7 +12,7 @@ import object.Shipwreck;
 import object.Tree;
 
 public class ThreadMain {
-	
+
 //	protected void runGame(Player player) {
 //		Thread t = new Thread(() -> {
 //			try {		
@@ -42,24 +42,27 @@ public class ThreadMain {
 //	}
 
 	protected void refreshPalmTree(Cell cell) {
-		try {		
-			Thread.sleep(2000);
-			Platform.runLater(() -> {
-				RootPane.redraw(cell, cell, "PalmTree");
-			});
-			/*========================================================*/	
-		
-	} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-	}
-		
-		for (Tree x: Map.getTrees()) {
+		Thread thread = new Thread(() -> {
+			try {
+				Thread.sleep(2000);
+				Platform.runLater(() -> {
+					RootPane.redraw(cell, cell, "PalmTree");
+				});
+				/* ======================================================== */
+
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+		thread.start();
+
+		for (Tree x : Map.getTrees()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				PalmTree palmTree = (PalmTree) x;
 				palmTree.grow();
 			}
-	}
+		}
 //		// TODO Auto-generated method stub
 //
 //		Thread t = new Thread(() -> {
