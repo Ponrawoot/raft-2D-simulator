@@ -38,6 +38,7 @@ public class InventoryCell extends Pane {
 		this.setBorder(new Border(
 				new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 
+
 		String url;
 		switch (name) {
 		case "Wood":
@@ -124,9 +125,13 @@ public class InventoryCell extends Pane {
 			break;
 		}
 		setImage();
+	}
 
-
-
+	private void setImage(String url) {
+		Image image = new Image(url);
+	}
+	
+	
 	private void setImage() {
 		String image_path = ClassLoader.getSystemResource("inventory/" + name + ".png").toString();
 		Image image = new Image(image_path);

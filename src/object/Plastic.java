@@ -20,13 +20,13 @@ public class Plastic extends Material implements Removeable {
 			player.decreaseHP();
 		}
 
-		try {
-			Thread.sleep(15000); // (millisecond) can change
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Map.refreshPlastic(Map.getRandomInteger(1, 10));
+//		try {
+//			Thread.sleep(15000); // (millisecond) can change
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		Map.refreshPlastic(Map.getRandomInteger(1, 10));
 	}
 
 	public void refresh(Cell position) {

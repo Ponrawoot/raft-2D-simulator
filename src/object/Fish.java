@@ -21,16 +21,16 @@ public class Fish extends Animal implements Removeable {
 			setAlive(false);
 			player.decreaseHP();
 			player.decreaseLifetime(ApplicationType.SPEAR);
-
-			try {
-				Thread.sleep(15000); // (millisecond) can change
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			Map.refreshFish(Map.getRandomInteger(1, 10)); // min, max can change
 		}
+//			try {
+//				Thread.sleep(15000); // (millisecond) can change
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//
+//			Map.refreshFish(Map.getRandomInteger(1, 10)); // min, max can change
+//		}
 	}
 
 	public void refresh(Cell position) {

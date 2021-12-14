@@ -11,6 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import object.Weapon;
+import object.base.ApplicationType;
+import object.base.MaterialType;
 
 public class Main extends Application {
 	private static RootPane rootPane;
@@ -22,14 +25,16 @@ public class Main extends Application {
 
 		Scene scene = new Scene(rootPane, 1000, 1000);
 
-		primaryStage.setTitle("Survival Simulator");
-		primaryStage.setScene(scene);
-		primaryStage.show();
-
+//Cheat
 		player.setRaft(true);
 		player.setWood(1);
+		player.setCurrentAxe(new Weapon(MaterialType.METAL, ApplicationType.AXE));
+		player.setCurrentShovel(new Weapon(MaterialType.METAL, ApplicationType.SHOVEL));
+		player.setCurrentSpear(new Weapon(MaterialType.METAL, ApplicationType.SPEAR));
+//
 		scene.setOnKeyPressed((KeyEvent e) -> {
 			String string = null;
+			Direction direction = player.getDirection();
 			KeyCode code = e.getCode();
 			int x = player.getCurrentPosition().getCoCell().getX();
 			int y = player.getCurrentPosition().getCoCell().getY();
@@ -59,12 +64,24 @@ public class Main extends Application {
 					player.move(Direction.RIGHT);
 				}
 				break;
+			case P:
+				string = "";
+				cell = Map.getCellFromDirection(direction, new Coordinate(x,y));
+				if (player.takeActionOnObject(Map.getCellFromDirection(direction, new Coordinate(x,y)))) {
+					string = "Clear";
+				}
+			break;
 			default:
+				string = "";
+				System.out.println(code);
 				System.out.println("Invalid Key.");
 				break;
 			}
 			RootPane.redraw(player.getCurrentPosition(), cell, string);
 		});
+		primaryStage.setTitle("Survival Simulator");
+		primaryStage.setScene(scene);
+		primaryStage.show();
 
 	}
 

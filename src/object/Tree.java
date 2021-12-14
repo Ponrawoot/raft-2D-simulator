@@ -14,7 +14,8 @@ public abstract class Tree {
 		this.position.setStatus(false);
 		setReadyToCut(false);
 	}
-
+	
+	
 	public abstract void grow(Player player);
 
 	protected void setWood(int wood) {
