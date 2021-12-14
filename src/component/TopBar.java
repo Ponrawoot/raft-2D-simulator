@@ -6,6 +6,7 @@ import java.util.Date;
 import component.base.PauseButton;
 import component.base.SettingButton;
 import game.Player;
+import game.base.Direction;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -95,6 +96,7 @@ public class TopBar extends FlowPane {
 				stage.close();
 				TopBar.setHp(player);
 				player.setReset(true);
+				player.setDirection(Direction.DOWN);
 			});
 			root.getChildren().addAll(text, btn);
 

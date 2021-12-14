@@ -1,29 +1,34 @@
 package application;
 
 import component.RootPane;
+import component.base.PauseButton;
 import game.Cell;
 import game.Map;
 import game.Player;
 import game.base.Coordinate;
 import game.base.Direction;
-import game.base.Removeable;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import object.base.MaterialType;
 import object.PalmTree;
+import object.Tree;
 import object.Weapon;
 import object.base.ApplicationType;
 
 public class Main extends Application {
 	private static RootPane rootPane;
 	private Player player;
+	private ThreadMain threadmain;
 
 	public void start(Stage primaryStage) throws Exception {
 		player = new Player("player");
 		rootPane = new RootPane(player);
+		threadmain = new ThreadMain();
+		PauseButton pause = new PauseButton();
 
 		Scene scene = new Scene(rootPane, 1000, 1000);
 
@@ -82,8 +87,7 @@ public class Main extends Application {
 					string = "Clear";
 				}
 				if ((object instanceof PalmTree)&&(!cell.isClosed()))   redraw2 = true;
-				
-				RootPane.redraw(player.getCurrentPosition(), cell, string);
+				//RootPane.redraw(player.getCurrentPosition(), cell, string);
 			break;
 			default:
 				string = "";
@@ -93,13 +97,20 @@ public class Main extends Application {
 			}
 			if (redraw2) {
 				RootPane.redraw2(cell);
-			}
+				//threadmain.refreshPalmTree(cell);
+				}
+				
 			if (player.isReset()) {
 				RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(9,12)), cell2, "Front");
+				player.setReset(false);
 			}
-			
-			
 		});
+		
+//		threadmain.runGame(player);
+		
+		
+		
+		
 
 		primaryStage.setTitle("Survival Simulator");
 		primaryStage.setScene(scene);

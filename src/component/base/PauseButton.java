@@ -39,4 +39,8 @@ public class PauseButton extends Button{
 		setGraphic(imageView);
 	}
 
+	public boolean isPause() {
+		return pause;
+	}
+
 }
