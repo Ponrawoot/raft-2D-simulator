@@ -161,6 +161,7 @@ public class GameDisplayCell extends Pane {
 		case "Back" : url = "Back.png"; break;
 		case "TreeStump" : url = "TreeStump.png"; break;
 		case "PalmTree" : url = "PalmTree.png"; break;
+		case "Stone" : url = "Stone.png"; break;
 		default : 	url = null; break;
 	}
 		ImageView = new ImageView(new Image(url));

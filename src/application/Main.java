@@ -26,22 +26,27 @@ public class Main extends Application {
 
 	public void start(Stage primaryStage) throws Exception {
 		player = new Player("player");
-		rootPane = new RootPane(player);
-		threadmain = new ThreadMain();
-		PauseButton pause = new PauseButton();
-
-		Scene scene = new Scene(rootPane, 1000, 1000);
-
-
 //Cheat
 		//player.setHP(1);
 		player.setRaft(true);
 		player.setCurrentAxe(new Weapon(MaterialType.METAL, ApplicationType.AXE));
 		player.setCurrentShovel(new Weapon(MaterialType.METAL, ApplicationType.SHOVEL));
 		player.setCurrentSpear(new Weapon(MaterialType.METAL, ApplicationType.SPEAR));
-//
+		player.setLeaf(10);
+//	
+		rootPane = new RootPane(player);
+		threadmain = new ThreadMain();
+		PauseButton pause = new PauseButton();
+
+		Scene scene = new Scene(rootPane, 1000, 1000);
 
 		scene.setOnKeyPressed((KeyEvent e) -> {
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			String string = null;
 			boolean redraw2 = false;
 			Direction direction = player.getDirection();
@@ -50,6 +55,7 @@ public class Main extends Application {
 			int y = player.getCurrentPosition().getCoCell().getY();
 			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y));
 			Cell cell2 = Map.getCellFromCoordinate(new Coordinate(x, y));
+			
 			switch (code) {
 			case W:
 				string = "Back";
@@ -85,6 +91,7 @@ public class Main extends Application {
 				Object object = Map.getObjectFromCoordinate(cell.getCoCell());
 				if (player.takeActionOnObject(Map.getCellFromDirection(direction, new Coordinate(x,y)))) {
 					string = "Clear";
+					threadmain.refreshObject(object);
 				}
 				if ((object instanceof PalmTree)&&(!cell.isClosed()))   redraw2 = true;
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
@@ -104,7 +111,7 @@ public class Main extends Application {
 				RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(9,12)), cell2, "Front");
 				player.setReset(false);
 			}
-		});
+	});
 		
 //		threadmain.runGame(player);
 		

@@ -400,7 +400,7 @@ public class Map {
 		if (!readyForRandomMaterial(availableStone)) return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
-		for (Cell x : middleIslandArea) {
+		for (Cell x : area) {
 			if (x.getStatus() && !x.isClosed()) {
 				givenList.add(x);
 			}
@@ -418,6 +418,8 @@ public class Map {
 		}
 
 	}
+	
+	//public static void 
 
 
 	
