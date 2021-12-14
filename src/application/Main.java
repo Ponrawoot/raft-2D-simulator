@@ -107,7 +107,7 @@ public class Main extends Application {
 					string = "Clear";
 					threadmain.refreshObject(object);
 				}
-				if ((object instanceof PalmTree)&&(!cell.isClosed()))   redraw2 = true;
+				if ((object instanceof PalmTree))   redraw2 = true;
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
 			break;
 			default:
@@ -118,7 +118,7 @@ public class Main extends Application {
 			}
 			if (redraw2) {
 				RootPane.redraw2(cell);
-				threadmain.refreshPalmTree(cell);
+				//threadmain.refreshPalmTree(cell);
 				}
 				
 			if (player.isReset()) {
