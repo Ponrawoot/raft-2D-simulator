@@ -108,7 +108,7 @@ public class Player implements Moveable {
 	public boolean craft(String object) {
 		switch (object) {
 		case "Raft":
-			if (wood < 20 || rope < 10)
+			if (raft || wood < 20 || rope < 10)
 				return false;
 			raft = true;
 			wood -= 20;
@@ -201,7 +201,7 @@ public class Player implements Moveable {
 			circuit++;
 			break;
 		case "Receiver":
-			if (circuit < 10 || wood < 10 || plastic < 15 || hinge < 7)
+			if (receiver || circuit < 10 || wood < 10 || plastic < 15 || hinge < 7)
 				return false;
 			circuit -= 10;
 			wood -= 10;
@@ -210,7 +210,7 @@ public class Player implements Moveable {
 			receiver = true;
 			break;
 		case "Antenna":
-			if (circuit < 8 || scrape < 15 || nail < 15)
+			if (anthena || circuit < 8 || scrape < 15 || nail < 15)
 				return false;
 			circuit -= 8;
 			scrape -= 15;

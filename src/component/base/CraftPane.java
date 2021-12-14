@@ -110,7 +110,7 @@ public class CraftPane extends ListView<BorderPane> {
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Craft failed");
 		alert.setHeaderText(null);
-		alert.setContentText("Please check your object amount.");
+		alert.setContentText("Please check your inventory whether you already have it or not enough amount.");
 		alert.showAndWait();
 	}
 }
