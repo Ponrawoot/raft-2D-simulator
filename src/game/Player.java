@@ -329,7 +329,7 @@ public class Player implements Moveable {
 	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
-	
+
 	private boolean checkMove(Direction direction) {
 		// TODO Auto-generated method stub
 		int x = currentPosition.getCoCell().getX();
@@ -353,12 +353,13 @@ public class Player implements Moveable {
 		}
 		return false;
 	}
+
 	@Override
 	public void move(Direction direction) {
 		// TODO Auto-generated method stub
 		int x = currentPosition.getCoCell().getX();
 		int y = currentPosition.getCoCell().getY();
-		if (checkMove(direction)||(checkSail(direction))) {
+		if (checkMove(direction) || (checkSail(direction))) {
 			if (direction == Direction.UP) {
 				setCurrentPosition(x, y - 1);
 			} else if (direction == Direction.DOWN) {
@@ -370,7 +371,7 @@ public class Player implements Moveable {
 			}
 		}
 		// cell = position that player want to move to
-	
+
 	}
 
 	private boolean checkSail(Direction direction) {
@@ -623,8 +624,10 @@ public class Player implements Moveable {
 	}
 
 	public void setCurrentAxe(Weapon currentAxe) {
-		addWeapon(this.currentAxe);
+		if (this.currentAxe != null)
+			addWeapon(this.currentAxe);
 		this.currentAxe = currentAxe;
+
 	}
 
 	public Weapon getCurrentShovel() {
@@ -632,7 +635,8 @@ public class Player implements Moveable {
 	}
 
 	public void setCurrentShovel(Weapon currentShovel) {
-		addWeapon(this.currentShovel);
+		if (this.currentShovel != null)
+			addWeapon(this.currentShovel);
 		this.currentShovel = currentShovel;
 	}
 
@@ -641,7 +645,8 @@ public class Player implements Moveable {
 	}
 
 	public void setCurrentSpear(Weapon currentSpear) {
-		addWeapon(this.currentSpear);
+		if (this.currentSpear != null)
+			addWeapon(this.currentSpear);
 		this.currentSpear = currentSpear;
 	}
 
