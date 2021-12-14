@@ -99,90 +99,120 @@ public class Player implements Moveable {
 		maxHP += n;
 	}
 
-	public void craft(String object) {
+	public boolean craft(String object) {
 		switch (object) {
 		case "Raft":
+			if (wood < 20 || rope < 10)
+				return false;
 			raft = true;
 			wood -= 20;
 			rope -= 10;
 			break;
 		case "Rope":
+			if (leaf < 5)
+				return false;
 			leaf -= 5;
 			rope++;
 			break;
-		case "Wooden Axe":
+		case "Wood Axe":
+			if (wood < 10 || rope < 3)
+				return false;
 			wood -= 10;
 			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.WOOD, ApplicationType.AXE));
 			break;
 		case "Stone Axe":
+			if (wood < 5 || stone < 5 || rope < 3)
+				return false;
 			wood -= 5;
 			stone -= 5;
 			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.STONE, ApplicationType.AXE));
 			break;
 		case "Metal Axe":
+			if (wood < 5 || metal < 5 || rope < 3)
+				return false;
 			wood -= 5;
 			metal -= 5;
 			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.METAL, ApplicationType.AXE));
 			break;
 		case "Stone Shovel":
+			if (wood < 5 || stone < 7 || rope < 3)
+				return false;
 			wood -= 5;
 			stone -= 7;
 			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.STONE, ApplicationType.SHOVEL));
 			break;
 		case "Metal Shovel":
+			if (wood < 5 || metal < 4 || rope < 3)
+				return false;
 			wood -= 5;
 			metal -= 4;
 			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.METAL, ApplicationType.SHOVEL));
 			break;
-		case "Wooden Spear":
+		case "Wood Spear":
+			if (wood < 10)
+				return false;
 			wood -= 10;
 			playerWeapon.add(new Weapon(MaterialType.WOOD, ApplicationType.SPEAR));
 			break;
 		case "Stone Spear":
+			if (wood < 5 || stone < 6 || rope < 3)
+				return false;
 			wood -= 5;
 			stone -= 6;
 			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.STONE, ApplicationType.SPEAR));
 			break;
 		case "Metal Spear":
+			if (wood < 5 || metal < 5 || rope < 3)
+				return false;
 			wood -= 5;
 			metal -= 5;
 			rope -= 3;
 			playerWeapon.add(new Weapon(MaterialType.METAL, ApplicationType.SPEAR));
 			break;
 		case "Hinge":
+			if (metal < 2)
+				return false;
 			metal -= 2;
 			hinge++;
 			break;
 		case "Nail":
+			if (scrape < 3)
+				return false;
 			scrape -= 3;
 			nail++;
 			break;
 		case "Circuit":
+			if (copper < 2 || plastic < 4)
+				return false;
 			copper -= 2;
 			plastic -= 4;
 			circuit++;
 			break;
 		case "Receiver":
+			if (circuit < 10 || wood < 10 || plastic < 15 || hinge < 7)
+				return false;
 			circuit -= 10;
 			wood -= 10;
 			plastic -= 15;
 			hinge -= 7;
 			receiver = true;
 			break;
-		case "Anthena":
+		case "Antenna":
+			if (circuit < 8 || scrape < 15 || nail < 15)
+				return false;
 			circuit -= 8;
 			scrape -= 15;
 			nail -= 15;
 			anthena = true;
 			break;
 		}
-		decreaseHP();
+		return true;
 	}
 
 	public void consume(String object) {
