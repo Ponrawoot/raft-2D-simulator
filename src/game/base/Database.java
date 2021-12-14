@@ -536,7 +536,7 @@ public class Database {
 		MangoTree mangoTree2 = new MangoTree(x11y8);
 		MangoTree mangoTree3 = new MangoTree(x17y2);
 		MangoTree mangoTree4 = new MangoTree(x15y0);
-		palmTree1.grow();palmTree2.grow();palmTree3.grow();palmTree4.grow();palmTree5.grow();palmTree6.grow();
+		palmTree1.grow();palmTree2.grow();palmTree3.grow();palmTree4.grow();palmTree5.grow();palmTree6.grow();palmTree7.grow();palmTree8.grow();
 		pineconeTree1.grow();pineconeTree2.grow();pineconeTree3.grow();
 		mangoTree1.grow();mangoTree2.grow();mangoTree3.grow();mangoTree4.grow();
 		trees.add(palmTree1);trees.add(palmTree2);trees.add(palmTree3);trees.add(palmTree4);trees.add(palmTree5);trees.add(palmTree6);trees.add(palmTree7);trees.add(palmTree8);

@@ -36,6 +36,11 @@ public class Player implements Moveable {
 	private Cell currentPosition;
 	private ArrayList<Weapon> playerWeapon;
 	private Direction direction;
+	boolean reset=false;
+
+	public boolean isReset() {
+		return reset;
+	}
 
 	public Player(String name) {
 		setMaxHP(10);
@@ -73,6 +78,7 @@ public class Player implements Moveable {
 		playerWeapon = new ArrayList<Weapon>();
 		playerWeapon.add(new Weapon(MaterialType.WOOD, ApplicationType.AXE));
 		direction = Direction.DOWN;
+		
 	}
 
 	public void resetPosition() {
@@ -713,6 +719,16 @@ public class Player implements Moveable {
 
 	public void setRaft(boolean raft) {
 		this.raft = raft;
+	}
+
+	public void setReset(boolean b) {
+		// TODO Auto-generated method stub
+		this.reset = b;
+	}
+
+	public void setHP(int i) {
+		// TODO Auto-generated method stub
+		this.HP = i;
 	}
 
 }

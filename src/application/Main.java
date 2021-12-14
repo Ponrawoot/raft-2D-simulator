@@ -6,12 +6,14 @@ import game.Map;
 import game.Player;
 import game.base.Coordinate;
 import game.base.Direction;
+import game.base.Removeable;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import object.base.MaterialType;
+import object.PalmTree;
 import object.Weapon;
 import object.base.ApplicationType;
 
@@ -27,6 +29,7 @@ public class Main extends Application {
 
 
 //Cheat
+		//player.setHP(1);
 		player.setRaft(true);
 		player.setCurrentAxe(new Weapon(MaterialType.METAL, ApplicationType.AXE));
 		player.setCurrentShovel(new Weapon(MaterialType.METAL, ApplicationType.SHOVEL));
@@ -35,42 +38,52 @@ public class Main extends Application {
 
 		scene.setOnKeyPressed((KeyEvent e) -> {
 			String string = null;
+			boolean redraw2 = false;
 			Direction direction = player.getDirection();
 			KeyCode code = e.getCode();
 			int x = player.getCurrentPosition().getCoCell().getX();
 			int y = player.getCurrentPosition().getCoCell().getY();
 			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y));
+			Cell cell2 = Map.getCellFromCoordinate(new Coordinate(x, y));
 			switch (code) {
 			case W:
 				string = "Back";
 				if (!player.control(Direction.UP)) {
 					player.move(Direction.UP);
 				}
+				RootPane.redraw(player.getCurrentPosition(), cell, string);
 				break;
 			case S:
 				string = "Front";
 				if (!player.control(Direction.DOWN)) {
 					player.move(Direction.DOWN);
 				}
+				RootPane.redraw(player.getCurrentPosition(), cell, string);
 				break;
 			case A:
 				string = "Left";
 				if (!player.control(Direction.LEFT)) {
 					player.move(Direction.LEFT);
 				}
+				RootPane.redraw(player.getCurrentPosition(), cell, string);
 				break;
 			case D:
 				string = "Right";
 				if (!player.control(Direction.RIGHT)) {
 					player.move(Direction.RIGHT);
 				}
+				RootPane.redraw(player.getCurrentPosition(), cell, string);
 				break;
 			case P:
 				string = "";
 				cell = Map.getCellFromDirection(direction, new Coordinate(x,y));
+				Object object = Map.getObjectFromCoordinate(cell.getCoCell());
 				if (player.takeActionOnObject(Map.getCellFromDirection(direction, new Coordinate(x,y)))) {
 					string = "Clear";
 				}
+				if ((object instanceof PalmTree)&&(!cell.isClosed()))   redraw2 = true;
+				
+				RootPane.redraw(player.getCurrentPosition(), cell, string);
 			break;
 			default:
 				string = "";
@@ -78,7 +91,14 @@ public class Main extends Application {
 				System.out.println("Invalid Key.");
 				break;
 			}
-			RootPane.redraw(player.getCurrentPosition(), cell, string);
+			if (redraw2) {
+				RootPane.redraw2(cell);
+			}
+			if (player.isReset()) {
+				RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(9,12)), cell2, "Front");
+			}
+			
+			
 		});
 
 		primaryStage.setTitle("Survival Simulator");
