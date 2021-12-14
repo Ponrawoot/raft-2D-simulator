@@ -12,12 +12,14 @@ import object.Shipwreck;
 
 public class ShipwreckPane extends BorderPane {
 	private Label label;
+	private Button repairButton;
 
 	public ShipwreckPane(String repairPart, Player player, Shipwreck shipwreck) {
 		super();
 		label = new Label();
 		label.setText(repairPart);
-		Button repairButton = new Button("Repair");
+		repairButton = new Button("Repair");
+		setButtonAcess(repairPart, shipwreck);
 		repairButton.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -35,12 +37,52 @@ public class ShipwreckPane extends BorderPane {
 		setLeft(label);
 		setRight(repairButton);
 	}
+	
+	private void setButtonAcess(String repairPart, Shipwreck shipwreck) {
+		switch(repairPart) {
+		case "Wood":
+			if (!shipwreck.haswood()) return;
+			break;
+		case "Hinge":
+			if (!shipwreck.hasHinge()) return;
+			break;
+		case "Nail":
+			if (!shipwreck.hasNail()) return;
+			break;
+		case "Rope":
+			if (!shipwreck.hasRope()) return;
+			break;
+		case "Canvas":
+			if (!shipwreck.hasCanvas()) return;
+			break;
+		case "Steering":
+			if (!shipwreck.hasSteering()) return;
+			break;
+		case "Engine":
+			if (!shipwreck.hasEngine()) return;
+			break;
+		case "Petrol":
+			if (!shipwreck.hasPetrol()) return;
+			break;
+		case "Titanium":
+			if (!shipwreck.hasTitanium()) return;
+			break;
+		case "Receiver":
+			if (!shipwreck.hasReceiver()) return;
+			break;
+		case "Antenna":
+			if (!shipwreck.hasAnthena()) return;
+			break;
+		}
+		repairButton.setText("complete");
+		repairButton.setDisable(true);
+	}
 
 	public void showWarning() {
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Fail to repair shipwreck");
 		alert.setHeaderText(null);
-		alert.setContentText("Please check your object.");
+		alert.setContentText("Please check your inventory.");
 		alert.showAndWait();
 	}
 	

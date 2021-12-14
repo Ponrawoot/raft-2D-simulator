@@ -35,7 +35,6 @@ public class MarketButton extends Button{
 				
 				ListView<MarketPane> root = new ListView<MarketPane>();
 				root.setPrefWidth(350);
-				root.setPrefHeight(150);
 				MarketPane market0 = new MarketPane("Canvas", player);
 				MarketPane market1 = new MarketPane("Steering", player);
 				MarketPane market2 = new MarketPane("Petrol", player);
