@@ -11,7 +11,7 @@ import object.Weapon;
 
 public class InventoryPane extends VBox {
 	private GridPane objectPane;
-	private ObservableList<InventoryCell> objects;
+	private static ObservableList<InventoryCell> objects;
 	private GridPane weaponPane;
 	private ObservableList<InventoryCell> weapons;
 
@@ -99,10 +99,11 @@ public class InventoryPane extends VBox {
 		}
 
 	}
+	
 
-//	public void update(Player player) {
+	public static void update(Player player) {
 //		objects.get(0).setAmount(player.getWood());
-//		objects.get(1).setAmount(player.getLeaf());
+		objects.get(1).setAmount(player.getLeaf());
 //		objects.get(2).setAmount(player.getMangoSeed());
 //		objects.get(3).setAmount(player.getPineconeSeed());
 //		objects.get(4).setAmount(player.getFruit());
@@ -115,12 +116,11 @@ public class InventoryPane extends VBox {
 //		objects.get(11).setAmount(player.getScrape());
 //		objects.get(12).setAmount(player.getHinge());
 //		objects.get(13).setAmount(player.getNail());
-//		objects.get(14).setAmount(player.getRope());
+		objects.get(14).setAmount(player.getRope());
 //		objects.get(15).setAmount(player.getCircuit());
 //		objects.get(16).setAmount(player.getFish());
 //		objects.get(17).setAmount(player.getBird());
 //		objects.get(18).setAmount(player.getEagleHead());
-//
 //		if (player.hasRaft() && !objects.contains(new InventoryCell("Raft", null, 0)))
 //			objects.add(new InventoryCell("Raft", null, 0));
 //		if (player.hasReceiver() && !objects.contains(new InventoryCell("Receiver", null, 0)))
@@ -136,6 +136,6 @@ public class InventoryPane extends VBox {
 //		if (player.hasEngine() && !objects.contains(new InventoryCell("Engine", null, 0)))
 //			objects.add(new InventoryCell("Engine", null, 0));
 //		
-//	}
+	}
 
 }
