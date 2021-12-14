@@ -51,7 +51,7 @@ public class ShipwreckButton extends Button {
 				ShipwreckPane part7 = new ShipwreckPane("Petrol", player, shipwreck);
 				ShipwreckPane part8 = new ShipwreckPane("Titanium", player, shipwreck);
 				ShipwreckPane part9 = new ShipwreckPane("Receiver", player, shipwreck);
-				ShipwreckPane part10 = new ShipwreckPane("Anthena", player, shipwreck);
+				ShipwreckPane part10 = new ShipwreckPane("Antenna", player, shipwreck);
 				root.getItems().addAll(part0, part1, part2, part3, part4, part5, part6, part7, part8, part9, part10);
 				
 				if (shipwreck.checkWinCondition()) {

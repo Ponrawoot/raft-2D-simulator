@@ -107,7 +107,7 @@ public class Shipwreck {
 				break;
 			}
 			return false;
-		case "Anthena":
+		case "Antenna":
 			if (player.hasAnthena() && !anthena) {
 				anthena = true;
 				player.setAnthena(false);
