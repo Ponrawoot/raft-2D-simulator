@@ -39,6 +39,15 @@ public class Main extends Application {
 		player.setCurrentAxe(new Weapon(MaterialType.METAL, ApplicationType.AXE));
 		player.setCurrentShovel(new Weapon(MaterialType.METAL, ApplicationType.SHOVEL));
 		player.setCurrentSpear(new Weapon(MaterialType.METAL, ApplicationType.SPEAR));
+		player.setFish(5);
+		player.setFruit(5);
+		player.setBird(5);
+		player.setMetal(100);
+		player.setScrape(100);
+		player.setPlastic(100);
+		player.setWood(100);
+		player.setRope(100);
+		
 //
 
 		scene.setOnKeyPressed((KeyEvent e) -> {
