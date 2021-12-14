@@ -311,7 +311,7 @@ public class Map {
 			return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
-		for (Cell x : area) {
+		for (Cell x : randomFishCell) {
 			if (x.getStatus() && !x.isClosed() && x.isSea()) {
 				givenList.add(x);
 			}
@@ -334,7 +334,7 @@ public class Map {
 			return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
-		for (Cell x : area) {
+		for (Cell x : randomBirdCell) {
 			if (x.getStatus() && !x.isClosed()) {
 				givenList.add(x);
 			}
