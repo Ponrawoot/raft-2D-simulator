@@ -1,9 +1,8 @@
 package component.base;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import game.Player;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -12,9 +11,9 @@ import object.Weapon;
 
 public class InventoryPane extends VBox {
 	private GridPane objectPane;
-	private ArrayList<InventoryCell> objects;
+	private ObservableList<InventoryCell> objects;
 	private GridPane weaponPane;
-	private ArrayList<InventoryCell> weapons;
+	private ObservableList<InventoryCell> weapons;
 
 	public InventoryPane(Player player) {
 		initObjects(player);
@@ -29,7 +28,7 @@ public class InventoryPane extends VBox {
 		objectPane = new GridPane();
 		objectPane.setHgap(5);
 		objectPane.setVgap(5);
-		objects = new ArrayList<InventoryCell>();
+		objects = FXCollections.observableArrayList();
 
 		InventoryCell inv0 = new InventoryCell("Wood", null, player.getWood());
 		InventoryCell inv1 = new InventoryCell("Leaf", null, player.getLeaf());
@@ -50,23 +49,24 @@ public class InventoryPane extends VBox {
 		InventoryCell inv16 = new InventoryCell("Fish", null, player.getFish());
 		InventoryCell inv17 = new InventoryCell("Bird", null, player.getBird());
 		InventoryCell inv18 = new InventoryCell("Eagle head", null, player.getEagleHead());
-		objects.addAll(Arrays.asList(inv0, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12,
-				inv13, inv14, inv15, inv16, inv17, inv18));
-		
-//		if (player.hasRaft())
-//			objects.add(new InventoryCell("Raft", null, 0));
-//		if (player.hasReceiver())
-//			objects.add(new InventoryCell("Receiver", null, 0));
-//		if (player.hasAnthena())
-//			objects.add(new InventoryCell("Antenna", null, 0));
-//		if (player.hasCanvas())
-//			objects.add(new InventoryCell("Canvas", null, 0));
-//		if (player.hasSteering())
-//			objects.add(new InventoryCell("Steering", null, 0));
-//		if (player.hasPetrol())
-//			objects.add(new InventoryCell("Petrol", null, 0));
-//		if (player.hasEngine())
-//			objects.add(new InventoryCell("Engine", null, 0));
+		objects.addAll(inv0, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12,
+				inv13, inv14, inv15, inv16, inv17, inv18);
+
+		if (player.hasRaft())
+			objects.add(new InventoryCell("Raft", null, 0));
+		if (player.hasReceiver())
+			objects.add(new InventoryCell("Reiceiver", null, 0));
+		if (player.hasAnthena())
+			objects.add(new InventoryCell("Antenna", null, 0));
+		if (player.hasCanvas())
+			objects.add(new InventoryCell("Canvas", null, 0));
+		if (player.hasSteering())
+			objects.add(new InventoryCell("Steering", null, 0));
+		if (player.hasPetrol())
+			objects.add(new InventoryCell("Petrol", null, 0));
+		if (player.hasEngine())
+			objects.add(new InventoryCell("Engine", null, 0));
+
 
 		int index = 0;
 		for (int i = 0; i < 4; i++) {
@@ -83,7 +83,7 @@ public class InventoryPane extends VBox {
 		weaponPane = new GridPane();
 		weaponPane.setHgap(5);
 		weaponPane.setVgap(5);
-		weapons = new ArrayList<InventoryCell>();
+		weapons = FXCollections.observableArrayList();
 
 		int i = 0;
 		int j = 0;
@@ -99,5 +99,43 @@ public class InventoryPane extends VBox {
 		}
 
 	}
+
+//	public void update(Player player) {
+//		objects.get(0).setAmount(player.getWood());
+//		objects.get(1).setAmount(player.getLeaf());
+//		objects.get(2).setAmount(player.getMangoSeed());
+//		objects.get(3).setAmount(player.getPineconeSeed());
+//		objects.get(4).setAmount(player.getFruit());
+//		objects.get(5).setAmount(player.getPlastic());
+//		objects.get(6).setAmount(player.getFeather());
+//		objects.get(7).setAmount(player.getTitanium());
+//		objects.get(8).setAmount(player.getCopper());
+//		objects.get(9).setAmount(player.getMetal());
+//		objects.get(10).setAmount(player.getStone());
+//		objects.get(11).setAmount(player.getScrape());
+//		objects.get(12).setAmount(player.getHinge());
+//		objects.get(13).setAmount(player.getNail());
+//		objects.get(14).setAmount(player.getRope());
+//		objects.get(15).setAmount(player.getCircuit());
+//		objects.get(16).setAmount(player.getFish());
+//		objects.get(17).setAmount(player.getBird());
+//		objects.get(18).setAmount(player.getEagleHead());
+//
+//		if (player.hasRaft() && !objects.contains(new InventoryCell("Raft", null, 0)))
+//			objects.add(new InventoryCell("Raft", null, 0));
+//		if (player.hasReceiver() && !objects.contains(new InventoryCell("Receiver", null, 0)))
+//			objects.add(new InventoryCell("Reiceiver", null, 0));
+//		if (player.hasAnthena() && !objects.contains(new InventoryCell("Antenna", null, 0)))
+//			objects.add(new InventoryCell("Antenna", null, 0));
+//		if (player.hasCanvas() && !objects.contains(new InventoryCell("Canvas", null, 0)))
+//			objects.add(new InventoryCell("Canvas", null, 0));
+//		if (player.hasSteering() && !objects.contains(new InventoryCell("Steering", null, 0)))
+//			objects.add(new InventoryCell("Steering", null, 0));
+//		if (player.hasPetrol() && !objects.contains(new InventoryCell("Petrol", null, 0)))
+//			objects.add(new InventoryCell("Petrol", null, 0));
+//		if (player.hasEngine() && !objects.contains(new InventoryCell("Engine", null, 0)))
+//			objects.add(new InventoryCell("Engine", null, 0));
+//		
+//	}
 
 }

@@ -37,7 +37,7 @@ public class InventoryCell extends Pane {
 		this.setTooltip();
 		this.setBorder(new Border(
 				new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-		
+
 		setImage();
 	}
 
@@ -52,7 +52,7 @@ public class InventoryCell extends Pane {
 		this.setBackground(new Background(bgFillA, bgImgA));
 	}
 
-	private void setAmount(int amount) {
+	public void setAmount(int amount) {
 		if (amount < 0)
 			amount = 0;
 		this.amount = amount;
@@ -78,6 +78,14 @@ public class InventoryCell extends Pane {
 			return name;
 		}
 		return name + "\nAmount: " + amount;
+	}
+
+	public boolean equals(InventoryCell other) {
+		return other.getName().equals(name);
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }

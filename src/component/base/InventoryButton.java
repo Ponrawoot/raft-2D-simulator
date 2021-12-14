@@ -6,6 +6,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,8 +33,17 @@ public class InventoryButton extends Button {
 				Stage stage = new Stage();
 				stage.setTitle("Inventory");
 
-				InventoryPane root = new InventoryPane(player);
-
+				InventoryPane inventoryPane = new InventoryPane(player);
+				CraftPane craftPane = new CraftPane(player);
+				
+				TabPane root = new TabPane();
+				
+				Tab inventoryTab = new Tab("Inventory", inventoryPane);
+				inventoryTab.setClosable(false);
+				Tab craftTab = new Tab("Craft", craftPane);
+				craftTab.setClosable(false);
+				root.getTabs().addAll(inventoryTab, craftTab);
+				
 				Scene scene = new Scene(root);
 				stage.setScene(scene);
 				stage.initModality(Modality.APPLICATION_MODAL);

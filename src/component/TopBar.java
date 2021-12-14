@@ -8,8 +8,6 @@ import component.base.SettingButton;
 import game.Player;
 import game.base.Direction;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -55,15 +53,7 @@ public class TopBar extends FlowPane {
 
 		settingButton = new SettingButton();
 		pauseButton = new PauseButton();
-		pauseButton.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
+		
 		hpText = new Text("HP: " + player.getHP());
 		getChildren().addAll(playerName, hpText, hp, time, settingButton, pauseButton);
 	}
