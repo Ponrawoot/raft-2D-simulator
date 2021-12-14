@@ -1,5 +1,6 @@
 package object;
 
+import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -35,6 +36,7 @@ public class PineconeTree extends Tree implements Removeable {
 				Map.removeTree(this);
 				this.position.setStatus(true);
 				player.decreaseHP();
+				TopBar.setHp(player);
 			}
 		}
 	}

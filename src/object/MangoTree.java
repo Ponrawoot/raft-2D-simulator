@@ -1,5 +1,6 @@
 package object;
 
+import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -40,6 +41,7 @@ public class MangoTree extends Tree implements Removeable {
 				Map.removeTree(this);
 				this.position.setStatus(true);
 				player.decreaseHP();
+				TopBar.setHp(player);
 			}
 		}
 	}
@@ -61,7 +63,7 @@ public class MangoTree extends Tree implements Removeable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			setReadyToCut(true);
 		}
 	}

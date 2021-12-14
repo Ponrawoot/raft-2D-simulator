@@ -1,5 +1,6 @@
 package object;
 
+import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -25,7 +26,7 @@ public class Bird extends Animal implements Removeable {
 			setAlive(false);
 			player.decreaseHP();
 			player.decreaseLifetime(ApplicationType.SPEAR);
-		}
+			TopBar.setHp(player);
 
 //			try {
 //				Thread.sleep(15000); // (millisecond) can change
@@ -35,7 +36,7 @@ public class Bird extends Animal implements Removeable {
 //			}
 //
 //			Map.refreshBird(Map.getRandomInteger(1, 10)); // min, max can change
-//		}
+		}
 	}
 
 	public void refresh(Cell position) {
