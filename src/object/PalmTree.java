@@ -32,13 +32,12 @@ public class PalmTree extends Tree {
 			super.setWood(3);
 			super.setLeaf(3);
 
-			try {
-				Thread.sleep(15000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
+//			try {
+//				Thread.sleep(15000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			setReadyToCut(true);
 		}
 	}
