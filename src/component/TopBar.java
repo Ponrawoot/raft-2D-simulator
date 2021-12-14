@@ -17,7 +17,7 @@ import javafx.scene.text.Text;
 
 public class TopBar extends FlowPane {
 	private Text playerName;
-	private ProgressBar hp;
+	private static ProgressBar hp;
 	private Label time;
 	private SettingButton settingButton;
 	private PauseButton pauseButton;
@@ -59,7 +59,7 @@ public class TopBar extends FlowPane {
 		getChildren().addAll(playerName, hp, time, settingButton, pauseButton);
 	}
 
-	public void setHp(Player player) {
+	public static void setHp(Player player) {
 		hp.setProgress(player.getHP() / player.getMaxHP());
 	}
 

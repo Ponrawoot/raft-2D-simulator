@@ -1,5 +1,6 @@
 package object;
 
+import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -22,6 +23,7 @@ public class Scrape extends Material implements Removeable {
 			position.setStatus(true);
 			player.decreaseLifetime(ApplicationType.SHOVEL);
 			player.decreaseHP();
+			TopBar.setHp(player);
 		}
 
 		try {

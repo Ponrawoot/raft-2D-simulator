@@ -1,5 +1,6 @@
 package object;
 
+import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -19,6 +20,7 @@ public class Stone extends Material implements Removeable {
 			present = false;
 			position.setStatus(true);
 			player.decreaseHP();
+			TopBar.setHp(player);
 		}
 
 		try {

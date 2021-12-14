@@ -1,5 +1,6 @@
 package object;
 
+import component.TopBar;
 import game.Cell;
 import game.Player;
 import object.base.ApplicationType;
@@ -23,6 +24,7 @@ public class PalmTree extends Tree {
 				setLeaf(0);
 				setReadyToCut(false);
 				player.decreaseHP();
+				TopBar.setHp(player);
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 package object;
 
+import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -68,6 +69,7 @@ public class Eagle extends Animal {
 			player.setFeather(player.getFeather() + 3);
 			player.decreaseLifetime(ApplicationType.SPEAR);
 			player.decreaseHP();
+			TopBar.setHp(player);
 
 			try {
 				Thread.sleep(15000); // (millisecond) can change

@@ -1,5 +1,6 @@
 package object;
 
+import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -21,6 +22,7 @@ public class Fish extends Animal implements Removeable {
 			setAlive(false);
 			player.decreaseHP();
 			player.decreaseLifetime(ApplicationType.SPEAR);
+			TopBar.setHp(player);
 
 			try {
 				Thread.sleep(15000); // (millisecond) can change
