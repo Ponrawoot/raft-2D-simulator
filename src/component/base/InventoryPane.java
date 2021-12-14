@@ -4,7 +4,9 @@ import game.Player;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import object.Weapon;
@@ -14,14 +16,16 @@ public class InventoryPane extends VBox {
 	private ObservableList<InventoryCell> objects;
 	private GridPane weaponPane;
 	private ObservableList<InventoryCell> weapons;
+	private HBox eatButtons;
 
 	public InventoryPane(Player player) {
 		initObjects(player);
 		initWeapons(player);
+		initEatButtons(player);
 
 		setSpacing(10);
 		setPadding(new Insets(5));
-		getChildren().addAll(new Text("Player objects"), objectPane, new Text("Player weapons"), weaponPane);
+		getChildren().addAll(new Text("Player objects"), objectPane, eatButtons, new Text("Player weapons"), weaponPane);
 	}
 
 	private void initObjects(Player player) {
@@ -49,8 +53,8 @@ public class InventoryPane extends VBox {
 		InventoryCell inv16 = new InventoryCell("Fish", null, player.getFish());
 		InventoryCell inv17 = new InventoryCell("Bird", null, player.getBird());
 		InventoryCell inv18 = new InventoryCell("Eagle head", null, player.getEagleHead());
-		objects.addAll(inv0, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12,
-				inv13, inv14, inv15, inv16, inv17, inv18);
+		objects.addAll(inv0, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12, inv13, inv14,
+				inv15, inv16, inv17, inv18);
 
 		if (player.hasRaft())
 			objects.add(new InventoryCell("Raft", null, 0));
@@ -66,7 +70,6 @@ public class InventoryPane extends VBox {
 			objects.add(new InventoryCell("Petrol", null, 0));
 		if (player.hasEngine())
 			objects.add(new InventoryCell("Engine", null, 0));
-
 
 		int index = 0;
 		for (int i = 0; i < 4; i++) {
@@ -100,14 +103,50 @@ public class InventoryPane extends VBox {
 
 	}
 
+	private void initEatButtons(Player player) {
+		eatButtons = new HBox();
+		eatButtons.setSpacing(10);
+		
+		Button fruit = new Button("Eat fruit");
+		Button fish = new Button("Eat fish");
+		Button bird = new Button("Eat bird");
+		fruit.setOnAction(event -> {
+			player.consume("Fruit");
+			update(player);
+			if (player.getFruit() == 0)
+				fruit.setDisable(true);
+		});
+		fish.setOnAction(event -> {
+			player.consume("Fish");
+			update(player);
+			if (player.getFish() == 0)
+				fish.setDisable(true);
+		});
+		bird.setOnAction(event -> {
+			player.consume("Bird");
+			update(player);
+			if (player.getBird() == 0)
+				bird.setDisable(true);
+		});
+		
+		if (player.getFruit() == 0)
+			fruit.setDisable(true);
+		if (player.getFish() == 0)
+			fish.setDisable(true);
+		if (player.getBird() == 0)
+			bird.setDisable(true);
+		
+		eatButtons.getChildren().addAll(fruit, fish, bird);	
+	}
+
 	public void update(Player player) {
 		objects = null;
 		initObjects(player);
 		getChildren().set(1, objectPane);
-		
+
 		weapons = null;
 		initWeapons(player);
-		getChildren().set(3, weaponPane);
+		getChildren().set(4, weaponPane);
 	}
 
 }
