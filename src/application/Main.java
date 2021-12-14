@@ -49,6 +49,7 @@ public class Main extends Application {
 		Scene scene = new Scene(rootPane, 1000, 1000);
 
 		scene.setOnKeyPressed((KeyEvent e) -> {
+			
 			try {
 				Thread.sleep(50);
 			} catch (InterruptedException e1) {
@@ -63,7 +64,6 @@ public class Main extends Application {
 			int y = player.getCurrentPosition().getCoCell().getY();
 			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y));
 			Cell cell2 = Map.getCellFromCoordinate(new Coordinate(x, y));
-			
 			switch (code) {
 			case W:
 				string = "Back";
@@ -119,6 +119,7 @@ public class Main extends Application {
 				RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(9,12)), cell2, "Front");
 				player.setReset(false);
 			}
+			threadmain.activateEagle(player);
 	});
 		
 //		threadmain.runGame(player);
