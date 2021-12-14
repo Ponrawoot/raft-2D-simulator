@@ -21,7 +21,7 @@ public class Stone extends Material implements Removeable {
 			present = false;
 			position.setStatus(true);
 			player.decreaseHP();
-			//TopBar.setHp(player);
+			TopBar.setHp(player);
 		}
 	}
 

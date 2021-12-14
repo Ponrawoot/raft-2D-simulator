@@ -190,6 +190,7 @@ public class Player implements Moveable {
 			break;
 		}
 		decreaseHP();
+		TopBar.setHp(this);
 	}
 
 	public void consume(String object) {
