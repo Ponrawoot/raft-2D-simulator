@@ -1,5 +1,6 @@
 package component.base;
 
+import component.TopBar;
 import game.Player;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import object.Weapon;
+import object.base.ApplicationType;
 
 public class InventoryPane extends VBox {
 	private GridPane objectPane;
@@ -17,15 +19,19 @@ public class InventoryPane extends VBox {
 	private GridPane weaponPane;
 	private ObservableList<InventoryCell> weapons;
 	private HBox eatButtons;
+	private Button setWeapon;
+	private Weapon selectedWeapon;
 
 	public InventoryPane(Player player) {
 		initObjects(player);
 		initWeapons(player);
 		initEatButtons(player);
+		initSetWeapon(player);
 
 		setSpacing(10);
 		setPadding(new Insets(5));
-		getChildren().addAll(new Text("Player objects"), objectPane, eatButtons, new Text("Player weapons"), weaponPane);
+		getChildren().addAll(new Text("Player objects"), objectPane, eatButtons, new Text("Player weapons"), weaponPane,
+				setWeapon);
 	}
 
 	private void initObjects(Player player) {
@@ -92,6 +98,11 @@ public class InventoryPane extends VBox {
 		int j = 0;
 		for (Weapon w : player.getPlayerWeapon()) {
 			InventoryCell invw = new InventoryCell(w.toString(), w, 1);
+			invw.setOnMouseClicked(event -> {
+				selectedWeapon = (Weapon) invw.getObject();
+				resetHighlight();
+				invw.highlight();
+			});
 			weapons.add(invw);
 			if (j == 7) {
 				j = 0;
@@ -102,11 +113,17 @@ public class InventoryPane extends VBox {
 		}
 
 	}
-	
+
+	private void resetHighlight() {
+		for (InventoryCell inv : weapons) {
+			inv.unhighlight();
+		}
+	}
+
 	private void initEatButtons(Player player) {
 		eatButtons = new HBox();
 		eatButtons.setSpacing(10);
-		
+
 		Button fruit = new Button("Eat fruit");
 		Button fish = new Button("Eat fish");
 		Button bird = new Button("Eat bird");
@@ -128,15 +145,29 @@ public class InventoryPane extends VBox {
 			if (player.getBird() == 0)
 				bird.setDisable(true);
 		});
-		
+
 		if (player.getFruit() == 0)
 			fruit.setDisable(true);
 		if (player.getFish() == 0)
 			fish.setDisable(true);
 		if (player.getBird() == 0)
 			bird.setDisable(true);
-		
-		eatButtons.getChildren().addAll(fruit, fish, bird);	
+
+		eatButtons.getChildren().addAll(fruit, fish, bird);
+	}
+
+	private void initSetWeapon(Player player) {
+		setWeapon = new Button("Set as current weapon");
+		setWeapon.setOnAction(event -> {
+			if (selectedWeapon.getApplication() == ApplicationType.AXE) {
+				player.setCurrentAxe(selectedWeapon);
+			} else if (selectedWeapon.getApplication() == ApplicationType.SHOVEL) {
+				player.setCurrentShovel(selectedWeapon);
+			} else {
+				player.setCurrentSpear(selectedWeapon);
+			}
+			TopBar.getWeaponPane().update(player);
+		});
 	}
 
 	public void update(Player player) {

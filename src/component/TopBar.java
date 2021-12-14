@@ -3,6 +3,7 @@ package component;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import component.base.CurrentWeaponPane;
 import component.base.PauseButton;
 import component.base.SettingButton;
 import game.Player;
@@ -27,6 +28,7 @@ public class TopBar extends FlowPane {
 	private Label time;
 	private SettingButton settingButton;
 	private PauseButton pauseButton;
+	private static CurrentWeaponPane weaponPane;
 
 	public TopBar(Player player) {
 		setPadding(new Insets(5));
@@ -55,9 +57,10 @@ public class TopBar extends FlowPane {
 
 		settingButton = new SettingButton();
 		pauseButton = new PauseButton();
+		weaponPane = new CurrentWeaponPane(player);
 		
 		hpText = new Text("HP: " + player.getHP());
-		getChildren().addAll(playerName, hpText, hp, time, settingButton, pauseButton);
+		getChildren().addAll(playerName, hpText, hp, time, settingButton, pauseButton, weaponPane);
 	}
 
 	public static void setHp(Player player) {
@@ -99,6 +102,10 @@ public class TopBar extends FlowPane {
 			
 		}
 		return true;
+	}
+
+	public static CurrentWeaponPane getWeaponPane() {
+		return weaponPane;
 	}
 
 }

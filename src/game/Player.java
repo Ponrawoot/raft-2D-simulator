@@ -657,8 +657,6 @@ public class Player implements Moveable {
 	}
 
 	public void setCurrentAxe(Weapon currentAxe) {
-		if (this.currentAxe != null)
-			addWeapon(this.currentAxe);
 		this.currentAxe = currentAxe;
 
 	}
@@ -668,8 +666,6 @@ public class Player implements Moveable {
 	}
 
 	public void setCurrentShovel(Weapon currentShovel) {
-		if (this.currentShovel != null)
-			addWeapon(this.currentShovel);
 		this.currentShovel = currentShovel;
 	}
 
@@ -678,8 +674,6 @@ public class Player implements Moveable {
 	}
 
 	public void setCurrentSpear(Weapon currentSpear) {
-		if (this.currentSpear != null)
-			addWeapon(this.currentSpear);
 		this.currentSpear = currentSpear;
 	}
 
