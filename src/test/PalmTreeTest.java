@@ -39,7 +39,7 @@ public class PalmTreeTest {
 
 	@Test
 	public void testCollect() {
-		palmTree.grow(player);
+		palmTree.grow();
 
 		palmTree.collect(player);
 		assertTrue(palmTree.isReadyToCut());
@@ -72,7 +72,7 @@ public class PalmTreeTest {
 	@Test
 	public void testGrow() {
 		assertFalse(palmTree.isReadyToCut());
-		palmTree.grow(player);
+		palmTree.grow();
 		assertTrue(palmTree.isReadyToCut());
 		assertEquals(3, palmTree.getLeaf());
 		assertEquals(3, palmTree.getWood());

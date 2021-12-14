@@ -10,6 +10,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import game.Cell;
 import game.Map;
 import game.Player;
 import game.base.Coordinate;
@@ -32,8 +33,10 @@ public class StoneTest {
 	@Test
 	public void testConstructor() {
 		Stone stone = (Stone) Map.getObjectFromCoordinate(new Coordinate(7,1));
-		assertEquals(stone.getPosition(), Map.getCellFromCoordinate(new Coordinate(7,1)));
+		Cell cell = Map.getCellFromCoordinate(new Coordinate(7,1));
+		assertEquals(stone.getPosition(), cell);
 		stone.beRemoved(player1);
-		assertEquals(0,player1.getStone());
+		stone.refresh(cell);
+		assertEquals(1,player1.getStone());
 	}
 }

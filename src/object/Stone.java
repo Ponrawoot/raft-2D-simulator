@@ -15,13 +15,13 @@ public class Stone extends Material implements Removeable {
 	@Override
 	public void beRemoved(Player player) {
 		// TODO Auto-generated method stub
-	
-		if (player.getCurrentPosition().isNextTo(position) && present) {
+		
+		if ( present) {
 			player.setStone(player.getStone() + 1);
 			present = false;
 			position.setStatus(true);
 			player.decreaseHP();
-			TopBar.setHp(player);
+			//TopBar.setHp(player);
 		}
 	}
 

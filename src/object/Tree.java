@@ -16,7 +16,7 @@ public abstract class Tree {
 	}
 	
 	
-	public abstract void grow(Player player);
+	public abstract void grow();
 
 	protected void setWood(int wood) {
 		this.wood = wood;

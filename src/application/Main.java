@@ -11,6 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import object.base.MaterialType;
+import object.Weapon;
+import object.base.ApplicationType;
 
 public class Main extends Application {
 	private static RootPane rootPane;
@@ -21,6 +24,14 @@ public class Main extends Application {
 		rootPane = new RootPane(player);
 
 		Scene scene = new Scene(rootPane, 1000, 1000);
+
+
+//Cheat
+		player.setRaft(true);
+		player.setCurrentAxe(new Weapon(MaterialType.METAL, ApplicationType.AXE));
+		player.setCurrentShovel(new Weapon(MaterialType.METAL, ApplicationType.SHOVEL));
+		player.setCurrentSpear(new Weapon(MaterialType.METAL, ApplicationType.SPEAR));
+//
 
 		scene.setOnKeyPressed((KeyEvent e) -> {
 			String string = null;

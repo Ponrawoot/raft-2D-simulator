@@ -47,22 +47,21 @@ public class MangoTree extends Tree implements Removeable {
 	}
 
 	@Override
-	public void grow(Player player) {
+	public void grow() {
 		// TODO Auto-generated method stub
-		if (player.getMangoSeed() > 0) {
+		if (!readyToCut) {
 			super.setWood(1);
 			super.setLeaf(2);
 			setFruit(1);
 			setMangoSeed(1);
 			this.position.setStatus(false);
-			player.setMangoSeed(player.getMangoSeed() - 1);
-
-			try {
-				Thread.sleep(15000); // (millisecond) can change
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
+//			try {
+//				Thread.sleep(15000); // (millisecond) can change
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 
 			setReadyToCut(true);
 		}
