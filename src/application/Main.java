@@ -22,12 +22,6 @@ public class Main extends Application {
 
 		Scene scene = new Scene(rootPane, 1000, 1000);
 
-		primaryStage.setTitle("Survival Simulator");
-		primaryStage.setScene(scene);
-		primaryStage.show();
-
-		player.setRaft(true);
-		player.setWood(1);
 		scene.setOnKeyPressed((KeyEvent e) -> {
 			String string = null;
 			KeyCode code = e.getCode();
@@ -66,6 +60,9 @@ public class Main extends Application {
 			RootPane.redraw(player.getCurrentPosition(), cell, string);
 		});
 
+		primaryStage.setTitle("Survival Simulator");
+		primaryStage.setScene(scene);
+		primaryStage.show();
 	}
 
 	public static void main(String[] args) {
