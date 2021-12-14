@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import component.TopBar;
 import game.base.Coordinate;
 import game.base.Direction;
 import game.base.Moveable;
@@ -241,6 +242,7 @@ public class Player implements Moveable {
 				break;
 			}
 			decreaseHP();
+			TopBar.setHp(this);
 			position.setStatus(false);
 			return true;
 		}
