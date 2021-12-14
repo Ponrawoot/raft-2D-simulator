@@ -24,7 +24,6 @@ public class PalmTree extends Tree {
 				setLeaf(0);
 				setReadyToCut(false);
 				player.decreaseHP();
-				TopBar.setHp(player);
 			}
 		}
 	}

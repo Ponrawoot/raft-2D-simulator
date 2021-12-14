@@ -19,7 +19,6 @@ public class Plastic extends Material implements Removeable {
 			present = false;
 			position.setStatus(true);
 			player.decreaseHP();
-			TopBar.setHp(player);
 		}
 
 //		try {

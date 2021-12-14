@@ -75,14 +75,6 @@ public class Player implements Moveable {
 		direction = Direction.DOWN;
 	}
 
-	public void checkHP() {
-		if (HP == 0) {
-			// pop up
-			HP++;
-			resetPosition();
-		}
-	}
-
 	public void resetPosition() {
 		currentPosition.getCoCell().setX(9);
 		currentPosition.getCoCell().setY(12);
@@ -91,7 +83,8 @@ public class Player implements Moveable {
 	public void decreaseHP() {
 		if (HP > 0)
 			HP--;
-		checkHP();
+		TopBar.setHp(this);
+		TopBar.showHpWarning(this);
 	}
 
 	public boolean increaseHP() {
@@ -190,7 +183,6 @@ public class Player implements Moveable {
 			break;
 		}
 		decreaseHP();
-		TopBar.setHp(this);
 	}
 
 	public void consume(String object) {
@@ -245,7 +237,6 @@ public class Player implements Moveable {
 				break;
 			}
 			decreaseHP();
-			TopBar.setHp(this);
 			position.setStatus(false);
 			return true;
 		}
@@ -308,18 +299,18 @@ public class Player implements Moveable {
 		}
 		for (Tree x : Map.getTrees()) {
 			if (x.getPosition().isSamePosition(cell)) {
-				
-			if (x instanceof PalmTree) {
-				((PalmTree) x).collect(this);
-				return true;
-			} else if (x instanceof PineconeTree) {
-				((PineconeTree) x).beRemoved(this);
-				return true;
-			} else if (x instanceof MangoTree) {
-				((MangoTree) x).beRemoved(this);
-				return true;
+
+				if (x instanceof PalmTree) {
+					((PalmTree) x).collect(this);
+					return true;
+				} else if (x instanceof PineconeTree) {
+					((PineconeTree) x).beRemoved(this);
+					return true;
+				} else if (x instanceof MangoTree) {
+					((MangoTree) x).beRemoved(this);
+					return true;
+				}
 			}
-		}
 		}
 		if (Map.getEagle().getPosition().isSamePosition(cell)) {
 			Map.getEagle().killed(this);

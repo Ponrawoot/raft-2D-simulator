@@ -24,7 +24,6 @@ public class Metal extends Material implements Removeable {
 			player.decreaseLifetime(ApplicationType.SHOVEL);
 			player.decreaseHP();
 			position.setStatus(true);
-			TopBar.setHp(player);
 		}
 //		refresh();
 	}

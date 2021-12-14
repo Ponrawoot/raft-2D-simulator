@@ -36,7 +36,6 @@ public class PineconeTree extends Tree implements Removeable {
 				Map.removeTree(this);
 				this.position.setStatus(true);
 				player.decreaseHP();
-				TopBar.setHp(player);
 			}
 		}
 	}

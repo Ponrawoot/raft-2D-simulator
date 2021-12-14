@@ -26,7 +26,6 @@ public class Bird extends Animal implements Removeable {
 			setAlive(false);
 			player.decreaseHP();
 			player.decreaseLifetime(ApplicationType.SPEAR);
-			TopBar.setHp(player);
 
 //			try {
 //				Thread.sleep(15000); // (millisecond) can change
