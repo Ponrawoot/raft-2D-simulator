@@ -87,7 +87,7 @@ public class Main extends Application {
 					string = "Clear";
 				}
 				if ((object instanceof PalmTree)&&(!cell.isClosed()))   redraw2 = true;
-				//RootPane.redraw(player.getCurrentPosition(), cell, string);
+				RootPane.redraw(player.getCurrentPosition(), cell, string);
 			break;
 			default:
 				string = "";
