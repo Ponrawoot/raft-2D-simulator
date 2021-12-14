@@ -100,42 +100,14 @@ public class InventoryPane extends VBox {
 
 	}
 
-//	public void update(Player player) {
-//		objects.get(0).setAmount(player.getWood());
-//		objects.get(1).setAmount(player.getLeaf());
-//		objects.get(2).setAmount(player.getMangoSeed());
-//		objects.get(3).setAmount(player.getPineconeSeed());
-//		objects.get(4).setAmount(player.getFruit());
-//		objects.get(5).setAmount(player.getPlastic());
-//		objects.get(6).setAmount(player.getFeather());
-//		objects.get(7).setAmount(player.getTitanium());
-//		objects.get(8).setAmount(player.getCopper());
-//		objects.get(9).setAmount(player.getMetal());
-//		objects.get(10).setAmount(player.getStone());
-//		objects.get(11).setAmount(player.getScrape());
-//		objects.get(12).setAmount(player.getHinge());
-//		objects.get(13).setAmount(player.getNail());
-//		objects.get(14).setAmount(player.getRope());
-//		objects.get(15).setAmount(player.getCircuit());
-//		objects.get(16).setAmount(player.getFish());
-//		objects.get(17).setAmount(player.getBird());
-//		objects.get(18).setAmount(player.getEagleHead());
-//
-//		if (player.hasRaft() && !objects.contains(new InventoryCell("Raft", null, 0)))
-//			objects.add(new InventoryCell("Raft", null, 0));
-//		if (player.hasReceiver() && !objects.contains(new InventoryCell("Receiver", null, 0)))
-//			objects.add(new InventoryCell("Reiceiver", null, 0));
-//		if (player.hasAnthena() && !objects.contains(new InventoryCell("Antenna", null, 0)))
-//			objects.add(new InventoryCell("Antenna", null, 0));
-//		if (player.hasCanvas() && !objects.contains(new InventoryCell("Canvas", null, 0)))
-//			objects.add(new InventoryCell("Canvas", null, 0));
-//		if (player.hasSteering() && !objects.contains(new InventoryCell("Steering", null, 0)))
-//			objects.add(new InventoryCell("Steering", null, 0));
-//		if (player.hasPetrol() && !objects.contains(new InventoryCell("Petrol", null, 0)))
-//			objects.add(new InventoryCell("Petrol", null, 0));
-//		if (player.hasEngine() && !objects.contains(new InventoryCell("Engine", null, 0)))
-//			objects.add(new InventoryCell("Engine", null, 0));
-//		
-//	}
+	public void update(Player player) {
+		objects = null;
+		initObjects(player);
+		getChildren().set(1, objectPane);
+		
+		weapons = null;
+		initWeapons(player);
+		getChildren().set(3, weaponPane);
+	}
 
 }

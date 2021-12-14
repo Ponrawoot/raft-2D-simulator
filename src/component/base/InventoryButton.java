@@ -34,7 +34,7 @@ public class InventoryButton extends Button {
 				stage.setTitle("Inventory");
 
 				InventoryPane inventoryPane = new InventoryPane(player);
-				CraftPane craftPane = new CraftPane(player);
+				CraftPane craftPane = new CraftPane(player, inventoryPane);
 				
 				TabPane root = new TabPane();
 				

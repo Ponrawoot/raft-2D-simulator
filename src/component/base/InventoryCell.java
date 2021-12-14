@@ -80,12 +80,4 @@ public class InventoryCell extends Pane {
 		return name + "\nAmount: " + amount;
 	}
 
-	public boolean equals(InventoryCell other) {
-		return other.getName().equals(name);
-	}
-
-	public String getName() {
-		return name;
-	}
-
 }

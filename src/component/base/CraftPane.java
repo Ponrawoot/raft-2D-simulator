@@ -11,7 +11,7 @@ import javafx.scene.text.Text;
 public class CraftPane extends ListView<BorderPane> {
 	private String[] craftObjects;
 
-	public CraftPane(Player player) {
+	public CraftPane(Player player, InventoryPane inventoryPane) {
 		super();
 		initCraftObjects();
 
@@ -24,6 +24,8 @@ public class CraftPane extends ListView<BorderPane> {
 				boolean complete = player.craft(object);
 				if (!complete)
 					showWarning();
+				else
+					inventoryPane.update(player);
 			});
 			pane.setLeft(text);
 			pane.setRight(btn);
