@@ -38,9 +38,9 @@ public class GameDisplayCell extends Pane {
 			this.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
 		} else if (!cell.isSea()&&cell.isClosed()&&!cell.getStatus()) {
 			this.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
-		} else if (!cell.isSea()&&!cell.isClosed()&&!cell.getStatus()) {
-			this.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
-		} else if (!cell.isSea()&&!cell.isClosed()&&cell.getStatus()) {
+//		} else if (!cell.isSea()&&!cell.isClosed()&&!cell.getStatus()) {
+//			this.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+		} else if (!cell.isSea()&&!cell.isClosed()) {
 			this.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
 		}
 		
@@ -162,6 +162,8 @@ public class GameDisplayCell extends Pane {
 		case "TreeStump" : url = "TreeStump.png"; break;
 		case "PalmTree" : url = "PalmTree.png"; break;
 		case "Stone" : url = "Stone.png"; break;
+		case "Plastic" : url = "Plastic.png"; break;
+		case "Scrap" : url = "Scrap.png"; break;
 		default : 	url = null; break;
 	}
 		ImageView = new ImageView(new Image(url));
