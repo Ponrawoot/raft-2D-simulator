@@ -24,6 +24,7 @@ public class Main extends Application {
 
 		scene.setOnKeyPressed((KeyEvent e) -> {
 			String string = null;
+			Direction direction = player.getDirection();
 			KeyCode code = e.getCode();
 			int x = player.getCurrentPosition().getCoCell().getX();
 			int y = player.getCurrentPosition().getCoCell().getY();
@@ -53,7 +54,16 @@ public class Main extends Application {
 					player.move(Direction.RIGHT);
 				}
 				break;
+			case P:
+				string = "";
+				cell = Map.getCellFromDirection(direction, new Coordinate(x,y));
+				if (player.takeActionOnObject(Map.getCellFromDirection(direction, new Coordinate(x,y)))) {
+					string = "Clear";
+				}
+			break;
 			default:
+				string = "";
+				System.out.println(code);
 				System.out.println("Invalid Key.");
 				break;
 			}

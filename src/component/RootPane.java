@@ -24,6 +24,15 @@ public class RootPane extends VBox {
 
 	public static void redraw(Cell newCell, Cell cell, String string) {
 		// TODO Auto-generated method stub
+		if (string=="") return;
+		if (string=="Clear") {
+			for (GameDisplayCell x: gameDisplay.cellList) {
+				if (x.getCell().isSamePosition(cell)) {
+					x.SetImageViewBlank();
+				}
+			}
+			return;
+		}
 		for (GameDisplayCell x: gameDisplay.cellList) {
 			if (x.getCell().isSamePosition(cell)) {
 				x.SetImageViewBlank();

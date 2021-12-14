@@ -52,7 +52,7 @@ public class InventoryPane extends VBox {
 		InventoryCell inv18 = new InventoryCell("Eagle head", null, player.getEagleHead());
 		objects.addAll(Arrays.asList(inv0, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12,
 				inv13, inv14, inv15, inv16, inv17, inv18));
-
+		
 //		if (player.hasRaft())
 //			objects.add(new InventoryCell("Raft", null, 0));
 //		if (player.hasReceiver())
@@ -97,6 +97,7 @@ public class InventoryPane extends VBox {
 			weaponPane.add(invw, j, i);
 			j++;
 		}
+
 	}
 
 }

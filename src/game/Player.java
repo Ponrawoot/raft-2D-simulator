@@ -255,71 +255,72 @@ public class Player implements Moveable {
 		return false;
 	}
 
-	public void takeActionOnObject(Cell cell) {
+	public boolean takeActionOnObject(Cell cell) {
 		// TODO Auto-generated method stub
-		if (!cell.getStatus())
-			return;
+		if (cell.getStatus())
+			return false;
 		for (Animal x : Map.getAvailableFish()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Fish fish = (Fish) x;
 				fish.beRemoved(this);
-				return;
+				return true;
 			}
 		}
 		for (Animal x : Map.getAvailableBird()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Bird bird = (Bird) x;
 				bird.beRemoved(this);
-				return;
+				return true;
 			}
 		}
 		for (Material x : Map.getAvailableMetal()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Metal metal = (Metal) x;
 				metal.beRemoved(this);
-				return;
+				return true;
 			}
 		}
 		for (Material x : Map.getAvailablePlastic()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Plastic plastic = (Plastic) x;
 				plastic.beRemoved(this);
-				return;
+				return true;
 			}
 		}
 		for (Material x : Map.getAvailableScrape()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Scrape scrpe = (Scrape) x;
 				scrpe.beRemoved(this);
-				return;
+				return true;
 			}
 		}
 		for (Material x : Map.getAvailableStone()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Stone stone = (Stone) x;
 				stone.beRemoved(this);
-				return;
+				return true;
 			}
 		}
 		for (Tree x : Map.getTrees()) {
-			if (x.getPosition().isSamePosition(cell))
-				;
+			if (x.getPosition().isSamePosition(cell)) {
+				
 			if (x instanceof PalmTree) {
 				((PalmTree) x).collect(this);
-				return;
+				return true;
 			} else if (x instanceof PineconeTree) {
 				((PineconeTree) x).beRemoved(this);
-				return;
+				return true;
 			} else if (x instanceof MangoTree) {
 				((MangoTree) x).beRemoved(this);
-				return;
+				return true;
 			}
+		}
 		}
 		if (Map.getEagle().getPosition().isSamePosition(cell)) {
 			Map.getEagle().killed(this);
-			return;
+			return true;
 		}
-
+		return false;
 	}
 
 	public Direction getDirection() {

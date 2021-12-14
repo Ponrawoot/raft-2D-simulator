@@ -15,6 +15,7 @@ public class Stone extends Material implements Removeable {
 	@Override
 	public void beRemoved(Player player) {
 		// TODO Auto-generated method stub
+	
 		if (player.getCurrentPosition().isNextTo(position) && present) {
 			player.setStone(player.getStone() + 1);
 			present = false;
@@ -22,15 +23,16 @@ public class Stone extends Material implements Removeable {
 			player.decreaseHP();
 			TopBar.setHp(player);
 		}
-
-		try {
-			Thread.sleep(15000); // (millisecond) can change
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Map.refreshStone(Map.getRandomInteger(1, 10));
 	}
+
+//		try {
+//			Thread.sleep(15000); // (millisecond) can change
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		Map.refreshStone(Map.getRandomInteger(1, 10));
+//	}
 
 	public void refresh(Cell position) {
 		if (!present) {

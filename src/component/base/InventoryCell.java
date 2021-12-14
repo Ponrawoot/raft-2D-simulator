@@ -37,9 +37,10 @@ public class InventoryCell extends Pane {
 		this.setTooltip();
 		this.setBorder(new Border(
 				new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		
 		setImage();
 	}
-	
+
 	private void setImage() {
 		String image_path = ClassLoader.getSystemResource("inventory/" + name + ".png").toString();
 		Image image = new Image(image_path);

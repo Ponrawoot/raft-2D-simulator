@@ -267,10 +267,10 @@ public class Map {
 	public static Cell getCellFromDirection(Direction direction,Coordinate coordinate) {
 		
 		Coordinate c = coordinate;
-		if (direction==Direction.UP) c.setX(c.getX()+1);
-		if (direction==Direction.DOWN) c.setX(c.getX()-1);
-		if (direction==Direction.RIGHT) c.setY(c.getY()+1);
-		if (direction==Direction.LEFT) c.setY(c.getY()-1);
+		if (direction==Direction.UP) c.setY(c.getY()-1);
+		if (direction==Direction.DOWN) c.setY(c.getY()+1);
+		if (direction==Direction.RIGHT) c.setX(c.getX()+1);
+		if (direction==Direction.LEFT) c.setX(c.getX()-1);
 		
 		return getCellFromCoordinate(c);
 		
