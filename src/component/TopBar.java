@@ -18,6 +18,7 @@ import javafx.scene.text.Text;
 public class TopBar extends FlowPane {
 	private Text playerName;
 	private static ProgressBar hp;
+	private static Text hpText;
 	private Label time;
 	private SettingButton settingButton;
 	private PauseButton pauseButton;
@@ -56,11 +57,13 @@ public class TopBar extends FlowPane {
 			}
 		});
 
-		getChildren().addAll(playerName, hp, time, settingButton, pauseButton);
+		hpText = new Text("HP: " + player.getHP());
+		getChildren().addAll(playerName, hpText, hp, time, settingButton, pauseButton);
 	}
 
 	public static void setHp(Player player) {
-		hp.setProgress(player.getHP() / player.getMaxHP());
+		hpText.setText("HP: " + player.getHP());
+		hp.setProgress((double) player.getHP() / player.getMaxHP());
 	}
 
 	public void setPlayerName(Player player) {
@@ -68,4 +71,3 @@ public class TopBar extends FlowPane {
 	}
 
 }
-
