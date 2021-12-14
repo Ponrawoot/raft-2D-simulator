@@ -22,7 +22,6 @@ public class CraftPane extends ListView<BorderPane> {
 			Button btn = new Button("Craft");
 			btn.setOnAction(event -> {
 				boolean complete = player.craft(object);
-				if (complete) InventoryPane.update(player);
 				if (!complete)
 					showWarning();
 				else
