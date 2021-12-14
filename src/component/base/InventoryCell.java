@@ -53,7 +53,7 @@ public class InventoryCell extends Pane {
 			this.setImage(url);
 			break;
 		case "Pinecone seed":
-			url = "inventory/Pinecone.png";
+			url = "inventory/PineconeSeed.png";
 			this.setImage(url);
 			break;
 		case "Fruit":
@@ -123,11 +123,13 @@ public class InventoryCell extends Pane {
 		default:
 			break;
 		}
-		
-	}
+		setImage();
 
-	private void setImage(String url) {
-		Image image = new Image(url);
+
+
+	private void setImage() {
+		String image_path = ClassLoader.getSystemResource("inventory/" + name + ".png").toString();
+		Image image = new Image(image_path);
 		BackgroundFill bgFill = new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY);
 		BackgroundFill[] bgFillA = { bgFill };
 		BackgroundSize bgSize = new BackgroundSize(40, 40, false, false, false, false);
