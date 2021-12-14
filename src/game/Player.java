@@ -232,12 +232,14 @@ public class Player implements Moveable {
 		if (Map.getPlantableArea().contains(position) && position.getStatus()) {
 			switch (object) {
 			case "Mango seed":
-				new MangoTree(position);
+				MangoTree mangoTree = new MangoTree(position);
 				mangoSeed--;
+				Map.getTrees().add(mangoTree);
 				break;
 			case "Pinecone seed":
-				new PineconeTree(position);
+				PineconeTree pineconeTree = new PineconeTree(position);
 				pineconeSeed--;
+				Map.getTrees().add(pineconeTree);
 				break;
 			}
 			decreaseHP();

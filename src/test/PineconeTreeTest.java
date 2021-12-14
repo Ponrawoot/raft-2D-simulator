@@ -41,7 +41,7 @@ public class PineconeTreeTest {
 	
 	@Test
 	public void testBeRemoved() {
-		pineconeTree.grow(player);
+		pineconeTree.grow();
 		
 		pineconeTree.beRemoved(player);
 		assertTrue(pineconeTree.isReadyToCut());
@@ -102,7 +102,7 @@ public class PineconeTreeTest {
 	@Test
 	public void testGrow() {
 		assertFalse(pineconeTree.isReadyToCut());
-		pineconeTree.grow(player);
+		pineconeTree.grow();
 		assertFalse(cell.getStatus());
 		assertEquals(0, player.getPineconeSeed());
 		assertTrue(pineconeTree.isReadyToCut());

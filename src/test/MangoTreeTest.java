@@ -42,7 +42,7 @@ public class MangoTreeTest {
 
 	@Test
 	public void testBeRemoved() {
-		mangoTree.grow(player);
+		mangoTree.grow();
 
 		mangoTree.beRemoved(player);
 		assertTrue(mangoTree.isReadyToCut());
@@ -106,7 +106,7 @@ public class MangoTreeTest {
 	@Test
 	public void testGrow() {
 		assertFalse(mangoTree.isReadyToCut());
-		mangoTree.grow(player);
+		mangoTree.grow();
 		assertFalse(cell.getStatus());
 		assertEquals(0, player.getMangoSeed());
 		assertTrue(mangoTree.isReadyToCut());

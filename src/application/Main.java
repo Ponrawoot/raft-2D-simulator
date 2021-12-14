@@ -28,7 +28,6 @@ public class Main extends Application {
 
 //Cheat
 		player.setRaft(true);
-		player.setWood(1);
 		player.setCurrentAxe(new Weapon(MaterialType.METAL, ApplicationType.AXE));
 		player.setCurrentShovel(new Weapon(MaterialType.METAL, ApplicationType.SHOVEL));
 		player.setCurrentSpear(new Weapon(MaterialType.METAL, ApplicationType.SPEAR));

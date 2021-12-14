@@ -42,21 +42,20 @@ public class PineconeTree extends Tree implements Removeable {
 	}
 
 	@Override
-	public void grow(Player player) {
+	public void grow() {
 		// TODO Auto-generated method stub
-		if (player.getPineconeSeed() > 0 && !readyToCut) {
+		if (!readyToCut) {
 			super.setWood(2);
 			super.setLeaf(2);
 			setPineconeSeed(1);
 			this.position.setStatus(false);
-			player.setPineconeSeed(player.getPineconeSeed() - 1);
-
-			try {
-				Thread.sleep(15000); // (millisecond) can change
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
+//			try {
+//				Thread.sleep(15000); // (millisecond) can change
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 
 			setReadyToCut(true);
 		}

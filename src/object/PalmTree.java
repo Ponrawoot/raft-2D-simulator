@@ -28,7 +28,7 @@ public class PalmTree extends Tree {
 			}
 		}
 	}
-	
+	@Override
 	public void grow() {
 		if (!readyToCut) {
 			super.setWood(3);
@@ -43,21 +43,6 @@ public class PalmTree extends Tree {
 			setReadyToCut(true);
 		}
 	}
-	@Override
-	public void grow(Player player) {
-		// TODO Auto-generated method stub
-//		if (!readyToCut) {
-//			super.setWood(3);
-//			super.setLeaf(3);
-//
-//			try {
-//				Thread.sleep(15000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//
-//			setReadyToCut(true);
-//		}
-	}
+	
+	
 }

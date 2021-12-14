@@ -149,6 +149,7 @@ public class GameDisplayCell extends Pane {
 	
 	public void SetImageViewBlank() {
 		this.getChildren().clear();
+		//this.setBackground(new Background(new BackgroundFill(Color.MOCCASIN, CornerRadii.EMPTY, Insets.EMPTY)));
 	}
 	public void SetImageView(String string) {
 		// TODO Auto-generated method stub
