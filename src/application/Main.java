@@ -27,7 +27,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		player = new Player("player");
 //Cheat
-		//player.setHP(1);
+		player.setHP(100);
 		player.setRaft(true);
 		player.setCurrentAxe(new Weapon(MaterialType.METAL, ApplicationType.AXE));
 		player.setCurrentShovel(new Weapon(MaterialType.METAL, ApplicationType.SHOVEL));

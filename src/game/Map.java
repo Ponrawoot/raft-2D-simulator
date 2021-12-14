@@ -52,6 +52,7 @@ public class Map {
 		area = database.getArea();
 		plantableArea = database.getPlantableArea();
 		moveableForEagleArea = database.getMoveableForEagleArea();
+		middleIslandArea = database.getMiddleIslandArea();
 		repairableArea = database.getRepairableArea();
 		randomFishCell = database.getRandomFishCell();
 		randomBirdCell = database.getRandomBirdCell();

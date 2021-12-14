@@ -9,6 +9,8 @@ import object.MangoTree;
 import object.Material;
 import object.PalmTree;
 import object.PineconeTree;
+import object.Plastic;
+import object.Scrape;
 import object.Shipwreck;
 import object.Stone;
 import object.Tree;
@@ -76,7 +78,51 @@ public class ThreadMain {
 						Thread.sleep(2000);
 						Platform.runLater(() -> {
 							for (Material x: Map.getAvailableStone()) {
-								RootPane.redraw(x.getPosition(), x.getPosition(), "Stone");
+								if (x.isPresent()) RootPane.redraw(x.getPosition(), x.getPosition(), "Stone");
+							}
+						});
+						/* ======================================================== */
+
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				});
+				thread.start();
+			}
+			
+		}
+		if (object instanceof Plastic) {
+			if (Map.readyForRandomMaterial(Map.getAvailablePlastic())) {
+				Map.refreshPlastic(Map.getRandomInteger(1, 10));
+				Thread thread = new Thread(() -> {
+					try {
+						Thread.sleep(2000);
+						Platform.runLater(() -> {
+							for (Material x: Map.getAvailablePlastic()) {
+								if (x.isPresent()) RootPane.redraw(x.getPosition(), x.getPosition(), "Plastic");
+							}
+						});
+						/* ======================================================== */
+
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				});
+				thread.start();
+			}
+			
+		}
+		if (object instanceof Scrape) {
+			if (Map.readyForRandomMaterial(Map.getAvailableScrape())) {
+				Map.refreshScrape(Map.getRandomInteger(1, 10));
+				Thread thread = new Thread(() -> {
+					try {
+						Thread.sleep(2000);
+						Platform.runLater(() -> {
+							for (Material x: Map.getAvailableScrape()) {
+								if (x.isPresent()) RootPane.redraw(x.getPosition(), x.getPosition(), "Scrap");
 							}
 						});
 						/* ======================================================== */
