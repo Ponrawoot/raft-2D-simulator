@@ -42,11 +42,12 @@ public class ThreadMain {
 //	}
 
 	protected void refreshPalmTree(Cell cell) {
-		try {		
-			Thread.sleep(2000);
+		try {
+			Thread.sleep(1000);
 			Platform.runLater(() -> {
 				RootPane.redraw(cell, cell, "PalmTree");
 			});
+			Thread.sleep(1000);
 			/*========================================================*/	
 		
 	} catch (InterruptedException e) {
@@ -54,12 +55,7 @@ public class ThreadMain {
 			e.printStackTrace();
 	}
 		
-		for (Tree x: Map.getTrees()) {
-			if (x.getPosition().isSamePosition(cell)) {
-				PalmTree palmTree = (PalmTree) x;
-				palmTree.grow();
-			}
-	}
+	
 //		// TODO Auto-generated method stub
 //
 //		Thread t = new Thread(() -> {
