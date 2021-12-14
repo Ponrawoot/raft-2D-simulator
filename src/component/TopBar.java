@@ -33,7 +33,9 @@ public class TopBar extends FlowPane {
 		setHgap(5);
 		setVgap(5);
 		playerName = new Text("Name: " + player.getName());
-		hp = new ProgressBar(1);
+		hp = new ProgressBar(0);
+		hpText = new Text();
+		setHp(player);
 		time = new Label();
 		Thread thread = new Thread(() -> {
 			SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
