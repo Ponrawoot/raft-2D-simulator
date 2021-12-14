@@ -75,8 +75,8 @@ public class InventoryPane extends VBox {
 		objects.addAll(Arrays.asList(inv0, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11, inv12,
 				inv13, inv14, inv15, inv16, inv17, inv18));
 
-		if (player.hasRaft())
-			objects.add(new InventoryCell("Raft", null, 0));
+//		if (player.hasRaft())
+//			objects.add(new InventoryCell("Raft", null, 0));
 		if (player.hasReceiver())
 			objects.add(new InventoryCell("Reiceiver", null, 0));
 		if (player.hasAnthena())

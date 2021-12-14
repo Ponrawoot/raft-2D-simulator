@@ -37,11 +37,97 @@ public class InventoryCell extends Pane {
 		this.setTooltip();
 		this.setBorder(new Border(
 				new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-//		setImage();
+
+		String url;
+		switch (name) {
+		case "Wood":
+			url = "inventory/Wood.png";
+			this.setImage(url);
+			break;
+		case "Leaf":
+			url = "inventory/Leaf.png";
+			this.setImage(url);
+			break;
+		case "Mango seed":
+			url = "inventory/MangoSeed.png";
+			this.setImage(url);
+			break;
+		case "Pinecone seed":
+			url = "inventory/Pinecone.png";
+			this.setImage(url);
+			break;
+		case "Fruit":
+			url = "inventory/Fruit.png";
+			this.setImage(url);
+			break;
+		case "Plastic":
+			url = "inventory/Plastic.png";
+			this.setImage(url);
+			break;
+		case "Feather":
+			url = "inventory/Feather.png";
+			this.setImage(url);
+			break;
+		case "Titanium":
+			url = "inventory/Titanium.png";
+			this.setImage(url);
+			break;
+		case "Copper":
+			url = "inventory/Copper.png";
+			this.setImage(url);
+			break;
+		case "Metal":
+			url = "inventory/Metal.png";
+			this.setImage(url);
+			break;
+		case "Stone":
+			url = "inventory/Stone.png";
+			this.setImage(url);
+			break;
+		case "Scrap":
+			url = "inventory/Scrap.png";
+			this.setImage(url);
+			break;
+		case "Hinge":
+			url = "inventory/Hinge.png";
+			this.setImage(url);
+			break;
+		case "Nail":
+			url = "inventory/Nail.png";
+			this.setImage(url);
+			break;
+		case "Rope":
+			url = "inventory/Rope.png";
+			this.setImage(url);
+			break;
+		case "Circuit":
+			url = "inventory/Circuit.png";
+			this.setImage(url);
+			break;
+		case "Fish":
+			url = "inventory/Fish.png";
+			this.setImage(url);
+			break;
+		case "Bird":
+			url = "inventory/Bird.png";
+			this.setImage(url);
+			break;
+		case "Eagle head":
+			url = "inventory/EagleHead.png";
+			this.setImage(url);
+			break;
+		case "Weapon":
+			url = "inventory/Wood-Axe.png";
+			this.setImage(url);
+			break;
+		default:
+			break;
+		}
+		
 	}
-	
-	private void setImage() {
-		Image image = new Image(name + ".png");
+
+	private void setImage(String url) {
+		Image image = new Image(url);
 		BackgroundFill bgFill = new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY);
 		BackgroundFill[] bgFillA = { bgFill };
 		BackgroundSize bgSize = new BackgroundSize(40, 40, false, false, false, false);
