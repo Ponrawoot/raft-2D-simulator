@@ -22,7 +22,8 @@ public class GameDisplayCell extends Pane {
 	private static final String Tree = null;
 	private int x,y;
 	private Map map;
-	Cell cell;
+	private Cell cell;
+	private ImageView ImageView;
 	public GameDisplayCell(int x,int y) {
 		this.x = x;
 		this.y = y;
@@ -43,9 +44,11 @@ public class GameDisplayCell extends Pane {
 			this.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
 		}
 		
+		ImageView = null;
+		
 		for (Animal fish : Map.getAvailableFish()) {
 			if (fish.getPosition().isSamePosition(cell)) {
-				ImageView ImageView = new ImageView(new Image("fish001.png"));
+				ImageView = new ImageView(new Image("fish001.png"));
 				ImageView.setFitHeight(40);
 				ImageView.setFitWidth(40);
 				this.getChildren().add(ImageView);
@@ -55,7 +58,7 @@ public class GameDisplayCell extends Pane {
 		
 		for (Animal bird : Map.getAvailableBird()) {
 			if (bird.getPosition().isSamePosition(cell)) {
-				ImageView ImageView = new ImageView(new Image("Seagull.png"));
+				ImageView = new ImageView(new Image("Seagull.png"));
 				ImageView.setFitHeight(40);
 				ImageView.setFitWidth(40);
 				this.getChildren().add(ImageView);
@@ -65,7 +68,7 @@ public class GameDisplayCell extends Pane {
 		
 		for (Material metal : Map.getAvailableMetal()) {
 			if (metal.getPosition().isSamePosition(cell)) {
-				ImageView ImageView = new ImageView(new Image("Metal001.png"));
+				ImageView = new ImageView(new Image("Metal001.png"));
 				ImageView.setFitHeight(40);
 				ImageView.setFitWidth(40);
 				this.getChildren().add(ImageView);
@@ -75,7 +78,7 @@ public class GameDisplayCell extends Pane {
 		
 		for (Material scrap : Map.getAvailableScrape()) {
 			if (scrap.getPosition().isSamePosition(cell)) {
-				ImageView ImageView = new ImageView(new Image("Scrap.png"));
+				ImageView = new ImageView(new Image("Scrap.png"));
 				ImageView.setFitHeight(40);
 				ImageView.setFitWidth(40);
 				this.getChildren().add(ImageView);
@@ -85,7 +88,7 @@ public class GameDisplayCell extends Pane {
 		
 		for (Material plastic : Map.getAvailablePlastic()) {
 			if (plastic.getPosition().isSamePosition(cell)) {
-				ImageView ImageView = new ImageView(new Image("Plastic.png"));
+				ImageView = new ImageView(new Image("Plastic.png"));
 				ImageView.setFitHeight(40);
 				ImageView.setFitWidth(40);
 				this.getChildren().add(ImageView);
@@ -95,7 +98,7 @@ public class GameDisplayCell extends Pane {
 		
 		for (Material stone : Map.getAvailableStone()) {
 			if (stone.getPosition().isSamePosition(cell)) {
-				ImageView ImageView = new ImageView(new Image("Stone.png"));
+				ImageView = new ImageView(new Image("Stone.png"));
 				ImageView.setFitHeight(40);
 				ImageView.setFitWidth(40);
 				this.getChildren().add(ImageView);
@@ -106,19 +109,19 @@ public class GameDisplayCell extends Pane {
 		for (Tree tree : Map.getTrees()) {
 			if (tree.getPosition().isSamePosition(cell)) {
 				if (tree instanceof PalmTree) {
-					ImageView ImageView = new ImageView(new Image("PalmTree.png"));
+					ImageView = new ImageView(new Image("PalmTree.png"));
 					ImageView.setFitHeight(40);
 					ImageView.setFitWidth(40);
 					this.getChildren().add(ImageView);
 					break;
 				} else if (tree instanceof PineconeTree) {
-					ImageView ImageView = new ImageView(new Image("PineTree.png"));
+					ImageView = new ImageView(new Image("PineTree.png"));
 					ImageView.setFitHeight(40);
 					ImageView.setFitWidth(40);
 					this.getChildren().add(ImageView);
 					break;
 				} else if (tree instanceof MangoTree) {
-					ImageView ImageView = new ImageView(new Image("MangoTree.png"));
+					ImageView = new ImageView(new Image("MangoTree.png"));
 					ImageView.setFitHeight(40);
 					ImageView.setFitWidth(40);
 					this.getChildren().add(ImageView);
@@ -127,14 +130,14 @@ public class GameDisplayCell extends Pane {
 			}
 		}
 		if (Map.getEagle().getPosition().isSamePosition(cell)) {
-			ImageView ImageView = new ImageView(new Image("Eagle.png"));
+			ImageView = new ImageView(new Image("Eagle.png"));
 			ImageView.setFitHeight(40);
 			ImageView.setFitWidth(40);
 			this.getChildren().add(ImageView);
 		}
 		
 		if (cell.getCoCell().isSamePosition(new Coordinate(9,12))) {
-			ImageView ImageView = new ImageView(new Image("Front.png"));
+			ImageView = new ImageView(new Image("Front.png"));
 			ImageView.setFitHeight(40);
 			ImageView.setFitWidth(40);
 			this.getChildren().add(ImageView);
@@ -149,11 +152,18 @@ public class GameDisplayCell extends Pane {
 	}
 	public void SetImageView(String string) {
 		// TODO Auto-generated method stub
-		if (string.equals("Player")) {
-			ImageView ImageView = new ImageView(new Image("Front.png"));
-			ImageView.setFitHeight(40);
-			ImageView.setFitWidth(40);
-			this.getChildren().add(ImageView);
-		}
+		String url;
+		switch(string) {
+		case "Front" :		url = "Front.png";	break;
+		case "Right" : 	url = "Right.png"; break;
+		case "Left" : 	url = "Left.png";  break;
+		case "Back" : url = "Back.png"; break;
+		default : 	url = null; break;
+	}
+		ImageView = new ImageView(new Image(url));
+		ImageView.setFitHeight(40);
+		ImageView.setFitWidth(40);
+		this.getChildren().add(ImageView);
+		
 	}
 }

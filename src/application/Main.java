@@ -27,29 +27,43 @@ public class Main extends Application {
 		primaryStage.show();
 
 		player.setRaft(true);
-		rootPane.setOnKeyPressed((KeyEvent e) -> {
+		player.setWood(1);
+		scene.setOnKeyPressed((KeyEvent e) -> {
+			String string = null;
 			KeyCode code = e.getCode();
 			int x = player.getCurrentPosition().getCoCell().getX();
 			int y = player.getCurrentPosition().getCoCell().getY();
-			Cell c = Map.getCellFromCoordinate(new Coordinate(x, y));
+			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y));
 			switch (code) {
 			case W:
-				player.move(Direction.UP);
+				string = "Back";
+				if (!player.control(Direction.UP)) {
+					player.move(Direction.UP);
+				}
 				break;
 			case S:
-				player.move(Direction.DOWN);
+				string = "Front";
+				if (!player.control(Direction.DOWN)) {
+					player.move(Direction.DOWN);
+				}
 				break;
 			case A:
-				player.move(Direction.LEFT);
+				string = "Left";
+				if (!player.control(Direction.LEFT)) {
+					player.move(Direction.LEFT);
+				}
 				break;
 			case D:
-				player.move(Direction.RIGHT);
+				string = "Right";
+				if (!player.control(Direction.RIGHT)) {
+					player.move(Direction.RIGHT);
+				}
 				break;
 			default:
 				System.out.println("Invalid Key.");
 				break;
 			}
-			RootPane.redraw(player, c);
+			RootPane.redraw(player.getCurrentPosition(), cell, string);
 		});
 
 	}

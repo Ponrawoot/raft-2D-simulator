@@ -22,9 +22,8 @@ public class RootPane extends VBox {
 		this.getChildren().add(bottomBar);
 	}
 
-	public static void redraw(Player player, Cell cell) {
+	public static void redraw(Cell newCell, Cell cell, String string) {
 		// TODO Auto-generated method stub
-		Cell newCell = player.getCurrentPosition();
 		for (GameDisplayCell x: gameDisplay.cellList) {
 			if (x.getCell().isSamePosition(cell)) {
 				x.SetImageViewBlank();
@@ -32,7 +31,7 @@ public class RootPane extends VBox {
 		}
 		for (GameDisplayCell x: gameDisplay.cellList) {
 			if (x.getCell().isSamePosition(newCell)) {
-				x.SetImageView("Player");
+				x.SetImageView(string);
 			}
 		}
 		

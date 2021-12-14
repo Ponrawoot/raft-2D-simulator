@@ -247,13 +247,12 @@ public class Player implements Moveable {
 		return false;
 	}
 
-	public void control(Direction direction) {
+	public boolean control(Direction direction) {
 		if (this.direction != direction) {
 			setDirection(direction);
-		} else {
-			Cell cell = Map.getCellFromDirection(direction, this.currentPosition.getCoCell());
-			takeActionOnObject(cell);
+			return true;
 		}
+		return false;
 	}
 
 	public void takeActionOnObject(Cell cell) {
@@ -330,58 +329,101 @@ public class Player implements Moveable {
 	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
-
+	
+	private boolean checkMove(Direction direction) {
+		// TODO Auto-generated method stub
+		int x = currentPosition.getCoCell().getX();
+		int y = currentPosition.getCoCell().getY();
+		if (direction == Direction.UP) {
+			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y - 1));
+			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+				return true;
+		} else if (direction == Direction.DOWN) {
+			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y + 1));
+			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+				return true;
+		} else if (direction == Direction.LEFT) {
+			Cell cell = Map.getCellFromCoordinate(new Coordinate(x - 1, y));
+			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+				return true;
+		} else {
+			Cell cell = Map.getCellFromCoordinate(new Coordinate(x + 1, y));
+			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+				return true;
+		}
+		return false;
+	}
 	@Override
 	public void move(Direction direction) {
 		// TODO Auto-generated method stub
 		int x = currentPosition.getCoCell().getX();
 		int y = currentPosition.getCoCell().getY();
-
-		// cell = position that player want to move to
-		if (direction == Direction.UP) {
-			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y - 1));
-			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+		if (checkMove(direction)||(checkSail(direction))) {
+			if (direction == Direction.UP) {
 				setCurrentPosition(x, y - 1);
-		} else if (direction == Direction.DOWN) {
-			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y + 1));
-			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+			} else if (direction == Direction.DOWN) {
 				setCurrentPosition(x, y + 1);
-		} else if (direction == Direction.LEFT) {
-			Cell cell = Map.getCellFromCoordinate(new Coordinate(x - 1, y));
-			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+			} else if (direction == Direction.LEFT) {
 				setCurrentPosition(x - 1, y);
-		} else {
-			Cell cell = Map.getCellFromCoordinate(new Coordinate(x + 1, y));
-			if (cell != null && cell.getStatus() && !cell.isSea() && !cell.isClosed())
+			} else {
 				setCurrentPosition(x + 1, y);
+			}
 		}
+		// cell = position that player want to move to
+	
 	}
 
-	public void sail(Direction direction) {
+	private boolean checkSail(Direction direction) {
+		// TODO Auto-generated method stub
 		int x = currentPosition.getCoCell().getX();
 		int y = currentPosition.getCoCell().getY();
-
-		// cell = position that player want to move to
 		if (raft) {
 			if (direction == Direction.UP) {
-				Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y + 1));
-				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-					setCurrentPosition(x, y - 1);
-			} else if (direction == Direction.DOWN) {
 				Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y - 1));
 				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-					setCurrentPosition(x, y + 1);
+					return true;
+			} else if (direction == Direction.DOWN) {
+				Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y + 1));
+				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
+					return true;
 			} else if (direction == Direction.LEFT) {
 				Cell cell = Map.getCellFromCoordinate(new Coordinate(x - 1, y));
 				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-					setCurrentPosition(x - 1, y);
+					return true;
 			} else {
 				Cell cell = Map.getCellFromCoordinate(new Coordinate(x + 1, y));
 				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-					setCurrentPosition(x + 1, y);
+					return true;
 			}
 		}
+		return false;
 	}
+
+//	public void sail(Direction direction) {
+//		int x = currentPosition.getCoCell().getX();
+//		int y = currentPosition.getCoCell().getY();
+//
+//		// cell = position that player want to move to
+//		if (raft) {
+//			if (direction == Direction.UP) {
+//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y - 1));
+//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
+//					setCurrentPosition(x, y - 1);
+//			} else if (direction == Direction.DOWN) {
+//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y + 1));
+//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
+//					setCurrentPosition(x, y + 1);
+//			} else if (direction == Direction.LEFT) {
+//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x - 1, y));
+//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
+//					setCurrentPosition(x - 1, y);
+//			} else {
+//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x + 1, y));
+//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
+//					setCurrentPosition(x + 1, y);
+//			}
+//		}
+//	}
 
 	public void addWeapon(Weapon weapon) {
 		playerWeapon.add(weapon);
