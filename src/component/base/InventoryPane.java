@@ -102,7 +102,7 @@ public class InventoryPane extends VBox {
 		}
 
 	}
-
+	
 	private void initEatButtons(Player player) {
 		eatButtons = new HBox();
 		eatButtons.setSpacing(10);
