@@ -67,6 +67,7 @@ public class InventoryPane extends VBox {
 		if (player.hasEngine())
 			objects.add(new InventoryCell("Engine", null, 0));
 
+
 		int index = 0;
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 7; j++) {

@@ -40,6 +40,7 @@ public class Map {
 	private static ArrayList<Cell> repairableArea;
 	private static ArrayList<Tree> trees;
 	private static Eagle eagle;
+	
 
 	public static Eagle getEagle() {
 		return eagle;
@@ -202,7 +203,7 @@ public class Map {
 
 	public static Cell getCellFromCoordinate(Coordinate other) {
 		for (Cell x : area) {
-			if (x.getCoCell().isSamePosition(other)) //x.getCoCell().getX()==other.getX()&&x.getCoCell().getY()==other.getY()
+			if (x.getCoCell().isSamePosition(other)) 
 				return x;
 		}
 		return null;
@@ -248,14 +249,17 @@ public class Map {
 			}
 		}
 		for (Tree x: Map.getTrees()) {
-			if (x.getPosition().isSamePosition(cell));
-				 if (x instanceof PalmTree) {
+			if (x.getPosition().isSamePosition(cell)) {
+				if (x instanceof PalmTree) {
 					 return (PalmTree) x;
-				 } else if (x instanceof PineconeTree) {
+				 } 
+				 if (x instanceof PineconeTree) {
 					 return (PineconeTree) x;
-				 } else if (x instanceof MangoTree) {
+				 } 
+				 if (x instanceof MangoTree) {
 					 return (MangoTree) x;
 				 }
+			}
 		}
 		if (Map.getEagle().getPosition().isSamePosition(cell)) {
 			return Map.eagle;

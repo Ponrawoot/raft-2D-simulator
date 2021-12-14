@@ -6,6 +6,7 @@ import java.util.Date;
 import component.base.PauseButton;
 import component.base.SettingButton;
 import game.Player;
+import game.base.Direction;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -66,7 +67,8 @@ public class TopBar extends FlowPane {
 		playerName.setText(player.getName());
 	}
 
-	public static void showHpWarning(Player player) {
+	public static boolean showHpWarning(Player player) {
+		if (player.getHP()!=0) return false; 
 		if (player.getHP() == 0) {
 			Stage stage = new Stage();
 			stage.setTitle("Warning");
@@ -83,6 +85,8 @@ public class TopBar extends FlowPane {
 				player.resetPosition();
 				stage.close();
 				TopBar.setHp(player);
+				player.setReset(true);
+				player.setDirection(Direction.DOWN);
 			});
 			root.getChildren().addAll(text, btn);
 
@@ -90,7 +94,9 @@ public class TopBar extends FlowPane {
 			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.showAndWait();
+			
 		}
+		return true;
 	}
 
 }

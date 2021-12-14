@@ -45,4 +45,12 @@ public class RootPane extends VBox {
 		}
 		
 	}
+	
+	public static void redraw2(Cell cell) {
+		for (GameDisplayCell x: gameDisplay.cellList) {
+			if (x.getCell().isSamePosition(cell)) {
+				x.SetImageView("TreeStump");
+			}
+		}
+	}
 }
