@@ -15,7 +15,7 @@ public class Fish extends Animal implements Removeable {
 	@Override
 	public void beRemoved(Player player) {
 		// TODO Auto-generated method stub
-		if (player.getCurrentSpear() != null && player.getCurrentPosition().isNextTo(position) && alive) {
+		if (checkWeaponCondition(player) && player.getCurrentPosition().isNextTo(position) && alive) {
 			player.setFish(player.getFish() + 1);
 			position.setStatus(true);
 			setAlive(false);
@@ -39,5 +39,15 @@ public class Fish extends Animal implements Removeable {
 			setAlive(true);
 			this.position.setStatus(false);
 		}
+	}
+
+	@Override
+	public boolean checkWeaponCondition(Player player) {
+		return player.getCurrentSpear() != null;
+	}
+
+	@Override
+	public String toString() {
+		return "fish";
 	}
 }

@@ -24,23 +24,20 @@ public class MangoTree extends Tree implements Removeable {
 	@Override
 	public void beRemoved(Player player) {
 		// TODO Auto-generated method stub
-		if (readyToCut && player.getCurrentPosition().isNextTo(position) && player.getCurrentAxe() != null) {
-			if (player.getCurrentAxe().getMaterial() == MaterialType.STONE
-					|| player.getCurrentAxe().getMaterial() == MaterialType.METAL) {
-				player.decreaseLifetime(ApplicationType.AXE);
-				player.setWood(player.getWood() + wood);
-				player.setLeaf(player.getLeaf() + leaf);
-				player.setFruit(player.getFruit() + fruit);
-				player.setMangoSeed(player.getMangoSeed() + mangoSeed);
-				setWood(0);
-				setLeaf(0);
-				setFruit(0);
-				setMangoSeed(0);
-				setReadyToCut(false);
-				Map.removeTree(this);
-				this.position.setStatus(true);
-				player.decreaseHP();
-			}
+		if (readyToCut && player.getCurrentPosition().isNextTo(position) && checkWeaponCondition(player)) {
+			player.decreaseLifetime(ApplicationType.AXE);
+			player.setWood(player.getWood() + wood);
+			player.setLeaf(player.getLeaf() + leaf);
+			player.setFruit(player.getFruit() + fruit);
+			player.setMangoSeed(player.getMangoSeed() + mangoSeed);
+			setWood(0);
+			setLeaf(0);
+			setFruit(0);
+			setMangoSeed(0);
+			setReadyToCut(false);
+			Map.removeTree(this);
+			this.position.setStatus(true);
+			player.decreaseHP();
 		}
 	}
 
@@ -79,6 +76,16 @@ public class MangoTree extends Tree implements Removeable {
 
 	public int getMangoSeed() {
 		return mangoSeed;
+	}
+
+	@Override
+	public boolean checkWeaponCondition(Player player) {
+		return player.getCurrentAxe() != null && player.getCurrentAxe().getMaterial() != MaterialType.WOOD;
+	}
+
+	@Override
+	public String toString() {
+		return "mango tree." + "\nYou got 1 wood, 2 leaves, 1 fruit, 1 mango seed";
 	}
 
 }

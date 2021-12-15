@@ -16,10 +16,7 @@ public class Bird extends Animal implements Removeable {
 	@Override
 	public void beRemoved(Player player) {
 		// TODO Auto-generated method stub
-		if (player.getCurrentSpear() == null) return;
-		if ((player.getCurrentSpear().getMaterial() == MaterialType.STONE
-				|| player.getCurrentSpear().getMaterial() == MaterialType.METAL)
-				&& player.getCurrentPosition().isNextTo(position) && alive) {
+		if (checkWeaponCondition(player) && player.getCurrentPosition().isNextTo(position) && alive) {
 			player.setBird(player.getBird() + 1);
 			player.setFeather(player.getFeather() + 2);
 			position.setStatus(true);
@@ -44,5 +41,15 @@ public class Bird extends Animal implements Removeable {
 			setAlive(true);
 			this.position.setStatus(false);
 		}
+	}
+
+	@Override
+	public boolean checkWeaponCondition(Player player) {
+		return player.getCurrentSpear() != null && player.getCurrentSpear().getMaterial() != MaterialType.WOOD;
+	}
+
+	@Override
+	public String toString() {
+		return "bird";
 	}
 }

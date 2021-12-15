@@ -14,18 +14,17 @@ public class PalmTree extends Tree {
 	}
 
 	public void collect(Player player) {
-		if (readyToCut && player.getCurrentPosition().isNextTo(position)) {
-			if (player.getCurrentAxe() != null) {
-				player.decreaseLifetime(ApplicationType.AXE);
-				player.setWood(player.getWood() + wood);
-				player.setLeaf(player.getLeaf() + leaf);
-				setWood(0);
-				setLeaf(0);
-				setReadyToCut(false);
-				player.decreaseHP();
-			}
+		if (readyToCut && player.getCurrentPosition().isNextTo(position) && checkWeaponCondition(player)) {
+			player.decreaseLifetime(ApplicationType.AXE);
+			player.setWood(player.getWood() + wood);
+			player.setLeaf(player.getLeaf() + leaf);
+			setWood(0);
+			setLeaf(0);
+			setReadyToCut(false);
+			player.decreaseHP();
 		}
 	}
+
 	@Override
 	public void grow() {
 		if (!readyToCut) {
@@ -41,6 +40,14 @@ public class PalmTree extends Tree {
 			setReadyToCut(true);
 		}
 	}
-	
-	
+
+	@Override
+	public boolean checkWeaponCondition(Player player) {
+		return player.getCurrentAxe() != null;
+	}
+
+	@Override
+	public String toString() {
+		return "palm tree." + "\nYou got 3 woods, 3 leaves,";
+	}
 }

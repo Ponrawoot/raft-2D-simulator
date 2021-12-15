@@ -40,5 +40,10 @@ public class Scrape extends Material implements Removeable {
 			this.position.setStatus(false);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "scrap";
+	}
 
 }
