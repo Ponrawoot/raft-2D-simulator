@@ -70,6 +70,11 @@ public class Main extends Application {
 		primaryStage.setTitle("Survival Simulator");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		primaryStage.setOnCloseRequest(event -> {
+			sound.stop();
+			Platform.exit();
+			System.exit(0);
+		});
 	}
 
 	public static void main(String[] args) {

@@ -65,9 +65,14 @@ public class TopBar extends FlowPane {
 		informationPane = new InformationPane(player);
 		muteButton = new Button("Mute");
 		muteButton.setOnAction(event -> {
-			if (Main.getSound().isPlaying())
+			if (Main.getSound().isPlaying()) {
 				Main.getSound().stop();
-			else Main.getSound().play();
+				muteButton.setText("Unmute");
+			}
+			else {
+				Main.getSound().play();
+				muteButton.setText("Mute");
+			}
 		});
 
 		getChildren().addAll(playerName, hpText, hp, time, settingButton, weaponPane, informationPane, muteButton);
