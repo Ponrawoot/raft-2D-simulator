@@ -1,7 +1,6 @@
 package application;
 
 import component.RootPane;
-import component.base.PauseButton;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -52,7 +51,6 @@ public class Main extends Application {
 //	
 		rootPane = new RootPane(player);
 		threadmain = new ThreadMain();
-		PauseButton pause = new PauseButton();
 
 		Scene scene = new Scene(rootPane, 1000, 1000);
 
