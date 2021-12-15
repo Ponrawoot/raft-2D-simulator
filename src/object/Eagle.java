@@ -1,12 +1,6 @@
 package object;
 
-<<<<<<< HEAD
 import component.RootPane;
-import component.TopBar;
-||||||| cfd121d
-import component.TopBar;
-=======
->>>>>>> 8f35dd103d0414137a7d647637efc13074ee8768
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -14,7 +8,6 @@ import game.base.Coordinate;
 import javafx.application.Platform;
 import object.base.ApplicationType;
 import object.base.MaterialType;
-import java.lang.*;
 
 public class Eagle extends Animal {
 
