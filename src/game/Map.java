@@ -2,8 +2,6 @@ package game;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import game.base.Coordinate;
 import game.base.Database;
@@ -23,8 +21,6 @@ import object.Stone;
 import object.Tree;
 
 public class Map {
-	private boolean isMorning;
-//	int timeInGame, birdTime, fishTime, metalTime, scrapeTime, stoneTime, plasticTime, eagleTime;
 	private static ArrayList<Cell> area;
 	private static ArrayList<Cell> plantableArea;
 	private static ArrayList<Cell> moveableForEagleArea;
@@ -47,7 +43,6 @@ public class Map {
 	}
 
 	public Map() {
-		this.setMorning(true);
 		Database database = new Database();
 		area = database.getArea();
 		plantableArea = database.getPlantableArea();
@@ -64,36 +59,6 @@ public class Map {
 		availableStone = database.getAvailableStone();
 		trees = database.getTrees();
 		eagle = new Eagle();
-//		timeInGame = ;
-//		birdTime = ;
-//		fishTime = ;
-//		metalTime = ;
-//		scrapeTime = ;
-//		stoneTime = ;
-//		plasticTime =;
-//		eagleTime = ;
-	}
-
-	public boolean isMorning() {
-		return isMorning;
-	}
-
-	public void setMorning(boolean isMorning) {
-		this.isMorning = isMorning;
-		Timer timer = new Timer();
-		timer.scheduleAtFixedRate(new TimerTask() {
-			int i = 15; // (second) can change
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				i--;
-				if (i < 0) {
-					timer.cancel();
-					setMorning(!isMorning); 
-				}
-			}
-		}, 0, 1000);
 	}
 
 	public static ArrayList<Animal> getAvailableFish() {
@@ -162,12 +127,6 @@ public class Map {
 
 	public static void removeTree(Tree tree) {
 		trees.remove(tree);
-	}
-
-	public void checkTimeAndPositon(Player player) {
-		if (!middleIslandArea.contains(player.getCurrentPosition()) && !isMorning) {
-			player.resetPosition();
-		}
 	}
 
 	public static Cell getCellFromCoordinate(Coordinate other) {
@@ -393,12 +352,6 @@ public class Map {
 		eagle = new Eagle(next);
 		// TODO Auto-generated method stub
 		
-	}
-	
-	//public static void 
-
-
-	
-	
+	}	
 
 }
