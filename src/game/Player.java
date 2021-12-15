@@ -93,12 +93,11 @@ public class Player implements Moveable {
 		TopBar.showHpWarning(this);
 	}
 
-	public boolean increaseHP() {
+	public void increaseHP() {
 		if (HP < maxHP) {
 			HP++;
-			return true;
+			TopBar.setHp(this);
 		}
-		return false;
 	}
 
 	public void increaseMaxHP(int n) {
@@ -732,13 +731,19 @@ public class Player implements Moveable {
 	}
 
 	public void checkLifetime() {
-		if (currentShovel != null && currentShovel.getLifetime() == 0)
+		if (currentShovel != null && currentShovel.getLifetime() == 0) {
+			playerWeapon.remove(currentShovel);
 			setCurrentShovel(null);
-		if (currentAxe != null && currentAxe.getLifetime() == 0)
+		}	
+		if (currentAxe != null && currentAxe.getLifetime() == 0) {
+			playerWeapon.remove(currentAxe);
 			setCurrentAxe(null);
-		if (currentSpear != null && currentSpear.getLifetime() == 0)
+		}
+		if (currentSpear != null && currentSpear.getLifetime() == 0) {
+			playerWeapon.remove(currentSpear);
 			setCurrentSpear(null);
-
+		}
+		TopBar.getWeaponPane().update(this);
 	}
 
 	public void setRaft(boolean raft) {
