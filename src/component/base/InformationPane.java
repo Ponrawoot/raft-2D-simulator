@@ -79,6 +79,8 @@ public class InformationPane extends Label {
 		} else {
 			if (!Map.getPlantableArea().contains(cell))
 				setText("Out of plantable area.");
+			else if (!cell.getStatus())
+				setText("The position is not available.");
 			else
 				setText("You don't have enough " + tree + " seed.");
 		}
