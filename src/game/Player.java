@@ -347,7 +347,7 @@ public class Player implements Moveable {
 		this.direction = direction;
 	}
 
-	private boolean checkMove(Direction direction) {
+	public boolean checkMove(Direction direction) {
 		// TODO Auto-generated method stub
 		int x = currentPosition.getCoCell().getX();
 		int y = currentPosition.getCoCell().getY();
@@ -391,7 +391,7 @@ public class Player implements Moveable {
 
 	}
 
-	private boolean checkSail(Direction direction) {
+	public boolean checkSail(Direction direction) {
 		// TODO Auto-generated method stub
 		int x = currentPosition.getCoCell().getX();
 		int y = currentPosition.getCoCell().getY();
