@@ -146,20 +146,25 @@ public class Main extends Application {
 				TopBar.getInformationPane().update(player, object);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
 				break;
-			case NUMPAD1:
+			case OPEN_BRACKET:
 				cell = Map.getCellFromDirection(direction, new Coordinate(x, y));
-				if (player.plant("Mango seed", cell)) {
+				boolean planted = player.plant("Mango seed", cell);
+				if (planted) {
 					RootPane.redraw(cell, cell, "Mango seed");
 					MangoTree object1 = (MangoTree) Map.getObjectFromCoordinate(cell.getCoCell());
 					threadMain.setGrow(object1);
 				}
-			case NUMPAD2:
+				TopBar.getInformationPane().update(cell, planted, "mango");
+				break;
+			case CLOSE_BRACKET:
 				cell = Map.getCellFromDirection(direction, new Coordinate(x, y));
-				if (player.plant("Pinecone seed", cell)) {
+				boolean planted2 = player.plant("Pinecone seed", cell);
+				if (planted2) {
 					RootPane.redraw(cell, cell, "Pinecone seed");
 					PineconeTree object2 = (PineconeTree) Map.getObjectFromCoordinate(cell.getCoCell());
 					threadMain.setGrow(object2);
 				}
+				TopBar.getInformationPane().update(cell, planted2, "pinecone");
 				break;
 			default:
 				string = "";

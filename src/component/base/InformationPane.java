@@ -73,6 +73,17 @@ public class InformationPane extends Label {
 		}
 	}
 
+	public void update(Cell cell, boolean planted, String tree) {
+		if (planted) {
+			setText("You just plant " + tree + " tree.");
+		} else {
+			if (!Map.getPlantableArea().contains(cell))
+				setText("Out of plantable area.");
+			else
+				setText("You don't have enough " + tree + " seed.");
+		}
+	}
+
 	private String genInformText(boolean check, Object object, ApplicationType applicationType) {
 		if (check) {
 			if (object instanceof Tree) {
