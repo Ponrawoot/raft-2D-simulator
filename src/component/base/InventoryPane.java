@@ -21,19 +21,21 @@ public class InventoryPane extends VBox {
 	private GridPane weaponPane;
 	private ObservableList<InventoryCell> weapons;
 	private HBox eatButtons;
-	private Button setWeapon;
+	private Button setWeaponButton;
+	private Button resetWeaponButton;
 	private Weapon selectedWeapon;
 
 	public InventoryPane(Player player) {
 		initObjects(player);
 		initWeapons(player);
 		initEatButtons(player);
-		initSetWeapon(player);
+		initSetWeaponButton(player);
+		initResetWeaponButton(player);
 
 		setSpacing(10);
 		setPadding(new Insets(5));
 		getChildren().addAll(new Text("Player objects"), objectPane, eatButtons, new Text("Player weapons"), weaponPane,
-				setWeapon);
+				setWeaponButton, resetWeaponButton);
 	}
 
 	private void initObjects(Player player) {
@@ -167,9 +169,9 @@ public class InventoryPane extends VBox {
 		eatButtons.getChildren().addAll(fruit, fish, bird);
 	}
 
-	private void initSetWeapon(Player player) {
-		setWeapon = new Button("Set as current weapon");
-		setWeapon.setOnAction(event -> {
+	private void initSetWeaponButton(Player player) {
+		setWeaponButton = new Button("Set as current weapon");
+		setWeaponButton.setOnAction(event -> {
 			if (selectedWeapon == null)
 				return;
 			if (selectedWeapon.getApplication() == ApplicationType.AXE) {
@@ -179,6 +181,16 @@ public class InventoryPane extends VBox {
 			} else {
 				player.setCurrentSpear(selectedWeapon);
 			}
+			TopBar.getWeaponPane().update(player);
+		});
+	}
+	
+	private void initResetWeaponButton(Player player) {
+		resetWeaponButton = new Button("Reset current weapons");
+		resetWeaponButton.setOnAction(event -> {
+			player.setCurrentAxe(null);
+			player.setCurrentShovel(null);
+			player.setCurrentSpear(null);
 			TopBar.getWeaponPane().update(player);
 		});
 	}
