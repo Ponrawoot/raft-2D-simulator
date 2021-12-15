@@ -32,7 +32,11 @@ public class InformationPane extends Label {
 		int x = player.getCurrentPosition().getCoCell().getX();
 		int y = player.getCurrentPosition().getCoCell().getY();
 		Cell cell = Map.getCellFromDirection(direction, new Coordinate(x, y));
-		if (cell.isSea() && !player.hasRaft()) {
+		if (cell==null||
+			(player.getCurrentPosition().getCoCell().getX()==0&&player.getDirection()==Direction.LEFT)||
+			(player.getCurrentPosition().getCoCell().getY()==0&&player.getDirection()==Direction.UP)) {
+			setText("You can't go out without Ship");
+		} else if (cell.isSea() && !player.hasRaft()) {
 			setText("You don't have raft.");
 		}
 	}
