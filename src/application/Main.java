@@ -1,6 +1,7 @@
 package application;
 
 import component.RootPane;
+import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -80,6 +81,7 @@ public class Main extends Application {
 				if (!player.control(Direction.UP)) {
 					player.move(Direction.UP);
 				}
+				TopBar.getInformationPane().update(player, direction);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
 				break;
 			case S:
@@ -87,6 +89,7 @@ public class Main extends Application {
 				if (!player.control(Direction.DOWN)) {
 					player.move(Direction.DOWN);
 				}
+				TopBar.getInformationPane().update(player, direction);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
 				break;
 			case A:
@@ -94,6 +97,7 @@ public class Main extends Application {
 				if (!player.control(Direction.LEFT)) {
 					player.move(Direction.LEFT);
 				}
+				TopBar.getInformationPane().update(player, direction);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
 				break;
 			case D:
@@ -101,6 +105,7 @@ public class Main extends Application {
 				if (!player.control(Direction.RIGHT)) {
 					player.move(Direction.RIGHT);
 				}
+				TopBar.getInformationPane().update(player, direction);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
 				break;
 			case P:
@@ -113,6 +118,7 @@ public class Main extends Application {
 					if ((object instanceof PalmTree))   redraw2 = true;
 					
 				}
+				TopBar.getInformationPane().update(player, object);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
 			break;
 			case NUMPAD1:
