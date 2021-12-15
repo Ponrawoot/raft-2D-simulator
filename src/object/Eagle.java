@@ -1,7 +1,12 @@
 package object;
 
+<<<<<<< HEAD
 import component.RootPane;
 import component.TopBar;
+||||||| cfd121d
+import component.TopBar;
+=======
+>>>>>>> 8f35dd103d0414137a7d647637efc13074ee8768
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -112,6 +117,8 @@ public class Eagle extends Animal {
 	}
 
 	public void killed(Player player) {
+		if (player.getCurrentSpear() == null)
+			return;
 		if ((player.getCurrentPosition().isNextTo(position) || player.getCurrentPosition().isSamePosition(position))
 				&& player.getCurrentSpear().getMaterial() == MaterialType.METAL && alive) {
 			setAlive(false);

@@ -28,6 +28,7 @@ public class Main extends Application {
 		player = new Player("player");
 //Cheat
 		player.setHP(100);
+		player.setMaxHP(100);
 		player.setRaft(true);
 		Weapon w1 = new Weapon(MaterialType.METAL, ApplicationType.AXE);
 		player.setCurrentAxe(w1);
@@ -47,6 +48,7 @@ public class Main extends Application {
 		player.setWood(100);
 		player.setRope(100);
 		player.setLeaf(10);
+		player.setStone(100);
 //	
 		rootPane = new RootPane(player);
 		threadmain = new ThreadMain();
@@ -55,7 +57,6 @@ public class Main extends Application {
 		Scene scene = new Scene(rootPane, 1000, 1000);
 
 		scene.setOnKeyPressed((KeyEvent e) -> {
-			
 			try {
 				Thread.sleep(50);
 			} catch (InterruptedException e1) {
@@ -70,6 +71,7 @@ public class Main extends Application {
 			int y = player.getCurrentPosition().getCoCell().getY();
 			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y));
 			Cell cell2 = Map.getCellFromCoordinate(new Coordinate(x, y));
+			
 			switch (code) {
 			case W:
 				string = "Back";
@@ -125,7 +127,6 @@ public class Main extends Application {
 				RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(9,12)), cell2, "Front");
 				player.setReset(false);
 			}
-			threadmain.activateEagle(player);
 	});
 		
 //		threadmain.runGame(player);
