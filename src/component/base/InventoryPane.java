@@ -5,6 +5,8 @@ import game.Player;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -128,18 +130,27 @@ public class InventoryPane extends VBox {
 		Button fish = new Button("Eat fish");
 		Button bird = new Button("Eat bird");
 		fruit.setOnAction(event -> {
+			if (player.getHP() == player.getMaxHP()) {
+				showInform();
+			}
 			player.consume("Fruit");
 			update(player);
 			if (player.getFruit() == 0)
 				fruit.setDisable(true);
 		});
 		fish.setOnAction(event -> {
+			if (player.getHP() == player.getMaxHP()) {
+				showInform();
+			}
 			player.consume("Fish");
 			update(player);
 			if (player.getFish() == 0)
 				fish.setDisable(true);
 		});
 		bird.setOnAction(event -> {
+			if (player.getHP() == player.getMaxHP()) {
+				showInform();
+			}
 			player.consume("Bird");
 			update(player);
 			if (player.getBird() == 0)
@@ -159,6 +170,8 @@ public class InventoryPane extends VBox {
 	private void initSetWeapon(Player player) {
 		setWeapon = new Button("Set as current weapon");
 		setWeapon.setOnAction(event -> {
+			if (selectedWeapon == null)
+				return;
 			if (selectedWeapon.getApplication() == ApplicationType.AXE) {
 				player.setCurrentAxe(selectedWeapon);
 			} else if (selectedWeapon.getApplication() == ApplicationType.SHOVEL) {
@@ -178,6 +191,13 @@ public class InventoryPane extends VBox {
 		weapons = null;
 		initWeapons(player);
 		getChildren().set(4, weaponPane);
+	}
+
+	private void showInform() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(null);
+		alert.setContentText("You already have full HP");
+		alert.showAndWait();
 	}
 
 }
