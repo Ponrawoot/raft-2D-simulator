@@ -326,7 +326,7 @@ public class Map {
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
 		for (Cell x : area) {
-			if (x.getStatus() && !x.isClosed()) {
+			if (x.getStatus() && !x.isClosed()&&!Map.getPlantableArea().contains(x)) {
 				givenList.add(x);
 			}
 		}
@@ -347,8 +347,9 @@ public class Map {
 		if (!readyForRandomMaterial(availablePlastic)) return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
+		
 		for (Cell x : area) {
-			if (x.getStatus() && !x.isClosed()) {
+			if (x.getStatus() && !x.isClosed()&&!Map.getPlantableArea().contains(x)) {
 				givenList.add(x);
 			}
 		}
@@ -370,7 +371,7 @@ public class Map {
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
 		for (Cell x : area) {
-			if (x.getStatus() && !x.isClosed()) {
+			if (x.getStatus() && !x.isClosed()&&!Map.getPlantableArea().contains(x)) {
 				givenList.add(x);
 			}
 		}
@@ -386,6 +387,12 @@ public class Map {
 			}	
 		}
 
+	}
+
+	public static void setEagle(Cell next) {
+		eagle = new Eagle(next);
+		// TODO Auto-generated method stub
+		
 	}
 	
 	//public static void 

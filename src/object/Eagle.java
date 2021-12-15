@@ -12,13 +12,16 @@ import object.base.MaterialType;
 
 public class Eagle extends Animal {
 
-	private boolean move;
 	private static final Cell defaultPosition = new Cell(new Coordinate(4, 1), false, true, true);
 
 	public Eagle() {
 		super(defaultPosition); // same position every time
 		// TODO Auto-generated constructor stub
-		setMove(true);
+		
+	}
+	
+	public Eagle(Cell cell) {
+		super(cell);
 	}
 	
 	public boolean checkMoving(Player player) {
@@ -30,9 +33,15 @@ public class Eagle extends Animal {
 				break;
 			}
 		}
-		if (c) {
+		if (c&&alive) {
 			int xPlayer = player.getCurrentPosition().getCoCell().getX();
 			int yPlayer = player.getCurrentPosition().getCoCell().getY();
+			if (Math.abs(yPlayer-position.getCoCell().getY())==1&&Math.abs(xPlayer-position.getCoCell().getX())==0) {
+				return true;
+			}
+			if (Math.abs(yPlayer-position.getCoCell().getY())==0&&Math.abs(xPlayer-position.getCoCell().getX())==1) {
+				return true;
+			}
 			if (Math.abs(yPlayer-position.getCoCell().getY())>0) {
 					return true;
 
@@ -54,7 +63,7 @@ public class Eagle extends Animal {
 				break;
 			}
 		}
-		if (c) {
+		if (c&&alive) {
 			int xEagle = getPosition().getCoCell().getX();
 			int yEagle = getPosition().getCoCell().getY();
 			Cell prev = Map.getCellFromCoordinate(new Coordinate(xEagle, yEagle));
@@ -63,34 +72,42 @@ public class Eagle extends Animal {
 			if (Math.abs(yPlayer-position.getCoCell().getY())==1&&Math.abs(xPlayer-position.getCoCell().getX())==0) {
 				return true;
 			}
+			if (Math.abs(yPlayer-position.getCoCell().getY())==0&&Math.abs(xPlayer-position.getCoCell().getX())==1) {
+				return true;
+			}
 			if (Math.abs(yPlayer-position.getCoCell().getY())>0) {
-					if (Math.abs(yPlayer-position.getCoCell().getY())==1&&Math.abs(xPlayer-position.getCoCell().getX())==0) {
-					return true;
-					}
+//					if (Math.abs(yPlayer-position.getCoCell().getY())==1&&Math.abs(xPlayer-position.getCoCell().getX())==0) {
+//					return true;
+//					}
 					int dy;
 					if (yPlayer>position.getCoCell().getY()) {
 							dy=1;
 					} else {
 							dy=-1;
 					}
-					position.getCoCell().setY(position.getCoCell().getY()+dy);
-					RootPane.redraw(position, prev, "Eagle");
+					Cell next = Map.getCellFromCoordinate(new Coordinate(xEagle, yEagle+dy));
+//					position.getCoCell().setY(position.getCoCell().getY()+dy);
+					Map.setEagle(next);
+					prev.setStatus(true);
+					RootPane.redraw(next, prev, "Eagle");
 					return true;
 //					if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
 //						setPosition(defaultPosition);
 			} 
 			if (Math.abs(xPlayer-position.getCoCell().getX())>0) {
-					if (Math.abs(yPlayer-position.getCoCell().getY())==0&&Math.abs(xPlayer-position.getCoCell().getX())==1) {
-					return true;
-					}
+//					if (Math.abs(yPlayer-position.getCoCell().getY())==0&&Math.abs(xPlayer-position.getCoCell().getX())==1) {
+//					return true;
+//					}
 					int dx;
 					if (xPlayer>position.getCoCell().getX()) {
 						dx=1;
 					} else {
 						dx=-1;
 					}
-					position.getCoCell().setX(position.getCoCell().getX()+dx);
-					RootPane.redraw(position, prev, "Eagle");
+					Cell next = Map.getCellFromCoordinate(new Coordinate(xEagle+dx, yEagle));
+					Map.setEagle(next);
+					prev.setStatus(true);
+					RootPane.redraw(next, prev, "Eagle");
 						}
 					return true;
 //					if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
@@ -102,7 +119,7 @@ public class Eagle extends Animal {
 	}
 
 	public void hitPlayer(Player player) {
-		if (position.isNextTo(player.getCurrentPosition())&& move && alive) 
+		if (position.isNextTo(player.getCurrentPosition())&& alive) 
 			player.decreaseHP();
 //		}
 //			Thread thread = new Thread(() -> {
@@ -119,14 +136,14 @@ public class Eagle extends Animal {
 	}
 
 	public void killed(Player player) {
-		if (alive) {
+//		if (alive) {
 			setAlive(false);
 			player.setBird(player.getBird() + 2);
 			player.setEagleHead(player.getEagleHead() + 1);
 			player.setFeather(player.getFeather() + 3);
 			player.decreaseLifetime(ApplicationType.SPEAR);
 			player.decreaseHP();
-		}
+//		}
 //		if ((player.getCurrentPosition().isNextTo(position) || player.getCurrentPosition().isSamePosition(position))
 //				&& (checkWeaponCondition(player) && alive)) {
 
@@ -143,18 +160,8 @@ public class Eagle extends Animal {
 
 	public void refresh() {
 		if (!alive) {
-			setPosition(defaultPosition);
-			setAlive(true);
-			setMove(true);
+			Map.setEagle(defaultPosition);
 		}
-	}
-
-	public boolean isMove() {
-		return move;
-	}
-
-	public void setMove(boolean move) {
-		this.move = move;
 	}
 
 	@Override

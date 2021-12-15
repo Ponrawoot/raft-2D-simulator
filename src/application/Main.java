@@ -62,12 +62,13 @@ public class Main extends Application {
 
 		sound = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
 		sound.setCycleCount(MediaPlayer.INDEFINITE);
+		sound.setVolume(20);
 		sound.play();
 
 		Scene scene = new Scene(rootPane, 1000, 1000);
 		addEventListener(scene);
 
-		primaryStage.setTitle("Survival Simulator");
+		primaryStage.setTitle("Raft 2D Simulator");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		primaryStage.setOnCloseRequest(event -> {
