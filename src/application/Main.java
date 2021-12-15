@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+
 import component.RootPane;
 import component.TopBar;
 import game.Cell;
@@ -18,7 +20,7 @@ import javafx.stage.Stage;
 import object.base.MaterialType;
 import object.MangoTree;
 import object.PalmTree;
-import object.PineconeTree;
+import object.PineTree;
 import object.Tree;
 import object.Weapon;
 import object.base.ApplicationType;
@@ -27,14 +29,15 @@ public class Main extends Application {
 	private static RootPane rootPane;
 	private Player player;
 	private ThreadMain threadMain;
-	private final static AudioClip sound = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
-	private final static AudioClip sound1 = new AudioClip(ClassLoader.getSystemResource("audio/sound1.mp3").toString());
-	private final static AudioClip sound2 = new AudioClip(ClassLoader.getSystemResource("audio/sound2.mp3").toString());
-
+	private static AudioClip sound0 = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
+	private static AudioClip sound1 = new AudioClip(ClassLoader.getSystemResource("audio/sound1.mp3").toString());
+	private static AudioClip sound2 = new AudioClip(ClassLoader.getSystemResource("audio/sound2.mp3").toString());
+	private static AudioClip sound3 = new AudioClip(ClassLoader.getSystemResource("audio/sound3.mp3").toString());
+	private static AudioClip[] sound = {sound0,sound1,sound2,sound3};
 	public void start(Stage primaryStage) throws Exception {
 		player = new Player("player");
 //Cheat
-		player.setHP(100);
+//		player.setHP(100);
 		player.setMaxHP(100);
 		player.setRaft(true);
 		Weapon w1 = new Weapon(MaterialType.METAL, ApplicationType.AXE);
@@ -63,12 +66,12 @@ public class Main extends Application {
 		threadMain = new ThreadMain();
 		
 //		sound = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
-		sound.setCycleCount(MediaPlayer.INDEFINITE);
-		sound.setVolume(20);
-		sound.play();
-		
-		sound1.setVolume(0.5);
-		sound2.setVolume(0.5);
+		Main.getSound()[0].setCycleCount(MediaPlayer.INDEFINITE);
+		Main.getSound()[0].play();
+		Main.getSound()[0].setVolume(0.5);
+		sound1.setVolume(0.3);
+		sound2.setVolume(0.3);
+		sound3.setVolume(0.3);
 		
 		Scene scene = new Scene(rootPane, 1000, 1000);
 		addEventListener(scene);
@@ -77,10 +80,14 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		primaryStage.setOnCloseRequest(event -> {
-			sound.stop();
+			sound0.stop();
 			Platform.exit();
 			System.exit(0);
 		});
+	}
+
+	public static AudioClip[] getSound() {
+		return sound;
 	}
 
 	public static void main(String[] args) {
@@ -179,7 +186,7 @@ public class Main extends Application {
 				boolean planted2 = player.plant("Pinecone seed", cell);
 				if (planted2) {
 					RootPane.redraw(cell, cell, "Pinecone seed");
-					PineconeTree object2 = (PineconeTree) Map.getObjectFromCoordinate(cell.getCoCell());
+					PineTree object2 = (PineTree) Map.getObjectFromCoordinate(cell.getCoCell());
 					threadMain.setGrow(object2);
 				}
 				TopBar.getInformationPane().update(cell, planted2, "pinecone");
@@ -203,8 +210,6 @@ public class Main extends Application {
 		});
 	}
 
-	public static AudioClip getSound() {
-		return sound;
-	}
+
 
 }

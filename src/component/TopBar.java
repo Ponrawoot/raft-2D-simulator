@@ -65,12 +65,12 @@ public class TopBar extends FlowPane {
 		informationPane = new InformationPane(player);
 		muteButton = new Button("Mute");
 		muteButton.setOnAction(event -> {
-			if (Main.getSound().isPlaying()) {
-				Main.getSound().stop();
+			if (Main.getSound()[0].isPlaying()) {
+				Main.getSound()[0].stop();
 				muteButton.setText("Unmute");
 			}
 			else {
-				Main.getSound().play();
+				Main.getSound()[0].play();
 				muteButton.setText("Mute");
 			}
 		});
@@ -91,6 +91,7 @@ public class TopBar extends FlowPane {
 		if (player.getHP() != 0)
 			return false;
 		if (player.getHP() == 0) {
+			Main.getSound()[3].play();
 			Stage stage = new Stage();
 			stage.setTitle("Warning");
 

@@ -118,9 +118,14 @@ public class Eagle extends Animal {
 //		if (!(Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))) return;
 	}
 
-	public void hitPlayer(Player player) {
-		if (position.isNextTo(player.getCurrentPosition())&& alive) 
+	public boolean hitPlayer(Player player) {
+		if (position.isNextTo(player.getCurrentPosition())&& alive) {
 			player.decreaseHP();
+			player.decreaseHP();
+			player.decreaseHP();
+			return true;
+		}
+		return false;
 //		}
 //			Thread thread = new Thread(() -> {
 //				try {

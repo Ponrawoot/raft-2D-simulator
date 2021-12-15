@@ -16,7 +16,7 @@ import object.MangoTree;
 import object.Material;
 import object.Metal;
 import object.PalmTree;
-import object.PineconeTree;
+import object.PineTree;
 import object.Plastic;
 import object.Scrape;
 import object.Stone;
@@ -251,7 +251,7 @@ public class Player implements Moveable {
 				break;
 			case "Pinecone seed":
 				if (pineconeSeed==0) return false;
-				PineconeTree pineconeTree = new PineconeTree(position);
+				PineTree pineconeTree = new PineTree(position);
 				pineconeSeed--;
 				Map.getTrees().add(pineconeTree);
 				break;
@@ -323,8 +323,8 @@ public class Player implements Moveable {
 				if (x instanceof PalmTree) {
 					((PalmTree) x).collect(this);
 					return !x.isReadyToCut();
-				} else if (x instanceof PineconeTree) {
-					((PineconeTree) x).beRemoved(this);
+				} else if (x instanceof PineTree) {
+					((PineTree) x).beRemoved(this);
 					return !x.isReadyToCut();
 				} else if (x instanceof MangoTree) {
 					((MangoTree) x).beRemoved(this);

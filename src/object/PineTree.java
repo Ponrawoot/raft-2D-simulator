@@ -7,16 +7,16 @@ import game.base.Removeable;
 import object.base.ApplicationType;
 import object.base.MaterialType;
 
-public class PineconeTree extends Tree implements Removeable {
+public class PineTree extends Tree implements Removeable {
 
-	private int pineconeSeed;
+	private int pinecone;
 
-	public PineconeTree(Cell position) {
+	public PineTree(Cell position) {
 		super(position);
 		// TODO Auto-generated constructor stub
 		super.setWood(2);
 		super.setLeaf(2);
-		setPineconeSeed(2);
+		setPinecone(2);
 	}
 
 	@Override
@@ -26,10 +26,10 @@ public class PineconeTree extends Tree implements Removeable {
 			player.decreaseLifetime(ApplicationType.AXE);
 			player.setWood(player.getWood() + wood);
 			player.setLeaf(player.getLeaf() + leaf);
-			player.setPineconeSeed(player.getPineconeSeed() + pineconeSeed);
+			player.setPineconeSeed(player.getPineconeSeed() + pinecone);
 			setWood(0);
 			setLeaf(0);
-			setPineconeSeed(0);
+			setPinecone(0);
 			setReadyToCut(false);
 			Map.removeTree(this);
 			this.position.setStatus(true);
@@ -43,7 +43,7 @@ public class PineconeTree extends Tree implements Removeable {
 		if (!readyToCut) {
 			super.setWood(2);
 			super.setLeaf(2);
-			setPineconeSeed(2);
+			setPinecone(2);
 			this.position.setStatus(false);
 
 //			try {
@@ -57,12 +57,12 @@ public class PineconeTree extends Tree implements Removeable {
 		}
 	}
 
-	public void setPineconeSeed(int pineconeSeed) {
-		this.pineconeSeed = pineconeSeed;
+	public void setPinecone(int pinecone) {
+		this.pinecone = pinecone;
 	}
 
-	public int getPineconeSeed() {
-		return pineconeSeed;
+	public int getPinecone() {
+		return pinecone;
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class PineconeTree extends Tree implements Removeable {
 
 	@Override
 	public String toString() {
-		return "pinecone tree." + " You got 2 woods, 2 leaves, 1 pinecone seed,";
+		return "pine tree." + " You got 2 woods, 2 leaves, 1 pine seed,";
 	}
 
 }

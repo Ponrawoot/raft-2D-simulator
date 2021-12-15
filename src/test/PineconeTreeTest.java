@@ -10,14 +10,14 @@ import org.junit.jupiter.api.Test;
 import game.Cell;
 import game.Player;
 import game.base.Coordinate;
-import object.PineconeTree;
+import object.PineTree;
 import object.Weapon;
 import object.base.ApplicationType;
 import object.base.MaterialType;
 
 public class PineconeTreeTest {
 	private Player player;
-	private PineconeTree pineconeTree;
+	private PineTree pineTree;
 	private Cell cell;
 	
 	@BeforeEach
@@ -25,26 +25,26 @@ public class PineconeTreeTest {
 		player = new Player("player");
 		player.setPineconeSeed(1);
 		cell = new Cell(new Coordinate(18, 0), false, false, true);
-		pineconeTree = new PineconeTree(cell);
+		pineTree = new PineTree(cell);
 	}
 	
 	@Test
 	public void testConstructor() {
-		assertFalse(pineconeTree.isReadyToCut());
-		assertFalse(pineconeTree.getPosition().getStatus());
-		assertEquals(18, pineconeTree.getPosition().getCoCell().getX());
-		assertEquals(0, pineconeTree.getPosition().getCoCell().getY());
-		assertEquals(2, pineconeTree.getLeaf());
-		assertEquals(2, pineconeTree.getWood());
-		assertEquals(1, pineconeTree.getPineconeSeed());
+		assertFalse(pineTree.isReadyToCut());
+		assertFalse(pineTree.getPosition().getStatus());
+		assertEquals(18, pineTree.getPosition().getCoCell().getX());
+		assertEquals(0, pineTree.getPosition().getCoCell().getY());
+		assertEquals(2, pineTree.getLeaf());
+		assertEquals(2, pineTree.getWood());
+		assertEquals(1, pineTree.getPinecone());
 	}
 	
 	@Test
 	public void testBeRemoved() {
-		pineconeTree.grow();
+		pineTree.grow();
 		
-		pineconeTree.beRemoved(player);
-		assertTrue(pineconeTree.isReadyToCut());
+		pineTree.beRemoved(player);
+		assertTrue(pineTree.isReadyToCut());
 		assertEquals(0, player.getWood());
 		assertEquals(0, player.getLeaf());
 		assertEquals(0, player.getPineconeSeed());
@@ -55,8 +55,8 @@ public class PineconeTreeTest {
 		player.setCurrentPosition(18, 1);
 		Weapon weapon = new Weapon(MaterialType.WOOD, ApplicationType.AXE);
 		player.setCurrentAxe(weapon);
-		pineconeTree.beRemoved(player);
-		assertTrue(pineconeTree.isReadyToCut());
+		pineTree.beRemoved(player);
+		assertTrue(pineTree.isReadyToCut());
 		assertEquals(0, player.getWood());
 		assertEquals(0, player.getLeaf());
 		assertEquals(0, player.getPineconeSeed());
@@ -66,8 +66,8 @@ public class PineconeTreeTest {
 		
 		Weapon weapon2 = new Weapon(MaterialType.STONE, ApplicationType.AXE);
 		player.setCurrentAxe(weapon2);
-		pineconeTree.beRemoved(player);
-		assertTrue(pineconeTree.isReadyToCut());
+		pineTree.beRemoved(player);
+		assertTrue(pineTree.isReadyToCut());
 		assertEquals(0, player.getWood());
 		assertEquals(0, player.getLeaf());
 		assertEquals(0, player.getPineconeSeed());
@@ -101,13 +101,13 @@ public class PineconeTreeTest {
 	
 	@Test
 	public void testGrow() {
-		assertFalse(pineconeTree.isReadyToCut());
-		pineconeTree.grow();
+		assertFalse(pineTree.isReadyToCut());
+		pineTree.grow();
 		assertFalse(cell.getStatus());
 		assertEquals(0, player.getPineconeSeed());
-		assertTrue(pineconeTree.isReadyToCut());
-		assertEquals(2, pineconeTree.getLeaf());
-		assertEquals(2, pineconeTree.getWood());
-		assertEquals(1, pineconeTree.getPineconeSeed());
+		assertTrue(pineTree.isReadyToCut());
+		assertEquals(2, pineTree.getLeaf());
+		assertEquals(2, pineTree.getWood());
+		assertEquals(1, pineTree.getPinecone());
 	}
 }

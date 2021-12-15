@@ -14,7 +14,7 @@ import object.MangoTree;
 import object.Material;
 import object.Metal;
 import object.PalmTree;
-import object.PineconeTree;
+import object.PineTree;
 import object.Plastic;
 import object.Scrape;
 import object.Stone;
@@ -181,8 +181,8 @@ public class Map {
 				if (x instanceof PalmTree) {
 					 return (PalmTree) x;
 				 } 
-				 if (x instanceof PineconeTree) {
-					 return (PineconeTree) x;
+				 if (x instanceof PineTree) {
+					 return (PineTree) x;
 				 } 
 				 if (x instanceof MangoTree) {
 					 return (MangoTree) x;

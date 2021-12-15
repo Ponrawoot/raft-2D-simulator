@@ -206,7 +206,9 @@ public class ThreadMain {
 					Thread.sleep(2000);
 					Platform.runLater(() -> {
 						Map.getEagle().moveToPlayer(player);
-						Map.getEagle().hitPlayer(player);
+						if (Map.getEagle().hitPlayer(player)) {
+							Main.getSound()[3].play();
+						}
 					});
 					if (!player.getCurrentPosition().isSamePosition(prev)) {
 						break;

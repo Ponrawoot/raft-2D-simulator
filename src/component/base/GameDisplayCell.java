@@ -20,7 +20,7 @@ import object.MangoTree;
 import object.Material;
 import object.Tree;
 import object.PalmTree;
-import object.PineconeTree;
+import object.PineTree;
 
 public class GameDisplayCell extends Pane {
 	private static final String Tree = null;
@@ -122,7 +122,7 @@ public class GameDisplayCell extends Pane {
 					ImageView.setFitWidth(40);
 					this.getChildren().add(ImageView);
 					break;
-				} else if (tree instanceof PineconeTree) {
+				} else if (tree instanceof PineTree) {
 					ImageView = new ImageView(new Image("PineTree.png"));
 					ImageView.setFitHeight(40);
 					ImageView.setFitWidth(40);
