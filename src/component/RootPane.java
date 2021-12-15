@@ -14,11 +14,12 @@ public class RootPane extends VBox {
 	public RootPane(Player player) {
 		super();
 		topBar = new TopBar(player);
+		topBar.setAlignment(Pos.TOP_CENTER);
 		gameDisplay = new GameDisplay();
 		bottomBar = new BottomBar(player);
 		this.getChildren().add(topBar);
 		this.getChildren().add(gameDisplay);
-		bottomBar.setAlignment(Pos.BOTTOM_LEFT);
+		bottomBar.setAlignment(Pos.BOTTOM_CENTER);
 		this.getChildren().add(bottomBar);
 	}
 

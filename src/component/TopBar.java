@@ -74,7 +74,7 @@ public class TopBar extends FlowPane {
 				muteButton.setText("Mute");
 			}
 		});
-
+		muteButton.setAlignment(Pos.TOP_RIGHT);
 		getChildren().addAll(playerName, hpText, hp, time, settingButton, weaponPane, informationPane, muteButton);
 	}
 

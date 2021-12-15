@@ -21,6 +21,8 @@ public class InformationPane extends Label {
 	public InformationPane(Player player) {
 		super();
 		setPadding(new Insets(10));
+		setPrefWidth(300);
+		setWrapText(true);
 		setText("Ready !!");
 	}
 
