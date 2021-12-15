@@ -17,7 +17,7 @@ public class ShipwreckPane extends BorderPane {
 	public ShipwreckPane(String repairPart, Player player, Shipwreck shipwreck) {
 		super();
 		label = new Label();
-		label.setText(repairPart);
+		setLabel(repairPart);
 		repairButton = new Button("Repair");
 		setButtonAcess(repairPart, shipwreck);
 		repairButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -29,6 +29,9 @@ public class ShipwreckPane extends BorderPane {
 				if (complete) {
 					repairButton.setText("complete");
 					repairButton.setDisable(true);
+					if (shipwreck.checkWinCondition()) {
+						showWinning();
+					}
 				} else {
 					showWarning();
 				}
@@ -36,6 +39,25 @@ public class ShipwreckPane extends BorderPane {
 		});
 		setLeft(label);
 		setRight(repairButton);
+	}
+	
+	private void setLabel(String repairPart) {
+		String label = repairPart;
+		switch(repairPart) {
+		case "Wood":
+			label += " 50";
+			break;
+		case "Hinge":
+			label += " 10";
+			break;
+		case "Nail":
+			label += " 15";
+			break;
+		case "Rope":
+			label += " 20";
+			break;
+		}
+		this.label.setText(label);
 	}
 	
 	private void setButtonAcess(String repairPart, Shipwreck shipwreck) {
@@ -78,11 +100,18 @@ public class ShipwreckPane extends BorderPane {
 		repairButton.setDisable(true);
 	}
 
-	public void showWarning() {
+	private void showWarning() {
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Fail to repair shipwreck");
 		alert.setHeaderText(null);
 		alert.setContentText("Please check your inventory.");
+		alert.showAndWait();
+	}
+	
+	public void showWinning() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(null);
+		alert.setContentText("YOU WIN !!!");
 		alert.showAndWait();
 	}
 	

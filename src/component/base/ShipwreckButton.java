@@ -1,5 +1,6 @@
 package component.base;
 
+import game.Map;
 import game.Player;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -55,9 +56,12 @@ public class ShipwreckButton extends Button {
 				root.getItems().addAll(part0, part1, part2, part3, part4, part5, part6, part7, part8, part9, part10);
 				
 				if (shipwreck.checkWinCondition()) {
+					part0.showWinning();
+				}
+				else if (!Map.getRepairableArea().contains(player.getCurrentPosition())) {
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setHeaderText(null);
-					alert.setContentText("YOU WIN !!!");
+					alert.setContentText("Out of shipwreck area.");
 					alert.showAndWait();
 				}
 				else{
