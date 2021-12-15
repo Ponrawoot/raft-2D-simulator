@@ -20,6 +20,32 @@ public class Eagle extends Animal {
 		// TODO Auto-generated constructor stub
 		setMove(true);
 	}
+	
+	public boolean checkMoving(Player player) {
+		boolean c = false;
+		for (Cell x: Map.getMoveableForEagleArea()) {
+			if (x.isSamePosition(player.getCurrentPosition())) {
+				//RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(5,5)), defaultPosition, "Eagle");
+				c = true;
+				break;
+			}
+		}
+		if (c) {
+//			int xEagle = getPosition().getCoCell().getX();
+//			int yEagle = getPosition().getCoCell().getY();
+//			Cell prev = Map.getCellFromCoordinate(new Coordinate(xEagle, yEagle));
+			int xPlayer = player.getCurrentPosition().getCoCell().getX();
+			int yPlayer = player.getCurrentPosition().getCoCell().getY();
+			if (Math.abs(yPlayer-position.getCoCell().getY())>0) {
+					return true;
+
+			} 
+			if (Math.abs(xPlayer-position.getCoCell().getX())>0) {
+					return true;
+				}
+		}	
+		return false;
+	}
 
 	public boolean moveToPlayer(Player player) {
 		boolean c = false;
@@ -36,30 +62,37 @@ public class Eagle extends Animal {
 			Cell prev = Map.getCellFromCoordinate(new Coordinate(xEagle, yEagle));
 			int xPlayer = player.getCurrentPosition().getCoCell().getX();
 			int yPlayer = player.getCurrentPosition().getCoCell().getY();
+			if (Math.abs(yPlayer-position.getCoCell().getY())==1&&Math.abs(xPlayer-position.getCoCell().getX())==0) {
+				return true;
+			}
 			if (Math.abs(yPlayer-position.getCoCell().getY())>0) {
+					if (Math.abs(yPlayer-position.getCoCell().getY())==1&&Math.abs(xPlayer-position.getCoCell().getX())==0) {
+					return true;
+					}
 					int dy;
 					if (yPlayer>position.getCoCell().getY()) {
 							dy=1;
 					} else {
 							dy=-1;
 					}
-					prev.getCoCell().setY(prev.getCoCell().getY()+dy);
+					position.getCoCell().setY(position.getCoCell().getY()+dy);
 					RootPane.redraw(position, prev, "Eagle");
-					position.getCoCell().setY(position.getCoCell().getY() + dy);
 					return true;
 //					if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
 //						setPosition(defaultPosition);
 			} 
 			if (Math.abs(xPlayer-position.getCoCell().getX())>0) {
+					if (Math.abs(yPlayer-position.getCoCell().getY())==0&&Math.abs(xPlayer-position.getCoCell().getX())==1) {
+					return true;
+					}
 					int dx;
 					if (xPlayer>position.getCoCell().getX()) {
 						dx=1;
 					} else {
 						dx=-1;
 					}
-					prev.getCoCell().setX(prev.getCoCell().getX()+dx);
+					position.getCoCell().setX(position.getCoCell().getX()+dx);
 					RootPane.redraw(position, prev, "Eagle");
-					position.getCoCell().setX(position.getCoCell().getX() + dx);
 						}
 					return true;
 //					if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
@@ -71,8 +104,8 @@ public class Eagle extends Animal {
 	}
 
 	public void hitPlayer(Player player) {
-//		if (position.isSamePosition(player.getCurrentPosition()) && move && alive) {
-//			player.decreaseHP();
+		if (position.isNextTo(player.getCurrentPosition())&& move && alive) 
+			player.decreaseHP();
 //		}
 //			Thread thread = new Thread(() -> {
 //				try {
