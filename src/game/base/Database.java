@@ -36,7 +36,7 @@ public class Database {
 		Cell x0y0 = new Cell(new Coordinate(0, 0), false, true, false);
 		Cell x1y0 = new Cell(new Coordinate(1, 0), false, true, false);
 		Cell x2y0 = new Cell(new Coordinate(2, 0), false, true, false);
-		Cell x3y0 = new Cell(new Coordinate(3, 0), false, false, true);
+		Cell x3y0 = new Cell(new Coordinate(3, 0), false, true, true);
 		Cell x4y0 = new Cell(new Coordinate(4, 0), false, false, true);
 		Cell x5y0 = new Cell(new Coordinate(5, 0), true, false, true);
 		Cell x6y0 = new Cell(new Coordinate(6, 0), true, false, true);
@@ -54,10 +54,10 @@ public class Database {
 		Cell x18y0 = new Cell(new Coordinate(18, 0), false, false, true);
 		Cell x19y0 = new Cell(new Coordinate(19, 0), false, false, true);
 		Cell x0y1 = new Cell(new Coordinate(0, 1), false, false, true);
-		Cell x1y1 = new Cell(new Coordinate(1, 1), false, false, true);
+		Cell x1y1 = new Cell(new Coordinate(1, 1), false, true, true);
 		Cell x2y1 = new Cell(new Coordinate(2, 1), false, false, true);
 		Cell x3y1 = new Cell(new Coordinate(3, 1), false, false, true);
-		Cell x4y1 = new Cell(new Coordinate(4, 1), false, false, true);
+		Cell x4y1 = new Cell(new Coordinate(4, 1), false, true, true);
 		Cell x5y1 = new Cell(new Coordinate(5, 1), true, false, true);
 		Cell x6y1 = new Cell(new Coordinate(6, 1), true, false, true);
 		Cell x7y1 = new Cell(new Coordinate(7, 1), true, false, true);
@@ -93,7 +93,7 @@ public class Database {
 		Cell x17y2 = new Cell(new Coordinate(17, 2), false, false, true);
 		Cell x18y2 = new Cell(new Coordinate(18, 2), false, false, true);
 		Cell x19y2 = new Cell(new Coordinate(19, 2), false, false, true);
-		Cell x0y3 = new Cell(new Coordinate(0, 3), false, false, true);
+		Cell x0y3 = new Cell(new Coordinate(0, 3), false, true, true);
 		Cell x1y3 = new Cell(new Coordinate(1, 3), false, false, true);
 		Cell x2y3 = new Cell(new Coordinate(2, 3), false, false, true);
 		Cell x3y3 = new Cell(new Coordinate(3, 3), false, false, true);

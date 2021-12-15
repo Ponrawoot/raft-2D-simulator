@@ -8,6 +8,7 @@ import javafx.application.Platform;
 import object.Animal;
 import object.Bird;
 import object.Fish;
+import object.Eagle;
 import object.MangoTree;
 import object.Material;
 import object.Metal;
@@ -124,6 +125,12 @@ public class ThreadMain {
 					Thread.sleep(2000);
 					Platform.runLater(() -> {
 						RootPane.redraw(cell, cell, "PalmTree");
+						for (Tree x : Map.getTrees()) {
+							if (x.getPosition().isSamePosition(cell)) {
+								PalmTree palmTree = (PalmTree) x;
+								palmTree.grow();
+							}
+						}
 					});
 					/* ======================================================== */
 
@@ -133,12 +140,24 @@ public class ThreadMain {
 				}
 			});
 			thread.start();
-			for (Tree x : Map.getTrees()) {
-				if (x.getPosition().isSamePosition(cell)) {
-					PalmTree palmTree = (PalmTree) x;
-					palmTree.grow();
+		}
+		if (object instanceof Eagle) {
+			Cell cell = ((Eagle) object).getPosition();
+			Thread thread = new Thread(() -> {
+				try {
+					Thread.sleep(2000);
+					Platform.runLater(() -> {
+						RootPane.redraw(cell, cell, "Eagle");
+						((Eagle) object).refresh();
+					});
+					/* ======================================================== */
+
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-			}
+			});
+			thread.start();
 		}
 		if (object instanceof Metal) {
 			Cell cell = ((Metal) object).getPosition();
@@ -229,23 +248,22 @@ public class ThreadMain {
 
 	public void activateEagle(Player player) {
 		// TODO Auto-generated method stub
-		boolean check = Map.getEagle().moveToPlayer(player);
-		while (check) {
+		Thread thread = new Thread(() -> {
 			try {
 				Thread.sleep(2000);
 				Platform.runLater(() -> {
-					Map.getEagle().hitPlayer(player);
-					Map.getEagle().moveToPlayer(player);
+					while (Map.getEagle().moveToPlayer(player));
+//						Map.getEagle().hitPlayer(player);
 				});
 				/* ======================================================== */
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-		
-		
+		});
+		thread.start();
 	}
+
 	
 	public void setGrow(Object object) {
 		if (object instanceof MangoTree && (!((Tree) object).isReadyToCut())) {

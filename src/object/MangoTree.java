@@ -18,7 +18,7 @@ public class MangoTree extends Tree implements Removeable {
 		super.setWood(1);
 		super.setLeaf(2);
 		setFruit(1);
-		setMangoSeed(1);
+		setMangoSeed(2);
 	}
 
 	@Override

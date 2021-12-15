@@ -8,6 +8,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -32,10 +36,11 @@ public class GameDisplayCell extends Pane {
 		cell = Map.getCellFromCoordinate(coCell);
 		this.setPrefHeight(40);
 		this.setPrefWidth(40);
+		BackgroundImage seaCell = new BackgroundImage(new Image("Sea.png"), null, null, null, null);
 		if (cell==null) {
 			this.setBackground(new Background(new BackgroundFill(Color.MOCCASIN, CornerRadii.EMPTY, Insets.EMPTY)));
 		} else if (cell.isSea()&&!cell.isClosed()) {
-			this.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
+			this.setBackground(new Background(seaCell));
 		} else if (!cell.isSea()&&cell.isClosed()&&!cell.getStatus()) {
 			this.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
 //		} else if (!cell.isSea()&&!cell.isClosed()&&!cell.getStatus()) {

@@ -16,7 +16,7 @@ public class PineconeTree extends Tree implements Removeable {
 		// TODO Auto-generated constructor stub
 		super.setWood(2);
 		super.setLeaf(2);
-		setPineconeSeed(1);
+		setPineconeSeed(2);
 	}
 
 	@Override
