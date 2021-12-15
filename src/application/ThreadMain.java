@@ -246,4 +246,42 @@ public class ThreadMain {
 		
 		
 	}
+	
+	public void setGrow(Object object) {
+		if (object instanceof MangoTree && (!((Tree) object).isReadyToCut())) {
+			Thread thread = new Thread(() -> {
+				try {
+					Thread.sleep(2000);
+					Platform.runLater(() -> {
+						RootPane.redraw(((MangoTree) object).getPosition(), ((MangoTree) object).getPosition(), "MangoTree");
+					});
+					/* ======================================================== */
+
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
+			thread.start();
+			((MangoTree) object).grow();
+		}
+		
+		if (object instanceof PineconeTree && (!((Tree) object).isReadyToCut())) {
+			Thread thread = new Thread(() -> {
+				try {
+					Thread.sleep(2000);
+					Platform.runLater(() -> {
+						RootPane.redraw(((PineconeTree) object).getPosition(), ((PineconeTree) object).getPosition(), "PineconeTree");
+					});
+					/* ======================================================== */
+
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
+			thread.start();
+			((PineconeTree) object).grow();
+		}
+	}
 }
