@@ -355,7 +355,7 @@ public class Player implements Moveable {
 		}
 		if (Map.getEagle().getPosition().isSamePosition(cell)) {
 			Map.getEagle().killed(this);
-			return true;
+			return !Map.getEagle().isAlive();
 		}
 		return false;
 	}

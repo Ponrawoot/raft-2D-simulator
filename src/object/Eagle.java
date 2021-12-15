@@ -13,12 +13,11 @@ import object.base.MaterialType;
 public class Eagle extends Animal {
 
 	private boolean move;
-	private static final Cell defaultPosition = new Cell(new Coordinate(4, 1), false, false, true);
+	private static final Cell defaultPosition = new Cell(new Coordinate(4, 1), false, true, true);
 
 	public Eagle() {
 		super(defaultPosition); // same position every time
 		// TODO Auto-generated constructor stub
-		super.getPosition().setStatus(true);
 		setMove(true);
 	}
 
@@ -38,69 +37,44 @@ public class Eagle extends Animal {
 			Cell prev = Map.getCellFromCoordinate(new Coordinate(xEagle, yEagle));
 			int xPlayer = player.getCurrentPosition().getCoCell().getX();
 			int yPlayer = player.getCurrentPosition().getCoCell().getY();
-			if (Math.abs(yPlayer - position.getCoCell().getY()) > 0) {
-				int dy;
-				if (yPlayer > position.getCoCell().getY())
-					dy = 1;
-				else
-					dy = -1;
-				prev.getCoCell().setY(prev.getCoCell().getY() + dy);
-				Thread thread = new Thread(() -> {
-					try {
-						Thread.sleep(2000);
-						Platform.runLater(() -> {
-							RootPane.redraw(position, prev, "Eagle");
-						});
-						/* ======================================================== */
-
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+			if (Math.abs(yPlayer-position.getCoCell().getY())>0) {
+					int dy;
+					if (yPlayer>position.getCoCell().getY()) {
+							dy=1;
+					} else {
+							dy=-1;
 					}
-				});
-				thread.start();
-				position.getCoCell().setY(position.getCoCell().getY() + dy);
-				return true;
+					prev.getCoCell().setY(prev.getCoCell().getY()+dy);
+					RootPane.redraw(position, prev, "Eagle");
+					position.getCoCell().setY(position.getCoCell().getY() + dy);
+					return true;
 //					if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
 //						setPosition(defaultPosition);
-			}
-			if (Math.abs(xPlayer - position.getCoCell().getX()) > 0) {
-				int dx;
-				if (xPlayer > position.getCoCell().getX())
-					dx = 1;
-				else
-					dx = -1;
-				prev.getCoCell().setX(prev.getCoCell().getX() + dx);
-				Thread thread = new Thread(() -> {
-					try {
-						Thread.sleep(2000);
-						Platform.runLater(() -> {
-							RootPane.redraw(position, prev, "Eagle");
-						});
-						/* ======================================================== */
-
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+			} 
+			if (Math.abs(xPlayer-position.getCoCell().getX())>0) {
+					int dx;
+					if (xPlayer>position.getCoCell().getX()) {
+						dx=1;
+					} else {
+						dx=-1;
 					}
-				});
-				thread.start();
-				position.getCoCell().setX(position.getCoCell().getX() + dx);
-				return true;
+					prev.getCoCell().setX(prev.getCoCell().getX()+dx);
+					RootPane.redraw(position, prev, "Eagle");
+					position.getCoCell().setX(position.getCoCell().getX() + dx);
+						}
+					return true;
 //					if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
 //						setPosition(defaultPosition);
 			}
 //			hitPlayer(player);
-		}
 		return false;
 //		if (!(Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))) return;
-
 	}
 
 	public void hitPlayer(Player player) {
-		if (position.isSamePosition(player.getCurrentPosition()) && move && alive) {
-			player.decreaseHP();
-		}
+//		if (position.isSamePosition(player.getCurrentPosition()) && move && alive) {
+//			player.decreaseHP();
+//		}
 //			Thread thread = new Thread(() -> {
 //				try {
 //					Thread.sleep(2000);
@@ -115,14 +89,16 @@ public class Eagle extends Animal {
 	}
 
 	public void killed(Player player) {
-		if ((player.getCurrentPosition().isNextTo(position) || player.getCurrentPosition().isSamePosition(position))
-				&& checkWeaponCondition(player) && alive) {
+		if (alive) {
 			setAlive(false);
 			player.setBird(player.getBird() + 2);
 			player.setEagleHead(player.getEagleHead() + 1);
 			player.setFeather(player.getFeather() + 3);
 			player.decreaseLifetime(ApplicationType.SPEAR);
 			player.decreaseHP();
+		}
+//		if ((player.getCurrentPosition().isNextTo(position) || player.getCurrentPosition().isSamePosition(position))
+//				&& (checkWeaponCondition(player) && alive)) {
 
 //			try {
 //				Thread.sleep(15000); // (millisecond) can change
@@ -131,9 +107,9 @@ public class Eagle extends Animal {
 //				e.printStackTrace();
 //			}
 
-			refresh();
+//			refresh();
 		}
-	}
+//	}
 
 	public void refresh() {
 		if (!alive) {

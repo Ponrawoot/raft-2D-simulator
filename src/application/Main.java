@@ -24,7 +24,7 @@ import object.base.ApplicationType;
 public class Main extends Application {
 	private static RootPane rootPane;
 	private Player player;
-	private ThreadMain threadmain;
+	private ThreadMain threadMain;
 
 	public void start(Stage primaryStage) throws Exception {
 		player = new Player("player");
@@ -55,7 +55,7 @@ public class Main extends Application {
 //		player.setPineconeSeed(10);
 //	
 		rootPane = new RootPane(player);
-		threadmain = new ThreadMain();
+		threadMain = new ThreadMain();
 
 		Scene scene = new Scene(rootPane, 1000, 1000);
 
@@ -114,7 +114,7 @@ public class Main extends Application {
 				Object object = Map.getObjectFromCoordinate(cell.getCoCell());
 				if (player.takeActionOnObject(Map.getCellFromDirection(direction, new Coordinate(x,y)))) {
 					string = "Clear";
-					threadmain.refreshObject(object);
+					threadMain.refreshObject(object);
 					if ((object instanceof PalmTree))   redraw2 = true;
 					
 				}
@@ -126,14 +126,14 @@ public class Main extends Application {
 				if (player.plant("Mango seed", cell)) {
 					RootPane.redraw(cell, cell, "Mango seed");
 					MangoTree object1 = (MangoTree) Map.getObjectFromCoordinate(cell.getCoCell());
-					threadmain.setGrow(object1);
+					threadMain.setGrow(object1);
 				}
 			case NUMPAD2:
 				cell = Map.getCellFromDirection(direction, new Coordinate(x,y));
 				if (player.plant("Pinecone seed", cell)) {
 					RootPane.redraw(cell, cell, "Pinecone seed");
 					PineconeTree object2 = (PineconeTree) Map.getObjectFromCoordinate(cell.getCoCell());
-					threadmain.setGrow(object2);
+					threadMain.setGrow(object2);
 				}
 				break;
 			default:
@@ -151,6 +151,7 @@ public class Main extends Application {
 				RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(9,12)), cell2, "Front");
 				player.setReset(false);
 			}
+			threadMain.activateEagle(player);
 	});
 		
 //		threadmain.runGame(player);

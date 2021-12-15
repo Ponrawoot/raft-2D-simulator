@@ -231,7 +231,7 @@ public class Map {
 			}
 		}
 		if (Map.getEagle().getPosition().isSamePosition(cell)) {
-			return Map.eagle;
+			return Map.getEagle();
 		}
 		return null;
 		
