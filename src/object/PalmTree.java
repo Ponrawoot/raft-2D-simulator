@@ -48,6 +48,6 @@ public class PalmTree extends Tree {
 
 	@Override
 	public String toString() {
-		return "palm tree." + "\nYou got 3 woods, 3 leaves,";
+		return "palm tree." + " You got 3 woods, 3 leaves,";
 	}
 }

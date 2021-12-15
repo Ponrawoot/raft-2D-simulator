@@ -72,7 +72,7 @@ public class PineconeTree extends Tree implements Removeable {
 
 	@Override
 	public String toString() {
-		return "pinecone tree." + "\nYou got 2 woods, 2 leaves, 1 pinecone seed,";
+		return "pinecone tree." + " You got 2 woods, 2 leaves, 1 pinecone seed,";
 	}
 
 }

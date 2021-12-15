@@ -85,7 +85,7 @@ public class MangoTree extends Tree implements Removeable {
 
 	@Override
 	public String toString() {
-		return "mango tree." + "\nYou got 1 wood, 2 leaves, 1 fruit, 1 mango seed";
+		return "mango tree." + " You got 1 wood, 2 leaves, 1 fruit, 1 mango seed";
 	}
 
 }
