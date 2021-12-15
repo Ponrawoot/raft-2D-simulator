@@ -1,7 +1,6 @@
 package game;
 
 import game.base.Coordinate;
-import game.base.Direction;
 
 public class Cell {
 	private Coordinate coCell;
@@ -56,4 +55,17 @@ public class Cell {
 	public boolean isSamePosition(Cell cell) {
 		return (getCoCell().getX() == cell.getCoCell().getX() && getCoCell().getY() == cell.getCoCell().getY());
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cell other = (Cell) obj;
+		return getCoCell().getX() == other.getCoCell().getX() && getCoCell().getY() == other.getCoCell().getY();
+	}
+	
 }

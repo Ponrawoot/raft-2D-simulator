@@ -9,7 +9,6 @@ import game.base.Coordinate;
 import javafx.application.Platform;
 import object.base.ApplicationType;
 import object.base.MaterialType;
-import java.lang.*;
 
 public class Eagle extends Animal {
 
