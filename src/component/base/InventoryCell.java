@@ -82,7 +82,7 @@ public class InventoryCell extends Pane {
 	
 	public void highlight() {
 		this.setBorder(new Border(
-				new BorderStroke(Color.DARKBLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+				new BorderStroke(Color.DARKBLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2))));
 	}
 	
 	public void unhighlight() {
