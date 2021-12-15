@@ -45,14 +45,6 @@ public class PineTree extends Tree implements Removeable {
 			super.setLeaf(2);
 			setPinecone(2);
 			this.position.setStatus(false);
-
-//			try {
-//				Thread.sleep(15000); // (millisecond) can change
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-
 			setReadyToCut(true);
 		}
 	}

@@ -183,13 +183,13 @@ public class Main extends Application {
 				break;
 			case CLOSE_BRACKET:
 				cell = Map.getCellFromDirection(direction, new Coordinate(x, y));
-				boolean planted2 = player.plant("Pinecone seed", cell);
+				boolean planted2 = player.plant("Pinecone", cell);
 				if (planted2) {
-					RootPane.redraw(cell, cell, "Pinecone seed");
+					RootPane.redraw(cell, cell, "Pinecone");
 					PineTree object2 = (PineTree) Map.getObjectFromCoordinate(cell.getCoCell());
 					threadMain.setGrow(object2);
 				}
-				TopBar.getInformationPane().update(cell, planted2, "pinecone");
+				TopBar.getInformationPane().update(cell, planted2, "Pinecone");
 				break;
 			default:
 				string = "";
@@ -199,7 +199,6 @@ public class Main extends Application {
 			}
 			if (redraw2) {
 				RootPane.redraw2(cell);
-				// threadmain.refreshPalmTree(cell);
 			}
 
 			if (player.isReset()) {

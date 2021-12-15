@@ -170,7 +170,7 @@ public class GameDisplayCell extends Pane {
 		case "TreeStump" : url = "TreeStump.png"; break;
 		case "PalmTree" : url = "PalmTree.png"; break;
 		case "MangoTree" : url = "MangoTree.png"; break;
-		case "PineconeTree" : url = "PineTree.png"; break;
+		case "PineTree" : url = "PineTree.png"; break;
 		case "Stone" : url = "Stone.png"; break;
 		case "Plastic" : url = "Plastic.png"; break;
 		case "Scrap" : url = "Scrap.png"; break;
@@ -179,7 +179,7 @@ public class GameDisplayCell extends Pane {
 		case "Bird" : url = "Seagull.png"; break;
 		case "Eagle" : url = "Eagle.png"; break;
 		case "Mango seed" : url = "Mango seed.png"; break;
-		case "Pinecone seed" : url = "Pinecone seed.png"; break;
+		case "Pinecone" : url = "Pinecone.png"; break;
 		default : 	url = null; break;
 	}
 		ImageView = new ImageView(new Image(url));

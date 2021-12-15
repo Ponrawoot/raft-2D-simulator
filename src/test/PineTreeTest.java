@@ -15,7 +15,7 @@ import object.Weapon;
 import object.base.ApplicationType;
 import object.base.MaterialType;
 
-public class PineconeTreeTest {
+public class PineTreeTest {
 	private Player player;
 	private PineTree pineTree;
 	private Cell cell;

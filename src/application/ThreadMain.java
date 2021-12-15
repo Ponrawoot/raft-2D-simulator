@@ -14,7 +14,7 @@ import object.MangoTree;
 import object.Material;
 import object.Metal;
 import object.PalmTree;
-import object.PineconeTree;
+import object.PineTree;
 import object.Plastic;
 import object.Scrape;
 import object.Shipwreck;
@@ -254,12 +254,12 @@ public class ThreadMain {
 			((MangoTree) object).grow();
 		}
 		
-		if (object instanceof PineconeTree && (!((Tree) object).isReadyToCut())) {
+		if (object instanceof PineTree && (!((Tree) object).isReadyToCut())) {
 			Thread thread = new Thread(() -> {
 				try {
 					Thread.sleep(2000);
 					Platform.runLater(() -> {
-						RootPane.redraw(((PineconeTree) object).getPosition(), ((PineconeTree) object).getPosition(), "PineconeTree");
+						RootPane.redraw(((PineTree) object).getPosition(), ((PineTree) object).getPosition(), "PineTree");
 					});
 					/* ======================================================== */
 
@@ -269,7 +269,7 @@ public class ThreadMain {
 				}
 			});
 			thread.start();
-			((PineconeTree) object).grow();
+			((PineTree) object).grow();
 		}
 	}
 }

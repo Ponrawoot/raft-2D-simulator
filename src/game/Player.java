@@ -249,11 +249,11 @@ public class Player implements Moveable {
 				mangoSeed--;
 				Map.getTrees().add(mangoTree);
 				break;
-			case "Pinecone seed":
+			case "Pinecone":
 				if (pineconeSeed==0) return false;
-				PineTree pineconeTree = new PineTree(position);
+				PineTree pineTree = new PineTree(position);
 				pineconeSeed--;
-				Map.getTrees().add(pineconeTree);
+				Map.getTrees().add(pineTree);
 				break;
 			}
 			decreaseHP();
