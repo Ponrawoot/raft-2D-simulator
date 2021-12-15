@@ -106,6 +106,7 @@ public class InventoryPane extends VBox {
 				selectedWeapon = (Weapon) invw.getObject();
 				resetHighlight();
 				invw.highlight();
+				setWeaponButton.setDisable(false);
 			});
 			weapons.add(invw);
 			if (j == 7) {
@@ -171,9 +172,9 @@ public class InventoryPane extends VBox {
 
 	private void initSetWeaponButton(Player player) {
 		setWeaponButton = new Button("Set as current weapon");
+		if (selectedWeapon == null)
+			setWeaponButton.setDisable(true);
 		setWeaponButton.setOnAction(event -> {
-			if (selectedWeapon == null)
-				return;
 			if (selectedWeapon.getApplication() == ApplicationType.AXE) {
 				player.setCurrentAxe(selectedWeapon);
 			} else if (selectedWeapon.getApplication() == ApplicationType.SHOVEL) {

@@ -1,7 +1,6 @@
 package application;
 
 import component.RootPane;
-import component.base.PauseButton;
 import game.Cell;
 import game.Map;
 import game.Player;
