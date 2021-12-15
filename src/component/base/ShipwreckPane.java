@@ -93,7 +93,7 @@ public class ShipwreckPane extends BorderPane {
 			if (!shipwreck.hasReceiver()) return;
 			break;
 		case "Antenna":
-			if (!shipwreck.hasAnthena()) return;
+			if (!shipwreck.hasAntenna()) return;
 			break;
 		}
 		repairButton.setText("complete");

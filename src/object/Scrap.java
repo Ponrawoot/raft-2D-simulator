@@ -6,9 +6,9 @@ import game.Player;
 import game.base.Removeable;
 import object.base.ApplicationType;
 
-public class Scrape extends Material implements Removeable {
+public class Scrap extends Material implements Removeable {
 
-	public Scrape(Cell position) {
+	public Scrap(Cell position) {
 		super(position);
 	}
 
@@ -24,13 +24,6 @@ public class Scrape extends Material implements Removeable {
 			player.decreaseHP();
 		}
 
-//		try {
-//			Thread.sleep(15000); // (millisecond) can change
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		Map.refreshScrape(Map.getRandomInteger(1, 10));
 	}
 
 	public void refresh(Cell position) {

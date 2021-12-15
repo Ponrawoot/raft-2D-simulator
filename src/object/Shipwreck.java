@@ -13,7 +13,7 @@ public class Shipwreck {
 	private boolean petrol;
 	private boolean titanium;
 	private boolean receiver;
-	private boolean anthena;
+	private boolean antenna;
 
 	public Shipwreck() {
 		wood = false;
@@ -26,7 +26,7 @@ public class Shipwreck {
 		petrol = false;
 		titanium = false;
 		receiver = false;
-		anthena = false;
+		antenna = false;
 	}
 
 	public boolean repair(String object, Player player) {
@@ -108,8 +108,8 @@ public class Shipwreck {
 			}
 			return false;
 		case "Antenna":
-			if (player.hasAnthena() && !anthena) {
-				anthena = true;
+			if (player.hasAnthena() && !antenna) {
+				antenna = true;
 				player.setAnthena(false);
 				break;
 			}
@@ -120,7 +120,7 @@ public class Shipwreck {
 
 	public boolean checkWinCondition() {
 		if (wood && hinge && nail && rope && canvas && steering && engine && petrol && titanium && receiver
-				&& anthena) {
+				&& antenna) {
 			return true;
 		}
 		return false;
@@ -166,7 +166,7 @@ public class Shipwreck {
 		return receiver;
 	}
 
-	public boolean hasAnthena() {
-		return anthena;
+	public boolean hasAntenna() {
+		return antenna;
 	}
 }

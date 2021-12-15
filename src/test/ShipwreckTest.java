@@ -235,10 +235,10 @@ public class ShipwreckTest {
 		player.setAnthena(true);
 		assertTrue(shipwreck.repair("Anthena", player));
 		assertFalse(player.hasAnthena());
-		assertTrue(shipwreck.hasAnthena());
+		assertTrue(shipwreck.hasAntenna());
 
 		shipwreck.repair("Anthena", player);
 		assertFalse(player.hasAnthena());
-		assertTrue(shipwreck.hasAnthena());
+		assertTrue(shipwreck.hasAntenna());
 	}
 }

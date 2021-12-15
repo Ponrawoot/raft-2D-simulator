@@ -12,7 +12,8 @@ import object.Metal;
 import object.PalmTree;
 import object.PineTree;
 import object.Plastic;
-import object.Scrape;
+import object.Scrap;
+import object.Scrap;
 import object.Stone;
 import object.Tree;
 
@@ -568,11 +569,11 @@ public class Database {
 		
 		availableScrape = new ArrayList<Material>();
 		
-		Scrape scrape1 = new Scrape(x9y4);
-		Scrape scrape2 = new Scrape(x17y9);
-		Scrape scrape3 = new Scrape(x4y15);
-		Scrape scrape4 = new Scrape(x13y19);
-		availableScrape.add(scrape1);availableScrape.add(scrape2);availableScrape.add(scrape3);availableScrape.add(scrape4);
+		Scrap scrap1 = new Scrap(x9y4);
+		Scrap scrap2 = new Scrap(x17y9);
+		Scrap scrap3 = new Scrap(x4y15);
+		Scrap scrap4 = new Scrap(x13y19);
+		availableScrape.add(scrap1);availableScrape.add(scrap2);availableScrape.add(scrap3);availableScrape.add(scrap4);
 		
 		availablePlastic = new ArrayList<Material>();
 		

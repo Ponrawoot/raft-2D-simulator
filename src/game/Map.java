@@ -16,7 +16,7 @@ import object.Metal;
 import object.PalmTree;
 import object.PineTree;
 import object.Plastic;
-import object.Scrape;
+import object.Scrap;
 import object.Stone;
 import object.Tree;
 
@@ -29,7 +29,7 @@ public class Map {
 	private static ArrayList<Animal> availableBird;
 	private static ArrayList<Cell> randomBirdCell;
 	private static ArrayList<Material> availableMetal;
-	private static ArrayList<Material> availableScrape;
+	private static ArrayList<Material> availableScrap;
 	private static ArrayList<Material> availablePlastic;
 	private static ArrayList<Material> availableStone;
 	private static ArrayList<Cell> middleIslandArea;
@@ -54,7 +54,7 @@ public class Map {
 		availableFish = database.getAvailableFish();
 		availableBird = database.getAvailableBird();
 		availableMetal = database.getAvailableMetal();
-		availableScrape = database.getAvailableScrape();
+		availableScrap = database.getAvailableScrape();
 		availablePlastic = database.getAvailablePlastic();
 		availableStone = database.getAvailableStone();
 		trees = database.getTrees();
@@ -102,7 +102,7 @@ public class Map {
 	}
 
 	public static ArrayList<Material> getAvailableScrape() {
-		return availableScrape;
+		return availableScrap;
 	}
 
 	public static ArrayList<Material> getAvailableStone() {
@@ -166,7 +166,7 @@ public class Map {
 		}
 		for (Material x: Map.getAvailableScrape()) {
 			if (x.getPosition().isSamePosition(cell)) {
-				Scrape scrape = (Scrape) x;
+				Scrap scrape = (Scrap) x;
 				return scrape;
 			}
 		}
@@ -281,7 +281,7 @@ public class Map {
 	}
 
 	public static void refreshScrape(int random) {
-		if (!readyForRandomMaterial(availableScrape)) return;
+		if (!readyForRandomMaterial(availableScrap)) return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
 		for (Cell x : area) {
@@ -293,11 +293,11 @@ public class Map {
 		for (int i = 0; i < random; i++) {
 			int randomIndex = rand.nextInt(givenList.size());
 			Cell randomCell = givenList.get(randomIndex);
-			if (i < availableScrape.size()) {
-				((Scrape) availableScrape.get(i)).refresh(randomCell);
+			if (i < availableScrap.size()) {
+				((Scrap) availableScrap.get(i)).refresh(randomCell);
 			} else {
-				Scrape e = new Scrape(randomCell);
-				availableScrape.add(e);
+				Scrap e = new Scrap(randomCell);
+				availableScrap.add(e);
 			}
 		}
 	}

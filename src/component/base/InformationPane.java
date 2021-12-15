@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 import object.Animal;
 import object.Metal;
 import object.Plastic;
-import object.Scrape;
+import object.Scrap;
 import object.Stone;
 import object.Tree;
 import object.base.ApplicationType;
@@ -59,8 +59,8 @@ public class InformationPane extends Label {
 			setText(genInformText(check, (Metal) object, ApplicationType.SHOVEL));
 		}
 
-		else if (object instanceof Scrape) {
-			setText(genInformText(player.getCurrentShovel() != null, (Scrape) object, ApplicationType.SHOVEL));
+		else if (object instanceof Scrap) {
+			setText(genInformText(player.getCurrentShovel() != null, (Scrap) object, ApplicationType.SHOVEL));
 		}
 
 		else if (object instanceof Animal) {

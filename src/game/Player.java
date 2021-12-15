@@ -18,7 +18,7 @@ import object.Metal;
 import object.PalmTree;
 import object.PineTree;
 import object.Plastic;
-import object.Scrape;
+import object.Scrap;
 import object.Stone;
 import object.Tree;
 import object.Weapon;
@@ -29,7 +29,7 @@ public class Player implements Moveable {
 	private String name;
 	private int maxHP, HP, wood, leaf, mangoSeed, pineconeSeed, fruit, plastic, feather, titanium, copper, metal, stone,
 			scrape, hinge, nail, rope, circuit, fish, bird, eagleHead;
-	private boolean raft, receiver, anthena, canvas, steering, petrol, engine;
+	private boolean raft, receiver, antenna, canvas, steering, petrol, engine;
 	private Weapon currentAxe;
 	private Weapon currentShovel;
 	private Weapon currentSpear;
@@ -66,7 +66,7 @@ public class Player implements Moveable {
 		eagleHead = 0;
 		raft = false;
 		receiver = false;
-		anthena = false;
+		antenna = false;
 		canvas = false;
 		steering = false;
 		petrol = false;
@@ -211,12 +211,12 @@ public class Player implements Moveable {
 			receiver = true;
 			break;
 		case "Antenna":
-			if (anthena || circuit < 8 || scrape < 15 || nail < 15)
+			if (antenna || circuit < 8 || scrape < 15 || nail < 15)
 				return false;
 			circuit -= 8;
 			scrape -= 15;
 			nail -= 15;
-			anthena = true;
+			antenna = true;
 			break;
 		}
 		return true;
@@ -305,9 +305,9 @@ public class Player implements Moveable {
 		}
 		for (Material x : Map.getAvailableScrape()) {
 			if (x.getPosition().isSamePosition(cell)) {
-				Scrape scrpe = (Scrape) x;
-				scrpe.beRemoved(this);
-				return !scrpe.isPresent();
+				Scrap scrp = (Scrap) x;
+				scrp.beRemoved(this);
+				return !scrp.isPresent();
 			}
 		}
 		for (Material x : Map.getAvailableStone()) {
@@ -625,11 +625,11 @@ public class Player implements Moveable {
 	}
 
 	public boolean hasAnthena() {
-		return anthena;
+		return antenna;
 	}
 
 	public void setAnthena(boolean anthena) {
-		this.anthena = anthena;
+		this.antenna = anthena;
 	}
 
 	public boolean hasCanvas() {

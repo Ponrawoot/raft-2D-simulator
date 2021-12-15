@@ -16,7 +16,7 @@ import object.Metal;
 import object.PalmTree;
 import object.PineTree;
 import object.Plastic;
-import object.Scrape;
+import object.Scrap;
 import object.Shipwreck;
 import object.Stone;
 import object.Tree;
@@ -170,7 +170,7 @@ public class ThreadMain {
 			}
 			
 		}
-		if (object instanceof Scrape) {
+		if (object instanceof Scrap) {
 			if (Map.readyForRandomMaterial(Map.getAvailableScrape())) {
 				Map.refreshScrape(Map.getRandomInteger(1, 10));
 				Thread thread = new Thread(() -> {
@@ -213,10 +213,6 @@ public class ThreadMain {
 					if (!player.getCurrentPosition().isSamePosition(prev)) {
 						break;
 					}
-//					Thread.sleep(2000);
-//					Platform.runLater(() -> {
-//						Map.getEagle().hitPlayer(player);
-//					});
 				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -225,12 +221,6 @@ public class ThreadMain {
 			}
 		});
 		thread.start();
-//		if (!player.getCurrentPosition().isSamePosition(prev)) {
-//			thread.interrupt();
-//		}
-//		if (player.getHP()<95) {
-//			thread.interrupt();
-//		}
 		
 	}
 
