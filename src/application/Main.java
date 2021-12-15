@@ -12,6 +12,8 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import object.base.MaterialType;
 import object.MangoTree;
@@ -25,6 +27,7 @@ public class Main extends Application {
 	private static RootPane rootPane;
 	private Player player;
 	private ThreadMain threadMain;
+	private static AudioClip sound;
 
 	public void start(Stage primaryStage) throws Exception {
 		player = new Player("player");
@@ -57,8 +60,23 @@ public class Main extends Application {
 		rootPane = new RootPane(player);
 		threadMain = new ThreadMain();
 
-		Scene scene = new Scene(rootPane, 1000, 1000);
+		sound = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
+		sound.setCycleCount(MediaPlayer.INDEFINITE);
+		sound.play();
 
+		Scene scene = new Scene(rootPane, 1000, 1000);
+		addEventListener(scene);
+
+		primaryStage.setTitle("Survival Simulator");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+	public void addEventListener(Scene scene) {
 		scene.setOnKeyPressed((KeyEvent e) -> {
 			try {
 				Thread.sleep(50);
@@ -74,7 +92,7 @@ public class Main extends Application {
 			int y = player.getCurrentPosition().getCoCell().getY();
 			Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y));
 			Cell cell2 = Map.getCellFromCoordinate(new Coordinate(x, y));
-			
+
 			switch (code) {
 			case W:
 				string = "Back";
@@ -110,26 +128,27 @@ public class Main extends Application {
 				break;
 			case P:
 				string = "";
-				cell = Map.getCellFromDirection(direction, new Coordinate(x,y));
+				cell = Map.getCellFromDirection(direction, new Coordinate(x, y));
 				Object object = Map.getObjectFromCoordinate(cell.getCoCell());
-				if (player.takeActionOnObject(Map.getCellFromDirection(direction, new Coordinate(x,y)))) {
+				if (player.takeActionOnObject(Map.getCellFromDirection(direction, new Coordinate(x, y)))) {
 					string = "Clear";
 					threadMain.refreshObject(object);
-					if ((object instanceof PalmTree))   redraw2 = true;
-					
+					if ((object instanceof PalmTree))
+						redraw2 = true;
+
 				}
 				TopBar.getInformationPane().update(player, object);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
-			break;
+				break;
 			case NUMPAD1:
-				cell = Map.getCellFromDirection(direction, new Coordinate(x,y));
+				cell = Map.getCellFromDirection(direction, new Coordinate(x, y));
 				if (player.plant("Mango seed", cell)) {
 					RootPane.redraw(cell, cell, "Mango seed");
 					MangoTree object1 = (MangoTree) Map.getObjectFromCoordinate(cell.getCoCell());
 					threadMain.setGrow(object1);
 				}
 			case NUMPAD2:
-				cell = Map.getCellFromDirection(direction, new Coordinate(x,y));
+				cell = Map.getCellFromDirection(direction, new Coordinate(x, y));
 				if (player.plant("Pinecone seed", cell)) {
 					RootPane.redraw(cell, cell, "Pinecone seed");
 					PineconeTree object2 = (PineconeTree) Map.getObjectFromCoordinate(cell.getCoCell());
@@ -144,29 +163,19 @@ public class Main extends Application {
 			}
 			if (redraw2) {
 				RootPane.redraw2(cell);
-				//threadmain.refreshPalmTree(cell);
-				}
-				
+				// threadmain.refreshPalmTree(cell);
+			}
+
 			if (player.isReset()) {
-				RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(9,12)), cell2, "Front");
+				RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(9, 12)), cell2, "Front");
 				player.setReset(false);
 			}
 			threadMain.activateEagle(player);
-	});
-		
-//		threadmain.runGame(player);
-		
-		
-		
-		
-
-		primaryStage.setTitle("Survival Simulator");
-		primaryStage.setScene(scene);
-		primaryStage.show();
+		});
 	}
 
-	public static void main(String[] args) {
-		launch(args);
+	public static AudioClip getSound() {
+		return sound;
 	}
 
 }

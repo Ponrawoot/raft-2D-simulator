@@ -3,6 +3,7 @@ package component;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import application.Main;
 import component.base.CurrentWeaponPane;
 import component.base.InformationPane;
 import component.base.SettingButton;
@@ -29,18 +30,19 @@ public class TopBar extends FlowPane {
 	private SettingButton settingButton;
 	private static CurrentWeaponPane weaponPane;
 	private static InformationPane informationPane;
+	private Button muteButton;
 
 	public TopBar(Player player) {
 		setPadding(new Insets(5));
 		setHgap(5);
 		setVgap(5);
-		
+
 		playerName = new Text("Name: " + player.getName());
-		
+
 		hp = new ProgressBar(0);
 		hpText = new Text();
 		setHp(player);
-		
+
 		time = new Label();
 		Thread thread = new Thread(() -> {
 			SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
@@ -61,8 +63,14 @@ public class TopBar extends FlowPane {
 		settingButton = new SettingButton();
 		weaponPane = new CurrentWeaponPane(player);
 		informationPane = new InformationPane(player);
-		
-		getChildren().addAll(playerName, hpText, hp, time, settingButton, weaponPane, informationPane);
+		muteButton = new Button("Mute");
+		muteButton.setOnAction(event -> {
+			if (Main.getSound().isPlaying())
+				Main.getSound().stop();
+			else Main.getSound().play();
+		});
+
+		getChildren().addAll(playerName, hpText, hp, time, settingButton, weaponPane, informationPane, muteButton);
 	}
 
 	public static void setHp(Player player) {
@@ -75,7 +83,8 @@ public class TopBar extends FlowPane {
 	}
 
 	public static boolean showHpWarning(Player player) {
-		if (player.getHP()!=0) return false; 
+		if (player.getHP() != 0)
+			return false;
 		if (player.getHP() == 0) {
 			Stage stage = new Stage();
 			stage.setTitle("Warning");
@@ -101,7 +110,7 @@ public class TopBar extends FlowPane {
 			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.showAndWait();
-			
+
 		}
 		return true;
 	}
