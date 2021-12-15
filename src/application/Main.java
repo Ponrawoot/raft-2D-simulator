@@ -14,7 +14,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import object.base.MaterialType;
+import object.MangoTree;
 import object.PalmTree;
+import object.PineconeTree;
 import object.Tree;
 import object.Weapon;
 import object.base.ApplicationType;
@@ -31,12 +33,12 @@ public class Main extends Application {
 		player.setMaxHP(100);
 		player.setRaft(true);
 		Weapon w1 = new Weapon(MaterialType.METAL, ApplicationType.AXE);
-	//	player.setCurrentAxe(w1);
+		player.setCurrentAxe(w1);
 		player.addWeapon(w1);
 		Weapon w2 = new Weapon(MaterialType.METAL, ApplicationType.SHOVEL);
-	//	player.setCurrentShovel(w2);
+		player.setCurrentShovel(w2);
 		player.addWeapon(w2);
-		Weapon w3 = new Weapon(MaterialType.WOOD, ApplicationType.SPEAR);
+		Weapon w3 = new Weapon(MaterialType.METAL, ApplicationType.SPEAR);
 		player.setCurrentSpear(w3);
 		player.addWeapon(w3);
 		player.setFish(5);
@@ -49,6 +51,8 @@ public class Main extends Application {
 		player.setRope(100);
 		player.setLeaf(10);
 		player.setStone(100);
+//		player.setMangoSeed(10);
+//		player.setPineconeSeed(10);
 //	
 		rootPane = new RootPane(player);
 		threadmain = new ThreadMain();
@@ -117,6 +121,21 @@ public class Main extends Application {
 				TopBar.getInformationPane().update(player, object);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
 			break;
+			case NUMPAD1:
+				cell = Map.getCellFromDirection(direction, new Coordinate(x,y));
+				if (player.plant("Mango seed", cell)) {
+					RootPane.redraw(cell, cell, "Mango seed");
+					MangoTree object1 = (MangoTree) Map.getObjectFromCoordinate(cell.getCoCell());
+					threadmain.setGrow(object1);
+				}
+			case NUMPAD2:
+				cell = Map.getCellFromDirection(direction, new Coordinate(x,y));
+				if (player.plant("Pinecone seed", cell)) {
+					RootPane.redraw(cell, cell, "Pinecone seed");
+					PineconeTree object2 = (PineconeTree) Map.getObjectFromCoordinate(cell.getCoCell());
+					threadmain.setGrow(object2);
+				}
+				break;
 			default:
 				string = "";
 				System.out.println(code);

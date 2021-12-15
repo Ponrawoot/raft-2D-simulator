@@ -226,15 +226,17 @@ public class Player implements Moveable {
 		switch (object) {
 		case "Fruit":
 			fruit--;
+			increaseHP();
 			break;
 		case "Fish":
 			fish--;
+			increaseHP();increaseHP();
 			break;
 		case "Bird":
 			bird--;
+			increaseHP();
 			break;
 		}
-		increaseHP();
 	}
 
 	public void feed(Eagle eagle) {
@@ -263,11 +265,13 @@ public class Player implements Moveable {
 		if (Map.getPlantableArea().contains(position) && position.getStatus()) {
 			switch (object) {
 			case "Mango seed":
+				if (mangoSeed==0) return false;
 				MangoTree mangoTree = new MangoTree(position);
 				mangoSeed--;
 				Map.getTrees().add(mangoTree);
 				break;
 			case "Pinecone seed":
+				if (pineconeSeed==0) return false;
 				PineconeTree pineconeTree = new PineconeTree(position);
 				pineconeSeed--;
 				Map.getTrees().add(pineconeTree);

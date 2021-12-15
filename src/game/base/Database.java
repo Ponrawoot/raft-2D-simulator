@@ -460,9 +460,9 @@ public class Database {
 		plantableArea = new ArrayList<Cell>();
 		
 		plantableArea.add(x15y0);plantableArea.add(x16y0);plantableArea.add(x17y0);plantableArea.add(x18y0);plantableArea.add(x19y0);
-		plantableArea.add(x15y0);plantableArea.add(x16y1);plantableArea.add(x17y1);plantableArea.add(x18y1);plantableArea.add(x19y1);
+		plantableArea.add(x15y1);plantableArea.add(x16y1);plantableArea.add(x17y1);plantableArea.add(x18y1);plantableArea.add(x19y1);
 		plantableArea.add(x15y2);plantableArea.add(x16y2);plantableArea.add(x17y2);plantableArea.add(x18y2);plantableArea.add(x19y2);
-		plantableArea.add(x11y6);plantableArea.add(x12y6);plantableArea.add(x11y7);plantableArea.add(x12y7);plantableArea.add(x13y6);plantableArea.add(x13y7);
+		plantableArea.add(x11y6);plantableArea.add(x12y6);plantableArea.add(x11y7);plantableArea.add(x12y7);plantableArea.add(x11y8);plantableArea.add(x12y8);
 		
 		moveableForEagleArea = new ArrayList<Cell>();
 		

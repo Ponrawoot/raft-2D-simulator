@@ -23,7 +23,8 @@ public class PineconeTree extends Tree implements Removeable {
 	public void beRemoved(Player player) {
 		// TODO Auto-generated method stub
 		if (readyToCut && player.getCurrentPosition().isNextTo(position) && player.getCurrentAxe() != null) {
-			if (player.getCurrentAxe().getMaterial() == MaterialType.METAL) {
+			if (player.getCurrentAxe().getMaterial() == MaterialType.STONE
+					|| player.getCurrentAxe().getMaterial() == MaterialType.METAL) {
 				player.decreaseLifetime(ApplicationType.AXE);
 				player.setWood(player.getWood() + wood);
 				player.setLeaf(player.getLeaf() + leaf);
@@ -45,7 +46,7 @@ public class PineconeTree extends Tree implements Removeable {
 		if (!readyToCut) {
 			super.setWood(2);
 			super.setLeaf(2);
-			setPineconeSeed(1);
+			setPineconeSeed(2);
 			this.position.setStatus(false);
 			
 //			try {
