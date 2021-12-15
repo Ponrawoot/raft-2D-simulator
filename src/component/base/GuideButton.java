@@ -5,11 +5,11 @@ import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -31,7 +31,7 @@ public class GuideButton extends Button{
 				Stage stage = new Stage();
 				stage.setTitle("Guide");
 				
-				Pane root = new Pane();
+				ScrollPane root = new ScrollPane();
 				
 				Scene scene = new Scene(root);
 				stage.setScene(scene);
