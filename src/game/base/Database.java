@@ -466,6 +466,7 @@ public class Database {
 		
 		moveableForEagleArea = new ArrayList<Cell>();
 		
+		moveableForEagleArea.add(x4y0);
 		moveableForEagleArea.add(x0y1);moveableForEagleArea.add(x1y1);moveableForEagleArea.add(x2y1);moveableForEagleArea.add(x3y1);moveableForEagleArea.add(x4y1);
 		moveableForEagleArea.add(x0y2);moveableForEagleArea.add(x1y2);moveableForEagleArea.add(x2y2);moveableForEagleArea.add(x3y2);moveableForEagleArea.add(x4y2);
 		moveableForEagleArea.add(x0y3);moveableForEagleArea.add(x1y3);moveableForEagleArea.add(x2y3);moveableForEagleArea.add(x3y3);moveableForEagleArea.add(x4y3);

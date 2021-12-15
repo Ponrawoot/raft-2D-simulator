@@ -239,27 +239,6 @@ public class Player implements Moveable {
 		}
 	}
 
-	public void feed(Eagle eagle) {
-		if (fish > 3 && Map.getMoveableForEagleArea().contains(currentPosition)) {
-			fish -= 3;
-			eagle.setMove(false);
-
-			Timer timer = new Timer();
-			timer.scheduleAtFixedRate(new TimerTask() {
-				int i = 15; // (second) can change
-
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					i--;
-					if (i < 0) {
-						timer.cancel();
-						eagle.setMove(true);
-					}
-				}
-			}, 0, 1000);
-		}
-	}
 
 	public boolean plant(String object, Cell position) {
 		if (Map.getPlantableArea().contains(position) && position.getStatus()) {

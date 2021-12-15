@@ -4,6 +4,7 @@ import component.RootPane;
 import game.Cell;
 import game.Map;
 import game.Player;
+import game.base.Coordinate;
 import javafx.application.Platform;
 import object.Animal;
 import object.Bird;
@@ -22,57 +23,6 @@ import object.Tree;
 
 public class ThreadMain {
 
-//	protected void runGame(Player player) {
-//		Thread t = new Thread(() -> {
-//			try {		
-//				while(!Shipwreck.checkWinCondition()) {
-//					
-//					/*===================!DO NOT CHANGE THIS LINE!===========*/
-//					Thread.sleep(1000);
-//					
-//					/*========================================================*/
-//					
-//					/*====================FILL CODE============================
-//					There is JavaFX commands inside the code below
-//					Add something to the code below to make JavaFX commands can
-//					function in the thread
-//					*/
-//					// Hint : Player use ImageView, which is related to JavaFX.
-//					Platform.runLater(() -> {
-//					});
-//					/*========================================================*/	
-//				}
-//			} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//			}	
-//		});
-//		t.start();	
-//	}
-
-	protected void refreshPalmTree(Cell cell) {
-		Thread thread = new Thread(() -> {
-			try {
-				Thread.sleep(2000);
-				Platform.runLater(() -> {
-					RootPane.redraw(cell, cell, "PalmTree");
-				});
-				/* ======================================================== */
-
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		});
-		thread.start();
-		for (Tree x : Map.getTrees()) {
-			if (x.getPosition().isSamePosition(cell)) {
-				PalmTree palmTree = (PalmTree) x;
-				palmTree.grow();
-			}
-		}	
-	}
-
 	public void refreshObject(Object object) {
 		// TODO Auto-generated method stub
 		if (object instanceof Fish) {
@@ -86,8 +36,6 @@ public class ThreadMain {
 								if (x.isAlive()) RootPane.redraw(x.getPosition(), x.getPosition(), "Fish");
 							}
 						});
-						/* ======================================================== */
-
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -107,8 +55,6 @@ public class ThreadMain {
 								if (x.isAlive()) RootPane.redraw(x.getPosition(), x.getPosition(), "Bird");
 							}
 						});
-						/* ======================================================== */
-
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -143,12 +89,13 @@ public class ThreadMain {
 		}
 		if (object instanceof Eagle) {
 			Cell cell = ((Eagle) object).getPosition();
+			cell.setStatus(true);
 			Thread thread = new Thread(() -> {
 				try {
-					Thread.sleep(10000);
+					Thread.sleep(2000);
 					Platform.runLater(() -> {
-						RootPane.redraw(cell, cell, "Eagle");
 						((Eagle) object).refresh();
+						RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(4,1)), cell, "Eagle");
 					});
 					/* ======================================================== */
 
@@ -166,6 +113,7 @@ public class ThreadMain {
 					Thread.sleep(2000);
 					Platform.runLater(() -> {
 						RootPane.redraw(cell, cell, "Metal");
+						((Metal) object).refresh();
 					});
 					/* ======================================================== */
 
@@ -175,7 +123,6 @@ public class ThreadMain {
 				}
 			});
 			thread.start();
-			((Metal) object).refresh();
 		}
 		if (object instanceof Stone) {
 			if (Map.readyForRandomMaterial(Map.getAvailableStone())) {
@@ -250,17 +197,24 @@ public class ThreadMain {
 
 	public void activateEagle(Player player) {
 		// TODO Auto-generated method stub
+		int x = player.getCurrentPosition().getCoCell().getX();
+		int y = player.getCurrentPosition().getCoCell().getY();
+		Cell prev = Map.getCellFromCoordinate(new Coordinate(x,y));
 		Thread thread = new Thread(() -> {
 			try {
-				while (Map.getEagle().checkMoving(player)&&player.getHP()!=0) {
+				while (Map.getEagle().checkMoving(player)&&player.getCurrentPosition().isSamePosition(prev)) {
 					Thread.sleep(2000);
 					Platform.runLater(() -> {
 						Map.getEagle().moveToPlayer(player);
-					});
-					Thread.sleep(2000);
-					Platform.runLater(() -> {
 						Map.getEagle().hitPlayer(player);
 					});
+					if (!player.getCurrentPosition().isSamePosition(prev)) {
+						break;
+					}
+//					Thread.sleep(2000);
+//					Platform.runLater(() -> {
+//						Map.getEagle().hitPlayer(player);
+//					});
 				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -269,9 +223,12 @@ public class ThreadMain {
 			}
 		});
 		thread.start();
-		if (!Map.getEagle().checkMoving(player)) {
-			thread.interrupt();
-		}
+//		if (!player.getCurrentPosition().isSamePosition(prev)) {
+//			thread.interrupt();
+//		}
+//		if (player.getHP()<95) {
+//			thread.interrupt();
+//		}
 		
 	}
 
