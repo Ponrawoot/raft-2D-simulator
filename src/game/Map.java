@@ -112,38 +112,6 @@ public class Map {
 		Map.availableBird = availableBird;
 	}
 
-//	public int getTimeInGame() {
-//		return timeInGame;
-//	}
-//
-//	public int getBirdTime() {
-//		return birdTime;
-//	}
-//
-//	public int getFishTime() {
-//		return fishTime;
-//	}
-//
-//	public int getMetalTime() {
-//		return metalTime;
-//	}
-//
-//	public int getScrapeTime() {
-//		return scrapeTime;
-//	}
-//
-//	public int getStoneTime() {
-//		return stoneTime;
-//	}
-//
-//	public int getPlasticTime() {
-//		return plasticTime;
-//	}
-//
-//	public int getEagleTime() {
-//		return eagleTime;
-//	}
-
 	public static ArrayList<Cell> getArea() {
 		return area;
 	}

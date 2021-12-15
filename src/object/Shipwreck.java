@@ -3,17 +3,17 @@ package object;
 import game.Player;
 
 public class Shipwreck {
-	private static boolean wood;
-	private static boolean hinge;
-	private static boolean nail;
-	private static boolean rope;
-	private static boolean canvas;
-	private static boolean steering;
-	private static boolean engine;
-	private static boolean petrol;
-	private static boolean titanium;
-	private static boolean receiver;
-	private static boolean anthena;
+	private boolean wood;
+	private boolean hinge;
+	private boolean nail;
+	private boolean rope;
+	private boolean canvas;
+	private boolean steering;
+	private boolean engine;
+	private boolean petrol;
+	private boolean titanium;
+	private boolean receiver;
+	private boolean anthena;
 
 	public Shipwreck() {
 		wood = false;
@@ -118,7 +118,7 @@ public class Shipwreck {
 		return true;
 	}
 
-	public static boolean checkWinCondition() {
+	public boolean checkWinCondition() {
 		if (wood && hinge && nail && rope && canvas && steering && engine && petrol && titanium && receiver
 				&& anthena) {
 			return true;

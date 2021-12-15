@@ -76,7 +76,9 @@ public class Player implements Moveable {
 		currentSpear = null;
 		currentPosition = new Cell(new Coordinate(), false, false, true);
 		playerWeapon = new ArrayList<Weapon>();
-		playerWeapon.add(new Weapon(MaterialType.WOOD, ApplicationType.AXE));
+		Weapon woodAxe = new Weapon(MaterialType.WOOD, ApplicationType.AXE);
+		playerWeapon.add(woodAxe);
+		setCurrentAxe(woodAxe);
 		direction = Direction.DOWN;
 		
 	}
@@ -294,42 +296,42 @@ public class Player implements Moveable {
 			if (x.getPosition().isSamePosition(cell)) {
 				Fish fish = (Fish) x;
 				fish.beRemoved(this);
-				return true;
+				return !fish.isAlive();
 			}
 		}
 		for (Animal x : Map.getAvailableBird()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Bird bird = (Bird) x;
 				bird.beRemoved(this);
-				return true;
+				return !bird.isAlive();
 			}
 		}
 		for (Material x : Map.getAvailableMetal()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Metal metal = (Metal) x;
 				metal.beRemoved(this);
-				return true;
+				return !metal.isPresent();
 			}
 		}
 		for (Material x : Map.getAvailablePlastic()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Plastic plastic = (Plastic) x;
 				plastic.beRemoved(this);
-				return true;
+				return !plastic.isPresent();
 			}
 		}
 		for (Material x : Map.getAvailableScrape()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Scrape scrpe = (Scrape) x;
 				scrpe.beRemoved(this);
-				return true;
+				return !scrpe.isPresent();
 			}
 		}
 		for (Material x : Map.getAvailableStone()) {
 			if (x.getPosition().isSamePosition(cell)) {
 				Stone stone = (Stone) x;
 				stone.beRemoved(this);
-				return true;
+				return !stone.isPresent();
 			}
 		}
 		for (Tree x : Map.getTrees()) {
@@ -337,13 +339,13 @@ public class Player implements Moveable {
 
 				if (x instanceof PalmTree) {
 					((PalmTree) x).collect(this);
-					return true;
+					return !x.isReadyToCut();
 				} else if (x instanceof PineconeTree) {
 					((PineconeTree) x).beRemoved(this);
-					return true;
+					return !x.isReadyToCut();
 				} else if (x instanceof MangoTree) {
 					((MangoTree) x).beRemoved(this);
-					return true;
+					return !x.isReadyToCut();
 				}
 			}
 		}
