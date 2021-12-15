@@ -1,6 +1,5 @@
 package object;
 
-import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -23,7 +22,7 @@ public class PineconeTree extends Tree implements Removeable {
 	@Override
 	public void beRemoved(Player player) {
 		// TODO Auto-generated method stub
-		if (readyToCut && player.getCurrentPosition().isNextTo(position)) {
+		if (readyToCut && player.getCurrentPosition().isNextTo(position) && player.getCurrentAxe() != null) {
 			if (player.getCurrentAxe().getMaterial() == MaterialType.METAL) {
 				player.decreaseLifetime(ApplicationType.AXE);
 				player.setWood(player.getWood() + wood);

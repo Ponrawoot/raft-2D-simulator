@@ -1,6 +1,5 @@
 package object;
 
-import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -17,6 +16,7 @@ public class Bird extends Animal implements Removeable {
 	@Override
 	public void beRemoved(Player player) {
 		// TODO Auto-generated method stub
+		if (player.getCurrentSpear() == null) return;
 		if ((player.getCurrentSpear().getMaterial() == MaterialType.STONE
 				|| player.getCurrentSpear().getMaterial() == MaterialType.METAL)
 				&& player.getCurrentPosition().isNextTo(position) && alive) {

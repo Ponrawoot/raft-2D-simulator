@@ -1,6 +1,5 @@
 package object;
 
-import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;

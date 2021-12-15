@@ -1,6 +1,5 @@
 package object;
 
-import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -61,6 +60,8 @@ public class Eagle extends Animal {
 	}
 
 	public void killed(Player player) {
+		if (player.getCurrentSpear() == null)
+			return;
 		if ((player.getCurrentPosition().isNextTo(position) || player.getCurrentPosition().isSamePosition(position))
 				&& player.getCurrentSpear().getMaterial() == MaterialType.METAL && alive) {
 			setAlive(false);
