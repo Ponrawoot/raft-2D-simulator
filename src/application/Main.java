@@ -108,9 +108,10 @@ public class Main extends Application {
 			case W:
 				string = "Back";
 				if (!player.control(Direction.UP)) {
-					player.move(Direction.UP);
-					sound1.play();
-					
+					if ((player.checkMove(direction) || (player.checkSail(direction)))) {
+						player.move(direction);
+						sound1.play();
+					}
 				}
 				TopBar.getInformationPane().update(player, direction);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
@@ -118,8 +119,10 @@ public class Main extends Application {
 			case S:
 				string = "Front";
 				if (!player.control(Direction.DOWN)) {
-					player.move(Direction.DOWN);
-					sound1.play();
+					if ((player.checkMove(direction) || (player.checkSail(direction)))) {
+						player.move(direction);
+						sound1.play();
+					}
 				}
 				TopBar.getInformationPane().update(player, direction);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
@@ -127,8 +130,10 @@ public class Main extends Application {
 			case A:
 				string = "Left";
 				if (!player.control(Direction.LEFT)) {
-					player.move(Direction.LEFT);
-					sound1.play();
+					if ((player.checkMove(direction) || (player.checkSail(direction)))) {
+						player.move(direction);
+						sound1.play();
+					}
 				}
 				TopBar.getInformationPane().update(player, direction);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
@@ -136,8 +141,10 @@ public class Main extends Application {
 			case D:
 				string = "Right";
 				if (!player.control(Direction.RIGHT)) {
-					player.move(Direction.RIGHT);
-					sound1.play();
+					if ((player.checkMove(direction) || (player.checkSail(direction)))) {
+						player.move(direction);
+						sound1.play();
+					}
 				}
 				TopBar.getInformationPane().update(player, direction);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
