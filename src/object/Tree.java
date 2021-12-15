@@ -49,5 +49,10 @@ public abstract class Tree {
 	public boolean isReadyToCut() {
 		return readyToCut;
 	}
+	
+	public abstract boolean checkWeaponCondition(Player player);
+	
+	@Override
+	public abstract String toString();
 
 }

@@ -40,4 +40,11 @@ public class Metal extends Material implements Removeable {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "metal";
+	}
+	
+	
+
 }

@@ -1,6 +1,7 @@
 package object;
 
 import game.Cell;
+import game.Player;
 
 public abstract class Animal {
 	
@@ -28,4 +29,9 @@ public abstract class Animal {
 	public void setPosition(Cell position) {
 		this.position = position;
 	}
+	
+	public abstract boolean checkWeaponCondition(Player player);
+	
+	@Override
+	public abstract String toString();
 }

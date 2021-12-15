@@ -49,9 +49,10 @@ public class Eagle extends Animal {
 
 	public boolean moveToPlayer(Player player) {
 		boolean c = false;
-		for (Cell x: Map.getMoveableForEagleArea()) {
+		for (Cell x : Map.getMoveableForEagleArea()) {
 			if (x.isSamePosition(player.getCurrentPosition())) {
-				//RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(5,5)), defaultPosition, "Eagle");
+				// RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(5,5)),
+				// defaultPosition, "Eagle");
 				c = true;
 				break;
 			}
@@ -97,7 +98,7 @@ public class Eagle extends Animal {
 					return true;
 //					if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
 //						setPosition(defaultPosition);
-				}
+			}
 //			hitPlayer(player);
 		return false;
 //		if (!(Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))) return;
@@ -117,7 +118,7 @@ public class Eagle extends Animal {
 //				}
 //			});
 //		}
-		
+
 	}
 
 	public void killed(Player player) {
@@ -130,7 +131,7 @@ public class Eagle extends Animal {
 			player.decreaseHP();
 		}
 //		if ((player.getCurrentPosition().isNextTo(position) || player.getCurrentPosition().isSamePosition(position))
-//				&& (player.getCurrentSpear().getMaterial() == MaterialType.METAL && alive)) {
+//				&& (checkWeaponCondition(player) && alive)) {
 
 //			try {
 //				Thread.sleep(15000); // (millisecond) can change
@@ -157,6 +158,16 @@ public class Eagle extends Animal {
 
 	public void setMove(boolean move) {
 		this.move = move;
+	}
+
+	@Override
+	public boolean checkWeaponCondition(Player player) {
+		return player.getCurrentSpear() != null && player.getCurrentSpear().getMaterial() == MaterialType.METAL;
+	}
+
+	@Override
+	public String toString() {
+		return "eagle." + "\nYou got 1 bird, 1 eagle head,";
 	}
 
 }
