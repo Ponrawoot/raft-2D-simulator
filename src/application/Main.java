@@ -27,7 +27,9 @@ public class Main extends Application {
 	private static RootPane rootPane;
 	private Player player;
 	private ThreadMain threadMain;
-	private static AudioClip sound;
+	private final static AudioClip sound = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
+	private final static AudioClip sound1 = new AudioClip(ClassLoader.getSystemResource("audio/sound1.mp3").toString());
+	private final static AudioClip sound2 = new AudioClip(ClassLoader.getSystemResource("audio/sound2.mp3").toString());
 
 	public void start(Stage primaryStage) throws Exception {
 		player = new Player("player");
@@ -59,12 +61,15 @@ public class Main extends Application {
 //	
 		rootPane = new RootPane(player);
 		threadMain = new ThreadMain();
-
-		sound = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
+		
+//		sound = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
 		sound.setCycleCount(MediaPlayer.INDEFINITE);
 		sound.setVolume(20);
 		sound.play();
-
+		
+		sound1.setVolume(0.5);
+		sound2.setVolume(0.5);
+		
 		Scene scene = new Scene(rootPane, 1000, 1000);
 		addEventListener(scene);
 
@@ -104,6 +109,8 @@ public class Main extends Application {
 				string = "Back";
 				if (!player.control(Direction.UP)) {
 					player.move(Direction.UP);
+					sound1.play();
+					
 				}
 				TopBar.getInformationPane().update(player, direction);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
@@ -112,6 +119,7 @@ public class Main extends Application {
 				string = "Front";
 				if (!player.control(Direction.DOWN)) {
 					player.move(Direction.DOWN);
+					sound1.play();
 				}
 				TopBar.getInformationPane().update(player, direction);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
@@ -120,6 +128,7 @@ public class Main extends Application {
 				string = "Left";
 				if (!player.control(Direction.LEFT)) {
 					player.move(Direction.LEFT);
+					sound1.play();
 				}
 				TopBar.getInformationPane().update(player, direction);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
@@ -128,6 +137,7 @@ public class Main extends Application {
 				string = "Right";
 				if (!player.control(Direction.RIGHT)) {
 					player.move(Direction.RIGHT);
+					sound1.play();
 				}
 				TopBar.getInformationPane().update(player, direction);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
@@ -141,19 +151,20 @@ public class Main extends Application {
 					threadMain.refreshObject(object);
 					if ((object instanceof PalmTree))
 						redraw2 = true;
+					sound2.play();
 
 				}
 				TopBar.getInformationPane().update(player, object);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
 				break;
-			case NUMPAD1:
+			case OPEN_BRACKET:
 				cell = Map.getCellFromDirection(direction, new Coordinate(x, y));
 				if (player.plant("Mango seed", cell)) {
 					RootPane.redraw(cell, cell, "Mango seed");
 					MangoTree object1 = (MangoTree) Map.getObjectFromCoordinate(cell.getCoCell());
 					threadMain.setGrow(object1);
 				}
-			case NUMPAD2:
+			case CLOSE_BRACKET:
 				cell = Map.getCellFromDirection(direction, new Coordinate(x, y));
 				if (player.plant("Pinecone seed", cell)) {
 					RootPane.redraw(cell, cell, "Pinecone seed");
