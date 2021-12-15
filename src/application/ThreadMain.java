@@ -145,7 +145,7 @@ public class ThreadMain {
 			Cell cell = ((Eagle) object).getPosition();
 			Thread thread = new Thread(() -> {
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(10000);
 					Platform.runLater(() -> {
 						RootPane.redraw(cell, cell, "Eagle");
 						((Eagle) object).refresh();
@@ -187,6 +187,7 @@ public class ThreadMain {
 							for (Material x: Map.getAvailableStone()) {
 								if (x.isPresent()) RootPane.redraw(x.getPosition(), x.getPosition(), "Stone");
 							}
+						
 						});
 						/* ======================================================== */
 
@@ -251,18 +252,27 @@ public class ThreadMain {
 		// TODO Auto-generated method stub
 		Thread thread = new Thread(() -> {
 			try {
-				Thread.sleep(2000);
-				Platform.runLater(() -> {
-					while (Map.getEagle().moveToPlayer(player));
-//						Map.getEagle().hitPlayer(player);
-				});
-				/* ======================================================== */
+				while (Map.getEagle().checkMoving(player)&&player.getHP()!=0) {
+					Thread.sleep(2000);
+					Platform.runLater(() -> {
+						Map.getEagle().moveToPlayer(player);
+					});
+					Thread.sleep(2000);
+					Platform.runLater(() -> {
+						Map.getEagle().hitPlayer(player);
+					});
+				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				
 			}
 		});
 		thread.start();
+		if (!Map.getEagle().checkMoving(player)) {
+			thread.interrupt();
+		}
+		
 	}
 
 	

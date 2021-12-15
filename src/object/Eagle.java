@@ -31,9 +31,6 @@ public class Eagle extends Animal {
 			}
 		}
 		if (c) {
-//			int xEagle = getPosition().getCoCell().getX();
-//			int yEagle = getPosition().getCoCell().getY();
-//			Cell prev = Map.getCellFromCoordinate(new Coordinate(xEagle, yEagle));
 			int xPlayer = player.getCurrentPosition().getCoCell().getX();
 			int yPlayer = player.getCurrentPosition().getCoCell().getY();
 			if (Math.abs(yPlayer-position.getCoCell().getY())>0) {
