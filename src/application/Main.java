@@ -31,12 +31,12 @@ public class Main extends Application {
 		player.setMaxHP(100);
 		player.setRaft(true);
 		Weapon w1 = new Weapon(MaterialType.METAL, ApplicationType.AXE);
-		player.setCurrentAxe(w1);
+	//	player.setCurrentAxe(w1);
 		player.addWeapon(w1);
 		Weapon w2 = new Weapon(MaterialType.METAL, ApplicationType.SHOVEL);
-		player.setCurrentShovel(w2);
+	//	player.setCurrentShovel(w2);
 		player.addWeapon(w2);
-		Weapon w3 = new Weapon(MaterialType.METAL, ApplicationType.SPEAR);
+		Weapon w3 = new Weapon(MaterialType.WOOD, ApplicationType.SPEAR);
 		player.setCurrentSpear(w3);
 		player.addWeapon(w3);
 		player.setFish(5);
@@ -108,8 +108,9 @@ public class Main extends Application {
 				if (player.takeActionOnObject(Map.getCellFromDirection(direction, new Coordinate(x,y)))) {
 					string = "Clear";
 					threadmain.refreshObject(object);
+					if ((object instanceof PalmTree))   redraw2 = true;
+					
 				}
-				if ((object instanceof PalmTree))   redraw2 = true;
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
 			break;
 			default:

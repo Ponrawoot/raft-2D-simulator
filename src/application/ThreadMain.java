@@ -226,4 +226,24 @@ public class ThreadMain {
 		}
 			
 	}
+
+	public void activateEagle(Player player) {
+		// TODO Auto-generated method stub
+		boolean check = Map.getEagle().moveToPlayer(player);
+		while (check) {
+			try {
+				Thread.sleep(2000);
+				Platform.runLater(() -> {
+					Map.getEagle().hitPlayer(player);
+					Map.getEagle().moveToPlayer(player);
+				});
+				/* ======================================================== */
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+	}
 }
