@@ -6,7 +6,6 @@ import java.util.Date;
 import application.Main;
 import component.base.CurrentWeaponPane;
 import component.base.InformationPane;
-import component.base.SettingButton;
 import game.Player;
 import game.base.Direction;
 import javafx.application.Platform;
@@ -27,7 +26,6 @@ public class TopBar extends FlowPane {
 	private static ProgressBar hp;
 	private static Text hpText;
 	private Label time;
-	private SettingButton settingButton;
 	private static CurrentWeaponPane weaponPane;
 	private static InformationPane informationPane;
 	private Button muteButton;
@@ -60,7 +58,6 @@ public class TopBar extends FlowPane {
 		});
 		thread.start();
 
-		settingButton = new SettingButton();
 		weaponPane = new CurrentWeaponPane(player);
 		informationPane = new InformationPane(player);
 		muteButton = new Button("Mute");
@@ -75,7 +72,7 @@ public class TopBar extends FlowPane {
 			}
 		});
 		muteButton.setAlignment(Pos.TOP_RIGHT);
-		getChildren().addAll(playerName, hpText, hp, time, settingButton, weaponPane, informationPane, muteButton);
+		getChildren().addAll(playerName, hpText, hp, time, weaponPane, informationPane, muteButton);
 	}
 
 	public static void setHp(Player player) {
