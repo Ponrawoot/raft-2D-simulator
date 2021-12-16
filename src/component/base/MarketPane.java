@@ -11,17 +11,18 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
 public class MarketPane extends BorderPane{
-	private Market market;
 	private Button tradeButton;
 	private Text text;
 	
-	public MarketPane(String tradeObject, Player player) {
+	public MarketPane(Player player, Market market) {
 		super();
 		setPrefHeight(80);
-		market = new Market(tradeObject);
-		tradeButton = new Button("Trade");
+		
 		text = new Text();
-		setButtonAndText(tradeObject, player);
+		setText(market.getTradeObject(), player);
+		
+		tradeButton = new Button("Trade");
+		tradeButton.setDisable(market.isTraded());
 		tradeButton.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
@@ -41,22 +42,18 @@ public class MarketPane extends BorderPane{
 		setRight(tradeButton);
 	}
 	
-	private void setButtonAndText(String tradeObject, Player player) {
+	private void setText(String tradeObject, Player player) {
 		switch(tradeObject) {
 		case "Canvas":
-			if (player.hasCanvas()) tradeButton.setDisable(true);
 			text.setText(tradeObject + "\nRequirement:\n" + " - metal 10\n - scrap 20\n - plastic 20");
 			break;
 		case "Steering":
-			if (player.hasSteering()) tradeButton.setDisable(true);
 			text.setText(tradeObject + "\nRequirement:\n" + " - metal 15\n - scrap 30\n - plastic 30");
 			break;
 		case "Petrol":
-			if (player.hasPetrol()) tradeButton.setDisable(true);
 			text.setText(tradeObject + "\nRequirement:\n" + " - bird 40\n - fish 20");
 			break;
 		case "Engine":
-			if (player.hasEngine()) tradeButton.setDisable(true);
 			text.setText(tradeObject + "\nRequirement:\n" + " - eagle head 5");
 			break;
 		}
