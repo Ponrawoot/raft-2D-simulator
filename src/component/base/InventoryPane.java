@@ -47,7 +47,7 @@ public class InventoryPane extends VBox {
 		InventoryCell inv0 = new InventoryCell("Wood", null, player.getWood());
 		InventoryCell inv1 = new InventoryCell("Leaf", null, player.getLeaf());
 		InventoryCell inv2 = new InventoryCell("Mango seed", null, player.getMangoSeed());
-		InventoryCell inv3 = new InventoryCell("Pinecone seed", null, player.getPineconeSeed());
+		InventoryCell inv3 = new InventoryCell("Pinecone", null, player.getPineconeSeed());
 		InventoryCell inv4 = new InventoryCell("Fruit", null, player.getFruit());
 		InventoryCell inv5 = new InventoryCell("Plastic", null, player.getPlastic());
 		InventoryCell inv6 = new InventoryCell("Feather", null, player.getFeather());
