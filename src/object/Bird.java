@@ -1,13 +1,12 @@
 package object;
 
 import game.Cell;
-import game.Map;
 import game.Player;
-import game.base.Removeable;
+import game.base.Removable;
 import object.base.ApplicationType;
 import object.base.MaterialType;
 
-public class Bird extends Animal implements Removeable {
+public class Bird extends Animal implements Removable {
 
 	public Bird(Cell position) {
 		super(position);
@@ -23,15 +22,6 @@ public class Bird extends Animal implements Removeable {
 			setAlive(false);
 			player.decreaseHP();
 			player.decreaseLifetime(ApplicationType.SPEAR);
-
-//			try {
-//				Thread.sleep(15000); // (millisecond) can change
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//
-//			Map.refreshBird(Map.getRandomInteger(1, 10)); // min, max can change
 		}
 	}
 
@@ -50,6 +40,6 @@ public class Bird extends Animal implements Removeable {
 
 	@Override
 	public String toString() {
-		return "bird";
+		return "bird, 2 feathers,";
 	}
 }

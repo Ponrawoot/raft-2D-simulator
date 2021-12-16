@@ -2,11 +2,11 @@ package object;
 
 import game.Cell;
 import game.Player;
-import game.base.Removeable;
+import game.base.Removable;
 import object.base.ApplicationType;
 import object.base.MaterialType;
 
-public class Metal extends Material implements Removeable {
+public class Metal extends Material implements Removable {
 
 	public Metal(Cell position) {
 		super(position);

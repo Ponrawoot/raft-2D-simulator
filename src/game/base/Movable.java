@@ -1,5 +1,5 @@
 package game.base;
 
-public interface Moveable {
+public interface Movable {
 	void move(Direction direction);
 }

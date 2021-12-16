@@ -1,12 +1,11 @@
 package object;
 
 import game.Cell;
-import game.Map;
 import game.Player;
-import game.base.Removeable;
+import game.base.Removable;
 import object.base.ApplicationType;
 
-public class Scrap extends Material implements Removeable {
+public class Scrap extends Material implements Removable {
 
 	public Scrap(Cell position) {
 		super(position);
@@ -33,7 +32,7 @@ public class Scrap extends Material implements Removeable {
 			this.position.setStatus(false);
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		return "scrap";

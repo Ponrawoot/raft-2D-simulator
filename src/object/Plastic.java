@@ -3,9 +3,9 @@ package object;
 import game.Cell;
 import game.Map;
 import game.Player;
-import game.base.Removeable;
+import game.base.Removable;
 
-public class Plastic extends Material implements Removeable {
+public class Plastic extends Material implements Removable {
 
 	public Plastic(Cell position) {
 		super(position);

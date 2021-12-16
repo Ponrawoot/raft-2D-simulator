@@ -1,12 +1,11 @@
 package object;
 
 import game.Cell;
-import game.Map;
 import game.Player;
-import game.base.Removeable;
+import game.base.Removable;
 import object.base.ApplicationType;
 
-public class Fish extends Animal implements Removeable {
+public class Fish extends Animal implements Removable {
 
 	public Fish(Cell position) {
 		super(position);
@@ -21,15 +20,6 @@ public class Fish extends Animal implements Removeable {
 			setAlive(false);
 			player.decreaseHP();
 			player.decreaseLifetime(ApplicationType.SPEAR);
-
-//			try {
-//				Thread.sleep(15000); // (millisecond) can change
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//
-//			Map.refreshFish(Map.getRandomInteger(1, 10)); // min, max can change
 		}
 	}
 

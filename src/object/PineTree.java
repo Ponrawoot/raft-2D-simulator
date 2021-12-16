@@ -3,11 +3,11 @@ package object;
 import game.Cell;
 import game.Map;
 import game.Player;
-import game.base.Removeable;
+import game.base.Removable;
 import object.base.ApplicationType;
 import object.base.MaterialType;
 
-public class PineTree extends Tree implements Removeable {
+public class PineTree extends Tree implements Removable {
 
 	private int pinecone;
 
@@ -16,7 +16,7 @@ public class PineTree extends Tree implements Removeable {
 		// TODO Auto-generated constructor stub
 		super.setWood(2);
 		super.setLeaf(2);
-		setPinecone(2);
+		pinecone = 2;
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class PineTree extends Tree implements Removeable {
 			player.setPineconeSeed(player.getPineconeSeed() + pinecone);
 			setWood(0);
 			setLeaf(0);
-			setPinecone(0);
+			pinecone = 0;
 			setReadyToCut(false);
 			Map.removeTree(this);
 			this.position.setStatus(true);
@@ -43,14 +43,10 @@ public class PineTree extends Tree implements Removeable {
 		if (!readyToCut) {
 			super.setWood(2);
 			super.setLeaf(2);
-			setPinecone(2);
+			pinecone = 2;
 			this.position.setStatus(false);
 			setReadyToCut(true);
 		}
-	}
-
-	public void setPinecone(int pinecone) {
-		this.pinecone = pinecone;
 	}
 
 	public int getPinecone() {
@@ -64,7 +60,7 @@ public class PineTree extends Tree implements Removeable {
 
 	@Override
 	public String toString() {
-		return "pine tree." + " You got 2 woods, 2 leaves, 1 pine seed,";
+		return "pine tree." + " You got 2 woods, 2 leaves, 2 pinecone,";
 	}
 
 }

@@ -1,16 +1,13 @@
 package game;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import component.TopBar;
 import game.base.Coordinate;
 import game.base.Direction;
-import game.base.Moveable;
+import game.base.Movable;
 import object.Animal;
 import object.Bird;
-import object.Eagle;
 import object.Fish;
 import object.MangoTree;
 import object.Material;
@@ -25,7 +22,7 @@ import object.Weapon;
 import object.base.ApplicationType;
 import object.base.MaterialType;
 
-public class Player implements Moveable {
+public class Player implements Movable {
 	private String name;
 	private int maxHP, HP, wood, leaf, mangoSeed, pineconeSeed, fruit, plastic, feather, titanium, copper, metal, stone,
 			scrape, hinge, nail, rope, circuit, fish, bird, eagleHead;
@@ -418,32 +415,6 @@ public class Player implements Moveable {
 		}
 		return false;
 	}
-
-//	public void sail(Direction direction) {
-//		int x = currentPosition.getCoCell().getX();
-//		int y = currentPosition.getCoCell().getY();
-//
-//		// cell = position that player want to move to
-//		if (raft) {
-//			if (direction == Direction.UP) {
-//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y - 1));
-//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-//					setCurrentPosition(x, y - 1);
-//			} else if (direction == Direction.DOWN) {
-//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x, y + 1));
-//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-//					setCurrentPosition(x, y + 1);
-//			} else if (direction == Direction.LEFT) {
-//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x - 1, y));
-//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-//					setCurrentPosition(x - 1, y);
-//			} else {
-//				Cell cell = Map.getCellFromCoordinate(new Coordinate(x + 1, y));
-//				if (cell != null && cell.getStatus() && cell.isSea() && !cell.isClosed())
-//					setCurrentPosition(x + 1, y);
-//			}
-//		}
-//	}
 
 	public void addWeapon(Weapon weapon) {
 		playerWeapon.add(weapon);
