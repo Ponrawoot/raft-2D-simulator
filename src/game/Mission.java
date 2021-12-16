@@ -68,7 +68,7 @@ public class Mission {
 			if (player.getFruit() >= selectedMission.get(0)) {
 				player.setFruit(player.getFruit() - selectedMission.get(0));
 				player.addWeapon(new Weapon(MaterialType.STONE, ApplicationType.AXE));
-				player.setMaxHP(player.getMaxHP() + 1);
+				player.increaseMaxHP(1);
 				this.addRequirement(4, 2);
 				break;
 			} else
@@ -89,7 +89,7 @@ public class Mission {
 				player.setFeather(player.getFeather() - selectedMission.get(0));
 				player.setBird(player.getBird() - selectedMission.get(1));
 				player.addWeapon(new Weapon(MaterialType.STONE, ApplicationType.SHOVEL));
-				player.setMaxHP(player.getMaxHP() + 1);
+				player.increaseMaxHP(1);
 				this.addRequirement(6, 2);
 				break;
 			} else

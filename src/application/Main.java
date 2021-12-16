@@ -23,6 +23,7 @@ import object.base.ApplicationType;
 import object.base.MaterialType;
 
 public class Main extends Application {
+	
 	private static RootPane rootPane;
 	private Player player;
 	private ThreadMain threadMain;
@@ -34,6 +35,33 @@ public class Main extends Application {
 
 	public void start(Stage primaryStage) throws Exception {
 		player = new Player("player");
+//		player.setRaft(true);
+//		Weapon w1 = new Weapon(MaterialType.METAL, ApplicationType.AXE);
+//		player.setCurrentAxe(w1);
+//		player.addWeapon(w1);
+//		Weapon w2 = new Weapon(MaterialType.METAL, ApplicationType.SHOVEL);
+//		player.setCurrentShovel(w2);
+//		player.addWeapon(w2);
+//		Weapon w3 = new Weapon(MaterialType.METAL, ApplicationType.SPEAR);
+//		player.setCurrentSpear(w3);
+//		player.addWeapon(w3);
+//		player.setFish(100);
+//		player.setFruit(100);
+//		player.setHinge(100);
+//		player.setNail(100);
+//		player.setCopper(1000);
+//		player.setEagleHead(100);
+//		player.setTitanium(100);
+//		player.setBird(100);
+//		player.setMetal(1000);
+//		player.setScrape(1000);
+//		player.setPlastic(1000);
+//		player.setWood(1000);
+//		player.setRope(1000);
+//		player.setLeaf(1000);
+//		player.setStone(1000);
+//		player.setMangoSeed(1000);
+//		player.setPineconeSeed(1000);
 		rootPane = new RootPane(player);
 		threadMain = new ThreadMain();
 

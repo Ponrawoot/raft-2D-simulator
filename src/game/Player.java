@@ -100,6 +100,7 @@ public class Player implements Movable {
 
 	public void increaseMaxHP(int n) {
 		maxHP += n;
+		TopBar.setHp(this);
 	}
 
 	public boolean craft(String object) {

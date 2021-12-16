@@ -69,7 +69,7 @@ public class InventoryPane extends VBox {
 		if (player.hasRaft())
 			objects.add(new InventoryCell("Raft", null, 0));
 		if (player.hasReceiver())
-			objects.add(new InventoryCell("Reiceiver", null, 0));
+			objects.add(new InventoryCell("Receiver", null, 0));
 		if (player.hasAnthena())
 			objects.add(new InventoryCell("Antenna", null, 0));
 		if (player.hasCanvas())
