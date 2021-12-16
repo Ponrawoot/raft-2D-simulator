@@ -82,6 +82,7 @@ public class Main extends Application {
 		ScreenController.add("Root", rootPane);
 		ScreenController.add("First", firstPane);
 		ScreenController.activate("First");
+		
 		Button playButton = FirstPane.getPlayButton();
 		playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -224,7 +225,6 @@ public class Main extends Application {
 				player.setReset(false);
 			}
 			if (threadMain.activateEagle(player)) {
-//				Main.getSound()[3].play();
 				TopBar.showHpWarning(player);
 			}
 			

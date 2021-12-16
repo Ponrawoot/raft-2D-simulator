@@ -128,6 +128,7 @@ public class Eagle extends Animal {
 				player.setHP(0);
 			}
 			TopBar.setHp(player);
+			TopBar.getInformationPane().update(true);
 			return true;
 		}
 		return false;

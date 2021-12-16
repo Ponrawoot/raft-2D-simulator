@@ -222,7 +222,7 @@ public class ThreadMain {
 			}
 		});
 		thread.start();
-		if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition())) {
+		if (!Map.getEagle().checkMoving(player)) {
 			thread.interrupt();
 			return false;
 		}
