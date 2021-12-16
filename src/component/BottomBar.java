@@ -15,7 +15,7 @@ public class BottomBar extends FlowPane {
 	private static MarketButton marketButton;
 	private static ShipwreckButton shipwreckButton;
 	private static GuideButton guideButton;
-	
+
 	public BottomBar(Player player) {
 		setPadding(new Insets(5));
 		setHgap(5);
@@ -25,6 +25,6 @@ public class BottomBar extends FlowPane {
 		marketButton = new MarketButton(player);
 		shipwreckButton = new ShipwreckButton(player);
 		guideButton = new GuideButton();
-		this.getChildren().addAll(inventoryButton,missionButton,marketButton,shipwreckButton,guideButton);
+		this.getChildren().addAll(inventoryButton, missionButton, marketButton, shipwreckButton, guideButton);
 	}
 }

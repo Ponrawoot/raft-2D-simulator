@@ -14,7 +14,7 @@ public class PineTree extends Tree implements Removable {
 	public PineTree(Cell position) {
 		super(position);
 		// TODO Auto-generated constructor stub
-		super.setWood(2);
+		super.setWood(5);
 		super.setLeaf(2);
 		pinecone = 2;
 	}
@@ -41,7 +41,7 @@ public class PineTree extends Tree implements Removable {
 	public void grow() {
 		// TODO Auto-generated method stub
 		if (!readyToCut) {
-			super.setWood(2);
+			super.setWood(5);
 			super.setLeaf(2);
 			pinecone = 2;
 			this.position.setStatus(false);
@@ -60,7 +60,7 @@ public class PineTree extends Tree implements Removable {
 
 	@Override
 	public String toString() {
-		return "pine tree." + " You got 2 woods, 2 leaves, 2 pinecone,";
+		return "pine tree." + " You got 5 woods, 2 leaves, 2 pinecone,";
 	}
 
 }

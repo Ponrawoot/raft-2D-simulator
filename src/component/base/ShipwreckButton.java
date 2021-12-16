@@ -21,9 +21,8 @@ import object.Shipwreck;
 
 public class ShipwreckButton extends Button {
 	private Shipwreck shipwreck;
-	
+
 	public ShipwreckButton(Player player) {
-		// setText("ShipwreckButton");
 		shipwreck = new Shipwreck();
 		ImageView ImageView = new ImageView(new Image("shipwreck.png"));
 		this.setGraphic(ImageView);
@@ -41,7 +40,7 @@ public class ShipwreckButton extends Button {
 
 				ListView<ShipwreckPane> root = new ListView<ShipwreckPane>();
 				root.setPrefWidth(350);
-				
+
 				ShipwreckPane part0 = new ShipwreckPane("Wood", player, shipwreck);
 				ShipwreckPane part1 = new ShipwreckPane("Hinge", player, shipwreck);
 				ShipwreckPane part2 = new ShipwreckPane("Nail", player, shipwreck);
@@ -54,17 +53,15 @@ public class ShipwreckButton extends Button {
 				ShipwreckPane part9 = new ShipwreckPane("Receiver", player, shipwreck);
 				ShipwreckPane part10 = new ShipwreckPane("Antenna", player, shipwreck);
 				root.getItems().addAll(part0, part1, part2, part3, part4, part5, part6, part7, part8, part9, part10);
-				
+
 				if (shipwreck.checkWinCondition()) {
 					part0.showWinning();
-				}
-				else if (!Map.getRepairableArea().contains(player.getCurrentPosition())) {
+				} else if (!Map.getRepairableArea().contains(player.getCurrentPosition())) {
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setHeaderText(null);
 					alert.setContentText("Out of shipwreck area.");
 					alert.showAndWait();
-				}
-				else{
+				} else {
 					Scene scene = new Scene(root);
 					stage.setScene(scene);
 					stage.initModality(Modality.APPLICATION_MODAL);

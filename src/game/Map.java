@@ -36,7 +36,6 @@ public class Map {
 	private static ArrayList<Cell> repairableArea;
 	private static ArrayList<Tree> trees;
 	private static Eagle eagle;
-	
 
 	public static Eagle getEagle() {
 		return eagle;
@@ -131,83 +130,86 @@ public class Map {
 
 	public static Cell getCellFromCoordinate(Coordinate other) {
 		for (Cell x : area) {
-			if (x.getCoCell().isSamePosition(other)) 
+			if (x.getCoCell().isSamePosition(other))
 				return x;
 		}
 		return null;
 	}
-	
+
 	public static Object getObjectFromCoordinate(Coordinate coordinate) {
 		Cell cell = getCellFromCoordinate(coordinate);
-		if (cell.getStatus()) return null;
-		for (Animal x: Map.getAvailableFish()) {
-			if (x.getPosition().isSamePosition(cell)) {
+		if (cell.getStatus())
+			return null;
+		for (Animal x : Map.getAvailableFish()) {
+			if (x.getPosition().equals(cell)) {
 				Fish fish = (Fish) x;
 				return fish;
 			}
 		}
-		for (Animal x: Map.getAvailableBird()) {
-			if (x.getPosition().isSamePosition(cell)) {
+		for (Animal x : Map.getAvailableBird()) {
+			if (x.getPosition().equals(cell)) {
 				Bird bird = (Bird) x;
 				return bird;
 			}
 		}
-		for (Material x: Map.getAvailableMetal()) {
-			if (x.getPosition().isSamePosition(cell)) {
+		for (Material x : Map.getAvailableMetal()) {
+			if (x.getPosition().equals(cell)) {
 				Metal metal = (Metal) x;
 				return metal;
 			}
 		}
-		for (Material x: Map.getAvailablePlastic()) {
-			if (x.getPosition().isSamePosition(cell)) {
+		for (Material x : Map.getAvailablePlastic()) {
+			if (x.getPosition().equals(cell)) {
 				Plastic plastic = (Plastic) x;
 				return plastic;
 			}
 		}
-		for (Material x: Map.getAvailableScrape()) {
-			if (x.getPosition().isSamePosition(cell)) {
+		for (Material x : Map.getAvailableScrape()) {
+			if (x.getPosition().equals(cell)) {
 				Scrap scrape = (Scrap) x;
 				return scrape;
 			}
 		}
-		for (Material x: Map.getAvailableStone()) {
-			if (x.getPosition().isSamePosition(cell)) {
+		for (Material x : Map.getAvailableStone()) {
+			if (x.getPosition().equals(cell)) {
 				Stone stone = (Stone) x;
 				return stone;
 			}
 		}
-		for (Tree x: Map.getTrees()) {
-			if (x.getPosition().isSamePosition(cell)) {
+		for (Tree x : Map.getTrees()) {
+			if (x.getPosition().equals(cell)) {
 				if (x instanceof PalmTree) {
-					 return (PalmTree) x;
-				 } 
-				 if (x instanceof PineTree) {
-					 return (PineTree) x;
-				 } 
-				 if (x instanceof MangoTree) {
-					 return (MangoTree) x;
-				 }
+					return (PalmTree) x;
+				}
+				if (x instanceof PineTree) {
+					return (PineTree) x;
+				}
+				if (x instanceof MangoTree) {
+					return (MangoTree) x;
+				}
 			}
 		}
-		if (Map.getEagle().getPosition().isSamePosition(cell)) {
+		if (Map.getEagle().getPosition().equals(cell)) {
 			return Map.getEagle();
 		}
 		return null;
-		
+
 	}
 
-	public static Cell getCellFromDirection(Direction direction,Coordinate coordinate) {
-		
+	public static Cell getCellFromDirection(Direction direction, Coordinate coordinate) {
+
 		Coordinate c = coordinate;
-		if (direction==Direction.UP) c.setY(c.getY()-1);
-		if (direction==Direction.DOWN) c.setY(c.getY()+1);
-		if (direction==Direction.RIGHT) c.setX(c.getX()+1);
-		if (direction==Direction.LEFT) c.setX(c.getX()-1);
-		
+		if (direction == Direction.UP)
+			c.setY(c.getY() - 1);
+		if (direction == Direction.DOWN)
+			c.setY(c.getY() + 1);
+		if (direction == Direction.RIGHT)
+			c.setX(c.getX() + 1);
+		if (direction == Direction.LEFT)
+			c.setX(c.getX() - 1);
+
 		return getCellFromCoordinate(c);
-		
-		
-		
+
 	}
 
 	public static int getRandomInteger(int maximum, int minimum) {
@@ -222,7 +224,7 @@ public class Map {
 		}
 		return true;
 	}
-	
+
 	public static boolean readyForRandomMaterial(ArrayList<Material> material) {
 		for (int i = 0; i < material.size(); i++) {
 			if (material.get(i).isPresent()) {
@@ -231,7 +233,6 @@ public class Map {
 		}
 		return true;
 	}
-
 
 	public static void refreshFish(int random) {
 		if (!readyForRandomAnimal(availableFish))
@@ -281,11 +282,12 @@ public class Map {
 	}
 
 	public static void refreshScrape(int random) {
-		if (!readyForRandomMaterial(availableScrap)) return;
+		if (!readyForRandomMaterial(availableScrap))
+			return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
 		for (Cell x : area) {
-			if (x.getStatus() && !x.isClosed()&&!Map.getPlantableArea().contains(x)) {
+			if (x.getStatus() && !x.isClosed() && !Map.getPlantableArea().contains(x)) {
 				givenList.add(x);
 			}
 		}
@@ -303,12 +305,13 @@ public class Map {
 	}
 
 	public static void refreshPlastic(int random) {
-		if (!readyForRandomMaterial(availablePlastic)) return;
+		if (!readyForRandomMaterial(availablePlastic))
+			return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
-		
+
 		for (Cell x : area) {
-			if (x.getStatus() && !x.isClosed()&&!Map.getPlantableArea().contains(x)) {
+			if (x.getStatus() && !x.isClosed() && !Map.getPlantableArea().contains(x)) {
 				givenList.add(x);
 			}
 		}
@@ -316,21 +319,22 @@ public class Map {
 		for (int i = 0; i < random; i++) {
 			int randomIndex = rand.nextInt(givenList.size());
 			Cell randomCell = givenList.get(randomIndex);
-	        if (i < availablePlastic.size()) {
+			if (i < availablePlastic.size()) {
 				((Plastic) availablePlastic.get(i)).refresh(randomCell);
 			} else {
 				Plastic e = new Plastic(randomCell);
 				availablePlastic.add(e);
-			}	
+			}
 		}
 	}
 
 	public static void refreshStone(int random) {
-		if (!readyForRandomMaterial(availableStone)) return;
+		if (!readyForRandomMaterial(availableStone))
+			return;
 		Random rand = new Random();
 		ArrayList<Cell> givenList = new ArrayList<Cell>();
 		for (Cell x : area) {
-			if (x.getStatus() && !x.isClosed()&&!Map.getPlantableArea().contains(x)) {
+			if (x.getStatus() && !x.isClosed() && !Map.getPlantableArea().contains(x)) {
 				givenList.add(x);
 			}
 		}
@@ -343,15 +347,13 @@ public class Map {
 			} else {
 				Stone e = new Stone(randomCell);
 				availableStone.add(e);
-			}	
+			}
 		}
 
 	}
 
 	public static void setEagle(Cell next) {
 		eagle = new Eagle(next);
-		// TODO Auto-generated method stub
-		
-	}	
+	}
 
 }

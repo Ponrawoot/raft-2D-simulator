@@ -15,7 +15,6 @@ public class Eagle extends Animal {
 
 	public Eagle() {
 		super(defaultPosition); // same position every time
-		// TODO Auto-generated constructor stub
 	}
 
 	public Eagle(Cell cell) {
@@ -25,7 +24,7 @@ public class Eagle extends Animal {
 	public boolean checkMoving(Player player) {
 		boolean c = false;
 		for (Cell x : Map.getMoveableForEagleArea()) {
-			if (x.isSamePosition(player.getCurrentPosition())) {
+			if (x.equals(player.getCurrentPosition())) {
 				c = true;
 				break;
 			}
@@ -55,7 +54,7 @@ public class Eagle extends Animal {
 	public boolean moveToPlayer(Player player) {
 		boolean c = false;
 		for (Cell x : Map.getMoveableForEagleArea()) {
-			if (x.isSamePosition(player.getCurrentPosition())) {
+			if (x.equals(player.getCurrentPosition())) {
 				c = true;
 				break;
 			}

@@ -4,7 +4,6 @@ import game.Cell;
 import game.Player;
 import game.base.Removable;
 import object.base.ApplicationType;
-import object.base.MaterialType;
 
 public class Bird extends Animal implements Removable {
 
@@ -35,7 +34,7 @@ public class Bird extends Animal implements Removable {
 
 	@Override
 	public boolean checkWeaponCondition(Player player) {
-		return player.getCurrentSpear() != null ;
+		return player.getCurrentSpear() != null;
 	}
 
 	@Override

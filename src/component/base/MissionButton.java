@@ -18,9 +18,8 @@ import javafx.stage.Stage;
 
 public class MissionButton extends Button {
 	private Mission mission;
-	
+
 	public MissionButton(Player player) {
-		// setText("MissionButton");
 		mission = new Mission();
 		ImageView ImageView = new ImageView(new Image("Mission.png"));
 		ImageView.setFitHeight(60);
@@ -41,7 +40,7 @@ public class MissionButton extends Button {
 				for (int i = 0; i < 9; i++) {
 					root.getItems().add(new MissionPane(mission, i, player));
 				}
-				
+
 				Scene scene = new Scene(root);
 				stage.setScene(scene);
 				stage.initModality(Modality.APPLICATION_MODAL);

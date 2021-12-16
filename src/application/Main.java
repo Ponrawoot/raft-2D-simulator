@@ -1,7 +1,5 @@
 package application;
 
-import java.util.ArrayList;
-
 import component.RootPane;
 import component.TopBar;
 import game.Cell;
@@ -11,13 +9,9 @@ import game.base.Coordinate;
 import game.base.Direction;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -32,58 +26,58 @@ public class Main extends Application {
 	private static RootPane rootPane;
 	private Player player;
 	private ThreadMain threadMain;
-	private static AudioClip sound0 = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
-	private static AudioClip sound1 = new AudioClip(ClassLoader.getSystemResource("audio/sound1.mp3").toString());
-	private static AudioClip sound2 = new AudioClip(ClassLoader.getSystemResource("audio/sound2.mp3").toString());
-	private static AudioClip sound3 = new AudioClip(ClassLoader.getSystemResource("audio/sound3.mp3").toString());
-	private static AudioClip[] sound = {sound0,sound1,sound2,sound3};
+	private static AudioClip themeSound = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
+	private static AudioClip walkingSound = new AudioClip(ClassLoader.getSystemResource("audio/sound1.mp3").toString());
+	private static AudioClip actionSound = new AudioClip(ClassLoader.getSystemResource("audio/sound2.mp3").toString());
+	private static AudioClip warningSound = new AudioClip(ClassLoader.getSystemResource("audio/sound3.mp3").toString());
+	private static AudioClip[] sound = { themeSound, walkingSound, actionSound, warningSound };
+
 	public void start(Stage primaryStage) throws Exception {
 		player = new Player("player");
 //Cheat
-		player.setHP(100);
-		player.setMaxHP(100);
-		player.setRaft(true);
-		Weapon w1 = new Weapon(MaterialType.METAL, ApplicationType.AXE);
-		player.setCurrentAxe(w1);
-		player.addWeapon(w1);
-		Weapon w2 = new Weapon(MaterialType.METAL, ApplicationType.SHOVEL);
-		player.setCurrentShovel(w2);
-		player.addWeapon(w2);
-		Weapon w3 = new Weapon(MaterialType.METAL, ApplicationType.SPEAR);
-		player.setCurrentSpear(w3);
-		player.addWeapon(w3);
-		player.setFish(5);
-		player.setFruit(5);
-		player.setBird(5);
-		player.setMetal(100);
-		player.setScrape(100);
-		player.setPlastic(100);
-		player.setWood(100);
-		player.setRope(100);
-		player.setLeaf(10);
-		player.setStone(100);
-		player.setMangoSeed(10);
-		player.setPineconeSeed(10);
+//		player.setHP(100);
+//		player.setMaxHP(100);
+//		player.setRaft(true);
+//		Weapon w1 = new Weapon(MaterialType.METAL, ApplicationType.AXE);
+//		player.setCurrentAxe(w1);
+//		player.addWeapon(w1);
+//		Weapon w2 = new Weapon(MaterialType.METAL, ApplicationType.SHOVEL);
+//		player.setCurrentShovel(w2);
+//		player.addWeapon(w2);
+//		Weapon w3 = new Weapon(MaterialType.METAL, ApplicationType.SPEAR);
+//		player.setCurrentSpear(w3);
+//		player.addWeapon(w3);
+//		player.setFish(5);
+//		player.setFruit(5);
+//		player.setBird(5);
+//		player.setMetal(100);
+//		player.setScrape(100);
+//		player.setPlastic(100);
+//		player.setWood(100);
+//		player.setRope(100);
+//		player.setLeaf(10);
+//		player.setStone(100);
+//		player.setMangoSeed(10);
+//		player.setPineconeSeed(10);
 //	
 		rootPane = new RootPane(player);
 		threadMain = new ThreadMain();
-	
+
 		Main.getSound()[0].setCycleCount(MediaPlayer.INDEFINITE);
 		Main.getSound()[0].play();
 		Main.getSound()[0].setVolume(0.5);
-		sound1.setVolume(0.3);
-		sound2.setVolume(0.3);
-		sound3.setVolume(0.3);
-		
+		walkingSound.setVolume(0.1);
+		actionSound.setVolume(0.1);
+		warningSound.setVolume(0.1);
+
 		Scene scene = new Scene(rootPane, 1000, 1000);
 
-
-		addEventListener(scene);	
+		addEventListener(scene);
 		primaryStage.setTitle("Raft 2D Simulator");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		primaryStage.setOnCloseRequest(event -> {
-			sound0.stop();
+			themeSound.stop();
 			Platform.exit();
 			System.exit(0);
 		});
@@ -120,7 +114,7 @@ public class Main extends Application {
 				if (!player.control(Direction.UP)) {
 					if ((player.checkMove(direction) || (player.checkSail(direction)))) {
 						player.move(direction);
-						sound1.play();
+						walkingSound.play();
 					}
 				}
 				TopBar.getInformationPane().update(player, direction);
@@ -131,7 +125,7 @@ public class Main extends Application {
 				if (!player.control(Direction.DOWN)) {
 					if ((player.checkMove(direction) || (player.checkSail(direction)))) {
 						player.move(direction);
-						sound1.play();
+						walkingSound.play();
 					}
 				}
 				TopBar.getInformationPane().update(player, direction);
@@ -142,7 +136,7 @@ public class Main extends Application {
 				if (!player.control(Direction.LEFT)) {
 					if ((player.checkMove(direction) || (player.checkSail(direction)))) {
 						player.move(direction);
-						sound1.play();
+						walkingSound.play();
 					}
 				}
 				TopBar.getInformationPane().update(player, direction);
@@ -153,7 +147,7 @@ public class Main extends Application {
 				if (!player.control(Direction.RIGHT)) {
 					if ((player.checkMove(direction) || (player.checkSail(direction)))) {
 						player.move(direction);
-						sound1.play();
+						walkingSound.play();
 					}
 				}
 				TopBar.getInformationPane().update(player, direction);
@@ -168,7 +162,7 @@ public class Main extends Application {
 					threadMain.refreshObject(object);
 					if ((object instanceof PalmTree))
 						redraw2 = true;
-					sound2.play();
+					actionSound.play();
 
 				}
 				TopBar.getInformationPane().update(player, object);
@@ -212,14 +206,7 @@ public class Main extends Application {
 			if (threadMain.activateEagle(player)) {
 				TopBar.showHpWarning(player);
 			}
-			
-			
-//			if (Map.getMoveableForEagleArea().contains(player.getCurrentPosition())&&!Map.getMoveableForEagleArea().contains(cell)) {
-//				threadMain.activateEagle(player);
-//			}
 		});
 	}
-
-
 
 }

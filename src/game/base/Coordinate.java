@@ -36,7 +36,7 @@ public class Coordinate {
 	public boolean isSamePosition(Coordinate other) {
 		return this.getX() == other.getX() && this.getY() == other.getY();
 	}
-	
+
 	public boolean isNextTo(Coordinate other) {
 		if (Math.abs(other.getX() - x) == 1 && Math.abs(other.getY() - y) == 0) {
 			return true;

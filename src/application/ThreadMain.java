@@ -73,7 +73,7 @@ public class ThreadMain {
 					Platform.runLater(() -> {
 						RootPane.redraw(cell, cell, "PalmTree");
 						for (Tree x : Map.getTrees()) {
-							if (x.getPosition().isSamePosition(cell)) {
+							if (x.getPosition().equals(cell)) {
 								PalmTree palmTree = (PalmTree) x;
 								palmTree.grow();
 							}
@@ -206,7 +206,7 @@ public class ThreadMain {
 		Cell prev = Map.getCellFromCoordinate(new Coordinate(x, y));
 		Thread thread = new Thread(() -> {
 			try {
-				while (Map.getEagle().checkMoving(player) && player.getCurrentPosition().isSamePosition(prev)) {
+				while (Map.getEagle().checkMoving(player) && player.getCurrentPosition().equals(prev)) {
 					Thread.sleep(2000);
 					Platform.runLater(() -> {
 						Map.getEagle().moveToPlayer(player);

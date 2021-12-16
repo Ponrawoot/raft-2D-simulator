@@ -14,8 +14,7 @@ public abstract class Tree {
 		this.position.setStatus(false);
 		setReadyToCut(false);
 	}
-	
-	
+
 	public abstract void grow();
 
 	protected void setWood(int wood) {
@@ -49,9 +48,9 @@ public abstract class Tree {
 	public boolean isReadyToCut() {
 		return readyToCut;
 	}
-	
+
 	public abstract boolean checkWeaponCondition(Player player);
-	
+
 	@Override
 	public abstract String toString();
 
