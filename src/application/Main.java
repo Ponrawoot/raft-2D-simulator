@@ -43,7 +43,7 @@ public class Main extends Application {
 		player = new Player("player");
 //Cheat
 //		player.setHP(100);
-		player.setMaxHP(100);
+//		player.setMaxHP(100);
 		player.setRaft(true);
 		Weapon w1 = new Weapon(MaterialType.METAL, ApplicationType.AXE);
 		player.setCurrentAxe(w1);
@@ -188,6 +188,7 @@ public class Main extends Application {
 
 				}
 				TopBar.getInformationPane().update(player, object);
+				TopBar.showHpWarning(player);
 				RootPane.redraw(player.getCurrentPosition(), cell, string);
 				break;
 			case OPEN_BRACKET:

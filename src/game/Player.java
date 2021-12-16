@@ -36,7 +36,7 @@ public class Player implements Moveable {
 	private Cell currentPosition;
 	private ArrayList<Weapon> playerWeapon;
 	private Direction direction;
-	private boolean reset=false;
+	private boolean reset = false;
 
 	public boolean isReset() {
 		return reset;
@@ -80,7 +80,7 @@ public class Player implements Moveable {
 		playerWeapon.add(woodAxe);
 		setCurrentAxe(woodAxe);
 		direction = Direction.DOWN;
-		
+
 	}
 
 	public void resetPosition() {
@@ -92,16 +92,6 @@ public class Player implements Moveable {
 		if (HP > 0)
 			HP--;
 		TopBar.setHp(this);
-		TopBar.showHpWarning(this);
-	}
-	
-	public void decreaseHP(int i) {
-		if (HP > i) {
-			HP-=i;
-		}
-		else {
-			HP=0;
-		}
 	}
 
 	public void increaseHP() {
@@ -232,6 +222,8 @@ public class Player implements Moveable {
 	}
 
 	public void consume(String object) {
+		if (HP == maxHP)
+			return;
 		switch (object) {
 		case "Fruit":
 			fruit--;
@@ -239,7 +231,8 @@ public class Player implements Moveable {
 			break;
 		case "Fish":
 			fish--;
-			increaseHP();increaseHP();
+			increaseHP();
+			increaseHP();
 			break;
 		case "Bird":
 			bird--;
@@ -248,24 +241,24 @@ public class Player implements Moveable {
 		}
 	}
 
-
 	public boolean plant(String object, Cell position) {
 		if (Map.getPlantableArea().contains(position) && position.getStatus()) {
 			switch (object) {
 			case "Mango seed":
-				if (mangoSeed==0) return false;
+				if (mangoSeed == 0)
+					return false;
 				MangoTree mangoTree = new MangoTree(position);
 				mangoSeed--;
 				Map.getTrees().add(mangoTree);
 				break;
 			case "Pinecone":
-				if (pineconeSeed==0) return false;
+				if (pineconeSeed == 0)
+					return false;
 				PineTree pineTree = new PineTree(position);
 				pineconeSeed--;
 				Map.getTrees().add(pineTree);
 				break;
 			}
-			decreaseHP();
 			position.setStatus(false);
 			return true;
 		}
@@ -728,7 +721,7 @@ public class Player implements Moveable {
 		if (currentShovel != null && currentShovel.getLifetime() == 0) {
 			playerWeapon.remove(currentShovel);
 			setCurrentShovel(null);
-		}	
+		}
 		if (currentAxe != null && currentAxe.getLifetime() == 0) {
 			playerWeapon.remove(currentAxe);
 			setCurrentAxe(null);
