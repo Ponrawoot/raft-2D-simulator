@@ -1,7 +1,5 @@
 package application;
 
-import java.util.ArrayList;
-
 import component.RootPane;
 import component.TopBar;
 import game.Cell;
@@ -11,22 +9,15 @@ import game.base.Coordinate;
 import game.base.Direction;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import object.base.MaterialType;
 import object.MangoTree;
 import object.PalmTree;
 import object.PineTree;
-import object.Weapon;
-import object.base.ApplicationType;
 
 public class Main extends Application {
 	private static RootPane rootPane;
@@ -39,32 +30,6 @@ public class Main extends Application {
 	private static AudioClip[] sound = {sound0,sound1,sound2,sound3};
 	public void start(Stage primaryStage) throws Exception {
 		player = new Player("player");
-//Cheat
-		player.setHP(100);
-		player.setMaxHP(100);
-		player.setRaft(true);
-		Weapon w1 = new Weapon(MaterialType.METAL, ApplicationType.AXE);
-		player.setCurrentAxe(w1);
-		player.addWeapon(w1);
-		Weapon w2 = new Weapon(MaterialType.METAL, ApplicationType.SHOVEL);
-		player.setCurrentShovel(w2);
-		player.addWeapon(w2);
-		Weapon w3 = new Weapon(MaterialType.METAL, ApplicationType.SPEAR);
-		player.setCurrentSpear(w3);
-		player.addWeapon(w3);
-		player.setFish(5);
-		player.setFruit(5);
-		player.setBird(5);
-		player.setMetal(100);
-		player.setScrape(100);
-		player.setPlastic(100);
-		player.setWood(100);
-		player.setRope(100);
-		player.setLeaf(10);
-		player.setStone(100);
-		player.setMangoSeed(10);
-		player.setPineconeSeed(10);
-//	
 		rootPane = new RootPane(player);
 		threadMain = new ThreadMain();
 	
@@ -74,10 +39,7 @@ public class Main extends Application {
 		sound1.setVolume(0.3);
 		sound2.setVolume(0.3);
 		sound3.setVolume(0.3);
-		
 		Scene scene = new Scene(rootPane, 1000, 1000);
-
-
 		addEventListener(scene);	
 		primaryStage.setTitle("Raft 2D Simulator");
 		primaryStage.setScene(scene);
@@ -202,7 +164,7 @@ public class Main extends Application {
 				break;
 			}
 			if (redraw2) {
-				RootPane.redraw2(cell);
+				RootPane.redrawTreeStump(cell);
 			}
 
 			if (player.isReset()) {
@@ -213,10 +175,6 @@ public class Main extends Application {
 				TopBar.showHpWarning(player);
 			}
 			
-			
-//			if (Map.getMoveableForEagleArea().contains(player.getCurrentPosition())&&!Map.getMoveableForEagleArea().contains(cell)) {
-//				threadMain.activateEagle(player);
-//			}
 		});
 	}
 

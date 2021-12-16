@@ -66,7 +66,7 @@ public class ThreadMain {
 		}
 		if (object instanceof PalmTree) {
 			Cell cell = ((PalmTree) object).getPosition();
-			RootPane.redraw2(cell);
+			RootPane.redrawTreeStump(cell);
 			Thread thread = new Thread(() -> {
 				try {
 					Thread.sleep(5000);

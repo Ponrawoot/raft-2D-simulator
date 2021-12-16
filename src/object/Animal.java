@@ -18,7 +18,7 @@ public abstract class Animal {
 		return alive;
 	}
 
-	public void setAlive(boolean alive) {
+	protected void setAlive(boolean alive) {
 		this.alive = alive;
 	}
 
@@ -26,7 +26,7 @@ public abstract class Animal {
 		return position;
 	}
 
-	public void setPosition(Cell position) {
+	protected void setPosition(Cell position) {
 		this.position = position;
 	}
 	

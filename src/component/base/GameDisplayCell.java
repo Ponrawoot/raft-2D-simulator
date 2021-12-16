@@ -152,6 +152,7 @@ public class GameDisplayCell extends Pane {
 			ImageView.setFitWidth(50);
 			this.getChildren().add(ImageView);
 		}
+		
 		if (cell.getCoCell().isSamePosition(new Coordinate(18,15))) {
 			ImageView = new ImageView(new Image("Cave.png"));
 			ImageView.setFitHeight(50);
