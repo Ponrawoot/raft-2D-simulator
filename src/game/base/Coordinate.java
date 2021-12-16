@@ -2,7 +2,7 @@ package game.base;
 
 public class Coordinate {
 	private int x, y;
-	
+
 	public Coordinate() {
 		setX(9);
 		setY(12);
@@ -32,11 +32,11 @@ public class Coordinate {
 			y = 0;
 		this.y = y;
 	}
-	
-	public boolean isSamePosition(Coordinate other) {
-		return this.getX()==other.getX()&&this.getY()==other.getY();
-	}
 
+	public boolean isSamePosition(Coordinate other) {
+		return this.getX() == other.getX() && this.getY() == other.getY();
+	}
+	
 	public boolean isNextTo(Coordinate other) {
 		if (Math.abs(other.getX() - x) == 1 && Math.abs(other.getY() - y) == 0) {
 			return true;

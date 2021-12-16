@@ -106,10 +106,12 @@ public class TopBar extends FlowPane {
 			root.setAlignment(Pos.CENTER);
 			Text text = new Text("You don't have enough HP. Please eat something.");
 			Button btn = new Button("get 1 extra HP");
+			
+			RootPane.redraw(Map.getCellFromCoordinate(new Coordinate()),player.getCurrentPosition(),"Front");
+			player.resetPosition();
+			
 			btn.setOnAction(event -> {
-				player.increaseHP();
-				RootPane.redraw(Map.getCellFromCoordinate(new Coordinate()),player.getCurrentPosition(),"Front");
-				player.resetPosition();
+				player.increaseHP();		
 				stage.close();
 				TopBar.setHp(player);
 				player.setReset(true);

@@ -1,5 +1,6 @@
 package component.base;
 
+import game.Market;
 import game.Player;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,10 +16,17 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MarketButton extends Button{
-	
+public class MarketButton extends Button {
+	private Market[] markets;
+
 	public MarketButton(Player player) {
-		//setText("MarketButton");
+		// setText("MarketButton");
+		markets = new Market[4];
+		markets[0] = new Market("Canvas");
+		markets[1] = new Market("Steering");
+		markets[2] = new Market("Petrol");
+		markets[3] = new Market("Engine");
+		
 		ImageView ImageView = new ImageView(new Image("market.jpg"));
 		this.setGraphic(ImageView);
 		ImageView.setFitHeight(60);
@@ -27,20 +35,19 @@ public class MarketButton extends Button{
 		this.setTooltip();
 		setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			
+
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				Stage stage = new Stage();
 				stage.setTitle("Market");
-				
+
 				ListView<MarketPane> root = new ListView<MarketPane>();
 				root.setPrefWidth(350);
-				MarketPane market0 = new MarketPane("Canvas", player);
-				MarketPane market1 = new MarketPane("Steering", player);
-				MarketPane market2 = new MarketPane("Petrol", player);
-				MarketPane market3 = new MarketPane("Engine", player);
-				root.getItems().addAll(market0, market1, market2, market3);
-				
+				for (Market m : markets) {
+					MarketPane market = new MarketPane(player, m);
+					root.getItems().add(market);
+				}
+
 				Scene scene = new Scene(root);
 				stage.setScene(scene);
 				stage.initModality(Modality.APPLICATION_MODAL);
@@ -49,7 +56,7 @@ public class MarketButton extends Button{
 			}
 		});
 	}
-	
+
 	private void setTooltip() {
 		Tooltip tooltip = new Tooltip();
 		tooltip.setFont(new Font(12));
@@ -62,4 +69,3 @@ public class MarketButton extends Button{
 		});
 	}
 }
-
