@@ -22,7 +22,7 @@ public class MissionButton extends Button {
 	public MissionButton(Player player) {
 		// setText("MissionButton");
 		mission = new Mission();
-		ImageView ImageView = new ImageView(new Image("mission.png"));
+		ImageView ImageView = new ImageView(new Image("Mission.png"));
 		ImageView.setFitHeight(60);
 		ImageView.setFitWidth(60);
 		this.setGraphic(ImageView);

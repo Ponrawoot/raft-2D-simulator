@@ -17,6 +17,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -24,10 +26,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class TopBar extends FlowPane {
-	private Text playerName;
+	private static ImageView imageView;
 	private static ProgressBar hp;
 	private static Text hpText;
-	private Label time;
 	private static CurrentWeaponPane weaponPane;
 	private static InformationPane informationPane;
 	private Button muteButton;
@@ -37,28 +38,12 @@ public class TopBar extends FlowPane {
 		setHgap(5);
 		setVgap(5);
 
-		playerName = new Text("Name: " + player.getName());
-
+		imageView = new ImageView(new Image("MyGame.png"));
+		imageView.setFitHeight(100);
+		imageView.setFitWidth(180);
 		hp = new ProgressBar(0);
 		hpText = new Text();
 		setHp(player);
-
-		time = new Label();
-		Thread thread = new Thread(() -> {
-			SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
-			while (true) {
-				try {
-					Thread.sleep(1000);
-				} catch (Exception e) {
-					System.out.println(e);
-				}
-				final String timenow = sdf.format(new Date());
-				Platform.runLater(() -> {
-					time.setText(timenow);
-				});
-			}
-		});
-		thread.start();
 
 		weaponPane = new CurrentWeaponPane(player);
 		informationPane = new InformationPane(player);
@@ -80,7 +65,7 @@ public class TopBar extends FlowPane {
 			}
 		});
 		muteButton.setAlignment(Pos.TOP_RIGHT);
-		getChildren().addAll(playerName, hpText, hp, time, weaponPane, informationPane, muteButton);
+		getChildren().addAll(imageView, hpText, hp, weaponPane, informationPane, muteButton);
 	}
 
 	public static void setHp(Player player) {
@@ -88,9 +73,7 @@ public class TopBar extends FlowPane {
 		hp.setProgress((double) player.getHP() / player.getMaxHP());
 	}
 
-	public void setPlayerName(Player player) {
-		playerName.setText(player.getName());
-	}
+
 
 	public static boolean showHpWarning(Player player) {
 		if (player.getHP() != 0)

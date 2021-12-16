@@ -373,7 +373,7 @@ public class Database {
 		Cell x16y16 = new Cell(new Coordinate(16, 16), false, false, true);
 		Cell x17y16 = new Cell(new Coordinate(17, 16), false, false, true);
 		Cell x18y16 = new Cell(new Coordinate(18, 16), false, false, true);
-		Cell x19y16 = new Cell(new Coordinate(19, 16), false, true, false);
+		Cell x19y16 = new Cell(new Coordinate(19, 16), false, false, true);
 		Cell x0y17 = new Cell(new Coordinate(0, 17), true, false, true);
 		Cell x1y17 = new Cell(new Coordinate(1, 17), true, false, true);
 		Cell x2y17 = new Cell(new Coordinate(2, 17), true, false, true);
@@ -498,7 +498,7 @@ public class Database {
 		repairableArea.add(x16y13);
 		repairableArea.add(x16y14);
 		repairableArea.add(x16y15);
-		repairableArea.add(x17y16);repairableArea.add(x18y16);
+		repairableArea.add(x17y16);repairableArea.add(x18y16);repairableArea.add(x19y16);
 		repairableArea.add(x19y17);
 		
 		randomFishCell = new ArrayList<Cell>();

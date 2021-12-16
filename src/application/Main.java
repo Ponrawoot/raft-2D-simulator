@@ -30,9 +30,7 @@ import object.base.ApplicationType;
 
 public class Main extends Application {
 	private static RootPane rootPane;
-	private static Pane firstPane = new FirstPane();
 	private Player player;
-	private boolean isPlay =false;
 	private ThreadMain threadMain;
 	private static AudioClip sound0 = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
 	private static AudioClip sound1 = new AudioClip(ClassLoader.getSystemResource("audio/sound1.mp3").toString());
@@ -44,26 +42,26 @@ public class Main extends Application {
 //Cheat
 //		player.setHP(100);
 //		player.setMaxHP(100);
-		player.setRaft(true);
-		Weapon w1 = new Weapon(MaterialType.METAL, ApplicationType.AXE);
-		player.setCurrentAxe(w1);
-		player.addWeapon(w1);
-		Weapon w2 = new Weapon(MaterialType.METAL, ApplicationType.SHOVEL);
-		player.setCurrentShovel(w2);
-		player.addWeapon(w2);
-		Weapon w3 = new Weapon(MaterialType.METAL, ApplicationType.SPEAR);
-		player.setCurrentSpear(w3);
-		player.addWeapon(w3);
-		player.setFish(5);
-		player.setFruit(5);
-		player.setBird(5);
-		player.setMetal(100);
-		player.setScrape(100);
-		player.setPlastic(100);
-		player.setWood(100);
-		player.setRope(100);
-		player.setLeaf(10);
-		player.setStone(100);
+//		player.setRaft(true);
+//		Weapon w1 = new Weapon(MaterialType.METAL, ApplicationType.AXE);
+//		player.setCurrentAxe(w1);
+//		player.addWeapon(w1);
+//		Weapon w2 = new Weapon(MaterialType.METAL, ApplicationType.SHOVEL);
+//		player.setCurrentShovel(w2);
+//		player.addWeapon(w2);
+//		Weapon w3 = new Weapon(MaterialType.METAL, ApplicationType.SPEAR);
+//		player.setCurrentSpear(w3);
+//		player.addWeapon(w3);
+//		player.setFish(5);
+//		player.setFruit(5);
+//		player.setBird(5);
+//		player.setMetal(100);
+//		player.setScrape(100);
+//		player.setPlastic(100);
+//		player.setWood(100);
+//		player.setRope(100);
+//		player.setLeaf(10);
+//		player.setStone(100);
 //		player.setMangoSeed(10);
 //		player.setPineconeSeed(10);
 //	
@@ -78,23 +76,9 @@ public class Main extends Application {
 		sound3.setVolume(0.3);
 		
 		Scene scene = new Scene(rootPane, 1000, 1000);
-		ScreenController screenController = new ScreenController(scene);
-		ScreenController.add("Root", rootPane);
-		ScreenController.add("First", firstPane);
-		ScreenController.activate("First");
-		
-		Button playButton = FirstPane.getPlayButton();
-		playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-			@Override
-			public void handle(MouseEvent arg0) {
-				ScreenController.activate("Root");
-				addEventListener(scene);
-				
-			}
-			
-		});
-		
+
+		addEventListener(scene);	
 		primaryStage.setTitle("Raft 2D Simulator");
 		primaryStage.setScene(scene);
 		primaryStage.show();

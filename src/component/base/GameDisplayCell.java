@@ -34,21 +34,22 @@ public class GameDisplayCell extends Pane {
 		map = new Map();
 		Coordinate coCell = new Coordinate(x,y);
 		cell = Map.getCellFromCoordinate(coCell);
-		this.setPrefHeight(40);
-		this.setPrefWidth(40);
-		BackgroundImage seaCell = new BackgroundImage(new Image("Sea.png"), null, null, null, null);
+		this.setPrefHeight(50);
+		this.setPrefWidth(50);
+		BackgroundImage closedCell = new BackgroundImage(new Image("Background/Closed.png"), null, null, null, null);
+		BackgroundImage seaCell = new BackgroundImage(new Image("Background/Sea.png"), null, null, null, null);
+		BackgroundImage plantCell = new BackgroundImage(new Image("Background/Plantable.png"), null, null, null, null);
+		BackgroundImage landCell = new BackgroundImage(new Image("Background/Land.png"), null, null, null, null);
 		if (cell==null) {
 			this.setBackground(new Background(new BackgroundFill(Color.MOCCASIN, CornerRadii.EMPTY, Insets.EMPTY)));
 		} else if (cell.isSea()&&!cell.isClosed()) {
 			this.setBackground(new Background(seaCell));
 		} else if (!cell.isSea()&&cell.isClosed()&&!cell.getStatus()) {
-			this.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
-//		} else if (!cell.isSea()&&!cell.isClosed()&&!cell.getStatus()) {
-//			this.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+			this.setBackground(new Background(closedCell));
 		} else if (!cell.isSea()&&!cell.isClosed()) {
-			this.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+			this.setBackground(new Background(landCell));
 			if (Map.getPlantableArea().contains(cell)) {
-				this.setBackground(new Background(new BackgroundFill(Color.YELLOWGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+				this.setBackground(new Background(plantCell));
 			}
 		}
 		
@@ -56,9 +57,9 @@ public class GameDisplayCell extends Pane {
 		
 		for (Animal fish : Map.getAvailableFish()) {
 			if (fish.getPosition().isSamePosition(cell)) {
-				ImageView = new ImageView(new Image("fish001.png"));
-				ImageView.setFitHeight(40);
-				ImageView.setFitWidth(40);
+				ImageView = new ImageView(new Image("Fish.png"));
+				ImageView.setFitHeight(50);
+				ImageView.setFitWidth(50);
 				this.getChildren().add(ImageView);
 				break;
 			}
@@ -66,9 +67,9 @@ public class GameDisplayCell extends Pane {
 		
 		for (Animal bird : Map.getAvailableBird()) {
 			if (bird.getPosition().isSamePosition(cell)) {
-				ImageView = new ImageView(new Image("Seagull.png"));
-				ImageView.setFitHeight(40);
-				ImageView.setFitWidth(40);
+				ImageView = new ImageView(new Image("Bird.png"));
+				ImageView.setFitHeight(50);
+				ImageView.setFitWidth(50);
 				this.getChildren().add(ImageView);
 				break;
 			}
@@ -76,9 +77,9 @@ public class GameDisplayCell extends Pane {
 		
 		for (Material metal : Map.getAvailableMetal()) {
 			if (metal.getPosition().isSamePosition(cell)) {
-				ImageView = new ImageView(new Image("Metal001.png"));
-				ImageView.setFitHeight(40);
-				ImageView.setFitWidth(40);
+				ImageView = new ImageView(new Image("Metal.png"));
+				ImageView.setFitHeight(50);
+				ImageView.setFitWidth(50);
 				this.getChildren().add(ImageView);
 				break;
 			}
@@ -87,8 +88,9 @@ public class GameDisplayCell extends Pane {
 		for (Material scrap : Map.getAvailableScrape()) {
 			if (scrap.getPosition().isSamePosition(cell)) {
 				ImageView = new ImageView(new Image("Scrap.png"));
-				ImageView.setFitHeight(40);
-				ImageView.setFitWidth(40);
+				ImageView.setFitHeight(50);
+				ImageView.setFitWidth(50);
+				
 				this.getChildren().add(ImageView);
 				break;
 			}
@@ -97,8 +99,8 @@ public class GameDisplayCell extends Pane {
 		for (Material plastic : Map.getAvailablePlastic()) {
 			if (plastic.getPosition().isSamePosition(cell)) {
 				ImageView = new ImageView(new Image("Plastic.png"));
-				ImageView.setFitHeight(40);
-				ImageView.setFitWidth(40);
+				ImageView.setFitHeight(50);
+				ImageView.setFitWidth(50);
 				this.getChildren().add(ImageView);
 				break;
 			}
@@ -107,8 +109,8 @@ public class GameDisplayCell extends Pane {
 		for (Material stone : Map.getAvailableStone()) {
 			if (stone.getPosition().isSamePosition(cell)) {
 				ImageView = new ImageView(new Image("Stone.png"));
-				ImageView.setFitHeight(40);
-				ImageView.setFitWidth(40);
+				ImageView.setFitHeight(50);
+				ImageView.setFitWidth(50);
 				this.getChildren().add(ImageView);
 				break;
 			}
@@ -118,20 +120,20 @@ public class GameDisplayCell extends Pane {
 			if (tree.getPosition().isSamePosition(cell)) {
 				if (tree instanceof PalmTree) {
 					ImageView = new ImageView(new Image("PalmTree.png"));
-					ImageView.setFitHeight(40);
-					ImageView.setFitWidth(40);
+					ImageView.setFitHeight(50);
+					ImageView.setFitWidth(50);
 					this.getChildren().add(ImageView);
 					break;
 				} else if (tree instanceof PineTree) {
 					ImageView = new ImageView(new Image("PineTree.png"));
-					ImageView.setFitHeight(40);
-					ImageView.setFitWidth(40);
+					ImageView.setFitHeight(50);
+					ImageView.setFitWidth(50);
 					this.getChildren().add(ImageView);
 					break;
 				} else if (tree instanceof MangoTree) {
 					ImageView = new ImageView(new Image("MangoTree.png"));
-					ImageView.setFitHeight(40);
-					ImageView.setFitWidth(40);
+					ImageView.setFitHeight(50);
+					ImageView.setFitWidth(50);
 					this.getChildren().add(ImageView);
 					break;
 				}
@@ -139,18 +141,27 @@ public class GameDisplayCell extends Pane {
 		}
 		if (Map.getEagle().getPosition().isSamePosition(cell)) {
 			ImageView = new ImageView(new Image("Eagle.png"));
-			ImageView.setFitHeight(40);
-			ImageView.setFitWidth(40);
+			ImageView.setFitHeight(50);
+			ImageView.setFitWidth(50);
 			this.getChildren().add(ImageView);
 		}
 		
 		if (cell.getCoCell().isSamePosition(new Coordinate(9,12))) {
 			ImageView = new ImageView(new Image("Front.png"));
-			ImageView.setFitHeight(40);
-			ImageView.setFitWidth(40);
+			ImageView.setFitHeight(50);
+			ImageView.setFitWidth(50);
 			this.getChildren().add(ImageView);
 		}
+		if (cell.getCoCell().isSamePosition(new Coordinate(18,15))) {
+			ImageView = new ImageView(new Image("Cave.png"));
+			ImageView.setFitHeight(50);
+			ImageView.setFitWidth(50);
+			this.getChildren().add(ImageView);
+		}
+		
+		
 	}
+	
 	public Cell getCell() {
 		return cell;
 	}
@@ -174,17 +185,17 @@ public class GameDisplayCell extends Pane {
 		case "Stone" : url = "Stone.png"; break;
 		case "Plastic" : url = "Plastic.png"; break;
 		case "Scrap" : url = "Scrap.png"; break;
-		case "Metal" : url = "Metal001.png"; break;
-		case "Fish" : url = "fish001.png"; break;
-		case "Bird" : url = "Seagull.png"; break;
+		case "Metal" : url = "Metal.png"; break;
+		case "Fish" : url = "Fish.png"; break;
+		case "Bird" : url = "Bird.png"; break;
 		case "Eagle" : url = "Eagle.png"; break;
 		case "Mango seed" : url = "Mango seed.png"; break;
 		case "Pinecone" : url = "Pinecone.png"; break;
 		default : 	url = null; break;
 	}
 		ImageView = new ImageView(new Image(url));
-		ImageView.setFitHeight(40);
-		ImageView.setFitWidth(40);
+		ImageView.setFitHeight(50);
+		ImageView.setFitWidth(50);
 		this.getChildren().add(ImageView);
 		
 	}

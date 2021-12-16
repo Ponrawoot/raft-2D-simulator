@@ -27,7 +27,7 @@ public class MarketButton extends Button {
 		markets[2] = new Market("Petrol");
 		markets[3] = new Market("Engine");
 		
-		ImageView ImageView = new ImageView(new Image("market.jpg"));
+		ImageView ImageView = new ImageView(new Image("Market.png"));
 		this.setGraphic(ImageView);
 		ImageView.setFitHeight(60);
 		ImageView.setFitWidth(60);

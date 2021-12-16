@@ -69,7 +69,7 @@ public class ThreadMain {
 			RootPane.redraw2(cell);
 			Thread thread = new Thread(() -> {
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(5000);
 					Platform.runLater(() -> {
 						RootPane.redraw(cell, cell, "PalmTree");
 						for (Tree x : Map.getTrees()) {
@@ -93,7 +93,7 @@ public class ThreadMain {
 			cell.setStatus(true);
 			Thread thread = new Thread(() -> {
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(10000);
 					Platform.runLater(() -> {
 						((Eagle) object).refresh();
 						RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(4, 1)), cell, "Eagle");
@@ -233,7 +233,7 @@ public class ThreadMain {
 		if (object instanceof MangoTree && (!((Tree) object).isReadyToCut())) {
 			Thread thread = new Thread(() -> {
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(5000);
 					Platform.runLater(() -> {
 						RootPane.redraw(((MangoTree) object).getPosition(), ((MangoTree) object).getPosition(),
 								"MangoTree");
@@ -252,7 +252,7 @@ public class ThreadMain {
 		if (object instanceof PineTree && (!((Tree) object).isReadyToCut())) {
 			Thread thread = new Thread(() -> {
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(5000);
 					Platform.runLater(() -> {
 						RootPane.redraw(((PineTree) object).getPosition(), ((PineTree) object).getPosition(),
 								"PineTree");
