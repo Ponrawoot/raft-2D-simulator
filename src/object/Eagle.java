@@ -1,5 +1,6 @@
 package object;
 
+import application.Main;
 import component.RootPane;
 import component.TopBar;
 import game.Cell;
@@ -119,10 +120,14 @@ public class Eagle extends Animal {
 	}
 
 	public boolean hitPlayer(Player player) {
-		if (position.isNextTo(player.getCurrentPosition())&& alive) {
-			player.decreaseHP();
-			player.decreaseHP();
-			player.decreaseHP();
+		if (position.isNextTo(player.getCurrentPosition())&&alive) {
+			if (player.getHP() > 3) {
+				player.setHP(player.getHP()-3);
+			}
+			else {
+				player.setHP(0);
+			}
+			TopBar.setHp(player);
 			return true;
 		}
 		return false;

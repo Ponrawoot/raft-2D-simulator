@@ -36,7 +36,7 @@ public class Player implements Moveable {
 	private Cell currentPosition;
 	private ArrayList<Weapon> playerWeapon;
 	private Direction direction;
-	boolean reset=false;
+	private boolean reset=false;
 
 	public boolean isReset() {
 		return reset;
@@ -93,6 +93,15 @@ public class Player implements Moveable {
 			HP--;
 		TopBar.setHp(this);
 		TopBar.showHpWarning(this);
+	}
+	
+	public void decreaseHP(int i) {
+		if (HP > i) {
+			HP-=i;
+		}
+		else {
+			HP=0;
+		}
 	}
 
 	public void increaseHP() {

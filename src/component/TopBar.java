@@ -6,7 +6,9 @@ import java.util.Date;
 import application.Main;
 import component.base.CurrentWeaponPane;
 import component.base.InformationPane;
+import game.Map;
 import game.Player;
+import game.base.Coordinate;
 import game.base.Direction;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -91,7 +93,6 @@ public class TopBar extends FlowPane {
 			Main.getSound()[3].play();
 			Stage stage = new Stage();
 			stage.setTitle("Warning");
-
 			VBox root = new VBox();
 			root.setPrefWidth(150);
 			root.setSpacing(20);
@@ -101,6 +102,7 @@ public class TopBar extends FlowPane {
 			Button btn = new Button("get 1 extra HP");
 			btn.setOnAction(event -> {
 				player.increaseHP();
+				RootPane.redraw(Map.getCellFromCoordinate(new Coordinate()),player.getCurrentPosition(),"Front");
 				player.resetPosition();
 				stage.close();
 				TopBar.setHp(player);

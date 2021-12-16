@@ -12,8 +12,8 @@ public class GameDisplay extends GridPane {
 	public GameDisplay() {
 		cellList = new ArrayList<GameDisplayCell>();
 		GameDisplayCell cell;
-		this.setHgap(1);
-		this.setVgap(1);
+		this.setHgap(0);
+		this.setVgap(0);
 		this.setPrefHeight(1200);
 		this.setPrefWidth(1200);
 		for (int i=0;i<20;i++) {
