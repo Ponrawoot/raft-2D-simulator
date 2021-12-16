@@ -50,10 +50,10 @@ public class CellTest {
 		assertFalse(c1.isNextTo(c1));
 	}
 
-	@Test
-	public void testIsSamePosition() {
-		assertTrue(c1.isSamePosition(c1));
-		assertTrue(c1.isSamePosition(c5));
-		assertFalse(c1.isSamePosition(c2));
-	}
+//	@Test
+//	public void testIsSamePosition() {
+//		assertTrue(c1.isSamePosition(c1));
+//		assertTrue(c1.isSamePosition(c5));
+//		assertFalse(c1.isSamePosition(c2));
+//	}
 }

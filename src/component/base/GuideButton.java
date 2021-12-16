@@ -14,9 +14,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class GuideButton extends Button{
+public class GuideButton extends Button {
 	public GuideButton() {
-		//setText("GuideButton");
 		ImageView ImageView = new ImageView(new Image("guide.png"));
 		this.setGraphic(ImageView);
 		ImageView.setFitHeight(60);
@@ -24,15 +23,15 @@ public class GuideButton extends Button{
 		setCursor(Cursor.HAND);
 		this.setTooltip();
 		setOnAction(new EventHandler<ActionEvent>() {
-			@Override
 			
+			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				Stage stage = new Stage();
 				stage.setTitle("Guide");
-				
+
 				ScrollPane root = new ScrollPane();
-				
+
 				Scene scene = new Scene(root);
 				stage.setScene(scene);
 				stage.initModality(Modality.APPLICATION_MODAL);
@@ -41,7 +40,7 @@ public class GuideButton extends Button{
 			}
 		});
 	}
-	
+
 	private void setTooltip() {
 		Tooltip tooltip = new Tooltip();
 		tooltip.setFont(new Font(12));
@@ -54,4 +53,3 @@ public class GuideButton extends Button{
 		});
 	}
 }
-

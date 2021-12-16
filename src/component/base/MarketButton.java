@@ -20,13 +20,12 @@ public class MarketButton extends Button {
 	private Market[] markets;
 
 	public MarketButton(Player player) {
-		// setText("MarketButton");
 		markets = new Market[4];
 		markets[0] = new Market("Canvas");
 		markets[1] = new Market("Steering");
 		markets[2] = new Market("Petrol");
 		markets[3] = new Market("Engine");
-		
+
 		ImageView ImageView = new ImageView(new Image("Market.png"));
 		this.setGraphic(ImageView);
 		ImageView.setFitHeight(60);

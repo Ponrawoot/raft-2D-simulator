@@ -15,7 +15,7 @@ public class MangoTree extends Tree implements Removable {
 	public MangoTree(Cell position) {
 		super(position);
 		// TODO Auto-generated constructor stub
-		super.setWood(1);
+		super.setWood(2);
 		super.setLeaf(2);
 		fruit = 1;
 		mangoSeed = 2;
@@ -45,7 +45,7 @@ public class MangoTree extends Tree implements Removable {
 	public void grow() {
 		// TODO Auto-generated method stub
 		if (!readyToCut) {
-			super.setWood(1);
+			super.setWood(2);
 			super.setLeaf(2);
 			fruit = 1;
 			mangoSeed = 2;
@@ -69,7 +69,7 @@ public class MangoTree extends Tree implements Removable {
 
 	@Override
 	public String toString() {
-		return "mango tree." + " You got 1 wood, 2 leaves, 1 fruit, 2 mango seed,";
+		return "mango tree." + " You got 2 woods, 2 leaves, 1 fruit, 2 mango seed,";
 	}
 
 }

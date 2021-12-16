@@ -5,7 +5,7 @@ import game.Cell;
 public abstract class Material {
 	protected boolean present;
 	protected Cell position;
-	
+
 	public Material(Cell position) {
 		this.present = true;
 		this.position = position;
@@ -27,5 +27,5 @@ public abstract class Material {
 	public void setPosition(Cell position) {
 		this.position = position;
 	}
-	
+
 }

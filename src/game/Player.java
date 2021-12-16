@@ -40,7 +40,7 @@ public class Player implements Movable {
 	}
 
 	public Player(String name) {
-		setMaxHP(10);
+		setMaxHP(20);
 		this.name = name;
 		HP = maxHP;
 		wood = 0;
@@ -73,9 +73,9 @@ public class Player implements Movable {
 		currentSpear = null;
 		currentPosition = new Cell(new Coordinate(), false, false, true);
 		playerWeapon = new ArrayList<Weapon>();
-		Weapon woodAxe = new Weapon(MaterialType.WOOD, ApplicationType.AXE);
-		playerWeapon.add(woodAxe);
-		setCurrentAxe(woodAxe);
+		Weapon stoneAxe = new Weapon(MaterialType.STONE, ApplicationType.AXE);
+		playerWeapon.add(stoneAxe);
+		setCurrentAxe(stoneAxe);
 		direction = Direction.DOWN;
 
 	}
@@ -275,49 +275,49 @@ public class Player implements Movable {
 		if (cell.getStatus())
 			return false;
 		for (Animal x : Map.getAvailableFish()) {
-			if (x.getPosition().isSamePosition(cell)) {
+			if (x.getPosition().equals(cell)) {
 				Fish fish = (Fish) x;
 				fish.beRemoved(this);
 				return !fish.isAlive();
 			}
 		}
 		for (Animal x : Map.getAvailableBird()) {
-			if (x.getPosition().isSamePosition(cell)) {
+			if (x.getPosition().equals(cell)) {
 				Bird bird = (Bird) x;
 				bird.beRemoved(this);
 				return !bird.isAlive();
 			}
 		}
 		for (Material x : Map.getAvailableMetal()) {
-			if (x.getPosition().isSamePosition(cell)) {
+			if (x.getPosition().equals(cell)) {
 				Metal metal = (Metal) x;
 				metal.beRemoved(this);
 				return !metal.isPresent();
 			}
 		}
 		for (Material x : Map.getAvailablePlastic()) {
-			if (x.getPosition().isSamePosition(cell)) {
+			if (x.getPosition().equals(cell)) {
 				Plastic plastic = (Plastic) x;
 				plastic.beRemoved(this);
 				return !plastic.isPresent();
 			}
 		}
 		for (Material x : Map.getAvailableScrape()) {
-			if (x.getPosition().isSamePosition(cell)) {
+			if (x.getPosition().equals(cell)) {
 				Scrap scrp = (Scrap) x;
 				scrp.beRemoved(this);
 				return !scrp.isPresent();
 			}
 		}
 		for (Material x : Map.getAvailableStone()) {
-			if (x.getPosition().isSamePosition(cell)) {
+			if (x.getPosition().equals(cell)) {
 				Stone stone = (Stone) x;
 				stone.beRemoved(this);
 				return !stone.isPresent();
 			}
 		}
 		for (Tree x : Map.getTrees()) {
-			if (x.getPosition().isSamePosition(cell)) {
+			if (x.getPosition().equals(cell)) {
 
 				if (x instanceof PalmTree) {
 					((PalmTree) x).collect(this);
@@ -331,7 +331,7 @@ public class Player implements Movable {
 				}
 			}
 		}
-		if (Map.getEagle().getPosition().isSamePosition(cell)) {
+		if (Map.getEagle().getPosition().equals(cell)) {
 			Map.getEagle().killed(this);
 			return !Map.getEagle().isAlive();
 		}
@@ -709,13 +709,7 @@ public class Player implements Movable {
 	}
 
 	public void setReset(boolean b) {
-		// TODO Auto-generated method stub
 		this.reset = b;
-	}
-
-	public void setHP(int i) {
-		// TODO Auto-generated method stub
-		this.HP = i;
 	}
 
 }

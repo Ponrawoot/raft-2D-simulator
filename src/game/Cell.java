@@ -32,7 +32,8 @@ public class Cell {
 	}
 
 	public void setStatus(boolean status) {
-		if (closed) status = false;
+		if (closed)
+			status = false;
 		this.status = status;
 	}
 
@@ -52,10 +53,6 @@ public class Cell {
 		return getCoCell().isNextTo(cell.getCoCell());
 	}
 
-	public boolean isSamePosition(Cell cell) {
-		return (getCoCell().getX() == cell.getCoCell().getX() && getCoCell().getY() == cell.getCoCell().getY());
-	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -67,5 +64,5 @@ public class Cell {
 		Cell other = (Cell) obj;
 		return getCoCell().getX() == other.getCoCell().getX() && getCoCell().getY() == other.getCoCell().getY();
 	}
-	
+
 }

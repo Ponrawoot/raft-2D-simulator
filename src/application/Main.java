@@ -18,34 +18,42 @@ import javafx.stage.Stage;
 import object.MangoTree;
 import object.PalmTree;
 import object.PineTree;
+import object.Weapon;
+import object.base.ApplicationType;
+import object.base.MaterialType;
 
 public class Main extends Application {
 	private static RootPane rootPane;
 	private Player player;
 	private ThreadMain threadMain;
-	private static AudioClip sound0 = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
-	private static AudioClip sound1 = new AudioClip(ClassLoader.getSystemResource("audio/sound1.mp3").toString());
-	private static AudioClip sound2 = new AudioClip(ClassLoader.getSystemResource("audio/sound2.mp3").toString());
-	private static AudioClip sound3 = new AudioClip(ClassLoader.getSystemResource("audio/sound3.mp3").toString());
-	private static AudioClip[] sound = {sound0,sound1,sound2,sound3};
+	private static AudioClip themeSound = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
+	private static AudioClip walkingSound = new AudioClip(ClassLoader.getSystemResource("audio/sound1.mp3").toString());
+	private static AudioClip actionSound = new AudioClip(ClassLoader.getSystemResource("audio/sound2.mp3").toString());
+	private static AudioClip warningSound = new AudioClip(ClassLoader.getSystemResource("audio/sound3.mp3").toString());
+	private static AudioClip[] sound = { themeSound, walkingSound, actionSound, warningSound };
+
 	public void start(Stage primaryStage) throws Exception {
 		player = new Player("player");
+		player.addWeapon(new Weapon(MaterialType.STONE,ApplicationType.SHOVEL));
 		rootPane = new RootPane(player);
 		threadMain = new ThreadMain();
-	
+
 		Main.getSound()[0].setCycleCount(MediaPlayer.INDEFINITE);
 		Main.getSound()[0].play();
 		Main.getSound()[0].setVolume(0.5);
-		sound1.setVolume(0.3);
-		sound2.setVolume(0.3);
-		sound3.setVolume(0.3);
+
+		walkingSound.setVolume(0.1);
+		actionSound.setVolume(0.1);
+		warningSound.setVolume(0.1);
+
 		Scene scene = new Scene(rootPane, 1000, 1000);
-		addEventListener(scene);	
+
+		addEventListener(scene);
 		primaryStage.setTitle("Raft 2D Simulator");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		primaryStage.setOnCloseRequest(event -> {
-			sound0.stop();
+			themeSound.stop();
 			Platform.exit();
 			System.exit(0);
 		});
@@ -82,7 +90,7 @@ public class Main extends Application {
 				if (!player.control(Direction.UP)) {
 					if ((player.checkMove(direction) || (player.checkSail(direction)))) {
 						player.move(direction);
-						sound1.play();
+						walkingSound.play();
 					}
 				}
 				TopBar.getInformationPane().update(player, direction);
@@ -93,7 +101,7 @@ public class Main extends Application {
 				if (!player.control(Direction.DOWN)) {
 					if ((player.checkMove(direction) || (player.checkSail(direction)))) {
 						player.move(direction);
-						sound1.play();
+						walkingSound.play();
 					}
 				}
 				TopBar.getInformationPane().update(player, direction);
@@ -104,7 +112,7 @@ public class Main extends Application {
 				if (!player.control(Direction.LEFT)) {
 					if ((player.checkMove(direction) || (player.checkSail(direction)))) {
 						player.move(direction);
-						sound1.play();
+						walkingSound.play();
 					}
 				}
 				TopBar.getInformationPane().update(player, direction);
@@ -115,7 +123,7 @@ public class Main extends Application {
 				if (!player.control(Direction.RIGHT)) {
 					if ((player.checkMove(direction) || (player.checkSail(direction)))) {
 						player.move(direction);
-						sound1.play();
+						walkingSound.play();
 					}
 				}
 				TopBar.getInformationPane().update(player, direction);
@@ -130,7 +138,7 @@ public class Main extends Application {
 					threadMain.refreshObject(object);
 					if ((object instanceof PalmTree))
 						redraw2 = true;
-					sound2.play();
+					actionSound.play();
 
 				}
 				TopBar.getInformationPane().update(player, object);
@@ -174,10 +182,7 @@ public class Main extends Application {
 			if (threadMain.activateEagle(player)) {
 				TopBar.showHpWarning(player);
 			}
-			
+
 		});
 	}
-
-
-
 }

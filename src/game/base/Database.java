@@ -13,7 +13,6 @@ import object.PalmTree;
 import object.PineTree;
 import object.Plastic;
 import object.Scrap;
-import object.Scrap;
 import object.Stone;
 import object.Tree;
 

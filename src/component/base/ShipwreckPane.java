@@ -19,7 +19,7 @@ public class ShipwreckPane extends BorderPane {
 		label = new Label();
 		setLabel(repairPart);
 		repairButton = new Button("Repair");
-		setButtonAcess(repairPart, shipwreck);
+		setButtonAccess(repairPart, shipwreck);
 		repairButton.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -40,10 +40,10 @@ public class ShipwreckPane extends BorderPane {
 		setLeft(label);
 		setRight(repairButton);
 	}
-	
+
 	private void setLabel(String repairPart) {
 		String label = repairPart;
-		switch(repairPart) {
+		switch (repairPart) {
 		case "Wood":
 			label += " 50";
 			break;
@@ -59,41 +59,52 @@ public class ShipwreckPane extends BorderPane {
 		}
 		this.label.setText(label);
 	}
-	
-	private void setButtonAcess(String repairPart, Shipwreck shipwreck) {
-		switch(repairPart) {
+
+	private void setButtonAccess(String repairPart, Shipwreck shipwreck) {
+		switch (repairPart) {
 		case "Wood":
-			if (!shipwreck.haswood()) return;
+			if (!shipwreck.haswood())
+				return;
 			break;
 		case "Hinge":
-			if (!shipwreck.hasHinge()) return;
+			if (!shipwreck.hasHinge())
+				return;
 			break;
 		case "Nail":
-			if (!shipwreck.hasNail()) return;
+			if (!shipwreck.hasNail())
+				return;
 			break;
 		case "Rope":
-			if (!shipwreck.hasRope()) return;
+			if (!shipwreck.hasRope())
+				return;
 			break;
 		case "Canvas":
-			if (!shipwreck.hasCanvas()) return;
+			if (!shipwreck.hasCanvas())
+				return;
 			break;
 		case "Steering":
-			if (!shipwreck.hasSteering()) return;
+			if (!shipwreck.hasSteering())
+				return;
 			break;
 		case "Engine":
-			if (!shipwreck.hasEngine()) return;
+			if (!shipwreck.hasEngine())
+				return;
 			break;
 		case "Petrol":
-			if (!shipwreck.hasPetrol()) return;
+			if (!shipwreck.hasPetrol())
+				return;
 			break;
 		case "Titanium":
-			if (!shipwreck.hasTitanium()) return;
+			if (!shipwreck.hasTitanium())
+				return;
 			break;
 		case "Receiver":
-			if (!shipwreck.hasReceiver()) return;
+			if (!shipwreck.hasReceiver())
+				return;
 			break;
 		case "Antenna":
-			if (!shipwreck.hasAntenna()) return;
+			if (!shipwreck.hasAntenna())
+				return;
 			break;
 		}
 		repairButton.setText("complete");
@@ -107,12 +118,12 @@ public class ShipwreckPane extends BorderPane {
 		alert.setContentText("Please check your inventory.");
 		alert.showAndWait();
 	}
-	
+
 	public void showWinning() {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setHeaderText(null);
 		alert.setContentText("YOU WIN !!!");
 		alert.showAndWait();
 	}
-	
+
 }

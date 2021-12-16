@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 
 public class InventoryButton extends Button {
 	public InventoryButton(Player player) {
-		// setText("InventoryButton");
 		ImageView ImageView = new ImageView(new Image("CategoryOther.png"));
 		this.setGraphic(ImageView);
 		ImageView.setFitHeight(60);

@@ -43,5 +43,5 @@ public class Weapon {
 	public String toString() {
 		return material + " " + application;
 	}
-	
+
 }

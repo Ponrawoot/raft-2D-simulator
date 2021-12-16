@@ -29,10 +29,10 @@ public class CurrentWeaponPane extends GridPane {
 		initCurrentAxe(player);
 		initCurrentShovel(player);
 		initCurrentSpear(player);
-		
+
 		setHgap(5);
 		setPadding(new Insets(10));
-		
+
 		add(new Text("axe"), 0, 0);
 		add(new Text("shovel"), 1, 0);
 		add(new Text("spear"), 2, 0);
@@ -61,7 +61,7 @@ public class CurrentWeaponPane extends GridPane {
 			currentSpear.setBackground(new Background(bgFillA, bgImgA));
 		}
 	}
-	
+
 	private void initCurrentAxe(Player player) {
 		Weapon axe = player.getCurrentAxe();
 		currentAxe = new Pane();
@@ -72,7 +72,7 @@ public class CurrentWeaponPane extends GridPane {
 				new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		setImage(axe);
 	}
-	
+
 	private void initCurrentShovel(Player player) {
 		Weapon shovel = player.getCurrentShovel();
 		currentShovel = new Pane();
@@ -83,7 +83,7 @@ public class CurrentWeaponPane extends GridPane {
 				new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		setImage(shovel);
 	}
-	
+
 	private void initCurrentSpear(Player player) {
 		Weapon spear = player.getCurrentSpear();
 		currentSpear = new Pane();
@@ -94,14 +94,14 @@ public class CurrentWeaponPane extends GridPane {
 				new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		setImage(spear);
 	}
-	
+
 	public void update(Player player) {
 		currentAxe = null;
 		initCurrentAxe(player);
-		
+
 		currentShovel = null;
 		initCurrentShovel(player);
-		
+
 		currentSpear = null;
 		initCurrentSpear(player);
 

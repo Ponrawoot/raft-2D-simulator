@@ -79,12 +79,12 @@ public class InventoryCell extends Pane {
 		}
 		return name + "\nAmount: " + amount;
 	}
-	
+
 	public void highlight() {
 		this.setBorder(new Border(
 				new BorderStroke(Color.DARKBLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2))));
 	}
-	
+
 	public void unhighlight() {
 		this.setBorder(new Border(
 				new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));

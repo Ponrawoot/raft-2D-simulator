@@ -185,7 +185,7 @@ public class InventoryPane extends VBox {
 			TopBar.getWeaponPane().update(player);
 		});
 	}
-	
+
 	private void initResetWeaponButton(Player player) {
 		resetWeaponButton = new Button("Reset current weapons");
 		resetWeaponButton.setOnAction(event -> {

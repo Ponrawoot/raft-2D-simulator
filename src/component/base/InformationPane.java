@@ -85,14 +85,13 @@ public class InformationPane extends Label {
 				setText("You don't have enough " + tree + " seed.");
 		}
 	}
-	
+
 	public void update(boolean hit) {
 		if (hit) {
 			setText("You were just attack by Eagle, Be careful.");
-		} 
+		}
 	}
-	
-	
+
 	private String genInformText(boolean check, Object object, ApplicationType applicationType) {
 		if (check) {
 			if (object instanceof Tree) {

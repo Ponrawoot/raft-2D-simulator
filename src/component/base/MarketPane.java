@@ -10,40 +10,39 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
-public class MarketPane extends BorderPane{
+public class MarketPane extends BorderPane {
 	private Button tradeButton;
 	private Text text;
-	
+
 	public MarketPane(Player player, Market market) {
 		super();
 		setPrefHeight(80);
-		
+
 		text = new Text();
 		setText(market.getTradeObject(), player);
-		
+
 		tradeButton = new Button("Trade");
 		tradeButton.setDisable(market.isTraded());
 		tradeButton.setOnAction(new EventHandler<ActionEvent>() {
-			
+
 			@Override
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				boolean traded = market.trade(player);
 				if (traded) {
 					tradeButton.setDisable(true);
-				}
-				else {
+				} else {
 					showWarning();
 				}
 			}
 		});
-		
+
 		setLeft(text);
 		setRight(tradeButton);
 	}
-	
+
 	private void setText(String tradeObject, Player player) {
-		switch(tradeObject) {
+		switch (tradeObject) {
 		case "Canvas":
 			text.setText(tradeObject + "\nRequirement:\n" + " - metal 10\n - scrap 20\n - plastic 20");
 			break;
@@ -63,7 +62,7 @@ public class MarketPane extends BorderPane{
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Trade failed");
 		alert.setHeaderText(null);
-		alert.setContentText("Please check your object amount." );
+		alert.setContentText("Please check your object amount.");
 		alert.showAndWait();
 	}
 }

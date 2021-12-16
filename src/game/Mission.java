@@ -121,7 +121,7 @@ public class Mission {
 			allMission.get(missionNumber).set(i, x + amount);
 		}
 	}
-	
+
 	public ArrayList<Integer> getMissionRequirement(int i) {
 		return allMission.get(i);
 	}
