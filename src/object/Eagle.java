@@ -127,7 +127,6 @@ public class Eagle extends Animal {
 	public boolean hitPlayer(Player player) {
 		if (position.isNextTo(player.getCurrentPosition()) && alive) {
 			player.decreaseHP();
-			TopBar.setHp(player);
 			TopBar.getInformationPane().update(true);
 			TopBar.showHpWarning(player);
 			return true;
