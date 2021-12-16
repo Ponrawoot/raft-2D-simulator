@@ -26,10 +26,10 @@ public class Main extends Application {
 	private static RootPane rootPane;
 	private Player player;
 	private ThreadMain threadMain;
-	private static AudioClip themeSound = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
-	private static AudioClip walkingSound = new AudioClip(ClassLoader.getSystemResource("audio/sound1.mp3").toString());
-	private static AudioClip actionSound = new AudioClip(ClassLoader.getSystemResource("audio/sound2.mp3").toString());
-	private static AudioClip warningSound = new AudioClip(ClassLoader.getSystemResource("audio/sound3.mp3").toString());
+	private static AudioClip themeSound = new AudioClip(ClassLoader.getSystemResource("Audio/Raft.wav").toString());
+	private static AudioClip walkingSound = new AudioClip(ClassLoader.getSystemResource("Audio/sound1.mp3").toString());
+	private static AudioClip actionSound = new AudioClip(ClassLoader.getSystemResource("Audio/sound2.mp3").toString());
+	private static AudioClip warningSound = new AudioClip(ClassLoader.getSystemResource("Audio/sound3.mp3").toString());
 	private static AudioClip[] sound = { themeSound, walkingSound, actionSound, warningSound };
 
 	public void start(Stage primaryStage) throws Exception {
@@ -41,9 +41,9 @@ public class Main extends Application {
 		Main.getSound()[0].play();
 		Main.getSound()[0].setVolume(0.5);
 
-		walkingSound.setVolume(0.1);
-		actionSound.setVolume(0.1);
-		warningSound.setVolume(0.1);
+		walkingSound.setVolume(0.05);
+		actionSound.setVolume(0.05);
+		warningSound.setVolume(0.05);
 
 		Scene scene = new Scene(rootPane, 1000, 1000);
 

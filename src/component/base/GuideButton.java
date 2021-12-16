@@ -41,7 +41,10 @@ public class GuideButton extends Button {
 				ImageView ImageView3 = new ImageView(new Image("Project_004.jpg"));
 				ImageView3.setFitWidth(700);
 				ImageView3.setFitHeight(1000);
-				guide.getChildren().addAll(ImageView1, ImageView2, ImageView3);
+				ImageView ImageView4 = new ImageView(new Image("Project_005.jpg"));
+				ImageView4.setFitWidth(700);
+				ImageView4.setFitHeight(1000);
+				guide.getChildren().addAll(ImageView1, ImageView2, ImageView3, ImageView4);
 				root.setContent(guide);
 				root.setPrefViewportHeight(700);
 				Scene scene = new Scene(root);

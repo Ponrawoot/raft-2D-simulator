@@ -52,9 +52,9 @@ public class TopBar extends FlowPane {
 				muteButton.setText("Unmute");
 			} else {
 				Main.getSound()[0].play();
-				Main.getSound()[1].setVolume(0.3);
-				Main.getSound()[2].setVolume(0.3);
-				Main.getSound()[3].setVolume(0.3);
+				Main.getSound()[1].setVolume(0.05);
+				Main.getSound()[2].setVolume(0.05);
+				Main.getSound()[3].setVolume(0.05);
 				muteButton.setText("Mute");
 			}
 		});
