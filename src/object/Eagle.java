@@ -132,42 +132,16 @@ public class Eagle extends Animal {
 			return true;
 		}
 		return false;
-//		}
-//			Thread thread = new Thread(() -> {
-//				try {
-//					Thread.sleep(2000);
-//					/* ======================================================== */
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			});
-//		}
-
 	}
 
 	public void killed(Player player) {
-//		if (alive) {
 		setAlive(false);
 		player.setBird(player.getBird() + 2);
 		player.setEagleHead(player.getEagleHead() + 1);
 		player.setFeather(player.getFeather() + 3);
 		player.decreaseLifetime(ApplicationType.SPEAR);
 		player.decreaseHP();
-//		}
-//		if ((player.getCurrentPosition().isNextTo(position) || player.getCurrentPosition().isSamePosition(position))
-//				&& (checkWeaponCondition(player) && alive)) {
-
-//			try {
-//				Thread.sleep(15000); // (millisecond) can change
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-
-//			refresh();
 	}
-//	}
 
 	public void refresh() {
 		if (!alive) {
@@ -182,7 +156,7 @@ public class Eagle extends Animal {
 
 	@Override
 	public String toString() {
-		return "eagle." + "\nYou got 1 bird, 1 eagle head,";
+		return "eagle." + "\nYou got 2 bird, 1 eagle head, 3 feathers,";
 	}
 
 }

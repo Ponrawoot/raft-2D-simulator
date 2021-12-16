@@ -33,8 +33,9 @@ public class ThreadMain {
 					try {
 						Thread.sleep(2000);
 						Platform.runLater(() -> {
-							for (Animal x: Map.getAvailableFish()) {
-								if (x.isAlive()) RootPane.redraw(x.getPosition(), x.getPosition(), "Fish");
+							for (Animal x : Map.getAvailableFish()) {
+								if (x.isAlive())
+									RootPane.redraw(x.getPosition(), x.getPosition(), "Fish");
 							}
 						});
 					} catch (InterruptedException e) {
@@ -52,8 +53,9 @@ public class ThreadMain {
 					try {
 						Thread.sleep(2000);
 						Platform.runLater(() -> {
-							for (Animal x: Map.getAvailableBird()) {
-								if (x.isAlive()) RootPane.redraw(x.getPosition(), x.getPosition(), "Bird");
+							for (Animal x : Map.getAvailableBird()) {
+								if (x.isAlive())
+									RootPane.redraw(x.getPosition(), x.getPosition(), "Bird");
 							}
 						});
 					} catch (InterruptedException e) {
@@ -96,7 +98,7 @@ public class ThreadMain {
 					Thread.sleep(2000);
 					Platform.runLater(() -> {
 						((Eagle) object).refresh();
-						RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(4,1)), cell, "Eagle");
+						RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(4, 1)), cell, "Eagle");
 					});
 					/* ======================================================== */
 
@@ -132,10 +134,11 @@ public class ThreadMain {
 					try {
 						Thread.sleep(2000);
 						Platform.runLater(() -> {
-							for (Material x: Map.getAvailableStone()) {
-								if (x.isPresent()) RootPane.redraw(x.getPosition(), x.getPosition(), "Stone");
+							for (Material x : Map.getAvailableStone()) {
+								if (x.isPresent())
+									RootPane.redraw(x.getPosition(), x.getPosition(), "Stone");
 							}
-						
+
 						});
 						/* ======================================================== */
 
@@ -145,9 +148,9 @@ public class ThreadMain {
 					}
 				});
 				thread.start();
-				
+
 			}
-			
+
 		}
 		if (object instanceof Plastic) {
 			if (Map.readyForRandomMaterial(Map.getAvailablePlastic())) {
@@ -156,8 +159,9 @@ public class ThreadMain {
 					try {
 						Thread.sleep(2000);
 						Platform.runLater(() -> {
-							for (Material x: Map.getAvailablePlastic()) {
-								if (x.isPresent()) RootPane.redraw(x.getPosition(), x.getPosition(), "Plastic");
+							for (Material x : Map.getAvailablePlastic()) {
+								if (x.isPresent())
+									RootPane.redraw(x.getPosition(), x.getPosition(), "Plastic");
 							}
 						});
 						/* ======================================================== */
@@ -169,7 +173,7 @@ public class ThreadMain {
 				});
 				thread.start();
 			}
-			
+
 		}
 		if (object instanceof Scrap) {
 			if (Map.readyForRandomMaterial(Map.getAvailableScrape())) {
@@ -178,8 +182,9 @@ public class ThreadMain {
 					try {
 						Thread.sleep(2000);
 						Platform.runLater(() -> {
-							for (Material x: Map.getAvailableScrape()) {
-								if (x.isPresent()) RootPane.redraw(x.getPosition(), x.getPosition(), "Scrap");
+							for (Material x : Map.getAvailableScrape()) {
+								if (x.isPresent())
+									RootPane.redraw(x.getPosition(), x.getPosition(), "Scrap");
 							}
 						});
 						/* ======================================================== */
@@ -191,39 +196,36 @@ public class ThreadMain {
 				});
 				thread.start();
 			}
-			
+
 		}
-			
+
 	}
 
 	public boolean activateEagle(Player player) {
 		// TODO Auto-generated method stub
 		int x = player.getCurrentPosition().getCoCell().getX();
 		int y = player.getCurrentPosition().getCoCell().getY();
-		Cell prev = Map.getCellFromCoordinate(new Coordinate(x,y));
+		Cell prev = Map.getCellFromCoordinate(new Coordinate(x, y));
 		Thread thread = new Thread(() -> {
 			try {
-				while (Map.getEagle().checkMoving(player)&&player.getCurrentPosition().isSamePosition(prev)) {
-//					if(player.getHP() == 0) break;
+				while (Map.getEagle().checkMoving(player) && player.getCurrentPosition().isSamePosition(prev)) {
 					Thread.sleep(2000);
 					Platform.runLater(() -> {
 						Map.getEagle().moveToPlayer(player);
 						Map.getEagle().hitPlayer(player);
-						if(player.getHP() == 0) {
+						if (player.getHP() == 0) {
 //							TopBar.setHp(player);
 //							RootPane.redraw(Map.getCellFromCoordinate(new Coordinate()),player.getCurrentPosition(),"Front");
 							return;
 //							Main.getSound()[3].play();
 						}
 					});
-					
-					
-					
+
 				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				
+
 			}
 		});
 		thread.start();
@@ -232,17 +234,17 @@ public class ThreadMain {
 			return false;
 		}
 		return true;
-		
+
 	}
 
-	
 	public void setGrow(Object object) {
 		if (object instanceof MangoTree && (!((Tree) object).isReadyToCut())) {
 			Thread thread = new Thread(() -> {
 				try {
 					Thread.sleep(2000);
 					Platform.runLater(() -> {
-						RootPane.redraw(((MangoTree) object).getPosition(), ((MangoTree) object).getPosition(), "MangoTree");
+						RootPane.redraw(((MangoTree) object).getPosition(), ((MangoTree) object).getPosition(),
+								"MangoTree");
 					});
 					/* ======================================================== */
 
@@ -254,13 +256,14 @@ public class ThreadMain {
 			thread.start();
 			((MangoTree) object).grow();
 		}
-		
+
 		if (object instanceof PineTree && (!((Tree) object).isReadyToCut())) {
 			Thread thread = new Thread(() -> {
 				try {
 					Thread.sleep(2000);
 					Platform.runLater(() -> {
-						RootPane.redraw(((PineTree) object).getPosition(), ((PineTree) object).getPosition(), "PineTree");
+						RootPane.redraw(((PineTree) object).getPosition(), ((PineTree) object).getPosition(),
+								"PineTree");
 					});
 					/* ======================================================== */
 
