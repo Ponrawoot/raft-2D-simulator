@@ -121,7 +121,11 @@ public class Eagle extends Animal {
 
 	public boolean hitPlayer(Player player) {
 		if (position.isNextTo(player.getCurrentPosition())&&alive) {
-			if (player.getHP() > 3) {
+//			for (int i=0;i<3;i++) {
+//				player.decreaseHP();
+//			}
+			if	(player.getHP() > 3) {
+			
 				player.setHP(player.getHP()-3);
 			}
 			else {
@@ -132,6 +136,8 @@ public class Eagle extends Animal {
 			return true;
 		}
 		return false;
+
+		
 //		}
 //			Thread thread = new Thread(() -> {
 //				try {

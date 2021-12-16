@@ -208,17 +208,11 @@ public class ThreadMain {
 					Platform.runLater(() -> {
 						Map.getEagle().moveToPlayer(player);
 						Map.getEagle().hitPlayer(player);
-//						if (Map.getEagle().hitPlayer(player)&&TopBar.showHpWarning(player)) {
-//							TopBar.setHp(player);
-//							TopBar.showHpWarning(player);
-//							Main.getSound()[3].play();
-//						}
 					});
 				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				
 			}
 		});
 		thread.start();
@@ -227,7 +221,6 @@ public class ThreadMain {
 			return false;
 		}
 		return true;
-		
 	}
 
 	
