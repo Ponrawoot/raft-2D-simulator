@@ -1,6 +1,7 @@
 package application;
 
 import component.RootPane;
+import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -195,7 +196,7 @@ public class ThreadMain {
 			
 	}
 
-	public void activateEagle(Player player) {
+	public boolean activateEagle(Player player) {
 		// TODO Auto-generated method stub
 		int x = player.getCurrentPosition().getCoCell().getX();
 		int y = player.getCurrentPosition().getCoCell().getY();
@@ -206,13 +207,13 @@ public class ThreadMain {
 					Thread.sleep(2000);
 					Platform.runLater(() -> {
 						Map.getEagle().moveToPlayer(player);
-						if (Map.getEagle().hitPlayer(player)) {
-							Main.getSound()[3].play();
-						}
+						Map.getEagle().hitPlayer(player);
+//						if (Map.getEagle().hitPlayer(player)&&TopBar.showHpWarning(player)) {
+//							TopBar.setHp(player);
+//							TopBar.showHpWarning(player);
+//							Main.getSound()[3].play();
+//						}
 					});
-					if (!player.getCurrentPosition().isSamePosition(prev)) {
-						break;
-					}
 				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -221,6 +222,11 @@ public class ThreadMain {
 			}
 		});
 		thread.start();
+		if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition())) {
+			thread.interrupt();
+			return false;
+		}
+		return true;
 		
 	}
 

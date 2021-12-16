@@ -11,9 +11,13 @@ import game.base.Coordinate;
 import game.base.Direction;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -21,13 +25,14 @@ import object.base.MaterialType;
 import object.MangoTree;
 import object.PalmTree;
 import object.PineTree;
-import object.Tree;
 import object.Weapon;
 import object.base.ApplicationType;
 
 public class Main extends Application {
 	private static RootPane rootPane;
+	private static Pane firstPane = new FirstPane();
 	private Player player;
+	private boolean isPlay =false;
 	private ThreadMain threadMain;
 	private static AudioClip sound0 = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
 	private static AudioClip sound1 = new AudioClip(ClassLoader.getSystemResource("audio/sound1.mp3").toString());
@@ -64,8 +69,7 @@ public class Main extends Application {
 //	
 		rootPane = new RootPane(player);
 		threadMain = new ThreadMain();
-		
-//		sound = new AudioClip(ClassLoader.getSystemResource("audio/Raft.wav").toString());
+	
 		Main.getSound()[0].setCycleCount(MediaPlayer.INDEFINITE);
 		Main.getSound()[0].play();
 		Main.getSound()[0].setVolume(0.5);
@@ -74,8 +78,22 @@ public class Main extends Application {
 		sound3.setVolume(0.3);
 		
 		Scene scene = new Scene(rootPane, 1000, 1000);
-		addEventListener(scene);
+		ScreenController screenController = new ScreenController(scene);
+		ScreenController.add("Root", rootPane);
+		ScreenController.add("First", firstPane);
+		ScreenController.activate("First");
+		Button playButton = FirstPane.getPlayButton();
+		playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
+			@Override
+			public void handle(MouseEvent arg0) {
+				ScreenController.activate("Root");
+				addEventListener(scene);
+				
+			}
+			
+		});
+		
 		primaryStage.setTitle("Raft 2D Simulator");
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -205,7 +223,15 @@ public class Main extends Application {
 				RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(9, 12)), cell2, "Front");
 				player.setReset(false);
 			}
-			threadMain.activateEagle(player);
+			if (threadMain.activateEagle(player)) {
+//				Main.getSound()[3].play();
+				TopBar.showHpWarning(player);
+			}
+			
+			
+//			if (Map.getMoveableForEagleArea().contains(player.getCurrentPosition())&&!Map.getMoveableForEagleArea().contains(cell)) {
+//				threadMain.activateEagle(player);
+//			}
 		});
 	}
 
