@@ -40,7 +40,7 @@ public class Player implements Movable {
 	}
 
 	public Player(String name) {
-		setMaxHP(10);
+		setMaxHP(20);
 		this.name = name;
 		HP = maxHP;
 		wood = 0;
@@ -73,9 +73,9 @@ public class Player implements Movable {
 		currentSpear = null;
 		currentPosition = new Cell(new Coordinate(), false, false, true);
 		playerWeapon = new ArrayList<Weapon>();
-		Weapon woodAxe = new Weapon(MaterialType.WOOD, ApplicationType.AXE);
-		playerWeapon.add(woodAxe);
-		setCurrentAxe(woodAxe);
+		Weapon stoneAxe = new Weapon(MaterialType.STONE, ApplicationType.AXE);
+		playerWeapon.add(stoneAxe);
+		setCurrentAxe(stoneAxe);
 		direction = Direction.DOWN;
 
 	}
