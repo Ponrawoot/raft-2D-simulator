@@ -1,5 +1,6 @@
 package component.base;
 
+import game.Mission;
 import game.Player;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,8 +17,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MissionButton extends Button {
+	private Mission mission;
+	
 	public MissionButton(Player player) {
 		// setText("MissionButton");
+		mission = new Mission();
 		ImageView ImageView = new ImageView(new Image("mission.png"));
 		ImageView.setFitHeight(60);
 		ImageView.setFitWidth(60);
@@ -35,7 +39,7 @@ public class MissionButton extends Button {
 				ListView<MissionPane> root = new ListView<MissionPane>();
 				root.setPrefWidth(350);
 				for (int i = 0; i < 9; i++) {
-					root.getItems().add(new MissionPane(i, player));
+					root.getItems().add(new MissionPane(mission, i, player));
 				}
 				
 				Scene scene = new Scene(root);

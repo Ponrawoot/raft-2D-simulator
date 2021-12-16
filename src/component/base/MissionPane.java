@@ -14,10 +14,10 @@ public class MissionPane extends BorderPane{
 	private Mission mission;
 	private Label label;
 
-	public MissionPane(int missionNumber, Player player) {
+	public MissionPane(Mission mission, int missionNumber, Player player) {
 		super();
 		setPrefHeight(110);
-		mission = new Mission();
+		this.mission = mission;
 		setLabel(missionNumber);
 		Button getRewardButton = new Button("Get");
 		getRewardButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -26,6 +26,8 @@ public class MissionPane extends BorderPane{
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				boolean getReward = mission.getReward(missionNumber, player);
+				setLabel(missionNumber);
+				setLeft(label);
 				if (!getReward) {
 					showWarning();
 				}
