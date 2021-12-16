@@ -51,7 +51,7 @@ public class CraftPane extends ListView<BorderPane> {
 		craftObjects[11] = "Nail";
 		craftObjects[12] = "Circuit";
 		craftObjects[13] = "Receiver";
-		craftObjects[14] = "Anthena";
+		craftObjects[14] = "Antenna";
 	}
 
 	private String getRequirement(int i) {

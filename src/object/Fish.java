@@ -4,6 +4,7 @@ import game.Cell;
 import game.Player;
 import game.base.Removable;
 import object.base.ApplicationType;
+import object.base.MaterialType;
 
 public class Fish extends Animal implements Removable {
 
@@ -33,7 +34,7 @@ public class Fish extends Animal implements Removable {
 
 	@Override
 	public boolean checkWeaponCondition(Player player) {
-		return player.getCurrentSpear() != null;
+		return player.getCurrentSpear() != null && player.getCurrentSpear().getMaterial() != MaterialType.WOOD;
 	}
 
 	@Override

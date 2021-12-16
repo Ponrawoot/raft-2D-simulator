@@ -40,30 +40,30 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		player = new Player("player");
 //Cheat
-//		player.setHP(100);
-//		player.setMaxHP(100);
-//		player.setRaft(true);
-//		Weapon w1 = new Weapon(MaterialType.METAL, ApplicationType.AXE);
-//		player.setCurrentAxe(w1);
-//		player.addWeapon(w1);
-//		Weapon w2 = new Weapon(MaterialType.METAL, ApplicationType.SHOVEL);
-//		player.setCurrentShovel(w2);
-//		player.addWeapon(w2);
-//		Weapon w3 = new Weapon(MaterialType.METAL, ApplicationType.SPEAR);
-//		player.setCurrentSpear(w3);
-//		player.addWeapon(w3);
-//		player.setFish(5);
-//		player.setFruit(5);
-//		player.setBird(5);
-//		player.setMetal(100);
-//		player.setScrape(100);
-//		player.setPlastic(100);
-//		player.setWood(100);
-//		player.setRope(100);
-//		player.setLeaf(10);
-//		player.setStone(100);
-//		player.setMangoSeed(10);
-//		player.setPineconeSeed(10);
+		player.setHP(100);
+		player.setMaxHP(100);
+		player.setRaft(true);
+		Weapon w1 = new Weapon(MaterialType.METAL, ApplicationType.AXE);
+		player.setCurrentAxe(w1);
+		player.addWeapon(w1);
+		Weapon w2 = new Weapon(MaterialType.METAL, ApplicationType.SHOVEL);
+		player.setCurrentShovel(w2);
+		player.addWeapon(w2);
+		Weapon w3 = new Weapon(MaterialType.METAL, ApplicationType.SPEAR);
+		player.setCurrentSpear(w3);
+		player.addWeapon(w3);
+		player.setFish(5);
+		player.setFruit(5);
+		player.setBird(5);
+		player.setMetal(100);
+		player.setScrape(100);
+		player.setPlastic(100);
+		player.setWood(100);
+		player.setRope(100);
+		player.setLeaf(10);
+		player.setStone(100);
+		player.setMangoSeed(10);
+		player.setPineconeSeed(10);
 //	
 		rootPane = new RootPane(player);
 		threadMain = new ThreadMain();
@@ -193,7 +193,7 @@ public class Main extends Application {
 					PineTree object2 = (PineTree) Map.getObjectFromCoordinate(cell.getCoCell());
 					threadMain.setGrow(object2);
 				}
-				TopBar.getInformationPane().update(cell, planted2, "Pinecone");
+				TopBar.getInformationPane().update(cell, planted2, "Pine");
 				break;
 			default:
 				string = "";

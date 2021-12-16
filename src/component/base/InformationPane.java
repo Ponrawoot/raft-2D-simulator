@@ -33,7 +33,7 @@ public class InformationPane extends Label {
 		if (cell == null
 				|| (player.getCurrentPosition().getCoCell().getX() == 0 && player.getDirection() == Direction.LEFT)
 				|| (player.getCurrentPosition().getCoCell().getY() == 0 && player.getDirection() == Direction.UP)) {
-			setText("You can't go out without Ship");
+			setText("You can't get out without Ship");
 		} else if (cell.isSea() && !player.hasRaft()) {
 			setText("You don't have raft.");
 		}

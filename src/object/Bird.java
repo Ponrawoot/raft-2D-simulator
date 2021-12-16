@@ -35,7 +35,7 @@ public class Bird extends Animal implements Removable {
 
 	@Override
 	public boolean checkWeaponCondition(Player player) {
-		return player.getCurrentSpear() != null && player.getCurrentSpear().getMaterial() != MaterialType.WOOD;
+		return player.getCurrentSpear() != null ;
 	}
 
 	@Override
