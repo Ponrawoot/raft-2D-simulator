@@ -28,9 +28,9 @@ public class RootPane extends VBox {
 
 	public static void redraw(Cell newCell, Cell cell, String string) {
 		// TODO Auto-generated method stub
-		if (string == "")
+		if (string.equals(""))
 			return;
-		if (string == "Clear") {
+		if (string.equals("Clear")) {
 			for (GameDisplayCell x : gameDisplay.cellList) {
 				if (x.getCell().equals(cell)) {
 					x.SetImageViewBlank();
@@ -50,9 +50,9 @@ public class RootPane extends VBox {
 		}
 
 	}
-	
+
 	public static void redrawTreeStump(Cell cell) {
-		for (GameDisplayCell x: gameDisplay.cellList) {
+		for (GameDisplayCell x : gameDisplay.cellList) {
 			if (x.getCell().equals(cell)) {
 				x.SetImageView("TreeStump");
 			}
