@@ -10,6 +10,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -23,15 +24,26 @@ public class GuideButton extends Button {
 		setCursor(Cursor.HAND);
 		this.setTooltip();
 		setOnAction(new EventHandler<ActionEvent>() {
-			
+
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				Stage stage = new Stage();
 				stage.setTitle("Guide");
-
 				ScrollPane root = new ScrollPane();
-
+				VBox guide = new VBox();
+				ImageView ImageView1 = new ImageView(new Image("Project_002.jpg"));
+				ImageView1.setFitWidth(700);
+				ImageView1.setFitHeight(1000);
+				ImageView ImageView2 = new ImageView(new Image("Project_003.jpg"));
+				ImageView2.setFitWidth(700);
+				ImageView2.setFitHeight(1000);
+				ImageView ImageView3 = new ImageView(new Image("Project_004.jpg"));
+				ImageView3.setFitWidth(700);
+				ImageView3.setFitHeight(1000);
+				guide.getChildren().addAll(ImageView1, ImageView2, ImageView3);
+				root.setContent(guide);
+				root.setPrefViewportHeight(700);
 				Scene scene = new Scene(root);
 				stage.setScene(scene);
 				stage.initModality(Modality.APPLICATION_MODAL);

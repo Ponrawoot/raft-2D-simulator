@@ -34,7 +34,6 @@ public class Main extends Application {
 
 	public void start(Stage primaryStage) throws Exception {
 		player = new Player("player");
-		player.addWeapon(new Weapon(MaterialType.STONE,ApplicationType.SHOVEL));
 		rootPane = new RootPane(player);
 		threadMain = new ThreadMain();
 
