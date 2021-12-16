@@ -1,13 +1,11 @@
 package object;
 
-import application.Main;
 import component.RootPane;
 import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
 import game.base.Coordinate;
-import javafx.application.Platform;
 import object.base.ApplicationType;
 import object.base.MaterialType;
 
@@ -18,7 +16,6 @@ public class Eagle extends Animal {
 	public Eagle() {
 		super(defaultPosition); // same position every time
 		// TODO Auto-generated constructor stub
-
 	}
 
 	public Eagle(Cell cell) {
@@ -29,8 +26,6 @@ public class Eagle extends Animal {
 		boolean c = false;
 		for (Cell x : Map.getMoveableForEagleArea()) {
 			if (x.isSamePosition(player.getCurrentPosition())) {
-				// RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(5,5)),
-				// defaultPosition, "Eagle");
 				c = true;
 				break;
 			}
@@ -61,8 +56,6 @@ public class Eagle extends Animal {
 		boolean c = false;
 		for (Cell x : Map.getMoveableForEagleArea()) {
 			if (x.isSamePosition(player.getCurrentPosition())) {
-				// RootPane.redraw(Map.getCellFromCoordinate(new Coordinate(5,5)),
-				// defaultPosition, "Eagle");
 				c = true;
 				break;
 			}
@@ -82,9 +75,6 @@ public class Eagle extends Animal {
 				return true;
 			}
 			if (Math.abs(yPlayer - position.getCoCell().getY()) > 0) {
-//					if (Math.abs(yPlayer-position.getCoCell().getY())==1&&Math.abs(xPlayer-position.getCoCell().getX())==0) {
-//					return true;
-//					}
 				int dy;
 				if (yPlayer > position.getCoCell().getY()) {
 					dy = 1;
@@ -92,18 +82,12 @@ public class Eagle extends Animal {
 					dy = -1;
 				}
 				Cell next = Map.getCellFromCoordinate(new Coordinate(xEagle, yEagle + dy));
-//					position.getCoCell().setY(position.getCoCell().getY()+dy);
 				Map.setEagle(next);
 				prev.setStatus(true);
 				RootPane.redraw(next, prev, "Eagle");
 				return true;
-//					if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
-//						setPosition(defaultPosition);
 			}
 			if (Math.abs(xPlayer - position.getCoCell().getX()) > 0) {
-//					if (Math.abs(yPlayer-position.getCoCell().getY())==0&&Math.abs(xPlayer-position.getCoCell().getX())==1) {
-//					return true;
-//					}
 				int dx;
 				if (xPlayer > position.getCoCell().getX()) {
 					dx = 1;
@@ -116,12 +100,8 @@ public class Eagle extends Animal {
 				RootPane.redraw(next, prev, "Eagle");
 			}
 			return true;
-//					if (!Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))
-//						setPosition(defaultPosition);
 		}
-//			hitPlayer(player);
 		return false;
-//		if (!(Map.getMoveableForEagleArea().contains(player.getCurrentPosition()))) return;
 	}
 
 	public boolean hitPlayer(Player player) {

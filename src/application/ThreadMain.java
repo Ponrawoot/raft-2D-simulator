@@ -1,7 +1,6 @@
 package application;
 
 import component.RootPane;
-import component.TopBar;
 import game.Cell;
 import game.Map;
 import game.Player;
@@ -18,7 +17,6 @@ import object.PalmTree;
 import object.PineTree;
 import object.Plastic;
 import object.Scrap;
-import object.Shipwreck;
 import object.Stone;
 import object.Tree;
 
@@ -214,18 +212,13 @@ public class ThreadMain {
 						Map.getEagle().moveToPlayer(player);
 						Map.getEagle().hitPlayer(player);
 						if (player.getHP() == 0) {
-//							TopBar.setHp(player);
-//							RootPane.redraw(Map.getCellFromCoordinate(new Coordinate()),player.getCurrentPosition(),"Front");
 							return;
-//							Main.getSound()[3].play();
 						}
 					});
-
 				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-
 			}
 		});
 		thread.start();
@@ -234,7 +227,6 @@ public class ThreadMain {
 			return false;
 		}
 		return true;
-
 	}
 
 	public void setGrow(Object object) {
